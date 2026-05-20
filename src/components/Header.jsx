@@ -112,9 +112,9 @@ export default function Header() {
         px: { xs: 2, sm: 4, md: 0, lg: 4, xl: 10, xxl: 14 },
         py: { xs: 1, sm: 1.2, md: 0, lg: 1, xl: 1.25, xxl: 2 },
         height: { lg: 64, xl: 64, xxl: 72 },
-        // Updated font family to poppins, montserrat, sans-serif
+        
       fontFamily: "Poppins, Montserrat, sans-serif",
-        // bgcolor: '#790604',
+    
         bgcolor: '#282825',
         color: 'white',
         fontSize: { xs: '0.65rem', sm: '0.75rem', md: '0.85rem', lg: '0.95rem', xl: '1rem' },
@@ -291,7 +291,7 @@ export default function Header() {
     </Box>
   );
 
-  // --- Desktop nav links ---
+  
   const renderNavLinks = () => (
     <Box sx={{
       display: "flex",
@@ -309,14 +309,13 @@ export default function Header() {
               fontSize: { xs: '0.8rem', sm: '0.9rem', md: '0.7rem', color: '#0066ff ' },
                    fontFamily: "Poppins, Montserrat, sans-serif",
             }}
-          // onMouseEnter={(e) => handleMenuOpen(e, nav.label)}
-          // onMouseLeave={handleMenuClose}
+          
           >
             <Button
               onMouseEnter={(e) => handleMenuOpen(e, nav.label)}
               endIcon={<ArrowDropDownIcon />}
               sx={{
-                // color: "#6b545aff",
+                
                 color: "#0B4C74",
                 fontWeight: 600,
                 textTransform: "none",
@@ -486,7 +485,7 @@ export default function Header() {
       }}
     >
 
-      {/* Top section with close button */}
+      
       <Box
         sx={{
           display: "flex",
@@ -567,7 +566,7 @@ export default function Header() {
                         </Collapse>
                       </>
                     ) : (
-                      /* Direct items (no category) */
+                   
                       (group.items || [group]).map((child) => (
                         <ListItem key={child.label} disablePadding>
                           <ListItemButton
@@ -738,7 +737,7 @@ export default function Header() {
                 fontFamily: "Poppins, Montserrat, sans-serif",
           }}
         >
-          {/* Logo - Increased size and moved slightly right */}
+         
           <Box
             component={RouterLink}
             to="/"
@@ -767,7 +766,7 @@ export default function Header() {
             />
           </Box>
 
-          {/* Nav links - Now on the right side with flex: 1 to push to right */}
+          
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -801,7 +800,7 @@ export default function Header() {
               sx: {
                 zIndex: (theme) => theme.zIndex.modal + 2,
                     fontFamily: "Poppins, Montserrat, sans-serif",
-              }, // ensures drawer is on top
+              }, 
             }}
           >
             {renderDrawerLinks()}

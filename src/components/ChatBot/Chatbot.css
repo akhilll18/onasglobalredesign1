@@ -1,4 +1,4 @@
-/* Chatbot.css - COMPLETE FIXED VERSION */
+
 .chatbot-floating-btn {
   position: fixed;
   bottom: 50px;
@@ -165,7 +165,7 @@
   text-decoration: none;
 }
 
-/* Make sure bold text is visible */
+
 .chatbot-message-content strong {
   font-weight: 600;
   color: #2d3748;
@@ -186,7 +186,7 @@
   text-align: left;
 }
 
-/* Typing Indicator */
+
 .chatbot-typing {
   display: flex;
   align-items: center;
@@ -256,7 +256,7 @@
   font-size: 16px;
 }
 
-/* Input Area */
+
 .chatbot-input-area {
   border-top: 1px solid #e9ecef;
   padding: 15px;
@@ -305,7 +305,7 @@
   cursor: not-allowed;
 }
 
-/* Service Buttons Styles */
+
 .services-buttons-container {
   padding: 12px;
   margin-top: 0;
@@ -418,7 +418,7 @@
   font-size: 18px;
 }
 
-/* Back Buttons Container */
+
 .back-buttons-container {
   display: flex;
   flex-direction: column;
@@ -428,7 +428,7 @@
   border-top: 1px solid #e9ecef;
 }
 
-/* Back Buttons - FIXED SIZE AND STYLING */
+
 .back-to-services-button,
 .back-to-questions-button,
 .back-to-main-button {
@@ -481,7 +481,7 @@
   transform: translateY(0);
 }
 
-/* Scrollbar Styling */
+
 .chatbot-body::-webkit-scrollbar {
   width: 6px;
 }

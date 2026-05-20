@@ -22,7 +22,7 @@ const Chatbot = () => {
   const messagesEndRef = useRef(null);
   const sectionStartRef = useRef(null);
 
-  // Services Sub-Menu
+
   const servicesSubMenu = [
     { text: 'Gen AI ERP Solutions', type: 'erp', icon: '🏢' },
     { text: 'Digital Transformation', type: 'digital', icon: '⚡' },
@@ -31,7 +31,7 @@ const Chatbot = () => {
     { text: 'EdTech Services', type: 'staffing-edu', icon: '🎓' }
   ];
 
-  // Other Services Sub-Menu
+ 
   const otherServicesSubMenu = [
     { text: 'Web Development', type: 'marketing', subType: 'web-dev', icon: '🌐' },
     { text: 'SEO', type: 'marketing', subType: 'seo', icon: '🔍' },
@@ -39,7 +39,7 @@ const Chatbot = () => {
     { text: 'Email Marketing', type: 'marketing', subType: 'email-marketing', icon: '✉️' }
   ];
 
-  //  Quick Replies (6 main buttons)
+ 
   const quickReplies = [
     { text: 'Services', type: 'services-menu', icon: '📋' },
     { text: 'Other Services', type: 'other-services-menu', icon: '🎯' },
@@ -277,9 +277,9 @@ const Chatbot = () => {
     }
   ];
 
-  //  keyword mapping with spelling variations
+
   const keywordMapping = {
-    // ERP Keywords with spelling variations
+   
     'erp': 'erp',
     'erps': 'erp',
     'erp systems': 'erp',
@@ -326,7 +326,7 @@ const Chatbot = () => {
     'vat': 'erp',
     'compliance': 'erp',
 
-    // Common misspellings for services
+   
     'servdes': 'general',
     'servises': 'general',
     'serivces': 'general',
@@ -500,7 +500,6 @@ const Chatbot = () => {
     'location': 'contact'
   };
 
-  // Auto-open after delay
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!sessionStorage.getItem('chatShown')) {
@@ -511,15 +510,15 @@ const Chatbot = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Scroll to bottom for messages, scroll to top for sections
+ 
   useEffect(() => {
     if (messagesEndRef.current && isTyping) {
-      // Scroll to bottom when typing
+     
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
 
     if (sectionStartRef.current && (showServices || showSubMenu || showQuestions)) {
-      // Scroll to top of new section after a delay
+      
       setTimeout(() => {
         if (sectionStartRef.current) {
           sectionStartRef.current.scrollIntoView({
@@ -531,18 +530,18 @@ const Chatbot = () => {
     }
   }, [messages, isTyping, showServices, showSubMenu, showQuestions]);
 
-  // Function to check for spelling mistakes and find closest match
+  
   const findClosestKeyword = (userInput) => {
     const words = userInput.toLowerCase().split(/\s+/);
 
-    // First, try to find exact match
+    
     for (const word of words) {
       if (keywordMapping[word]) {
         return { matched: word, service: keywordMapping[word] };
       }
     }
 
-    // Try to find matches in multi-word keys
+   
     const inputString = userInput.toLowerCase();
     for (const [keyword, service] of Object.entries(keywordMapping)) {
       if (inputString.includes(keyword) && keyword.length > 2) {
@@ -550,7 +549,7 @@ const Chatbot = () => {
       }
     }
 
-    // Try fuzzy matching for common misspellings
+   
     const commonMisspellings = {
       'servdes': 'services',
       'servises': 'services',
@@ -630,7 +629,7 @@ const Chatbot = () => {
   };
 
   const getBotResponse = (message) => {
-    // Check for keyword matches with spell correction
+   
     const keywordMatch = findClosestKeyword(message);
 
     if (keywordMatch) {
@@ -700,7 +699,7 @@ const Chatbot = () => {
       };
     }
 
-    // Check for tax/gst keywords - show ERP services first
+   
     if (message.includes('tax') || message.includes('gst') || message.includes('vat') || message.includes('compliance')) {
       return {
         text: "Tax compliance is a critical part of our ERP implementation services. We help businesses stay compliant across all operating regions through our ERP platforms.\n\nWhich ERP platform are you interested in for tax compliance?",
@@ -708,7 +707,7 @@ const Chatbot = () => {
       };
     }
 
-    // Original message-based responses
+   
     if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
       return {
         text: "Hello! Welcome to ONAS. How can I assist you with our services today?",
@@ -723,7 +722,7 @@ const Chatbot = () => {
       };
     }
 
-    // For unclear requests
+   
     if (message.length < 3 || message.split(' ').length < 2) {
       return {
         text: "I want to make sure I understand correctly. Are you looking for:\n• Hiring/recruitment services?\n• IT consulting expertise?\n• Staffing solutions?\n• EdTech implementation?\nOr something else specific to your needs?",
@@ -745,18 +744,18 @@ const Chatbot = () => {
     setShowBackToServices(false);
     setShowBackToQuestions(false);
 
-    // Track navigation path
+  
     if (type === 'services-menu' || type === 'other-services-menu') {
       setIsFromSubMenu(true);
     } else if (type === 'staffing-it' || type === 'questions' || type === 'contact') {
       setIsFromSubMenu(false);
     } else if (type === 'staffing-pro') {
-      // Check if staffing-pro is clicked from Services menu or Main menu
+     
       setIsFromSubMenu(type === 'staffing-pro' ? false : true);
     } else if (type === 'staffing-edu') {
-      setIsFromSubMenu(true); // Always from Services menu
+      setIsFromSubMenu(true); 
     } else {
-      // For ERP, Digital, IT, Marketing - check current sub-menu
+     
       setIsFromSubMenu(showSubMenu !== null);
     }
 
@@ -937,7 +936,7 @@ const Chatbot = () => {
   const handleClose = () => {
     setIsOpen(false);
 
-    // Reset ALL states to initial values for fresh chat
+  
     setMessages([
       {
         text: "👋 Hello! Welcome to ONAS. I'm your virtual assistant, here to help you find the right talent solutions or learn about our services.",
@@ -989,7 +988,7 @@ const Chatbot = () => {
             {messages.map((msg, index) => (
               <div key={index} className={`chatbot-message chatbot-message-${msg.sender}`}>
                 <div className="chatbot-message-content">
-                  {/* Check if text contains HTML tags */}
+              
                   {typeof msg.text === 'string' && msg.text.includes('<') ? (
                     <div dangerouslySetInnerHTML={{ __html: msg.text }} />
                   ) : (
@@ -1009,7 +1008,7 @@ const Chatbot = () => {
               </div>
             ))}
 
-            {/* Section Start Reference for scrolling */}
+         
             <div ref={sectionStartRef} />
 
             {/* Services Sub-Menu */}
@@ -1108,7 +1107,7 @@ const Chatbot = () => {
                   ))}
                 </div>
 
-                {/* Show Back to Services button only if user came from sub-menu */}
+               
                 {isFromSubMenu && (
                   <button
                     className="back-to-services-button"
@@ -1136,7 +1135,7 @@ const Chatbot = () => {
                   </button>
                 )}
 
-                {/* Always show Back to Main Menu button */}
+               
                 <button
                   className="back-to-main-button"
                   onClick={() => {
@@ -1150,7 +1149,7 @@ const Chatbot = () => {
               </div>
             )}
 
-            {/* Back to Services Button (after service details) */}
+           
             {showBackToServices && !isTyping && (
               <div className="services-buttons-container">
                 <button
@@ -1212,7 +1211,7 @@ const Chatbot = () => {
               </div>
             )}
 
-            {/* Back to Questions Button (after question answer) */}
+          
             {showBackToQuestions && !isTyping && (
               <div className="services-buttons-container">
                 <button
@@ -1249,7 +1248,7 @@ const Chatbot = () => {
               </div>
             )}
 
-            {/* Quick Replies (6 main buttons) */}
+          
             {!isTyping && !showServices && !showSubMenu && !showQuestions && !showBackToServices && !showBackToQuestions && (
               <div className="chatbot-quick-replies">
                 {quickReplies.map((reply, index) => (

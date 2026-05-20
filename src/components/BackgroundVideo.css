@@ -6,6 +6,6 @@
     height: 50vh;
     object-fit: cover;
     z-index: -1;
-    opacity: 0.45; /* adjust visibility */
-    pointer-events: none; /* allows clicks on top sections */
+    opacity: 0.45; 
+    pointer-events: none; 
 }

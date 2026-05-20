@@ -11,11 +11,10 @@ export default function Footer() {
         px: { xs: 2, sm: 3, md: 2, lg: 12, xl: 20 },
         textAlign: 'center',
         borderTop: '1px solid rgba(0,0,0,0.1)',
-        // maxWidth: '1440px', 
-        // mx: 'auto',  
+        
         background:'#282825',
         color:'#ffffff',
-        // background: 'linear-gradient(90deg, #00778E 30%, #959ca7ff 80%, #ffffff 100%)',
+        
 
       }}
     >

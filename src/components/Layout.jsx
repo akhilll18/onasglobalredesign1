@@ -5,7 +5,8 @@ import { Box, CssBaseline } from '@mui/material';
 import ScrollControl from '../pages/Home/ScrollToTopAndBottom';
 import MainFooter from '../pages/Home/MainFooter';
 import PrivacyConsentBanner from '../pages/Home/Cokkies';
-import Chatbot from './ChatBot/Chatbot'; // ADD THIS IMPORT
+import WhatsAppChat from './WhatsAppChat';
+import Chatbot from './ChatBot/Chatbot'; 
 
 export default function Layout({ children }) {
     return (
@@ -27,7 +28,7 @@ export default function Layout({ children }) {
                     zIndex: -1,
                 }}
             >
-                {/* <source src="/videos/BG.mp4" type="video/mp4" /> */}
+               
             </video>
 
             <CssBaseline />
@@ -39,7 +40,7 @@ export default function Layout({ children }) {
                     py: { xs: 1, md: 2 },
                     px: { xs: 1, md: 2 },
                     position: "relative",
-                    zIndex: 1, // ensure content is above the video
+                    zIndex: 1, 
                 }}
             >
                 {React.Children.map(children, child => {
@@ -64,7 +65,8 @@ export default function Layout({ children }) {
 
             <Footer />
             <PrivacyConsentBanner />
-            <Chatbot /> {/* ADD THIS LINE - Chatbot will appear on all pages */}
+            <WhatsAppChat />
+            <Chatbot /> 
         </>
     );
 }

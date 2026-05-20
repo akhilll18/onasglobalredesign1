@@ -76,7 +76,7 @@ const HeroMain = forwardRef(({ images = [], heading, subheading, description, bu
         )}
       </AnimatePresence>
 
-      {/* Left Content */}
+    
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -147,7 +147,7 @@ const HeroMain = forwardRef(({ images = [], heading, subheading, description, bu
         )}
       </motion.div>
 
-      {/* Right Image */}
+      
       {images.length > 0 && (
         <Box
           sx={{
