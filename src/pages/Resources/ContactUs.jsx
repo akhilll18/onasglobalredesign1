@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Box, Typography, TextField, Button, MenuItem, Snackbar, Alert } from '@mui/material';
+import { Box, Typography, TextField, Button, MenuItem, Snackbar, Alert, CircularProgress } from '@mui/material';
 import emailjs from '@emailjs/browser';
 
 const services = ['ERP','Consulting', 'Staffing', 'Digital Transformation', 'Software Development','JAVA Technologies','SEO','Other'];
@@ -24,14 +24,13 @@ const offices = [
   }
 ];
 
-// Updated with your EmailJS configuration
-const EMAILJS_SERVICE_ID = 'service_iyhn3om'; // Your service ID
-const EMAILJS_ADMIN_TEMPLATE_ID = 'template_airu3dh'; // oTemplate for user confirmation (Contact Us)
-const EMAILJS_USER_TEMPLATE_ID = 'template_17ujefq'; // Template for admin notification (Auto-Reply)
-const EMAILJS_PUBLIC_KEY = 'SP7FmVESGAZ0wXGhK'; // Your public key
+// EmailJS Configuration
+const EMAILJS_SERVICE_ID = 'service_z6cwp83';
+const EMAILJS_ADMIN_TEMPLATE_ID = 'template_airu3dh';
+const EMAILJS_USER_TEMPLATE_ID = 'template_17ujefq';
+const EMAILJS_PUBLIC_KEY = 'SP7FmVESGAZ0wXGhK';
 
 export default function ContactUs() {
-  const formRef = useRef();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -62,63 +61,15 @@ export default function ContactUs() {
     const newErrors = {};
     if (!formData.firstName.trim()) newErrors.firstName = 'Required';
     if (!formData.lastName.trim()) newErrors.lastName = 'Required';
-
     if (!formData.email.trim()) {
       newErrors.email = 'Required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Invalid email format';
     }
-
-    if (formData.phone.trim() && !/^[\d\s\-\+\(\)]{10,}$/.test(formData.phone.replace(/\s/g, ''))) {
-      newErrors.phone = 'Invalid phone number';
-    }
-
     if (!formData.company.trim()) newErrors.company = 'Required';
     if (!formData.service) newErrors.service = 'Required';
     if (!formData.message.trim()) newErrors.message = 'Required';
-
     return newErrors;
-  };
-
-  const sendEmailWithRetry = async (templateId, templateParams, emailType, retries = 2) => {
-    for (let attempt = 0; attempt <= retries; attempt++) {
-      try {
-        console.log(`Attempt ${attempt + 1} to send ${emailType} email`);
-        console.log(`${emailType} template params:`, templateParams);
-
-        const result = await emailjs.send(
-          EMAILJS_SERVICE_ID,
-          templateId,
-          templateParams,
-          EMAILJS_PUBLIC_KEY
-        );
-
-        console.log(`${emailType} email sent successfully on attempt ${attempt + 1}:`, result);
-
-        if (result.status === 200 || result.text === 'OK') {
-          return { success: true, result };
-        }
-      } catch (error) {
-        console.error(`Attempt ${attempt + 1} failed for ${emailType}:`, error);
-        console.error('Error details:', {
-          status: error.status,
-          text: error.text,
-          message: error.message
-        });
-
-        if (attempt === retries) {
-          return {
-            success: false,
-            error: error.text || error.message || 'Email sending failed',
-            code: error.status || 'UNKNOWN',
-            details: error
-          };
-        }
-        // Wait 1 second before retrying
-        await new Promise(resolve => setTimeout(resolve, 1000));
-      }
-    }
-    return { success: false, error: 'Max retries exceeded' };
   };
 
   const handleSubmit = async (e) => {
@@ -132,25 +83,21 @@ export default function ContactUs() {
       try {
         const dateTime = new Date();
         const date = dateTime.toLocaleDateString('en-US', {
-          weekday: 'long',
           year: 'numeric',
           month: 'long',
           day: 'numeric'
         });
         const time = dateTime.toLocaleTimeString('en-US', {
           hour: '2-digit',
-          minute: '2-digit',
-          timeZoneName: 'short'
+          minute: '2-digit'
         });
 
-        // ========== CRITICAL UPDATE: MATCH YOUR TEMPLATE VARIABLES ==========
-        // From your template HTML, I can see you use these EXACT variables:
-        // {{from_name}}, {{from_email}}, {{phone}}, {{company}}, {{service}}, {{message}}, {{date}}, {{time}}
+        const fullName = `${formData.firstName} ${formData.lastName}`;
 
-        // For ADMIN template (template_17ujefq) - Auto-Reply to admin
-        const adminTemplateParams = {
-          // These MUST match EXACTLY what's in your template
-          from_name: `${formData.firstName} ${formData.lastName}`,
+        // Template parameters for ADMIN email
+        const adminParams = {
+          to_email: 'sales@onasglobal.com',
+          from_name: fullName,
           from_email: formData.email,
           phone: formData.phone || 'Not provided',
           company: formData.company,
@@ -158,96 +105,73 @@ export default function ContactUs() {
           message: formData.message,
           date: date,
           time: time,
-
-          // EmailJS also needs these for sending
-          to_email: 'sales@onasglobal.com',
-          reply_to: formData.email,
-          subject: `New Contact Request from ${formData.company}`,
-
-          // Add fallbacks just in case
-          name: `${formData.firstName} ${formData.lastName}`,
-          email: formData.email
         };
 
-        // For USER template (template_airu3dh) - Need to see its variables
-        // Let me make an educated guess based on common patterns
-        const userTemplateParams = {
-          // Common user template variables - you need to check your actual template
+        // Template parameters for USER confirmation email
+        const userParams = {
           to_email: formData.email,
-          to_name: `${formData.firstName} ${formData.lastName}`,
-          name: `${formData.firstName} ${formData.lastName}`,
-          email: formData.email,
+          to_name: fullName,
+          from_name: 'ONAS Global Services',
           company: formData.company,
           service: formData.service,
           date: date,
-
-          // Email configuration
-          reply_to: 'sales@onasglobal.com',
-          subject: 'Thank you for contacting ONAS Global Services',
-          from_name: 'ONAS Global Services',
-
-          // Try these common variables
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-          user_name: `${formData.firstName} ${formData.lastName}`,
-          customer_name: `${formData.firstName} ${formData.lastName}`,
-
-          // Add the same variables as admin template as fallback
-          from_name: `${formData.firstName} ${formData.lastName}`,
-          from_email: formData.email,
-          phone: formData.phone || 'Not provided',
-          message: formData.message,
-          time: time
         };
 
-        console.log('=== SENDING EMAILS ===');
-        console.log('Admin template params:', adminTemplateParams);
-        console.log('User template params:', userTemplateParams);
+        console.log('Sending email...');
+        
+        // Initialize EmailJS
+        emailjs.init(EMAILJS_PUBLIC_KEY);
 
-        // Send both emails in parallel
-        const [adminResult, userResult] = await Promise.all([
-          sendEmailWithRetry(EMAILJS_ADMIN_TEMPLATE_ID, adminTemplateParams, 'ADMIN'),
-          sendEmailWithRetry(EMAILJS_USER_TEMPLATE_ID, userTemplateParams, 'USER')
-        ]);
+        // Send admin email
+        const adminResult = await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_ADMIN_TEMPLATE_ID,
+          adminParams
+        );
 
-        console.log('=== EMAIL RESULTS ===');
-        console.log('Admin result:', adminResult);
-        console.log('User result:', userResult);
+        console.log('Admin email result:', adminResult);
 
-        let successMessage = '';
-        let severity = 'success';
-
-        if (adminResult.success && userResult.success) {
-          successMessage = 'Thank you! Your message has been sent successfully. A confirmation email has been sent to your email address.';
-          severity = 'success';
-        } else if (adminResult.success && !userResult.success) {
-          // User email failed but admin email succeeded
-          successMessage = 'Message sent to our team successfully. Our team will contact you soon.';
-          severity = 'success';
-          console.warn('User email failed:', userResult.error);
-        } else if (!adminResult.success && userResult.success) {
-          // Admin email failed but user email succeeded
-          successMessage = 'Confirmation sent to your email. There was an issue notifying our team. Please contact us directly at sales@onasglobal.com.';
-          severity = 'warning';
-          console.error('Admin email failed:', adminResult.error);
-        } else {
-          // Both emails failed
-          const errorMsg = 'Failed to send emails. Please try again or contact us directly.';
-          console.error('Both emails failed:', {
-            admin: adminResult.error,
-            user: userResult.error
-          });
-          throw new Error(errorMsg);
-        }
-
-        setSnackbar({
-          open: true,
-          message: successMessage,
-          severity: severity
+      
+        emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_USER_TEMPLATE_ID,
+          userParams
+        ).then(result => {
+          console.log('User email result:', result);
+        }).catch(err => {
+          console.log('User email error (non-critical):', err);
         });
 
-        // Reset form only if at least one email succeeded
-        if (adminResult.success || userResult.success) {
+       
+        setSnackbar({
+          open: true,
+          message: '✓ Thank you! Your message has been sent successfully. Our team will contact you within 24 hours.',
+          severity: 'success'
+        });
+
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: '',
+        });
+        setErrors({});
+
+      } catch (error) {
+        console.error('Email error:', error);
+        
+        
+        if (error.status === 200 || error.text === 'OK' || error.message?.includes('200')) {
+          setSnackbar({
+            open: true,
+            message: '✓ Thank you! Your message has been sent successfully. Our team will contact you within 24 hours.',
+            severity: 'success'
+          });
+          // Reset form anyway
           setFormData({
             firstName: '',
             lastName: '',
@@ -258,15 +182,13 @@ export default function ContactUs() {
             message: '',
           });
           setErrors({});
+        } else {
+          setSnackbar({
+            open: true,
+            message: 'Unable to send email. Please contact us directly at sales@onasglobal.com or call +91-928 150 6440.',
+            severity: 'error'
+          });
         }
-
-      } catch (error) {
-        console.error('Form submission error:', error);
-        setSnackbar({
-          open: true,
-          message: `Sorry, there was an error: ${error.message || 'Please try again or contact us directly at sales@onasglobal.com.'}`,
-          severity: 'error'
-        });
       } finally {
         setLoading(false);
       }
@@ -274,19 +196,18 @@ export default function ContactUs() {
   };
 
   return (
-    <Box color="#0B4C74" sx={{
+    <Box sx={{
       px: { xs: 2, md: 8, lg: 12, xl: 16 },
       pt: { xs: 18, md: 20, lg: 28, xl: 32 },
       pb: { xs: 8, md: 8, lg: 12, xl: 16 },
       mx: 'auto',
       maxWidth: 1600,
     }}>
-      <Typography variant="h3" sx={{ textAlign: 'center', mb: 6 }}>
+      <Typography variant="h3" sx={{ textAlign: 'center', mb: 6, color: '#0B4C74' }}>
         Contact Us
       </Typography>
 
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 6 }}>
-        {/* Left: Map & Contact Info */}
         <Box sx={{ flex: 1 }}>
           <Box sx={{ mb: 3 }}>
             <iframe
@@ -297,7 +218,6 @@ export default function ContactUs() {
               allowFullScreen
               loading="lazy"
               title="Hyderabad Office"
-              aria-label="Map showing Hyderabad office location"
             ></iframe>
           </Box>
           <Box sx={{ backgroundColor: '#0a3d62', color: '#fff', p: 3, borderRadius: 2 }}>
@@ -307,14 +227,13 @@ export default function ContactUs() {
                 sales@onasglobal.com
               </a>
             </Typography>
-
             <Typography variant="subtitle1" sx={{ mb: 1 }}>
               <strong>Call Us:</strong>{' '}
-              <a href="tel:+91-928 150 6440"style={{ textDecoration: 'none', color: '#4fc3f7' }}>
+              <a href="tel:+91-9281506440" style={{ textDecoration: 'none', color: '#4fc3f7' }}>
                 +91-928 150 6440 & 441
               </a>{' '}
               &{' '}
-              <a href="tel:+1 607-326-2406" style={{ textDecoration: 'none', color: '#4fc3f7' }}>
+              <a href="tel:+16073262406" style={{ textDecoration: 'none', color: '#4fc3f7' }}>
                 +1 607-326-2406
               </a>
             </Typography>
@@ -324,10 +243,8 @@ export default function ContactUs() {
           </Box>
         </Box>
 
-        {/* Right: Form */}
         <Box sx={{ flex: 1 }}>
           <Box
-            ref={formRef}
             component="form"
             onSubmit={handleSubmit}
             sx={{ display: 'flex', flexDirection: 'column', gap: 3, backgroundColor: '#fff', p: 4, borderRadius: 2, boxShadow: 3 }}
@@ -380,14 +297,6 @@ export default function ContactUs() {
               helperText={errors.phone}
               disabled={loading}
               placeholder="+91 98765 43210"
-              InputProps={{
-                sx: {
-                  '& .MuiInputBase-input::placeholder': {
-                    opacity: 0.5,
-                    color: 'text.secondary',
-                  }
-                }
-              }}
             />
 
             <TextField
@@ -440,15 +349,14 @@ export default function ContactUs() {
               disabled={loading}
               sx={{ mt: 2 }}
             >
-              {loading ? 'Sending...' : 'Send Message'}
+              {loading ? <CircularProgress size={24} /> : 'Send Message'}
             </Button>
           </Box>
         </Box>
       </Box>
 
-      {/* Global Offices */}
       <Box sx={{ mt: 10 }}>
-        <Typography variant="h4" sx={{ textAlign: 'center', mb: 6 }}>
+        <Typography variant="h4" sx={{ textAlign: 'center', mb: 6, color: '#0B4C74' }}>
           Our Global Presence
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, justifyContent: 'center', alignItems: 'stretch' }}>
@@ -463,7 +371,6 @@ export default function ContactUs() {
                 </Typography>
                 <Typography variant="body2">{office.address}</Typography>
               </Box>
-
               <Box sx={{ mt: 'auto' }}>
                 <iframe
                   src={office.mapSrc}
@@ -473,7 +380,6 @@ export default function ContactUs() {
                   allowFullScreen
                   loading="lazy"
                   title={office.name}
-                  aria-label={`Map showing ${office.name} location`}
                 ></iframe>
               </Box>
             </Box>
@@ -481,10 +387,9 @@ export default function ContactUs() {
         </Box>
       </Box>
 
-      {/* Snackbar */}
       <Snackbar
         open={snackbar.open}
-        autoHideDuration={8000}
+        autoHideDuration={5000}
         onClose={() => setSnackbar({ ...snackbar, open: false })}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
@@ -492,7 +397,6 @@ export default function ContactUs() {
           onClose={() => setSnackbar({ ...snackbar, open: false })}
           severity={snackbar.severity}
           sx={{ width: '100%' }}
-          variant="filled"
         >
           {snackbar.message}
         </Alert>

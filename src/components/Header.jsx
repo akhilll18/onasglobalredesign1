@@ -296,7 +296,7 @@ export default function Header() {
     <Box sx={{
       display: "flex",
       alignItems: "center",
-      gap: { lg: 2, xl: 1 },
+      gap: { lg: 1, xl: 1 },
             fontFamily: "Poppins, Montserrat, sans-serif",
     }}>
       {NAV_LINKS.map((nav) =>
