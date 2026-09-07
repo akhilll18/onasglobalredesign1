@@ -477,7 +477,7 @@ const NetSuite = () => {
                 "https://x.com/ONAS261679",
                 "https://www.facebook.com/people/ONAS-Global-Services-Pvt-Ltd/61581619530716/",
                 "https://www.instagram.com/onasglobalservices/?igsh=aXVmdjVjdWVqcXE4#",
-                "https://www.youtube.com/@onasglobalservices"
+                "https://www.youtube.com/@ONASGlobalServicess"
               ]
             },
             "areaServed": {

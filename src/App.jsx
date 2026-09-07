@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home/index.jsx';
 import NotFound from './pages/NotFound';
 import './App.css';
+import './pages/solutions/solutions-modern.css';
 
 // ERP
 import SAP from './pages/howWeHelp/erp/SAP.jsx';
@@ -84,6 +85,23 @@ import SecurityRisk from './pages/security/SecurityRisk.jsx';
 import NetworkSecurity from'./pages/security/NetworkSecurity.jsx';
 import Dataprotection from './pages/security/DataProtection.jsx';
 import ComplianceManagement from  './pages/security/ComplianceManagement.jsx';
+
+// ========== SOLUTIONS PAGES ==========
+// DRR Pages
+import Drrindex from './pages/solutions/DRR/Drrindex.jsx';
+import EInvoicing from './pages/solutions/DRR/e-invoicing.jsx';
+import InvoiceReporting from './pages/solutions/DRR/invoice-reporting.jsx';
+import VIDA from './pages/solutions/DRR/vida.jsx';
+import EWaybill from './pages/solutions/DRR/e-waybill.jsx';
+
+import SAFT from './pages/solutions/reporting/saf-t.jsx';
+import VATReturn from './pages/solutions/reporting/vat-return.jsx';
+import CBCR from './pages/solutions/reporting/cbcr.jsx';
+import Intrastat from './pages/solutions/reporting/intrastat.jsx';
+// import PlasticTax from './pages/solutions/reporting/plastic-tax.jsx';
+
+
+import APAutomation from './pages/solutions/automation/ap-automation.jsx';
 
 import SEOWrapper from './components/SEOWrapper';
 
@@ -194,6 +212,25 @@ export default function App() {
           <Route path="/security/dataprotection" element={<Dataprotection />} />
           <Route path="/security/networksecurity" element={<NetworkSecurity />} />
           <Route path="/security/compliancemanagement" element={<ComplianceManagement />} />
+
+          {/* ========== SOLUTIONS ROUTES ========== */}
+          {/* DRR Routes */}
+          <Route path="/solutions/drr/drr" element={<Drrindex />} />
+          <Route path="/solutions/drr/e-invoicing" element={<EInvoicing />} />
+          <Route path="/solutions/drr/invoice-reporting" element={<InvoiceReporting />} />
+          <Route path="/solutions/drr/vida" element={<VIDA />} />
+          <Route path="/solutions/drr/e-waybill" element={<EWaybill />} />
+
+          {/* Reporting Routes (REMOVED: /solutions/reporting) */}
+          <Route path="/solutions/reporting/saf-t" element={<SAFT />} />
+          <Route path="/solutions/reporting/vat-return" element={<VATReturn />} />
+          <Route path="/solutions/reporting/cbcr" element={<CBCR />} />
+          <Route path="/solutions/reporting/intrastat" element={<Intrastat />} />
+          {/* <Route path="/solutions/reporting/plastic-tax" element={<PlasticTax />} /> */}
+          
+
+          {/* Automation Routes (REMOVED: /solutions/automation, /solutions/automation/e-banking, /solutions/automation/reconciliation) */}
+          <Route path="/solutions/automation/ap-automation" element={<APAutomation />} />
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />

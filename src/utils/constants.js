@@ -1,12 +1,12 @@
 import { label, path } from "framer-motion/client";
- 
+
 // Site info
 export const SITE = {
   name: 'ONAS',
   tagline: 'Empowering Enterprises with Technology & Talent',
   copyright: `© ${new Date().getFullYear()} ONASTech Global Services Pvt Ltd | All rights reserved.`,
 };
- 
+
 // Navigation links
 export const NAV_LINKS = [
   {
@@ -17,16 +17,13 @@ export const NAV_LINKS = [
         category: 'AI ERP & CRM SERVICES',
         items: [
           { label: 'SAP', path: '/how-we-help/erp/sap' },
-          { label: 'Oracle', path: 'https://www.onasit.com/ ' },
-       
+          { label: 'Oracle', path: 'https://www.onasit.com/' },
           { label: 'Netsuite', path: '/how-we-help/erp/netsuite' },
-         
           { label: 'Workday', path: '/how-we-help/erp/workday' },
           { label: 'Microsoft Dynamic 365', path: '/how-we-help/erp/microsoft-dynamics-365' },
           { label: 'IFS', path: 'how-we-help/erp/IFS' },
-           { label: 'Salesforce', path: '/how-we-help/erp/salesforce' },
+          { label: 'Salesforce', path: '/how-we-help/erp/salesforce' },
           { label: 'Service Now', path: '/how-we-help/erp/servicenow' },
-       
         ],
       },
       {
@@ -68,7 +65,45 @@ export const NAV_LINKS = [
       },
     ],
   },
- 
+
+  // 🆕 SOLUTIONS SECTION (REMOVED: Reporting, Automation, e-Banking, Reconciliation)
+  {
+    label: 'Solutions',
+    path: '/solutions',
+    children: [
+      {
+        category: 'Digital Reporting Requirements (DRR)',
+        items: [
+          { label: 'DRR', path: '/solutions/drr/drr' },
+          { label: 'e-Invoicing', path: '/solutions/drr/e-invoicing' },
+          { label: 'Invoice Reporting', path: '/solutions/drr/invoice-reporting' },
+          { label: 'ViDA (VAT in the Digital Age)', path: '/solutions/drr/vida' },
+          { label: 'e-Waybill', path: '/solutions/drr/e-waybill' },
+        ],
+      },
+      {
+        category: 'Reporting',
+        items: [
+          { label: 'SAF-T', path: '/solutions/reporting/saf-t' },
+          { label: 'VAT Return', path: '/solutions/reporting/vat-return' },
+          { label: 'CbCR (Country by Country reports)', path: '/solutions/reporting/cbcr' },
+          { label: 'Intrastat Reports', path: '/solutions/reporting/intrastat' },
+          // { label: 'Plastic Tax Reports', path: '/solutions/reporting/plastic-tax' },
+       
+        ],
+      },
+      {
+        category: 'Automation',
+        items: [
+          { label: 'AP Automation', path: '/solutions/automation/ap-automation' },
+
+          { label: 'e-Banking', path: '/solutions/automation/e-banking' },
+          { label: 'Reconciliation', path: '/solutions/automation/reconciliation' },
+        ],
+      },
+    ],
+  },
+
   {
     label: 'Industries',
     path: '/who-we-help',
@@ -94,11 +129,10 @@ export const NAV_LINKS = [
           { label: 'Manufacturing', path: '/who-we-help/industries#manufacturing' },
           { label: 'Hi Tech', path: '/who-we-help/industries#hi-tech' },
         ],
- 
       },
     ],
   },
- 
+
   {
     label: 'Why ONAS',
     path: '/why-onas',
@@ -113,7 +147,7 @@ export const NAV_LINKS = [
       { label: 'Life @ ONAS', path: '/why-onas/life' },
     ],
   },
- 
+
   {
     label: 'Resources',
     path: '/resources',
@@ -128,7 +162,7 @@ export const NAV_LINKS = [
       { label: 'News Room', path: '/resources/newsroom/' },
     ],
   },
- 
+
   {
     label: 'Staffing',
     path: '/staffing',
@@ -176,5 +210,3 @@ export const NAV_LINKS = [
     ],
   },
 ];
- 
- 

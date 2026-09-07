@@ -32,7 +32,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import XIcon from '@mui/icons-material/X';
 
-
 import Logo from '../../public/images/logo.png';
 
 export default function Header() {
@@ -40,10 +39,9 @@ export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [expandedMenu, setExpandedMenu] = useState(null); // for parent
-  const [expandedCategory, setExpandedCategory] = useState(null); // for sub category
+  const [expandedMenu, setExpandedMenu] = useState(null);
+  const [expandedCategory, setExpandedCategory] = useState(null);
   const [isHoveringPopper, setIsHoveringPopper] = useState(false);
-
 
   const handleMenuOpen = (event, label) => {
     setOpenMenu(label);
@@ -64,25 +62,16 @@ export default function Header() {
     setExpandedCategory((prev) => (prev === categoryLabel ? null : categoryLabel));
   };
 
-  const menuVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -10 },
-  };
   const handleDrawerNavigation = () => {
     setDrawerOpen(false);
     setExpandedMenu(null);
     setExpandedCategory(null);
   };
 
-
   useEffect(() => {
     const handleScroll = () => {
       if (!isHoveringPopper) {
-        // Clear previous timeout
         if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-
-        // Set a new timeout to close after 200ms
         scrollTimeout.current = setTimeout(() => {
           handleMenuClose();
         }, 200);
@@ -98,8 +87,6 @@ export default function Header() {
     };
   }, [openMenu, isHoveringPopper]);
 
-
-
   // --- TopBar ---
   const TopBar = () => (
     <Box
@@ -112,9 +99,7 @@ export default function Header() {
         px: { xs: 2, sm: 4, md: 0, lg: 4, xl: 10, xxl: 14 },
         py: { xs: 1, sm: 1.2, md: 0, lg: 1, xl: 1.25, xxl: 2 },
         height: { lg: 64, xl: 64, xxl: 72 },
-        
-      fontFamily: "Poppins, Montserrat, sans-serif",
-    
+        fontFamily: "Poppins, Montserrat, sans-serif",
         bgcolor: '#282825',
         color: 'white',
         fontSize: { xs: '0.65rem', sm: '0.75rem', md: '0.85rem', lg: '0.95rem', xl: '1rem' },
@@ -123,7 +108,6 @@ export default function Header() {
         letterSpacing: '0.2px',
       }}
     >
-      {/* Desktop: Email + Phone */}
       <Box
         sx={{
           display: { xs: "none", md: "flex" },
@@ -140,7 +124,7 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             gap: 0.5,
-          fontFamily: "Poppins, Montserrat, sans-serif",
+            fontFamily: "Poppins, Montserrat, sans-serif",
           }}
         >
           <MailOutlineIcon fontSize="small" /> sales@onasglobal.com
@@ -150,7 +134,7 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           gap: 2,
-              fontFamily: "Poppins, Montserrat, sans-serif",
+          fontFamily: "Poppins, Montserrat, sans-serif",
         }}>
           <MuiLink
             href="tel:+91-9281506440"
@@ -160,7 +144,7 @@ export default function Header() {
               display: "flex",
               alignItems: "center",
               gap: 0.5,
-                  fontFamily: "Poppins, Montserrat, sans-serif",
+              fontFamily: "Poppins, Montserrat, sans-serif",
             }}
           >
             <PhoneIcon fontSize="small" /> 91-928 150 6440 & 44 1
@@ -174,7 +158,7 @@ export default function Header() {
               display: "flex",  
               alignItems: "center",
               gap: 0.5,
-                   fontFamily: "Poppins, Montserrat, sans-serif",
+              fontFamily: "Poppins, Montserrat, sans-serif",
             }}
           >
             <PhoneIcon fontSize="small" /> +1 607-326-2406
@@ -182,13 +166,12 @@ export default function Header() {
         </Box>
       </Box>
 
-      {/* Mobile: Only Phone */}
       <Box
         sx={{
           display: { xs: "flex", md: "none" },
           alignItems: "center",
           gap: 0.5,
-             fontFamily: "Poppins, Montserrat, sans-serif",
+          fontFamily: "Poppins, Montserrat, sans-serif",
         }}
       >
         <PhoneIcon fontSize="small" />
@@ -196,7 +179,7 @@ export default function Header() {
           href="tel:+919281506440"
           underline="none"
           color="inherit"
-          sx={{       fontFamily: "Poppins, Montserrat, sans-serif", }}
+          sx={{ fontFamily: "Poppins, Montserrat, sans-serif" }}
         >
           +91-9281506440
         </MuiLink> &nbsp;&amp;&nbsp;
@@ -210,13 +193,12 @@ export default function Header() {
         </MuiLink>
       </Box>
 
-      {/* Desktop: Socials + Buttons */}
       <Box
         sx={{
           display: { xs: "none", md: "flex" },
           alignItems: "center",
           gap: 2,
-       fontFamily: "Poppins, Montserrat, sans-serif",
+          fontFamily: "Poppins, Montserrat, sans-serif",
         }}
       >
         <MuiLink
@@ -236,23 +218,21 @@ export default function Header() {
           <InstagramIcon fontSize="small" />
         </MuiLink>
         <MuiLink
-          href="https://www.linkedin.com/company/onas-consulting-services "
+          href="https://www.linkedin.com/company/onas-consulting-services"
           target="_blank"
           rel="noopener"
           color="inherit"
         >
           <LinkedInIcon fontSize="small" />
         </MuiLink>
-
         <MuiLink
-          href="https://youtube.com/@onasglobalservices?si=bd1DK8LtF52OvUb1"
+          href="https://www.youtube.com/@ONASGlobalServicess"
           target="_blank"
           rel="noopener"
           color="inherit"
         >
           <YouTubeIcon fontSize="small" />
         </MuiLink>
-
         <MuiLink
           href="https://x.com/ONAS261679"
           target="_blank"
@@ -262,14 +242,13 @@ export default function Header() {
           <XIcon fontSize="small" />
         </MuiLink>
 
-
         <Button
           size="small"
           component={RouterLink}
           to="/resources/contact-us/"
           variant="primaryFilled"
           sx={{
-                  fontFamily: "Poppins, Montserrat, sans-serif",
+            fontFamily: "Poppins, Montserrat, sans-serif",
             fontWeight: 500,
           }}
         >
@@ -281,7 +260,7 @@ export default function Header() {
           component={RouterLink}
           to="/resources/careers/"
           sx={{
-                fontFamily: "Poppins, Montserrat, sans-serif",
+            fontFamily: "Poppins, Montserrat, sans-serif",
             fontWeight: 500,
           }}
         >
@@ -291,13 +270,12 @@ export default function Header() {
     </Box>
   );
 
-  
   const renderNavLinks = () => (
     <Box sx={{
       display: "flex",
       alignItems: "center",
-      gap: { lg: 1, xl: 1 },
-            fontFamily: "Poppins, Montserrat, sans-serif",
+    
+      fontFamily: "Poppins, Montserrat, sans-serif",
     }}>
       {NAV_LINKS.map((nav) =>
         nav.children ? (
@@ -306,16 +284,13 @@ export default function Header() {
             sx={{
               position: "relative",
               display: "inline-block",
-              fontSize: { xs: '0.8rem', sm: '0.9rem', md: '0.7rem', color: '#0066ff ' },
-                   fontFamily: "Poppins, Montserrat, sans-serif",
+              fontFamily: "Poppins, Montserrat, sans-serif",
             }}
-          
           >
             <Button
               onMouseEnter={(e) => handleMenuOpen(e, nav.label)}
               endIcon={<ArrowDropDownIcon />}
               sx={{
-                
                 color: "#0B4C74",
                 fontWeight: 600,
                 textTransform: "none",
@@ -330,7 +305,7 @@ export default function Header() {
                 },
                 padding: '15px',
                 "&:hover": { bgcolor: "transparent", color: "#2E8BC0" },
-                      fontFamily: "Poppins, Montserrat, sans-serif",
+                fontFamily: "Poppins, Montserrat, sans-serif",
                 letterSpacing: '0.3px',
               }}
             >
@@ -356,12 +331,12 @@ export default function Header() {
                       borderRadius: 2,
                       mt: 1,
                       minWidth: "420px",
-                      maxWidth: "1800px",
+                      maxWidth: "1400px",
                       width: "auto",
                       bgcolor: "background.paper",
-                      p: 3,
+                      p: 2,
                       boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
-                        fontFamily: "Poppins, Montserrat, sans-serif",
+                      fontFamily: "Poppins, Montserrat, sans-serif",
                     }}
                   >
                     <ClickAwayListener onClickAway={handleMenuClose}>
@@ -369,32 +344,29 @@ export default function Header() {
                         <Box
                           sx={{
                             display: "grid",
-                            gap: 1,
-                            mt: 3,
-                            gridTemplateColumns:
-                              nav.children.length <= 2
-                                ? "repeat(auto-fit, minmax(200px, 1fr))"
-                                : {
-                                  xs: "repeat(2, minmax(200px, 1fr))",
-                                  sm: "repeat(3, minmax(200px, 1fr))",
-                                  md: "repeat(4, minmax(220px, 1fr))",
-                                  lg: "repeat(4, minmax(240px, 1fr))",
-                                  xl: "repeat(4, minmax(260px, 1fr))",
-                                  xxl: "repeat(4, minmax(260px, 1fr))",
-                                },
+                            gap: 2,
+                            mt: 1,
+                            gridTemplateColumns: {
+                              xs: "repeat(1, 1fr)",
+                              sm: "repeat(2, 1fr)",
+                              md: "repeat(3, 1fr)",
+                              lg: `repeat(${Math.min(nav.children.length, 4)}, 1fr)`,
+                              xl: `repeat(${Math.min(nav.children.length, 4)}, 1fr)`,
+                              xxl: `repeat(${Math.min(nav.children.length, 4)}, 1fr)`,
+                            },
                           }}
                         >
                           {nav.children.map((group, gi) => (
-                            <Box key={gi} sx={{ minWidth: 220 }}>
+                            <Box key={gi} sx={{ minWidth: 180 }}>
                               {group.category && (
                                 <Typography
                                   sx={{
                                     fontWeight: 700,
-                                    fontSize: "12px",
-                                    mb: 1,
-                                    color: "primary.main",
+                                    fontSize: "11px",
+                                    mb: 1.5,
+                                    color: "#0B4C74",
                                     textTransform: "uppercase",
-                                         fontFamily: "Poppins, Montserrat, sans-serif",
+                                    fontFamily: "Poppins, Montserrat, sans-serif",
                                     letterSpacing: '0.5px',
                                   }}
                                 >
@@ -416,19 +388,20 @@ export default function Header() {
                                     gap: 1,
                                     borderRadius: 1,
                                     px: 1,
-                                    fontSize: '14px',
+                                    py: 0.5,
+                                    fontSize: '13px',
                                     transition: "all 0.2s ease",
                                     "&:hover": {
                                       bgcolor: "#e6f0ff",
                                       color: "#0066ff",
                                       transform: "translateX(3px)",
                                     },
-                                         fontFamily: "Poppins, Montserrat, sans-serif",
+                                    fontFamily: "Poppins, Montserrat, sans-serif",
                                     fontWeight: 400,
                                   }}
-
                                 >
-                                  <span style={{ color: "#888" }}>»</span> {child.label}
+                                  <span style={{ color: "#888", fontSize: '10px' }}>»</span> 
+                                  <span>{child.label}</span>
                                 </MenuItem>
                               ))}
                             </Box>
@@ -440,7 +413,6 @@ export default function Header() {
                 </Grow>
               )}
             </Popper>
-
           </Box>
         ) : (
           <Button
@@ -461,7 +433,7 @@ export default function Header() {
               },
               px: 2,
               "&:hover": { color: "#2E8BC0", bgcolor: "transparent" },
-                   fontFamily: "Poppins, Montserrat, sans-serif",
+              fontFamily: "Poppins, Montserrat, sans-serif",
               letterSpacing: '0.3px',
             }}
           >
@@ -472,20 +444,17 @@ export default function Header() {
     </Box>
   );
 
-
   // --- Mobile drawer ---
   const renderDrawerLinks = () => (
     <Box
       sx={{
-        width: 260,
+        width: 280,
         height: "100%",
         display: "flex",
         flexDirection: "column",
-            fontFamily: "Poppins, Montserrat, sans-serif",
+        fontFamily: "Poppins, Montserrat, sans-serif",
       }}
     >
-
-      
       <Box
         sx={{
           display: "flex",
@@ -499,22 +468,20 @@ export default function Header() {
           <CloseIcon />
         </IconButton>
       </Box>
-      <List sx={{ pt: 0 }}>
+      <List sx={{ pt: 0, flex: 1 }}>
         {NAV_LINKS.map((nav) =>
           nav.children ? (
             <Box key={nav.label}>
-              {/* Parent label */}
               <ListItem disablePadding>
                 <ListItemButton onClick={() => toggleMenu(nav.label)}>
                   <ListItemText
-                    primary={<strong style={{       fontFamily: "Poppins, Montserrat, sans-serif", }}>{nav.label}</strong>}
+                    primary={<strong style={{ fontFamily: "Poppins, Montserrat, sans-serif" }}>{nav.label}</strong>}
                     primaryTypographyProps={{
-                      fontSize: { xs: "0.85rem", sm: "0.9rem", md: "1rem" },
-                           fontFamily: "Poppins, Montserrat, sans-serif",
+                      fontSize: { xs: "0.9rem", sm: "0.95rem", md: "1rem" },
+                      fontFamily: "Poppins, Montserrat, sans-serif",
                       fontWeight: 600,
                     }}
                   />
-
                   <ArrowDropDownIcon />
                 </ListItemButton>
               </ListItem>
@@ -524,21 +491,24 @@ export default function Header() {
                   <Box key={group.category || group.label}>
                     {group.category ? (
                       <>
-                        {/* Category */}
                         <ListItem disablePadding>
-                          <ListItemButton onClick={() => toggleCategory(group.category)} sx={{ pl: 4 }}>
+                          <ListItemButton onClick={() => toggleCategory(group.category)} sx={{ pl: 3 }}>
                             <ListItemText
-                              primary={<strong style={{       fontFamily: "Poppins, Montserrat, sans-serif", }}>{group.category}</strong>} // Parent label
-                              primaryTypographyProps={{
-                                fontSize: { xs: "0.85rem", sm: "0.9rem", md: "1rem" },
-                                      fontFamily: "Poppins, Montserrat, sans-serif",
-                                fontWeight: 600,
-                              }}
+                              primary={
+                                <span style={{ 
+                                  fontFamily: "Poppins, Montserrat, sans-serif",
+                                  fontSize: '13px',
+                                  fontWeight: 600,
+                                  color: '#0B4C74',
+                                  textTransform: 'uppercase'
+                                }}>
+                                  {group.category}
+                                </span>
+                              }
                             />
                           </ListItemButton>
                         </ListItem>
 
-                        {/* Items under category */}
                         <Collapse in={expandedCategory === group.category}>
                           {(group.items || []).map((child) => (
                             <ListItem key={child.label} disablePadding>
@@ -546,19 +516,18 @@ export default function Header() {
                                 component={RouterLink}
                                 to={child.path || "#"}
                                 onClick={() => setDrawerOpen(false)}
-                                sx={{ pl: 8, display: "flex", gap: 1 }}
+                                sx={{ pl: 6, display: "flex", gap: 1 }}
                               >
                                 <ListItemText
                                   primary={
-                                    <span style={{       fontFamily: "Poppins, Montserrat, sans-serif", }}>
+                                    <span style={{ 
+                                      fontFamily: "Poppins, Montserrat, sans-serif", 
+                                      fontSize: '13px',
+                                      fontWeight: 400
+                                    }}>
                                       <span style={{ color: "#888" }}>»</span> {child.label}
                                     </span>
                                   }
-                                  primaryTypographyProps={{
-                                    fontSize: { xs: "0.8rem", sm: "0.9rem", md: "0.95rem" },
-                                          fontFamily: "Poppins, Montserrat, sans-serif",
-                                    fontWeight: 400,
-                                  }}
                                 />
                               </ListItemButton>
                             </ListItem>
@@ -566,26 +535,24 @@ export default function Header() {
                         </Collapse>
                       </>
                     ) : (
-                   
                       (group.items || [group]).map((child) => (
                         <ListItem key={child.label} disablePadding>
                           <ListItemButton
                             component={RouterLink}
                             to={child.path || "#"}
                             onClick={() => setDrawerOpen(false)}
-                            sx={{ pl: 4, display: "flex", gap: 1 }}
+                            sx={{ pl: 3, display: "flex", gap: 1 }}
                           >
                             <ListItemText
                               primary={
-                                <span style={{       fontFamily: "Poppins, Montserrat, sans-serif",}}>
+                                <span style={{ 
+                                  fontFamily: "Poppins, Montserrat, sans-serif", 
+                                  fontSize: '13px',
+                                  fontWeight: 400
+                                }}>
                                   <span style={{ color: "#888" }}>»</span> {child.label}
                                 </span>
                               }
-                              primaryTypographyProps={{
-                                fontSize: { xs: "0.8rem", sm: "0.9rem", md: "0.95rem" },
-                                     fontFamily: "Poppins, Montserrat, sans-serif",
-                                fontWeight: 400,
-                              }}
                             />
                           </ListItemButton>
                         </ListItem>
@@ -594,7 +561,6 @@ export default function Header() {
                   </Box>
                 ))}
               </Collapse>
-
             </Box>
           ) : (
             <ListItem key={nav.label} disablePadding>
@@ -606,8 +572,8 @@ export default function Header() {
                 <ListItemText
                   primary={nav.label}
                   primaryTypographyProps={{
-                    fontSize: { xs: "0.85rem", sm: "0.9rem", md: "1rem" },
-                          fontFamily: "Poppins, Montserrat, sans-serif",
+                    fontSize: { xs: "0.9rem", sm: "0.95rem", md: "1rem" },
+                    fontFamily: "Poppins, Montserrat, sans-serif",
                     fontWeight: 600,
                   }}
                 />
@@ -617,22 +583,19 @@ export default function Header() {
         )}
       </List>
 
-
-      {/* Bottom section */}
       <Box sx={{
         p: 2,
         borderTop: "1px solid #eee",
         textAlign: "center",
-              fontFamily: "Poppins, Montserrat, sans-serif",
+        fontFamily: "Poppins, Montserrat, sans-serif",
       }}>
-
         <Button
           fullWidth
           component={RouterLink}
           to="/resources/contact-us/"
           variant="primaryFilled"
           onClick={handleDrawerNavigation}
-          sx={{       fontFamily: "Poppins, Montserrat, sans-serif", }}
+          sx={{ fontFamily: "Poppins, Montserrat, sans-serif", mb: 1 }}
         >
           Contact Us
         </Button>
@@ -643,11 +606,10 @@ export default function Header() {
           to="/resources/careers/"
           variant="secondaryFilled"
           onClick={handleDrawerNavigation}
-          sx={{       fontFamily: "Poppins, Montserrat, sans-serif" }}
+          sx={{ fontFamily: "Poppins, Montserrat, sans-serif", mb: 2 }}
         >
           Careers
         </Button>
-
 
         <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
           <MuiLink
@@ -656,7 +618,7 @@ export default function Header() {
             rel="noopener"
             color="inherit"
           >
-            <FacebookIcon />
+            <FacebookIcon fontSize="small" />
           </MuiLink>
           <MuiLink
             href="https://www.instagram.com/onasglobalservices?igsh=aXVmdjVjdWVqcXE4"
@@ -664,25 +626,24 @@ export default function Header() {
             rel="noopener"
             color="inherit"
           >
-            <InstagramIcon />
+            <InstagramIcon fontSize="small" />
           </MuiLink>
           <MuiLink
-            href="https://www.linkedin.com/company/onas-consulting-services "
+            href="https://www.linkedin.com/company/onas-consulting-services"
             target="_blank"
             rel="noopener"
             color="inherit"
           >
-            <LinkedInIcon />
+            <LinkedInIcon fontSize="small" />
           </MuiLink>
           <MuiLink
-            href="https://youtube.com/@onasglobalservices?si=bd1DK8LtF52OvUb1"
+            href="https://www.youtube.com/@ONASGlobalServicess"
             target="_blank"
             rel="noopener"
             color="inherit"
           >
             <YouTubeIcon fontSize="small" />
           </MuiLink>
-
           <MuiLink
             href="https://x.com/ONAS261679"
             target="_blank"
@@ -720,7 +681,7 @@ export default function Header() {
           zIndex: (theme) => theme.zIndex.appBar,
           bgcolor: "background.paper",
           borderBottom: "1px solid #eee",
-                fontFamily: "Poppins, Montserrat, sans-serif",
+          fontFamily: "Poppins, Montserrat, sans-serif",
         }}
       >
         <Toolbar
@@ -734,10 +695,9 @@ export default function Header() {
             px: { xs: 1, sm: 2, md: 2, lg: 3, xl: 4 },
             letterSpacing: { xs: 0, sm: 0, md: 0.5, lg: 3.3, xl: 3.5 },
             mt: { xl: 1 },
-                fontFamily: "Poppins, Montserrat, sans-serif",
+            fontFamily: "Poppins, Montserrat, sans-serif",
           }}
         >
-         
           <Box
             component={RouterLink}
             to="/"
@@ -747,7 +707,7 @@ export default function Header() {
               textDecoration: "none",
               height: { xs: 60, sm: 70, md: 80, lg: 90, xl: 100, xxl: 110 },
               minWidth: { xs: 200, sm: 220, md: 240, lg: 260, xl: 280, xxl: 300 },
-              ml: { xs: 3, sm: 4, md: 5, lg: 6, xl: 8, xxl: 10 }, // Moved slightly right
+              ml: { xs: 3, sm: 4, md: 5, lg: 6, xl: 8, xxl: 10 },
               mt: { lg: 2, xl: 2, xxl: 3 },
               flexShrink: 0,
             }}
@@ -766,7 +726,6 @@ export default function Header() {
             />
           </Box>
 
-          
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -780,7 +739,6 @@ export default function Header() {
             {renderNavLinks()}
           </Box>
 
-          {/* Mobile Menu */}
           <IconButton
             onClick={() => setDrawerOpen(!drawerOpen)}
             sx={{
@@ -791,7 +749,6 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
 
-          {/* Drawer */}
           <Drawer
             anchor="right"
             open={drawerOpen}
@@ -799,8 +756,8 @@ export default function Header() {
             PaperProps={{
               sx: {
                 zIndex: (theme) => theme.zIndex.modal + 2,
-                    fontFamily: "Poppins, Montserrat, sans-serif",
-              }, 
+                fontFamily: "Poppins, Montserrat, sans-serif",
+              },
             }}
           >
             {renderDrawerLinks()}

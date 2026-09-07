@@ -147,7 +147,6 @@ Hyper-personalization and real-time recommendations`,
     "itemListElement": [
       {
         "@type": "ListItem",
-        "@type": "ListItem",
         "position": 1,
         "name": "Home",
         "item": `${baseUrl}/`
