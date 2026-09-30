@@ -1,7 +1,10 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
+import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
+import { ArrowForward } from '@mui/icons-material';
 
+// Images
 import VBT from '../../assets/images/featureGrid/visionbt.png';
 import HCL from '../../assets/images/featureGrid/hcl.png';
 import DF from '../../assets/images/featureGrid/df.png';
@@ -9,60 +12,95 @@ import EC from '../../assets/images/featureGrid/ec.png';
 import ALL from '../../assets/images/featureGrid/all.png';
 import CMH from '../../assets/images/featureGrid/cmh.png';
 
+// ── Arvee editorial palette ──
+const ink = '#0B4C74';
+const muted = '#647572';
+const line = '#dfe8df';
+const soft = '#ffffff';
+const cream = '#ffffff';
+const lime = '#baf58c';
+
+const eyebrowSx = {
+  color: '#0B4C74',
+  fontSize: '.55rem',
+  letterSpacing: '.12em',
+  textTransform: 'uppercase',
+  fontWeight: 700,
+  fontFamily: "'Poppins', sans-serif",
+};
+
+const containerSx = {
+  width: '100%',
+  maxWidth: { xs: '100%', md: '1240px' },
+  margin: '0 auto',
+  padding: { xs: '0 1rem', md: '0 1.5rem' },
+  boxSizing: 'border-box',
+};
+
+function Eyebrow({ children }) {
+  return <Typography sx={eyebrowSx}>{children}</Typography>;
+}
+
+const cardSx = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  textAlign: 'left',
+  background: '#fff',
+  border: `1px solid ${line}`,
+  borderRadius: '2px',
+  padding: { xs: '1.4rem 1.2rem', md: '1.6rem 1.4rem' },
+  height: '100%',
+  width: '100%',
+  transition: 'all .25s ease',
+  '&:hover': {
+    borderColor: '#aac7b2',
+    transform: 'translateY(-3px)',
+  },
+};
+
 const features = [
   {
     image: VBT,
     title: 'Vision Beyond Technology',
     description:
       'Leaders in an AI-driven world don’t just adopt tools — they <b>redefine strategy, business models, and value creation.</b> It takes vision to see where AI fits into long-term growth rather than chasing hype.',
-    cta: { label: 'Vision Beyond Technology ➤', href: '/who-we-help/industries' },
-    reverse: false,
-    bg: '#FDFDFD',
+    cta: { label: 'Learn more', href: '/who-we-help/industries' },
   },
   {
     image: HCL,
     title: 'Human-Centered Leadership',
     description:
       'AI handles scale, speed, and complexity, but <b>trust, ethics, and empathy</b> remain uniquely human. Leaders need to balance automation with responsibility, ensuring AI augments people rather than replacing them blindly.',
-    cta: { label: 'Human-Centered Leadership ➤', href: '/who-we-help/industries' },
-    reverse: true,
-    bg: '#FDFDFD',
+    cta: { label: 'Learn more', href: '/who-we-help/industries' },
   },
   {
     image: DF,
     title: 'Data & Decision Fluency',
     description:
       'You don’t need to code like an engineer, but you must <b>understand data, bias, risks, and possibilities.</b> Decision-making shifts from intuition alone to <b>evidence-guided leadership.</b>',
-    cta: { label: 'Data & Decision Fluency ➤', href: '/who-we-help/industries' },
-    reverse: false,
-    bg: '#FDFDFD',
+    cta: { label: 'Learn more', href: '/who-we-help/industries' },
   },
   {
     image: EC,
     title: 'Ethical Compass',
     description:
       'In an AI world, leadership is tested by <b>responsible use of power.</b> Bias, transparency, and accountability become boardroom issues. What it takes is the courage to say not just what AI can do, but what it should do.',
-    cta: { label: 'Ethical Compass ➤', href: '/who-we-help/industries' },
-    reverse: true,
-    bg: '#FDFDFD',
+    cta: { label: 'Learn more', href: '/who-we-help/industries' },
   },
   {
     image: ALL,
     title: 'Adaptability & Lifelong Learning',
     description:
       'AI evolves fast. Leaders must <b>embrace change, continuously learn, and build adaptive organizations</b> where curiosity is rewarded.',
-    cta: { label: 'Adaptability & Lifelong Learning ➤', href: '/who-we-help/industries' },
-    reverse: false,
-    bg: '#FDFDFD',
+    cta: { label: 'Learn more', href: '/who-we-help/industries' },
   },
   {
     image: CMH,
     title: 'Collaboration Between Human + Machine',
     description:
       'True leadership means orchestrating <b>human talent and machine intelligence together —</b> unlocking creativity, efficiency, and innovation.',
-    cta: { label: 'Collaboration Between Human+Machine ➤', href: '/who-we-help/industries' },
-    reverse: true,
-    bg: '#FDFDFD',
+    cta: { label: 'Learn more', href: '/who-we-help/industries' },
   },
 ];
 
@@ -71,150 +109,237 @@ export default function FeatureGrid() {
     <Box
       id="explore-us"
       sx={{
-        maxWidth: '1800px',
-        mx: 'auto',
-        px: { xs: 2, sm: 3, md: 4, lg: 6, xl: 8 },
-        py: { xs: 3, sm: 4, md: 5 },
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        background: cream,
+        color: ink,
+        width: '100%',
+        overflowX: 'hidden',
+        '& h1, & h2, & h3': {
+          fontFamily: "Georgia, 'Times New Roman', serif",
+          fontWeight: 400,
+          letterSpacing: 0,
+        },
       }}
     >
-      <Typography
-        variant="h6"
-        color="#282825"
-        align="center"
+      <Container
+        maxWidth={false}
+        disableGutters
         sx={{
-          fontWeight: 700,
-          mb: 2,
-          maxWidth: '600px',
-          fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' },
-          lineHeight: 1.3
+          ...containerSx,
+          paddingBottom: { xs: '3.5rem', md: '5rem' },
         }}
       >
-        With ONAS, Build Human-Centered Leadership for an AI-Driven World.
-      </Typography>
-
-      {features.map((feature, i) => (
+        {/* ── Heading ── */}
         <Box
-          key={i}
           sx={{
-            display: 'flex',
-            flexDirection: {
-              xs: 'column',
-              md: feature.reverse ? 'row-reverse' : 'row',
-            },
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: feature.bg,
-            borderRadius: 2,
-            mb: { xs: 2, sm: 2.5, md: 3 },
-            overflow: 'hidden',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-            width: '100%',
-            '&:hover': {
-              boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-            },
+            textAlign: 'center',
+            marginBottom: { xs: '3rem', md: '4.5rem' },
           }}
         >
-          {/* Image + Button */}
-          <Box
+          <Typography
+            component="h2"
             sx={{
-              width: { xs: '100%', md: '50%' },
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              p: { xs: 2.5, sm: 3, md: 3.5 },
+              margin: '.7rem auto 0',
+              font: "400 clamp(1.4rem, 2.4vw, 2rem)/1.1 Georgia, 'Times New Roman', serif",
+              color: ink,
+              maxWidth: 800,
             }}
           >
-            <Box
-              sx={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                borderRadius: 2,
-                overflow: 'hidden',
-                boxShadow: 2,
-                mb: 2,
-              }}
-            >
-              <Box
-                component="img"
-                src={feature.image}
-                alt={feature.title}
-                sx={{
-                  width: {
-                    xs: '85%',
-                    sm: '80%',
-                    md: '85%',
-                    lg: '90%',
-                    xl: '95%',
-                  },
-                  maxHeight: {
-                    xs: 140,
-                    sm: 180,
-                    md: 220,
-                    lg: 250,
-                    xl: 280,
-                  },
-                  objectFit: 'contain',
-                  transition: 'transform 0.3s ease',
-                  '&:hover': { transform: 'scale(1.03)' },
-                }}
-              />
-            </Box>
-            <Button
-              component={RouterLink}
-              to={feature.cta.href}
-              variant="primaryFilled"
-              sx={{
-                width: '100%',
-                maxWidth: 400,
-                fontSize: '0.85rem',
-                py: 1,
-                px: 2
-              }}
-            >
-              {feature.cta.label}
-            </Button>
+            With ONAS, Build Human-Centered Leadership for an AI-Driven World.
+          </Typography>
+        </Box>
+
+        {/* ── Feature Cards — 3 in row 1, 2 in row 2 ── */}
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: '1.5rem', md: '1.8rem' } }}>
+          {/* Row 1 — 3 cards */}
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+              gap: { xs: '1.5rem', md: '1.8rem' },
+              alignItems: 'stretch',
+            }}
+          >
+            {features.slice(0, 3).map((feature, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                style={{ display: 'flex', width: '100%' }}
+              >
+                <Box sx={cardSx}>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      height: { xs: 150, md: 170 },
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: '1.2rem',
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={feature.image}
+                      alt={feature.title}
+                      sx={{
+                        maxWidth: '100%',
+                        maxHeight: '100%',
+                        objectFit: 'contain',
+                        display: 'block',
+                      }}
+                    />
+                  </Box>
+
+                  <Typography
+                    component="h3"
+                    sx={{
+                      margin: '0 0 .6rem',
+                      font: "400 clamp(.9rem, 1.4vw, 1.05rem)/1.25 Georgia, 'Times New Roman', serif",
+                      color: ink,
+                      minHeight: '2.6rem',
+                    }}
+                  >
+                    {feature.title}
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      color: `${muted} !important`,
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: '.66rem',
+                      lineHeight: 1.75,
+                      marginBottom: '1.2rem',
+                      flexGrow: 1,
+                      '& b': { color: ink, fontWeight: 600 },
+                    }}
+                    dangerouslySetInnerHTML={{ __html: feature.description }}
+                  />
+
+                  <Box
+                    component={RouterLink}
+                    to={feature.cta.href}
+                    sx={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '.4rem',
+                      padding: '.55rem .9rem',
+                      borderRadius: '2px',
+                      background: '#0B4C74',
+                      color: '#ffffff',
+                      fontWeight: 600,
+                      fontSize: '.6rem',
+                      fontFamily: "'Poppins', sans-serif",
+                      textDecoration: 'none',
+                      transition: 'background .2s ease',
+                      '&:hover': { background: '#d3ffb0', color: '#000000' },
+                    }}
+                  >
+                    {feature.cta.label} <ArrowForward sx={{ fontSize: 12 }} />
+                  </Box>
+                </Box>
+              </motion.div>
+            ))}
           </Box>
 
-          {/* Text Section */}
+          {/* Row 2 — 2 cards centered */}
           <Box
             sx={{
-              width: { xs: '100%', md: '50%' },
-              p: { xs: 2.5, sm: 3, md: 3.5 },
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: { xs: 'center', md: 'flex-start' },
-              textAlign: { xs: 'center', md: 'left' },
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' },
+              gap: { xs: '1.5rem', md: '1.8rem' },
+              alignItems: 'stretch',
+              maxWidth: { xs: '100%', md: 'calc((100% - 1.8rem) * 2 / 3 + 1.8rem)' },
+              margin: '0 auto',
+              width: '100%',
             }}
           >
-            <Typography
-              sx={{
-                fontWeight: 700,
-                mb: 1.5,
-                fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' },
-                lineHeight: 1.3
-              }}
-            >
-              {feature.title}
-            </Typography>
-            <Typography
-              sx={{
-                mb: 2,
-                fontSize: { xs: '0.8rem', sm: '0.85rem', md: '0.9rem' },
-                lineHeight: 1.6,
-                color: '#444'
-              }}
-            >
-              <span dangerouslySetInnerHTML={{ __html: feature.description }} />
-            </Typography>
+            {features.slice(3, 5).map((feature, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                style={{ display: 'flex', width: '100%' }}
+              >
+                <Box sx={cardSx}>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      height: { xs: 150, md: 170 },
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: '1.2rem',
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={feature.image}
+                      alt={feature.title}
+                      sx={{
+                        maxWidth: '100%',
+                        maxHeight: '100%',
+                        objectFit: 'contain',
+                        display: 'block',
+                      }}
+                    />
+                  </Box>
+
+                  <Typography
+                    component="h3"
+                    sx={{
+                      margin: '0 0 .6rem',
+                      font: "400 clamp(.9rem, 1.4vw, 1.05rem)/1.25 Georgia, 'Times New Roman', serif",
+                      color: ink,
+                      minHeight: '2.6rem',
+                    }}
+                  >
+                    {feature.title}
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      color: `${muted} !important`,
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: '.66rem',
+                      lineHeight: 1.75,
+                      marginBottom: '1.2rem',
+                      flexGrow: 1,
+                      '& b': { color: ink, fontWeight: 600 },
+                    }}
+                    dangerouslySetInnerHTML={{ __html: feature.description }}
+                  />
+
+                  <Box
+                    component={RouterLink}
+                    to={feature.cta.href}
+                    sx={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '.4rem',
+                      padding: '.55rem .9rem',
+                      borderRadius: '2px',
+                      background: '#0B4C74',
+                      color: '#ffffff',
+                      fontWeight: 600,
+                      fontSize: '.6rem',
+                      fontFamily: "'Poppins', sans-serif",
+                      textDecoration: 'none',
+                      transition: 'background .2s ease',
+                      '&:hover': { background: '#d3ffb0', color: '#000000' },
+                    }}
+                  >
+                    {feature.cta.label} <ArrowForward sx={{ fontSize: 12 }} />
+                  </Box>
+                </Box>
+              </motion.div>
+            ))}
           </Box>
         </Box>
-      ))}
+      </Container>
     </Box>
   );
 }

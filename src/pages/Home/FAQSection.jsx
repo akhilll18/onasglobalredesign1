@@ -2,16 +2,48 @@ import React, { useState } from 'react';
 import {
   Box,
   Typography,
-  Grid,
+  Container,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Button,
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { ExpandMore, ArrowForward } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import faqicon from '../../assets/images/faqsec/question.png';
+
+// ── Arvee editorial palette ──
+const ink = '#0B4C74';
+const muted = '#647572';
+const line = '#dfe8df';
+const soft = '#ffffff';
+const cream = '#ffffff';
+const lime = '#baf58c';
+
+const containerSx = {
+  width: '100%',
+  maxWidth: { xs: '100%', md: '1240px' },
+  margin: '0 auto',
+  padding: { xs: '0 1rem', md: '0 1.5rem' },
+  boxSizing: 'border-box',
+};
+
+function Eyebrow({ children }) {
+  return (
+    <Typography
+      sx={{
+        color: '#0B4C74',
+        fontSize: '.55rem',
+        letterSpacing: '.12em',
+        textTransform: 'uppercase',
+        fontWeight: 700,
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      {children}
+    </Typography>
+  );
+}
 
 const faqs = [
   { q: 'What ERP systems does ONAS Global specialize in?', a: 'We specialize in implementing and supporting major ERP platforms including SAP, Oracle Cloud, Salesforce, Microsoft Dynamics, Workday, and ServiceNow. Our team has certified experts in each system.' },
@@ -38,171 +70,184 @@ const faqs = [
 
 export default function FAQSection() {
   const [expanded, setExpanded] = useState(false);
-  const handleChange = (panel) => (_, isExpanded) => setExpanded(isExpanded ? panel : false);
 
-  const fadeInVariant = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
+  const handleChange = (panel) => (_, isExpanded) =>
+    setExpanded(isExpanded ? panel : false);
 
   return (
-    <Box sx={{ py: { xs: 3, sm: 4, md: 5 }, px: { xs: 2, sm: 3, md: 4 } }}>
-      <Grid
-        container
-        spacing={{ xs: 3, md: 5 }}
-        alignItems="flex-start"
-        justifyContent="center"
+    <Box
+      sx={{
+        background: cream,
+        color: ink,
+        width: '100%',
+        overflowX: 'hidden',
+        '& h1, & h2, & h3': {
+          fontFamily: "Georgia, 'Times New Roman', serif",
+          fontWeight: 400,
+          letterSpacing: 0,
+        },
+      }}
+    >
+      <Container
+        maxWidth={false}
+        disableGutters
+        sx={{
+          ...containerSx,
+          paddingTop: { xs: '3.5rem', md: '5rem' },
+          paddingBottom: { xs: '3.5rem', md: '5rem' },
+        }}
       >
-        {/* LEFT COLUMN */}
-        <Grid
-          item
-          xs={12}
-          md={4}
+        {/* ── Two-column layout ── */}
+        <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: { xs: 'center', md: 'flex-start' },
-            textAlign: { xs: 'center', md: 'left' },
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1fr 1.7fr' },
+            gap: { xs: '2.5rem', md: 'clamp(2rem, 5vw, 4rem)' },
+            alignItems: 'flex-start',
           }}
         >
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariant}>
-            <Box sx={{ mb: 2 }}>
-              <Box
-                component="img"
-                src={faqicon}
-                alt="FAQ Icon"
-                sx={{
-                  height: { xs: 45, sm: 50, md: 55 },
-                  mb: 1.5,
-                  filter: 'brightness(0.95)'
-                }}
-              />
-              <Typography
-                variant="h6"
-                color="#282825"
-                sx={{
-                  mb: 1.5,
-                  lineHeight: 1.3,
-                  fontWeight: 700,
-                  fontSize: { xs: '1.3rem', sm: '1.5rem', md: '1.7rem' },
-                }}
-              >
-                FAQs about <br /> ONAS <br /> Design with ONAS
-              </Typography>
-              <Typography
-                variant="body1"
-                color="#666"
-                sx={{
-                  mb: 2.5,
-                  lineHeight: 1.5,
-                  fontSize: { xs: '0.8rem', sm: '0.85rem', md: '0.9rem' },
-                }}
-              >
-                Everything you want to know<br />
-                (and maybe some things<br />you didn't think to ask)
-              </Typography>
-              <Button
-                size="medium"
-                variant="primaryFilled"
-                component={RouterLink}
-                to="/#explore-us"
-                sx={{
-                  fontSize: '0.85rem',
-                  py: 1,
-                  px: 2.5
-                }}
-              >
-                Explore Services
-              </Button>
-            </Box>
-          </motion.div>
-        </Grid>
+          {/* ── LEFT — Heading ── */}
+          <Box sx={{ position: { md: 'sticky' }, top: { md: '6rem' } }}>
+            <Box
+              component="img"
+              src={faqicon}
+              alt="FAQ"
+              sx={{
+                height: { xs: 45, md: 52 },
+                marginBottom: '1rem',
+                display: 'block',
+              }}
+            />
 
-        {/* RIGHT COLUMN */}
-        <Grid
-          item
-          xs={12}
-          md={8}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              style={{
-                width: '100%',
-                maxWidth: 650,
-                marginBottom: expanded === i ? 16 : 8,
-                transition: 'margin 0.3s ease',
+            <Typography
+              component="h2"
+              sx={{
+                margin: '.7rem 0 1rem',
+                font: "400 clamp(1.4rem, 2.4vw, 2rem)/1.1 Georgia, 'Times New Roman', serif",
+                color: ink,
               }}
             >
-              <Accordion
-                expanded={expanded === i}
-                onChange={handleChange(i)}
-                disableGutters
-                square
-                sx={{
-                  mb: { xs: 1, sm: 1.2, md: 1.5 },
-                  borderRadius: 1.5,
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                  bgcolor: '#0B4C74',
-                  '&:hover': {
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
-                  },
-                  '& .MuiAccordionSummary-root': {
-                    px: { xs: 1.5, sm: 2 },
-                    py: 1,
-                    minHeight: '48px !important'
-                  },
-                  '& .MuiAccordionDetails-root': {
-                    px: { xs: 1.5, sm: 2 },
-                    py: 1.5
-                  },
-                }}
+              FAQs about ONAS — Design with ONAS
+            </Typography>
+
+            <Typography
+              sx={{
+                color: `${muted} !important`,
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '.72rem',
+                lineHeight: 1.75,
+                marginBottom: '1.6rem',
+              }}
+            >
+              Everything you want to know — and maybe some things you didn&apos;t think to ask.
+            </Typography>
+
+            <Box
+              component={RouterLink}
+              to="/#explore-us"
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '.5rem',
+                padding: '.7rem 1.1rem',
+                borderRadius: '2px',
+                background: '#0B4C74',
+                color: '#ffffff',
+                fontWeight: 600,
+                fontSize: '.62rem',
+                fontFamily: "'Poppins', sans-serif",
+                textDecoration: 'none',
+                transition: 'background .2s ease',
+                '&:hover': { background: '#000000', color: '#fff' },
+              }}
+            >
+              Explore Services <ArrowForward sx={{ fontSize: 14 }} />
+            </Box>
+          </Box>
+
+          {/* ── RIGHT — Accordions ── */}
+          <Box>
+            {faqs.map((faq, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: Math.min(i * 0.03, 0.6) }}
               >
-                <AccordionSummary
-                  expandIcon={
-                    <ExpandMoreIcon sx={{
-                      color: 'white',
-                      fontSize: { xs: 20, sm: 22 }
-                    }} />
-                  }
+                <Accordion
+                  expanded={expanded === i}
+                  onChange={handleChange(i)}
+                  elevation={0}
+                  disableGutters
+                  sx={{
+                    marginBottom: '.6rem',
+                    background: '#fff',
+                    border: `1px solid ${line}`,
+                    borderRadius: '2px !important',
+                    overflow: 'hidden',
+                    '&:before': { display: 'none' },
+
+                    // Expanded → dark navy background
+                    '&.Mui-expanded': {
+                      margin: `0 0 .6rem 0`,
+                      background: '#0B4C74',
+                      borderColor: '#0B4C74',
+                    },
+                  }}
                 >
-                  <Typography
+                  <AccordionSummary
+                    expandIcon={<ExpandMore sx={{ fontSize: 20 }} />}
                     sx={{
-                      fontWeight: 600,
-                      fontSize: { xs: '0.75rem', sm: '0.8rem', md: '0.85rem' },
-                      color: 'white',
-                      lineHeight: 1.4,
+                      padding: { xs: '.6rem 1rem', md: '.7rem 1.4rem' },
+                      '& .MuiAccordionSummary-content': { margin: '.6rem 0' },
+                      '&.Mui-expanded': { minHeight: 'auto' },
+
+                      '& .MuiSvgIcon-root': { color: '#ffffff' },
+                      '&.Mui-expanded .MuiSvgIcon-root': { color: '#ffffff' },
                     }}
                   >
-                    {faq.q}
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography
+                    <Typography
+                      sx={{
+                        color: `${ink} !important`,
+                        fontFamily: "Georgia, 'Times New Roman', serif",
+                        fontSize: '.82rem',
+                        lineHeight: 1.4,
+
+                        // Expanded → white question text
+                        '.Mui-expanded &': {
+                          color: '#ffffff !important',
+                        },
+                      }}
+                    >
+                      {faq.q}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
                     sx={{
-                      fontSize: { xs: '0.75rem', sm: '0.78rem', md: '0.8rem' },
-                      lineHeight: 1.6,
-                      color: 'rgba(255,255,255,0.9)',
+                      padding: { xs: '.2rem 1rem 1.2rem', md: '.2rem 1.4rem 1.4rem' },
+                      borderTop: `1px solid rgba(255,255,255,.15)`,
+                      background: 'transparent',
                     }}
                   >
-                    {faq.a}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            </motion.div>
-          ))}
-        </Grid>
-      </Grid>
+                    <Typography
+                      sx={{
+                        color: 'rgba(255,255,255,.85) !important',
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: '.68rem',
+                        lineHeight: 1.8,
+                      }}
+                    >
+                      {faq.a}
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </motion.div>
+            ))}
+          </Box>
+        </Box>
+      </Container>
     </Box>
   );
 }

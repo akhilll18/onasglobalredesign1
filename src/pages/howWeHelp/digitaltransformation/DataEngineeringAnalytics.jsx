@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Grid, Button } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import {
   Database,
@@ -11,7 +11,20 @@ import {
   Compass,
 } from 'lucide-react';
 
-import HeroMain from '../../../components/HeroMain';
+// Shared design
+import {
+  PageShell,
+  Section,
+  Eyebrow,
+  SectionHeading,
+  SubHeading,
+  Body,
+  LimeButton,
+  cardSx,
+  containerSx,
+  heroHeadingSx,
+  ink, muted, line, soft, lime,
+} from '../../../theme/theme';
 
 // Images
 import Image1 from '../../../assets/images/howWeHelp/digitaltrans/dataengganalytics/img1.jpg';
@@ -23,7 +36,7 @@ import Image5 from '../../../assets/images/howWeHelp/digitaltrans/dataengganalyt
 const DataEngineeringAnalytics = () => {
   const offerings = [
     {
-      icon: <Database className="w-12 h-12 text-blue-600" />,
+      icon: <Database size={20} color="#0B4C74" />,
       title: 'Data Engineering & Modernization',
       text: `Legacy data warehouse modernization
 Cloud-native data lake and pipeline development
@@ -31,7 +44,7 @@ ETL/ELT optimization across platforms
 Scalable migration to AWS, Azure, and GCP`,
     },
     {
-      icon: <BarChart3 className="w-12 h-12 text-green-600" />,
+      icon: <BarChart3 size={20} color="#0B4C74" />,
       title: 'Business Intelligence & Visualization',
       text: `Self-service BI and real-time dashboards
 KPI monitoring with Power BI, Tableau, and Looker
@@ -39,7 +52,7 @@ Executive-level reporting and performance tracking
 Data storytelling and visualization consulting`,
     },
     {
-      icon: <Layers className="w-12 h-12 text-orange-600" />,
+      icon: <Layers size={20} color="#0B4C74" />,
       title: 'Advanced Analytics & AI/ML',
       text: `Predictive and prescriptive analytics
 AI/ML model development and deployment
@@ -47,7 +60,7 @@ Customer segmentation and personalization
 Demand forecasting and churn prediction`,
     },
     {
-      icon: <Zap className="w-12 h-12 text-purple-600" />,
+      icon: <Zap size={20} color="#0B4C74" />,
       title: 'Data Governance & Quality',
       text: `Master Data Management (MDM) strategies
 Data lineage, cataloging, and metadata control
@@ -58,137 +71,185 @@ Quality monitoring, validation, and remediation`,
 
   const valueDelivery = [
     {
-      icon: <Compass className="w-12 h-12 text-blue-600" />,
+      icon: <Compass size={20} color="#0B4C74" />,
       title: 'Full-Stack Analytics Delivery',
       text: 'From data ingestion to predictive outcomes, we cover the entire analytics lifecycle.',
     },
     {
-      icon: <Cloud className="w-12 h-12 text-green-600" />,
+      icon: <Cloud size={20} color="#0B4C74" />,
       title: 'Cloud-Ready, Tool-Agnostic Expertise',
       text: 'We work across AWS, Azure, GCP, Databricks, Power BI, Snowflake, Tableau, and more.',
     },
     {
-      icon: <GitBranch className="w-12 h-12 text-purple-600" />,
+      icon: <GitBranch size={20} color="#0B4C74" />,
       title: 'Business-Driven Approach',
       text: 'We don’t just enable dashboards; we align every solution with business KPIs and ROI expectations.',
     },
     {
-      icon: <Layers className="w-12 h-12 text-orange-600" />,
+      icon: <Layers size={20} color="#0B4C74" />,
       title: 'Security & Compliance First',
       text: 'Security frameworks and compliance practices including GDPR, HIPAA, and industry-specific mandates.',
     },
   ];
 
   return (
-    <Box>
-      {/* Hero Section */}
-      <HeroMain
-        heading="Data Analytics Services That Turn Intelligence into Enterprise Impact"
-        // subheading="optioanl"
-        description=" Unlock enterprise-wide insights and accelerate smarter decisions with our end-to-end data analytics services.
-              From building robust data pipelines to delivering AI-powered intelligence, we simplify complexity and drive actionable outcomes."
-        images={[Image1, Image2, Image3, Image4, Image5]}
-        buttons={[
-          { text: 'Contact Us', href: '/resources/contact-us', variant: 'primaryFilled' },
-        ]}
-      // bgImages={{ xs: bgMobile, md: bgDesktop }}
-      />
+    <PageShell>
+      {/* Hero */}
+      <Box
+        sx={{
+          position: 'relative',
+          minHeight: { xs: 480, md: 560 },
+          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          overflow: 'hidden',
+          background: ink,
+          isolation: 'isolate',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: -2,
+            overflow: 'hidden',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              inset: 0,
+              background:
+                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+              zIndex: 1,
+            },
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+            }}
+          >
+            <source src="/videos/BG.mp4" type="video/mp4" />
+          </video>
+        </Box>
 
+        <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
+          <Eyebrow sx={{ color: lime }}>Data & Analytics</Eyebrow>
+          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
+            Data Analytics Services That Turn Intelligence into Enterprise Impact
+          </Typography>
+          <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
+            Unlock enterprise-wide insights and accelerate smarter decisions with our end-to-end data analytics services. From building robust data pipelines to delivering AI-powered intelligence, we simplify complexity and drive actionable outcomes.
+          </Body>
+          <LimeButton href="/resources/contact-us">
+            Contact Us
+          </LimeButton>
+        </Container>
+      </Box>
 
       {/* Offerings */}
-      <Box sx={{ py: 5 }}>
-        <Typography color="#0B4C74" variant="h5" sx={{ fontWeight: 700, mb: 2, textAlign: 'center' }}>
-          Our Data Analytics Offerings
-        </Typography>
-        <Grid container spacing={2} justifyContent="center">
+      <Section>
+        <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
+          <Eyebrow>What We Offer</Eyebrow>
+          <SectionHeading>Our Data Analytics Offerings</SectionHeading>
+        </Box>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+            gap: { xs: '1rem', md: '1.2rem' },
+            alignItems: 'stretch',
+          }}
+        >
           {offerings.map((item, i) => (
-            <Grid item xs={12} sm={6} md={2} key={i} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
-              >
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              style={{ display: 'flex', width: '100%' }}
+            >
+              <Box sx={cardSx}>
                 <Box
                   sx={{
-                    textAlign: 'center',
-                    px: 3,
-                    py: 4,
-                    backgroundColor: '#fff',
-                    flexGrow: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    borderRadius: 3,
-                    boxShadow: 3,
-                    maxWidth: 280,
+                    display: 'grid',
+                    placeItems: 'center',
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    background: soft,
+                    border: `1px solid ${line}`,
+                    marginBottom: '1rem',
+                    flexShrink: 0,
                   }}
                 >
-                  <motion.div whileHover={{ rotate: 10, scale: 1.1 }} transition={{ type: 'spring', stiffness: 200 }} style={{ marginBottom: 16 }}>
-                    {item.icon}
-                  </motion.div>
-                  <Typography color="#0B4C74" variant="h6" sx={{ mb: 1 }}>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ fontSize: '0.75rem', lineHeight: 1.6, color: 'text.secondary', whiteSpace: 'pre-line' }}>
-                    {item.text}
-                  </Typography>
+                  {item.icon}
                 </Box>
-              </motion.div>
-            </Grid>
+                <SubHeading sx={{ marginBottom: '.5rem' }}>{item.title}</SubHeading>
+                <Body sx={{ whiteSpace: 'pre-line', flexGrow: 1 }}>{item.text}</Body>
+              </Box>
+            </motion.div>
           ))}
-        </Grid>
-      </Box>
+        </Box>
+      </Section>
 
       {/* Value Delivery */}
-      <Box sx={{ py: 5 }}>
-        <Typography variant="h5" color="#0B4C74" sx={{ fontWeight: 700, mb: 4, textAlign: 'center' }}>
-          Why ONAS for Data Analytics?
-        </Typography>
-        <Grid container spacing={2} justifyContent="center">
+      <Section bg={soft}>
+        <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
+          <Eyebrow>Our Impact</Eyebrow>
+          <SectionHeading>Why ONAS for Data Analytics?</SectionHeading>
+        </Box>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+            gap: { xs: '1rem', md: '1.2rem' },
+            alignItems: 'stretch',
+          }}
+        >
           {valueDelivery.map((item, i) => (
-            <Grid item xs={12} sm={6} md={3} key={i} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
-              >
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              style={{ display: 'flex', width: '100%' }}
+            >
+              <Box sx={cardSx}>
                 <Box
                   sx={{
-                    textAlign: 'center',
-                    px: 3,
-                    py: 4,
-                    backgroundColor: '#fff',
-                    flexGrow: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    borderRadius: 3,
-                    boxShadow: 3,
-                    maxWidth: 250,
+                    display: 'grid',
+                    placeItems: 'center',
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    background: '#fff',
+                    border: `1px solid ${line}`,
+                    marginBottom: '1rem',
+                    flexShrink: 0,
                   }}
                 >
-                  <motion.div whileHover={{ rotate: 10, scale: 1.1 }} transition={{ type: 'spring', stiffness: 200 }} style={{ marginBottom: 16 }}>
-                    {item.icon}
-                  </motion.div>
-                  <Typography color="#0B4C74" variant="h6" sx={{ mb: 1 }}>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ fontSize: '0.75rem', lineHeight: 1.6, color: 'text.secondary' }}>
-                    {item.text}
-                  </Typography>
+                  {item.icon}
                 </Box>
-              </motion.div>
-            </Grid>
+                <SubHeading sx={{ marginBottom: '.5rem' }}>{item.title}</SubHeading>
+                <Body sx={{ flexGrow: 1 }}>{item.text}</Body>
+              </Box>
+            </motion.div>
           ))}
-        </Grid>
-      </Box>
-    </Box>
+        </Box>
+      </Section>
+    </PageShell>
   );
 };
 

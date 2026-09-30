@@ -1,59 +1,108 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import { motion } from 'framer-motion';
-import { BarChart2 } from 'lucide-react';
+import { ArrowForward } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
+
 // Image
 import Image1 from '../../assets/images/whyOnas/investors/img1.png';
 
+// Shared design
+import {
+  PageShell,
+  Section,
+  Eyebrow,
+  SectionHeading,
+  Body,
+  ink, lime,
+} from '../../theme/theme';
+
 const Investors = () => {
   return (
-    <Box
-      sx={{
-        px: { xs: 2, md: 8, lg: 12, xl: 16 },
-        pt: { xs: 20, md: 20, lg: 28, xl: 32 },
-        pb: { xs: 8, md: 8, lg: 12, xl: 16 },
-        maxWidth: 1800,
-        mx: 'auto',
-        overflowX: "hidden",
+    <PageShell>
+      {/* ── Heading ── */}
+      <Section>
+        <Box sx={{ textAlign: 'center', mt: { xs: '3rem', md: '5rem' } }}>
+          <SectionHeading sx={{ margin: '.7rem auto 1rem', maxWidth: 800 }}>
+            Invest
+          </SectionHeading>
+          <Body sx={{ maxWidth: 640, margin: '0 auto' }}>
+            In People We Trust and Invest
+          </Body>
+        </Box>
+      </Section>
 
-      }}>
-      {/* Heading */}
-      < Box sx={{ textAlign: 'center', mb: 10 }}>
-        <Typography color="#0B4C74" variant="h3" sx={{ mb: 2 }}>
-          Invest
-        </Typography>
-        <Typography color="#0B4C74" variant="h5">
-          In People We Trust and Invest
-        </Typography>
-      </Box >
+      {/* ── Content — text LEFT, image RIGHT ── */}
+      <Section>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' },
+            gap: { xs: '2rem', md: 'clamp(2rem, 5vw, 4rem)' },
+            alignItems: 'center',
+          }}
+        >
+          {/* Left — text */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Eyebrow>Investor Relations</Eyebrow>
+            <Body sx={{ margin: '.7rem 0 1.4rem' }}>
+              Here, you will find company performance details, board of directors, and important
+              announcements from key investor relations events.
+            </Body>
 
-      {/* Content */}
-      < Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', justifyContent: 'space-between', gap: 6 }}>
-        <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ width: '100%' }}>
-          <Box sx={{ maxWidth: { xs: '100%', md: '600px' }, mx: 'auto' }}>
-            <Typography color="#282825" sx={{ mb: 3, fontSize: { xs: '1rem', md: '1.1rem' } }}>
-              Here, you will find company performance details, board of directors, and important announcements from key investor relations events.
-            </Typography>
-            <Button
+            <Box
               component={RouterLink}
               to="/why-onas/investors/"
-              variant="primaryFilled"
-              size="large"
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '.5rem',
+                padding: '.7rem 1.1rem',
+                borderRadius: '2px',
+                background: '#0B4C74',
+                color: '#ffffff',
+                fontWeight: 600,
+                fontSize: '.62rem',
+                fontFamily: "'Poppins', sans-serif",
+                textDecoration: 'none',
+                transition: 'background .2s ease',
+                '&:hover': { background: '#d3ffb0', color: '#000000' },
+              }}
             >
-              Learn More
-            </Button>
-          </Box>
-        </motion.div>
+              Learn More <ArrowForward sx={{ fontSize: 14 }} />
+            </Box>
+          </motion.div>
 
-        {/* Hero Image */}
-        <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ width: '100%' }}>
-          <Box sx={{ width: { xs: '100%', md: '500px' } }}>
-            <Box component="img" src={Image1} alt="Investors" sx={{ width: '100%', borderRadius: 3, boxShadow: 3 }} />
-          </Box>
-        </motion.div>
-      </Box >
-    </Box >
+          {/* Right — image */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            style={{ width: '100%' }}
+          >
+            <Box
+              component="img"
+              src={Image1}
+              alt="Investors"
+              sx={{
+                width: '100%',
+                maxWidth: 500,
+                borderRadius: 3,
+                boxShadow: 3,
+                mx: 'auto',
+                display: 'block',
+              }}
+            />
+          </motion.div>
+        </Box>
+      </Section>
+    </PageShell>
   );
 };
 

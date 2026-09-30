@@ -1,100 +1,125 @@
 import React from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
+
+// Shared design
+import {
+  PageShell,
+  Section,
+  Eyebrow,
+  SectionHeading,
+  Body,
+  cardSx,
+  ink, muted, line, soft,
+} from '../../theme/theme';
 
 const CaseStudies = () => {
   const caseStudies = [
     {
       title: 'Smart Factory Transformation for a Leading Beverage Manufacturer',
-      text: 'A North American beverage leader leveraged AI-powered predictive maintenance to eliminate bottlenecks, optimize production, and reduce costs.'
+      text: 'A North American beverage leader leveraged AI-powered predictive maintenance to eliminate bottlenecks, optimize production, and reduce costs.',
     },
     {
       title: 'Patch Management & Zero-Day Security for a Global Medical Device Leader',
-      text: 'Automated patch management to secure thousands of connected devices, minimize cybersecurity risks, and meet strict healthcare compliance standards, while reducing operational costs.'
+      text: 'Automated patch management to secure thousands of connected devices, minimize cybersecurity risks, and meet strict healthcare compliance standards, while reducing operational costs.',
     },
     {
       title: 'Oracle Fusion Cloud Test Automation for a Global Excavation Firm',
-      text: 'Automated Oracle Fusion Cloud regression testing, eliminating 90% of manual effort, achieving faster patch validation, improved test coverage, and seamless CI/CD integration.'
+      text: 'Automated Oracle Fusion Cloud regression testing, eliminating 90% of manual effort, achieving faster patch validation, improved test coverage, and seamless CI/CD integration.',
     },
     {
       title: 'Cloud Modernization for a Global SaaS Provider',
-      text: 'Re-engineered a legacy application into a cloud-native platform, enabling 5X customer growth while enhancing scalability, security, and cost efficiency.'
+      text: 'Re-engineered a legacy application into a cloud-native platform, enabling 5X customer growth while enhancing scalability, security, and cost efficiency.',
     },
     {
       title: 'Oracle: Enabled Healthcare Distribution Excellence',
-      text: 'A transformation story through effective Oracle Fusion deployment.'
+      text: 'A transformation story through effective Oracle Fusion deployment.',
     },
     {
       title: 'SAP: Enabled Healthcare Distribution Excellence',
-      text: 'A transformation story through effective SAP deployment.'
+      text: 'A transformation story through effective SAP deployment.',
     },
   ];
 
   return (
-    <Box
-      sx={{
-        px: { xs: 2, md: 8, lg: 12, xl: 16 },
-        pt: { xs: 18, md: 20, lg: 28, xl: 32 },
-        pb: { xs: 8, md: 8, lg: 12, xl: 16 },
-      }}
-    >
-      {/* Heading */}
-      <Box sx={{ textAlign: 'center', mb: 10 }}>
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <Typography color="#0B4C74" variant="h3" sx={{mb: 2 }}>
-            Case Studies
-          </Typography>
-          <Typography color="#282825" variant="h5" sx={{ mb: 4 }}>
-            Every Fix Has a Story
-          </Typography>
-          <Typography color="#282825" variant="h6" sx={{ maxWidth: 800, mx: 'auto' }}>
-            Some problems are predictable. Others catch you off guard. Dive into the SMART moves we made to turn tech challenges into seamless solutions.
-          </Typography>
-        </motion.div>
-      </Box>
+    <PageShell>
+      {/* ── Heading ── */}
+      <Section>
+        <Box sx={{ textAlign: 'center', mt: { xs: '3rem', md: '5rem' } }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Eyebrow>Case Studies</Eyebrow>
+            <SectionHeading sx={{ margin: '.7rem auto .9rem', maxWidth: 800 }}>
+              Case Studies
+            </SectionHeading>
+            <Body sx={{ maxWidth: 640, margin: '0 auto .9rem' }}>
+              Every Fix Has a Story
+            </Body>
+            <Body sx={{ maxWidth: 800, margin: '0 auto' }}>
+              Some problems are predictable. Others catch you off guard. Dive into the SMART moves
+              we made to turn tech challenges into seamless solutions.
+            </Body>
+          </motion.div>
+        </Box>
+      </Section>
 
-      {/* Case Studies Grid */}
-      <Grid container spacing={4} justifyContent="center">
-        {caseStudies.map((study, i) => (
-          <Grid item xs={12} sm={6} md={4} key={i} sx={{ display: 'flex', justifyContent: 'center' }}>
+      {/* ── Case Studies Grid ── */}
+      <Section bg={soft}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+            gap: { xs: '1.2rem', md: '1.4rem' },
+            alignItems: 'stretch',
+          }}
+        >
+          {caseStudies.map((study, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              style={{ display: 'flex', width: '100%' }}
             >
-              <Box
-                sx={{
-                  textAlign: 'center',
-                  px: 3,
-                  py: 4,
-                  backgroundColor: '#fff',
-                  flexGrow: 1,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  borderRadius: 3,
-                  boxShadow: 3,
-                  maxWidth: 320,
-                }}
-              >
-                <Briefcase className="w-12 h-12 text-blue-600" style={{ marginBottom: 16 }} />
-                <Typography variant="h6" sx={{ mb: 2 }}>{study.title}</Typography>
-                <Typography variant="body2" sx={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'text.secondary' }}>{study.text}</Typography>
+              <Box sx={cardSx}>
+                <Box
+                  sx={{
+                    display: 'grid',
+                    placeItems: 'center',
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    background: '#fff',
+                    border: `1px solid ${line}`,
+                    marginBottom: '1rem',
+                    flexShrink: 0,
+                  }}
+                >
+                  <Briefcase size={20} color="#0B4C74" />
+                </Box>
+                <Typography
+                  component="h3"
+                  sx={{
+                    margin: '0 0 .55rem',
+                    font: "400 clamp(.9rem, 1.4vw, 1.05rem)/1.25 Georgia, 'Times New Roman', serif",
+                    color: ink,
+                  }}
+                >
+                  {study.title}
+                </Typography>
+                <Body sx={{ fontSize: '.66rem', flexGrow: 1 }}>{study.text}</Body>
               </Box>
             </motion.div>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+          ))}
+        </Box>
+      </Section>
+    </PageShell>
   );
 };
 

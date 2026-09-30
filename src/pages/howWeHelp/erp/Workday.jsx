@@ -1,12 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Box, Typography, Grid, Card, CardContent, CardMedia, Button } from "@mui/material";
+import { Box, Container, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
+import { ArrowForward } from "@mui/icons-material";
 
-//Images
+// Shared design
+import {
+  PageShell,
+  Section,
+  Eyebrow,
+  SectionHeading,
+  SubHeading,
+  Body,
+  LimeButton,
+  cardSx,
+  containerSx,
+  heroHeadingSx,
+  ink, muted, line, soft, lime,
+} from '../../../theme/theme';
+
+// Images
 import Image1 from '../../../assets/images/howWeHelp/ERP/workday/img1.png';
 import Image2 from '../../../assets/images/howWeHelp/ERP/workday/img2.jpg';
 import Image3 from '../../../assets/images/howWeHelp/ERP/workday/img3.jpg';
 import Image4 from '../../../assets/images/howWeHelp/ERP/workday/img4.png';
+
+// 👇 same navy as the top navbar menu items
+const NAVY = '#0B4C74';
 
 const sections = [
   {
@@ -39,46 +58,75 @@ export default function Workday() {
   };
 
   return (
-    <Box
-      sx={{
-        px: { xs: 2, md: 8, lg: 12, xl: 16 },
-        pt: { xs: 18, md: 20, lg: 28, xl: 32 },
-        pb: { xs: 8, md: 8, lg: 12, xl: 16 },
-      }}
-    >
-      <Typography variant="h3" color="#0B4C74" sx={{ mb: 3, textAlign: "center" }}>
-        Workday - Enterprise AI Platform
-      </Typography>
+    <PageShell>
+      {/* Heading */}
+      <Box sx={{ padding: { xs: '5rem 1rem 2rem', md: '7rem 1rem 3rem' }, textAlign: 'center', background: '#ffffff' }}>
+        <Container maxWidth={false} disableGutters sx={containerSx}>
+          <Eyebrow>Workday Platform</Eyebrow>
+          <Typography component="h1" sx={{ ...heroHeadingSx, color: NAVY, marginLeft: 'auto', marginRight: 'auto' }}>
+            Workday — Enterprise AI Platform
+          </Typography>
+          <Body sx={{ maxWidth: 720, marginLeft: 'auto', marginRight: 'auto', fontSize: '.72rem', lineHeight: 1.75 }}>
+            Manage HR, finance, and all your AI agents — all in one place. Explore the platform built for people, money, and agents.
+          </Body>
+        </Container>
+      </Box>
 
-      <Grid container spacing={4} justifyContent="center">
-        {sections.map((sec, i) => (
-          <Grid item xs="auto" sm={6} md={4} key={i} sx={{ display: "flex", justifyContent: "center" }}>
+      {/* 2×2 Card Grid — white bg */}
+      <Section sx={{ background: '#ffffff' }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
+            gap: { xs: '1rem', md: '1.2rem' },
+            alignItems: 'stretch',
+          }}
+        >
+          {sections.map((sec, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.05 }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
               viewport={{ once: true }}
+              style={{ display: 'flex', width: '100%' }}
             >
-              <Card sx={{ height: { xs: 'auto', sm: 500 }, width: { xs: '100%', sm: 345 }, borderRadius: 3, boxShadow: 4, display: "flex", flexDirection: "column" }}>
+              <Box sx={{ ...cardSx, padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                 {sec.image && (
-                  <CardMedia component="img" height="160" image={sec.image} alt={sec.title} sx={{ objectFit: "cover" }} />
+                  <Box
+                    component="img"
+                    src={sec.image}
+                    alt={sec.title}
+                    sx={{
+                      width: '100%',
+                      height: { xs: 200, md: 220 },
+                      objectFit: 'cover',
+                      display: 'block',
+                      borderBottom: `1px solid ${line}`,
+                    }}
+                  />
                 )}
 
-                <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
-                  <Typography color="#0B4C74" variant="h6" sx={{ fontWeight: 700, mb: 1 }}>{sec.title}</Typography>
+                <Box sx={{ padding: { xs: '1.2rem 1rem', md: '1.4rem 1.2rem' }, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <SubHeading sx={{ marginBottom: '.6rem', minHeight: '2.6rem', color: NAVY }}>
+                    {sec.title}
+                  </SubHeading>
 
-                  <TruncatedText text={sec.text} isExpanded={expanded[i]} toggleExpand={() => toggleExpand(i)} />
-                </CardContent>
-              </Card>
+                  <TruncatedText
+                    text={sec.text}
+                    isExpanded={expanded[i]}
+                    toggleExpand={() => toggleExpand(i)}
+                  />
+                </Box>
+              </Box>
             </motion.div>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+          ))}
+        </Box>
+      </Section>
+    </PageShell>
   );
 }
 
-// Reusable Responsive TruncatedText Component
 export function TruncatedText({ text, isExpanded, toggleExpand }) {
   const textRef = useRef();
   const [textExceedsLimit, setTextExceedsLimit] = useState(false);
@@ -86,9 +134,9 @@ export function TruncatedText({ text, isExpanded, toggleExpand }) {
 
   useEffect(() => {
     const updateLines = () => {
-      if (window.innerWidth < 600) setMaxLines(4); // mobile
-      else if (window.innerWidth < 900) setMaxLines(3); // tablet
-      else setMaxLines(4); // desktop
+      if (window.innerWidth < 600) setMaxLines(4);
+      else if (window.innerWidth < 900) setMaxLines(3);
+      else setMaxLines(4);
     };
     updateLines();
     window.addEventListener("resize", updateLines);
@@ -105,13 +153,15 @@ export function TruncatedText({ text, isExpanded, toggleExpand }) {
     <Box>
       <Typography
         ref={textRef}
-        variant="body2"
         sx={{
-          color: "text.secondary",
-          overflow: "hidden",
-          display: "-webkit-box",
+          color: `${muted} !important`,
+          fontFamily: "'Poppins', sans-serif",
+          fontSize: '.66rem',
+          lineHeight: 1.75,
+          overflow: 'hidden',
+          display: '-webkit-box',
           WebkitLineClamp: isExpanded ? 'none' : maxLines,
-          WebkitBoxOrient: "vertical",
+          WebkitBoxOrient: 'vertical',
         }}
       >
         {text}
@@ -119,10 +169,19 @@ export function TruncatedText({ text, isExpanded, toggleExpand }) {
 
       {textExceedsLimit && (
         <Button
-          size="small"
-          variant="text"
-          sx={{ textTransform: "none", p: 0, mt: 1 }}
           onClick={toggleExpand}
+          endIcon={<ArrowForward sx={{ fontSize: 11 }} />}
+          sx={{
+            padding: '.3rem 0',
+            marginTop: '.5rem',
+            minWidth: 0,
+            color: '#0B4C74',
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: '.58rem',
+            fontWeight: 600,
+            textTransform: 'none',
+            '&:hover': { background: 'transparent', color: NAVY },
+          }}
         >
           {isExpanded ? "Show less" : "Read more"}
         </Button>

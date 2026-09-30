@@ -1,12 +1,58 @@
 import React from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Cpu, Users, BookOpen } from 'lucide-react';
+
+// ── Arvee editorial palette ──
+const ink = '#0B4C74';
+const muted = '#647572';
+const line = '#dfe8df';
+const soft = '#ffffff';
+const cream = '#ffffff';
+
+const eyebrowSx = {
+  color: '#0B4C74',
+  fontSize: '.55rem',
+  letterSpacing: '.12em',
+  textTransform: 'uppercase',
+  fontWeight: 700,
+  fontFamily: "'Poppins', sans-serif",
+};
+
+const containerSx = {
+  width: '100%',
+  maxWidth: { xs: '100%', md: '1240px' },
+  margin: '0 auto',
+  padding: { xs: '0 1rem', md: '0 1.5rem' },
+  boxSizing: 'border-box',
+};
+
+function Eyebrow({ children }) {
+  return <Typography sx={eyebrowSx}>{children}</Typography>;
+}
+
+const cardSx = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  textAlign: 'left',
+  background: '#fff',
+  border: `1px solid ${line}`,
+  borderRadius: '2px',
+  padding: { xs: '1.4rem 1.2rem', md: '1.7rem 1.5rem' },
+  height: '100%',
+  width: '100%',
+  transition: 'all .25s ease',
+  '&:hover': {
+    borderColor: '#aac7b2',
+    transform: 'translateY(-3px)',
+  },
+};
 
 const IdeasThatMatter = () => {
   const ideas = [
     {
-      icon: <Cpu className="w-12 h-12 text-blue-600" />,
+      Icon: Cpu,
       title: 'IT & Digital Consulting',
       idea: 'Empowering organizations to transform with precision and foresight.',
       points: [
@@ -14,10 +60,11 @@ const IdeasThatMatter = () => {
         'Data-backed strategies enable faster, smarter decision-making.',
         'Focus on intelligent automation, cloud solutions, and digital resilience.',
       ],
-      message: 'We don’t just implement technology — we craft AI-powered strategies that turn complexity into competitive advantage.'
+      message:
+        'We don’t just implement technology — we craft AI-powered strategies that turn complexity into competitive advantage.',
     },
     {
-      icon: <Users className="w-12 h-12 text-green-600" />,
+      Icon: Users,
       title: 'Expert Staffing Solutions',
       idea: 'Matching the right talent to the right opportunity, powered by intelligence.',
       points: [
@@ -25,10 +72,11 @@ const IdeasThatMatter = () => {
         'Predictive analytics anticipate workforce needs before they arise.',
         'Reduces hiring time, cost, and turnover, ensuring sustainable growth.',
       ],
-      message: 'Our AI-driven staffing solutions ensure your teams are built for today’s demands and tomorrow’s challenges.'
+      message:
+        'Our AI-driven staffing solutions ensure your teams are built for today’s demands and tomorrow’s challenges.',
     },
     {
-      icon: <BookOpen className="w-12 h-12 text-purple-600" />,
+      Icon: BookOpen,
       title: 'EdTech & AI-Enabled Learning',
       idea: 'Transforming learning into a personalized, scalable, and future-ready experience.',
       points: [
@@ -36,81 +84,158 @@ const IdeasThatMatter = () => {
         'Real-time analytics measure engagement, comprehension, and skill mastery.',
         'Enables continuous upskilling, reskilling, and career acceleration.',
       ],
-      message: 'We leverage AI to make learning smarter, faster, and more impactful — equipping talent for the jobs of tomorrow.'
+      message:
+        'We leverage AI to make learning smarter, faster, and more impactful — equipping talent for the jobs of tomorrow.',
     },
   ];
 
   return (
-    <Box sx={{
-      px: { xs: 2, md: 8, lg: 12, xl: 16 },
-      pt: { xs: 18, md: 20, lg: 28, xl: 32 },
-      pb: { xs: 8, md: 8, lg: 12, xl: 16 },
-    }}>
-      {/* Heading */}
-      <Box sx={{ textAlign: 'center', mb: 10 }}>
-        <Typography color="#0B4C74" variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
-          Ideas That Matter
-        </Typography>
-        <Typography color="#282825" variant="h6" sx={{ fontWeight: 500 }}>
-          Innovative solutions powered by AI, expertise, and future-ready strategies
-        </Typography>
-      </Box>
+    <Box
+      sx={{
+        background: cream,
+        color: ink,
+        width: '100%',
+        overflowX: 'hidden',
+        '& h1, & h2, & h3': { fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 400, letterSpacing: 0 },
+      }}
+    >
+      {/* ── Heading ── */}
+      <Container maxWidth={false} disableGutters sx={containerSx}>
+        <Box sx={{ textAlign: 'center', padding: { xs: '4rem 0 2rem', md: '6rem 0 3rem' } }}>
+          <Eyebrow>Ideas That Matter</Eyebrow>
+          <Typography
+            component="h1"
+            sx={{
+              margin: '.7rem auto 1rem',
+              font: "400 clamp(1.8rem, 1.6vw, 3rem)/1.05 Georgia, 'Times New Roman', serif",
+              color: ink,
+              maxWidth: 800,
+            }}
+          >
+            Ideas That Matter
+          </Typography>
+          <Typography
+            sx={{
+              color: `${muted} !important`,
+              fontFamily: "'Poppins', sans-serif",
+              fontSize: '.72rem',
+              lineHeight: 1.75,
+              maxWidth: 700,
+              margin: '0 auto',
+            }}
+          >
+            Innovative solutions powered by AI, expertise, and future-ready strategies
+          </Typography>
+        </Box>
+      </Container>
 
-      {/* Ideas Grid */}
-      <Grid container spacing={4} justifyContent="center">
-        {ideas.map((idea, i) => (
-          <Grid item xs={12} sm={6} md={4} key={i} sx={{ display: 'flex', justifyContent: 'center' }}>
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
-            >
-              <Box
-                sx={{
-                  textAlign: 'center',
-                  px: 3,
-                  py: 4,
-                  backgroundColor: '#fff',
-                  flexGrow: 1,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  borderRadius: 3,
-                  boxShadow: 3,
-                  maxWidth: 320,
-                }}
-              >
+      {/* ── Ideas Grid ── */}
+      <Box sx={{ background: soft }}>
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{
+            ...containerSx,
+            paddingTop: { xs: '3.5rem', md: '5rem' },
+            paddingBottom: { xs: '3.5rem', md: '5rem' },
+          }}
+        >
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+              gap: { xs: '1.2rem', md: '1.5rem' },
+              alignItems: 'stretch',
+            }}
+          >
+            {ideas.map((idea, i) => {
+              const { Icon } = idea;
+              return (
                 <motion.div
-                  whileHover={{ rotate: 10, scale: 1.1 }}
-                  transition={{ type: 'spring', stiffness: 200 }}
-                  style={{ marginBottom: 16 }}
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.05 }}
+                  style={{ display: 'flex', width: '100%' }}
                 >
-                  {idea.icon}
-                </motion.div>
-                <Typography color="#0B4C74" variant="h6" sx={{ mb: 1 }}>
-                  {idea.title}
-                </Typography>
-                <Typography color="#0B4C74" variant="subtitle2" sx={{ mb: 2, fontStyle: 'italic', color: 'text.secondary' }}>
-                  {idea.idea}
-                </Typography>
-                <Box sx={{ textAlign: 'left', mb: 2 }}>
-                  {idea.points.map((point, idx) => (
-                    <Typography key={idx} variant="body2" sx={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'text.secondary', mb: 1 }}>
-                      • {point}
+                  <Box sx={cardSx}>
+                    <Box
+                      sx={{
+                        display: 'grid',
+                        placeItems: 'center',
+                        width: 40,
+                        height: 40,
+                        borderRadius: '50%',
+                        background: '#fff',
+                        border: `1px solid ${line}`,
+                        marginBottom: '1rem',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Icon size={20} color="#0B4C74" />
+                    </Box>
+
+                    <Typography
+                      component="h3"
+                      sx={{
+                        margin: '0 0 .5rem',
+                        font: "400 .92rem Georgia, 'Times New Roman', serif",
+                        color: ink,
+                        lineHeight: 1.25,
+                      }}
+                    >
+                      {idea.title}
                     </Typography>
-                  ))}
-                </Box>
-                <Typography variant="body2" sx={{ fontSize: '0.95rem', lineHeight: 1.6, fontWeight: 500 }}>
-                  {idea.message}
-                </Typography>
-              </Box>
-            </motion.div>
-          </Grid>
-        ))}
-      </Grid>
+
+                    <Typography
+                      sx={{
+                        margin: '0 0 1rem',
+                        color: `${muted} !important`,
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: '.64rem',
+                        fontStyle: 'italic',
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      {idea.idea}
+                    </Typography>
+
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '.5rem', marginBottom: '1rem' }}>
+                      {idea.points.map((point, idx) => (
+                        <Typography
+                          key={idx}
+                          sx={{
+                            color: `${muted} !important`,
+                            fontFamily: "'Poppins', sans-serif",
+                            fontSize: '.64rem',
+                            lineHeight: 1.7,
+                          }}
+                        >
+                          • {point}
+                        </Typography>
+                      ))}
+                    </Box>
+
+                    <Typography
+                      sx={{
+                        color: `${ink} !important`,
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: '.66rem',
+                        fontWeight: 500,
+                        lineHeight: 1.7,
+                        marginTop: 'auto',
+                      }}
+                    >
+                      {idea.message}
+                    </Typography>
+                  </Box>
+                </motion.div>
+              );
+            })}
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 };

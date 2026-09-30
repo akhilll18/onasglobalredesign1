@@ -2,9 +2,8 @@ import React from 'react';
 import { Box, Typography, Grid, Link as MuiLink, Container, Stack, alpha } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import SocialIcons from './SocialIcons';
-import Logo from '../../../public/images/logo.png';
+// import Logo from '../../../public/images/logo.png';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import PublicIcon from '@mui/icons-material/Public';
@@ -14,6 +13,7 @@ export default function MainFooter() {
     <Box
       component="footer"
       sx={{
+        width: '100%',              // ⬅️ full width
         bgcolor: '#0B4C74',
         color: 'white',
         pt: { xs: 6, md: 4 },
@@ -28,14 +28,23 @@ export default function MainFooter() {
           right: 0,
           height: '4px',
           background: 'linear-gradient(90deg, #2E8BC0 0%, #64B5F6 100%)',
-        }
+        },
       }}
     >
-      <Container maxWidth="xl">
+      {/* Full-width container — maxWidth false, with internal px */}
+      <Container
+        maxWidth={false}
+        disableGutters
+        sx={{
+          width: '100%',
+          px: { xs: 2, md: 8, lg: 12, xl: 16 },   // internal padding
+          boxSizing: 'border-box',
+        }}
+      >
         <Grid container spacing={{ xs: 4, md: 6 }}>
           {/* Logo & About */}
           <Grid item xs={12} md={3}>
-            <Box sx={{ mb: 4 }}>
+            {/* <Box sx={{ mb: 4 }}>
               <img
                 src={Logo}
                 alt="ONAS Global Services"
@@ -45,7 +54,7 @@ export default function MainFooter() {
                   filter: 'brightness(0) invert(1)',
                 }}
               />
-            </Box>
+            </Box> */}
             <Typography
               variant="body1"
               sx={{
@@ -67,17 +76,20 @@ export default function MainFooter() {
             </Box>
           </Grid>
 
-          {/* Enterprise Resource Planning */}
+          {/* ERP */}
           <Grid item xs={6} sm={3} md={2}>
-            <Typography variant="h8" sx={{
-              mb: 1.5,
-              fontWeight: 700,
-              color: 'white',
-              fontSize: '0.55rem',
-              pb: 0.5,
-              display: 'block',
-              borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
-            }}>
+            <Typography
+              variant="h8"
+              sx={{
+                mb: 1.5,
+                fontWeight: 700,
+                color: 'white',
+                fontSize: '0.55rem',
+                pb: 0.5,
+                display: 'block',
+                borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
+              }}
+            >
               ERP
             </Typography>
             <Stack spacing={0.3} sx={{ mt: 0.5 }}>
@@ -89,7 +101,7 @@ export default function MainFooter() {
                 { label: 'Service Now', href: '/how-we-help/erp/servicenow' },
                 { label: 'Workday', href: '/how-we-help/erp/workday' },
                 { label: 'MicrosoftDynamics365', href: '/how-we-help/erp/microsoft-dynamics-365' },
-                { label: 'IFS', href: 'how-we-help/erp/IFS' }
+                { label: 'IFS', href: 'how-we-help/erp/IFS' },
               ].map((item, idx) => (
                 <MuiLink
                   key={idx}
@@ -103,10 +115,7 @@ export default function MainFooter() {
                     alignItems: 'center',
                     py: 0.2,
                     transition: 'all 0.2s ease',
-                    '&:hover': {
-                      color: '#64B5F6',
-                      transform: 'translateX(4px)',
-                    },
+                    '&:hover': { color: '#64B5F6', transform: 'translateX(4px)' },
                   }}
                 >
                   <ChevronRightIcon sx={{ fontSize: 10, mr: 0.3, opacity: 0.7 }} />
@@ -115,19 +124,10 @@ export default function MainFooter() {
               ))}
             </Stack>
           </Grid>
-          
 
           {/* Digital Transformation */}
           <Grid item xs={6} sm={3} md={2}>
-            <Typography variant="h8" sx={{
-              mb: 1.5,
-              fontWeight: 700,
-              color: 'white',
-              fontSize: '0.55rem',
-              pb: 0.5,
-              display: 'block',
-              borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
-            }}>
+            <Typography variant="h8" sx={{ mb: 1.5, fontWeight: 700, color: 'white', fontSize: '0.55rem', pb: 0.5, display: 'block', borderBottom: `1px solid ${alpha('#fff', 0.2)}` }}>
               Digital Serv
             </Typography>
             <Stack spacing={0.3} sx={{ mt: 0.5 }}>
@@ -142,26 +142,8 @@ export default function MainFooter() {
                 { label: 'IT Asset Management Solutions', href: '/how-we-help/digital-transformation/it-asset-management' },
                 { label: 'GenAI Solutions', href: '/how-we-help/digital-transformation/genai' },
                 { label: 'DevOps & Infra Automation', href: '/how-we-help/digital-transformation/devops' },
-
               ].map((item, idx) => (
-                <MuiLink
-                  key={idx}
-                  component={RouterLink}
-                  to={item.href}
-                  underline="none"
-                  sx={{
-                    color: alpha('#fff', 0.8),
-                    fontSize: '0.5rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    py: 0.2,
-                    transition: 'all 0.2s ease',
-                    '&:hover': {
-                      color: '#64B5F6',
-                      transform: 'translateX(4px)',
-                    },
-                  }}
-                >
+                <MuiLink key={idx} component={RouterLink} to={item.href} underline="none" sx={{ color: alpha('#fff', 0.8), fontSize: '0.5rem', display: 'flex', alignItems: 'center', py: 0.2, transition: 'all 0.2s ease', '&:hover': { color: '#64B5F6', transform: 'translateX(4px)' } }}>
                   <ChevronRightIcon sx={{ fontSize: 10, mr: 0.3, opacity: 0.7 }} />
                   {item.label}
                 </MuiLink>
@@ -169,17 +151,9 @@ export default function MainFooter() {
             </Stack>
           </Grid>
 
-          {/* Managed IT and Operations */}
+          {/* Managed IT */}
           <Grid item xs={6} sm={3} md={2}>
-            <Typography variant="h8" sx={{
-              mb: 1.5,
-              fontWeight: 700,
-              color: 'white',
-              fontSize: '0.55rem',
-              pb: 0.5,
-              display: 'block',
-              borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
-            }}>
+            <Typography variant="h8" sx={{ mb: 1.5, fontWeight: 700, color: 'white', fontSize: '0.55rem', pb: 0.5, display: 'block', borderBottom: `1px solid ${alpha('#fff', 0.2)}` }}>
               IT & Op
             </Typography>
             <Stack spacing={0.3} sx={{ mt: 0.5 }}>
@@ -191,24 +165,7 @@ export default function MainFooter() {
                 { label: 'Network Support', href: '/how-we-help/managed-it-operations/network-support' },
                 { label: '24x7 Helpdesk', href: '/how-we-help/managed-it-operations/helpdesk' },
               ].map((item, idx) => (
-                <MuiLink
-                  key={idx}
-                  component={RouterLink}
-                  to={item.href}
-                  underline="none"
-                  sx={{
-                    color: alpha('#fff', 0.8),
-                    fontSize: '0.5rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    py: 0.2,
-                    transition: 'all 0.2s ease',
-                    '&:hover': {
-                      color: '#64B5F6',
-                      transform: 'translateX(4px)',
-                    },
-                  }}
-                >
+                <MuiLink key={idx} component={RouterLink} to={item.href} underline="none" sx={{ color: alpha('#fff', 0.8), fontSize: '0.5rem', display: 'flex', alignItems: 'center', py: 0.2, transition: 'all 0.2s ease', '&:hover': { color: '#64B5F6', transform: 'translateX(4px)' } }}>
                   <ChevronRightIcon sx={{ fontSize: 10, mr: 0.3, opacity: 0.7 }} />
                   {item.label}
                 </MuiLink>
@@ -218,15 +175,7 @@ export default function MainFooter() {
 
           {/* Other Services */}
           <Grid item xs={6} sm={3} md={3}>
-            <Typography variant="h8" sx={{
-              mb: 1.5,
-              fontWeight: 700,
-              color: 'white',
-              fontSize: '0.55rem',
-              pb: 0.5,
-              display: 'block',
-              borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
-            }}>
+            <Typography variant="h8" sx={{ mb: 1.5, fontWeight: 700, color: 'white', fontSize: '0.55rem', pb: 0.5, display: 'block', borderBottom: `1px solid ${alpha('#fff', 0.2)}` }}>
               Other Serv
             </Typography>
             <Stack spacing={0.3} sx={{ mt: 0.5 }}>
@@ -236,26 +185,9 @@ export default function MainFooter() {
                 { label: 'Social Media Marketing', href: '/how-we-help/other-services/social-media' },
                 { label: 'Content Marketing', href: '/how-we-help/other-services/content-marketing' },
                 { label: 'Email Marketing', href: '/how-we-help/other-services/email-marketing' },
-                { label: 'PPC Advertising', href: '/how-we-help/other-services/ppc'},
+                { label: 'PPC Advertising', href: '/how-we-help/other-services/ppc' },
               ].map((item, idx) => (
-                <MuiLink
-                  key={idx}
-                  component={RouterLink}
-                  to={item.href}
-                  underline="none"
-                  sx={{
-                    color: alpha('#fff', 0.8),
-                    fontSize: '0.5rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    py: 0.2,
-                    transition: 'all 0.2s ease',
-                    '&:hover': {
-                      color: '#64B5F6',
-                      transform: 'translateX(4px)',
-                    },
-                  }}
-                >
+                <MuiLink key={idx} component={RouterLink} to={item.href} underline="none" sx={{ color: alpha('#fff', 0.8), fontSize: '0.5rem', display: 'flex', alignItems: 'center', py: 0.2, transition: 'all 0.2s ease', '&:hover': { color: '#64B5F6', transform: 'translateX(4px)' } }}>
                   <ChevronRightIcon sx={{ fontSize: 10, mr: 0.3, opacity: 0.7 }} />
                   {item.label}
                 </MuiLink>
@@ -263,70 +195,26 @@ export default function MainFooter() {
             </Stack>
           </Grid>
 
-          {/* STAFFING SERVICES - Now split into two columns */}
+          {/* STAFFING SERVICES */}
           <Grid item xs={12} md={4}>
-            <Typography variant="h8" sx={{
-              fontWeight: 700,
-              color: 'white',
-              fontSize: '0.55rem',
-              pb: 0.5,
-              display: 'block',
-              borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
-              mb: 1,
-            }}>
+            <Typography variant="h8" sx={{ fontWeight: 700, color: 'white', fontSize: '0.55rem', pb: 0.5, display: 'block', borderBottom: `1px solid ${alpha('#fff', 0.2)}`, mb: 1 }}>
               STAFFING SERVICES
             </Typography>
 
             <Grid container spacing={2}>
-              {/* Left Column - Submit Vacancy & IT CONSULTING */}
               <Grid item xs={6}>
-                {/* Submit a Vacancy & Request Call Back */}
                 <Box sx={{ mb: 1.5 }}>
-                  <MuiLink
-                    component={RouterLink}
-                    to="/submit-vacancy"
-                    underline="none"
-                    sx={{
-                      color: 'white',
-                      fontWeight: 700,
-                      fontSize: '0.5rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      mb: 0.3,
-                      '&:hover': { color: '#64B5F6' },
-                    }}
-                  >
+                  <MuiLink component={RouterLink} to="/submit-vacancy" underline="none" sx={{ color: 'white', fontWeight: 700, fontSize: '0.5rem', display: 'flex', alignItems: 'center', mb: 0.3, '&:hover': { color: '#64B5F6' } }}>
                     <ChevronRightIcon sx={{ fontSize: 12, mr: 0.2 }} />
                     SUBMIT A VACANCY
                   </MuiLink>
-                  <MuiLink
-                    component={RouterLink}
-                    to="/staffing/submit-a-vacancy/request-a-call-back/"
-                    underline="none"
-                    sx={{
-                      color: alpha('#fff', 0.8),
-                      fontSize: '0.5rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      ml: 1.5,
-                      '&:hover': { color: '#64B5F6' },
-                    }}
-                  >
+                  <MuiLink component={RouterLink} to="/staffing/submit-a-vacancy/request-a-call-back/" underline="none" sx={{ color: alpha('#fff', 0.8), fontSize: '0.5rem', display: 'flex', alignItems: 'center', ml: 1.5, '&:hover': { color: '#64B5F6' } }}>
                     <ChevronRightIcon sx={{ fontSize: 10, mr: 0.3, opacity: 0.7 }} />
                     Request Call Back
                   </MuiLink>
                 </Box>
 
-                {/* IT CONSULTING */}
-                <Typography variant="h8" sx={{
-                  fontWeight: 700,
-                  color: 'white',
-                  fontSize: '0.52rem',
-                  pb: 0.3,
-                  display: 'block',
-                  borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
-                  mb: 0.5,
-                }}>
+                <Typography variant="h8" sx={{ fontWeight: 700, color: 'white', fontSize: '0.52rem', pb: 0.3, display: 'block', borderBottom: `1px solid ${alpha('#fff', 0.2)}`, mb: 0.5 }}>
                   IT CONSULTING
                 </Typography>
                 <Stack spacing={0.2} sx={{ mb: 1.5 }}>
@@ -339,24 +227,7 @@ export default function MainFooter() {
                     { label: 'Sales & Trade Marketing', href: '/staffing/it-consulting' },
                     { label: 'Wholesale & Retail', href: '/staffing/it-consulting' },
                   ].map((item, idx) => (
-                    <MuiLink
-                      key={`it-${idx}`}
-                      component={RouterLink}
-                      to={item.href}
-                      underline="none"
-                      sx={{
-                        color: alpha('#fff', 0.8),
-                        fontSize: '0.5rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        py: 0.1,
-                        transition: 'all 0.2s ease',
-                        '&:hover': {
-                          color: '#64B5F6',
-                          transform: 'translateX(4px)',
-                        },
-                      }}
-                    >
+                    <MuiLink key={`it-${idx}`} component={RouterLink} to={item.href} underline="none" sx={{ color: alpha('#fff', 0.8), fontSize: '0.5rem', display: 'flex', alignItems: 'center', py: 0.1, transition: 'all 0.2s ease', '&:hover': { color: '#64B5F6', transform: 'translateX(4px)' } }}>
                       <ChevronRightIcon sx={{ fontSize: 10, mr: 0.3, opacity: 0.7 }} />
                       {item.label}
                     </MuiLink>
@@ -364,18 +235,8 @@ export default function MainFooter() {
                 </Stack>
               </Grid>
 
-              {/* Right Column - PROFESSIONAL SERVICES & EDTECH */}
               <Grid item xs={6}>
-                {/* Professional Services */}
-                <Typography variant="h8" sx={{
-                  fontWeight: 700,
-                  color: 'white',
-                  fontSize: '0.52rem',
-                  pb: 0.3,
-                  display: 'block',
-                  borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
-                  mb: 0.5,
-                }}>
+                <Typography variant="h8" sx={{ fontWeight: 700, color: 'white', fontSize: '0.52rem', pb: 0.3, display: 'block', borderBottom: `1px solid ${alpha('#fff', 0.2)}`, mb: 0.5 }}>
                   Professional Services
                 </Typography>
                 <Stack spacing={0.2} sx={{ mb: 1.5 }}>
@@ -392,60 +253,18 @@ export default function MainFooter() {
                     { label: 'Hire our Recruiters', href: '/staffing/professional-services' },
                     { label: 'Technical Support Services', href: '/staffing/professional-services' },
                   ].map((item, idx) => (
-                    <MuiLink
-                      key={`prof-${idx}`}
-                      component={RouterLink}
-                      to={item.href}
-                      underline="none"
-                      sx={{
-                        color: alpha('#fff', 0.8),
-                        fontSize: '0.5rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        py: 0.1,
-                        transition: 'all 0.2s ease',
-                        '&:hover': {
-                          color: '#64B5F6',
-                          transform: 'translateX(4px)',
-                        },
-                      }}
-                    >
+                    <MuiLink key={`prof-${idx}`} component={RouterLink} to={item.href} underline="none" sx={{ color: alpha('#fff', 0.8), fontSize: '0.5rem', display: 'flex', alignItems: 'center', py: 0.1, transition: 'all 0.2s ease', '&:hover': { color: '#64B5F6', transform: 'translateX(4px)' } }}>
                       <ChevronRightIcon sx={{ fontSize: 10, mr: 0.3, opacity: 0.7 }} />
                       {item.label}
                     </MuiLink>
                   ))}
                 </Stack>
 
-                {/* EDTECH SERVICES */}
-                <Typography variant="h8" sx={{
-                  fontWeight: 700,
-                  color: 'white',
-                  fontSize: '0.52rem',
-                  pb: 0.3,
-                  display: 'block',
-                  borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
-                  mb: 0.5,
-                }}>
+                <Typography variant="h8" sx={{ fontWeight: 700, color: 'white', fontSize: '0.52rem', pb: 0.3, display: 'block', borderBottom: `1px solid ${alpha('#fff', 0.2)}`, mb: 0.5 }}>
                   EDTech Serv
                 </Typography>
                 <Stack spacing={0.2}>
-                  <MuiLink
-                    component={RouterLink}
-                    to="https://www.m2msoftsolutions.com"
-                    underline="none"
-                    sx={{
-                      color: alpha('#fff', 0.8),
-                      fontSize: '0.5rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      py: 0.1,
-                      transition: 'all 0.2s ease',
-                      '&:hover': {
-                        color: '#64B5F6',
-                        transform: 'translateX(4px)',
-                      },
-                    }}
-                  >
+                  <MuiLink component="a" href="https://www.m2msoftsolutions.com" target="_blank" rel="noopener noreferrer" underline="none" sx={{ color: alpha('#fff', 0.8), fontSize: '0.5rem', display: 'flex', alignItems: 'center', py: 0.1, transition: 'all 0.2s ease', '&:hover': { color: '#64B5F6', transform: 'translateX(4px)' } }}>
                     <ChevronRightIcon sx={{ fontSize: 10, mr: 0.3, opacity: 0.7 }} />
                     EdTech Solutions
                   </MuiLink>
@@ -454,103 +273,40 @@ export default function MainFooter() {
             </Grid>
           </Grid>
 
-          {/* Contact Information */}
+          {/* Contact */}
           <Grid item xs={6} sm={3} md={1}>
-            <Typography variant="h8" sx={{
-              fontWeight: 700,
-              color: 'white',
-              fontSize: '0.55rem',
-              pb: 0.5,
-              display: 'flex',
-              alignItems: 'center',
-              borderBottom: `1px solid ${alpha('#fff', 0.2)}`,
-              mb: 1,
-            }}>
+            <Typography variant="h8" sx={{ fontWeight: 700, color: 'white', fontSize: '0.55rem', pb: 0.5, display: 'flex', alignItems: 'center', borderBottom: `1px solid ${alpha('#fff', 0.2)}`, mb: 1 }}>
               <PublicIcon sx={{ mr: 0.3, fontSize: 12 }} />
               Contact
             </Typography>
 
             <Stack spacing={1.5}>
-              {/* Email */}
               <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                <EmailIcon sx={{
-                  color: '#64B5F6',
-                  mr: 0.5,
-                  mt: 0.2,
-                  fontSize: 12
-                }} />
+                <EmailIcon sx={{ color: '#64B5F6', mr: 0.5, mt: 0.2, fontSize: 12 }} />
                 <Box>
                   <Typography variant="body2" sx={{ color: alpha('#fff', 0.7), mb: 0.1, fontSize: '0.45rem' }}>
                     Email
                   </Typography>
-                  <MuiLink
-                    href="mailto:sales@onasglobal.com"
-                    sx={{
-                      color: 'white',
-                      fontWeight: 500,
-                      fontSize: '0.5rem',
-                      textDecoration: 'none',
-                      wordBreak: 'break-all',
-                      '&:hover': {
-                        color: '#64B5F6',
-                      }
-                    }}
-                  >
+                  <MuiLink href="mailto:sales@onasglobal.com" sx={{ color: 'white', fontWeight: 500, fontSize: '0.5rem', textDecoration: 'none', wordBreak: 'break-all', '&:hover': { color: '#64B5F6' } }}>
                     sales@onasglobal.com
                   </MuiLink>
                 </Box>
               </Box>
 
-              {/* Phone Numbers */}
               <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                <PhoneIcon sx={{
-                  color: '#64B5F6',
-                  mr: 0.5,
-                  mt: 0.2,
-                  fontSize: 12
-                }} />
+                <PhoneIcon sx={{ color: '#64B5F6', mr: 0.5, mt: 0.2, fontSize: 12 }} />
                 <Box>
                   <Typography variant="body2" sx={{ color: alpha('#fff', 0.7), mb: 0.1, fontSize: '0.45rem' }}>
                     Phone
                   </Typography>
                   <Stack spacing={0.1}>
-                    <MuiLink
-                      href="tel:+919281506440"
-                      sx={{
-                        color: 'white',
-                        fontWeight: 500,
-                        fontSize: '0.5rem',
-                        textDecoration: 'none',
-                        display: 'block',
-                        '&:hover': { color: '#64B5F6' }
-                      }}
-                    >
+                    <MuiLink href="tel:+919281506440" sx={{ color: 'white', fontWeight: 500, fontSize: '0.5rem', textDecoration: 'none', display: 'block', '&:hover': { color: '#64B5F6' } }}>
                       91-928 150 6440
                     </MuiLink>
-                    <MuiLink
-                      href="tel:+919281506440"
-                      sx={{
-                        color: 'white',
-                        fontWeight: 500,
-                        fontSize: '0.5rem',
-                        textDecoration: 'none',
-                        display: 'block',
-                        '&:hover': { color: '#64B5F6' }
-                      }}
-                    >
+                    <MuiLink href="tel:+919281506440" sx={{ color: 'white', fontWeight: 500, fontSize: '0.5rem', textDecoration: 'none', display: 'block', '&:hover': { color: '#64B5F6' } }}>
                       91-928 150 6441
                     </MuiLink>
-                    <MuiLink
-                      href="tel:+16073262406"
-                      sx={{
-                        color: 'white',
-                        fontWeight: 500,
-                        fontSize: '0.5rem',
-                        textDecoration: 'none',
-                        display: 'block',
-                        '&:hover': { color: '#64B5F6' }
-                      }}
-                    >
+                    <MuiLink href="tel:+16073262406" sx={{ color: 'white', fontWeight: 500, fontSize: '0.5rem', textDecoration: 'none', display: 'block', '&:hover': { color: '#64B5F6' } }}>
                       +1 607-326-2406
                     </MuiLink>
                   </Stack>

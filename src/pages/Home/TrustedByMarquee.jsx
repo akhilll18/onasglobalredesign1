@@ -48,7 +48,7 @@ export default function TrustedByMarquee() {
           textTransform: "uppercase",
           textShadow: "1px 1px 4px rgba(0,0,0,0.3)",
           background:
-            "linear-gradient(135deg, #003C43 0%, #121f07ff 50%, #000000 100%)",
+            "linear-gradient(135deg, #0B4C74 0%, #082f4a 50%, #000000 100%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",

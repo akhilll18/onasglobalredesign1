@@ -1,508 +1,320 @@
-import React from 'react';
-import { Box, Typography, List, ListItem, ListItemText } from '@mui/material';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from "react";
+import { Box, Container, Typography, Button } from "@mui/material";
+import { motion } from "framer-motion";
 import { Helmet } from 'react-helmet-async';
+import { ArrowForward } from '@mui/icons-material';
 
-import GovernanceImg from '../../../assets/images/howWeHelp/digitaltrans/GRC/governance.png';
-import RiskImg from '../../../assets/images/howWeHelp/digitaltrans/GRC/riskmanagement.png';
-import ComplianceImg from '../../../assets/images/howWeHelp/digitaltrans/GRC/compliance.jpg';
-import DataPrivacyImg from '../../../assets/images/howWeHelp/digitaltrans/GRC/dataPP.png';
-import ControlsImg from '../../../assets/images/howWeHelp/digitaltrans/GRC/internalcontrol.png';
-import ReportingImg from '../../../assets/images/howWeHelp/digitaltrans/GRC/reporting.png';
-
-import HeroMain from '../../../components/HeroMain';
+// Shared design
+import {
+  PageShell,
+  Section,
+  Eyebrow,
+  SectionHeading,
+  SubHeading,
+  Body,
+  LimeButton,
+  cardSx,
+  containerSx,
+  heroHeadingSx,
+  ink, muted, line, soft, lime,
+} from '../../../theme/theme';
 
 // Images
-import Image1 from '../../../assets/images/howWeHelp/digitaltrans/GRC/img1.jpg';
-import Image2 from '../../../assets/images/howWeHelp/digitaltrans/GRC/img2.jpg';
-import Image3 from '../../../assets/images/howWeHelp/digitaltrans/GRC/img3.jpg';
-import Image4 from '../../../assets/images/howWeHelp/digitaltrans/GRC/img4.jpg';
-import Image5 from '../../../assets/images/howWeHelp/digitaltrans/GRC/img5.jpg';
-import Image6 from '../../../assets/images/howWeHelp/digitaltrans/GRC/img6.jpg';
-import Image7 from '../../../assets/images/howWeHelp/digitaltrans/GRC/img7.png';
+import RevolutionImg from '../../../assets/images/howWeHelp/GenAI/revolution.png';
+import ImpactImg from '../../../assets/images/howWeHelp/GenAI/impact.png';
+import NewyorkImg from '../../../assets/images/howWeHelp/GenAI/newyork.png';
+import InfographicImg from '../../../assets/images/howWeHelp/GenAI/infographic.png';
+import BKImg from '../../../assets/images/howWeHelp/GenAI/bk.png';
+import TechEvolveImg from '../../../assets/images/howWeHelp/GenAI/techevolve.png';
+import ThinkImg from '../../../assets/images/howWeHelp/GenAI/think.png';
+import DeepDiveImg from '../../../assets/images/howWeHelp/GenAI/deepdive.png';
+import ArticleImg from '../../../assets/images/howWeHelp/GenAI/article.png';
+import MultiAgentImg from '../../../assets/images/howWeHelp/GenAI/multiagent.png';
+import JobImg from '../../../assets/images/howWeHelp/GenAI/job.png';
+import HinderImg from '../../../assets/images/howWeHelp/GenAI/hinder.png';
+import FutureImg from '../../../assets/images/howWeHelp/GenAI/future.png';
+import RethinkImg from '../../../assets/images/howWeHelp/GenAI/rethink.png';
+import ConsumerImg from '../../../assets/images/howWeHelp/GenAI/consumer.png';
+import PublicFacImg from '../../../assets/images/howWeHelp/GenAI/publicfac.png';
 
-const grcSections = [
-  {
-    title: 'Governance',
-    items: [
-      'Policy Definition, Documentation, and Enforcement',
-      'Role-Based Access and Accountability Management',
-    ],
-    image: GovernanceImg,
-    bg: '#fff',
-    reverse: false,
-  },
-  {
-    title: 'Risk Management',
-    items: [
-      'Risk Identification, Assessment, and Mitigation Planning',
-      'Continuous Monitoring of Operational, Financial, and IT Risks',
-    ],
-    image: RiskImg,
-    bg: '#fff',
-    reverse: true,
-  },
-  {
-    title: 'Compliance',
-    items: [
-      'Regulatory Alignment (GDPR, HIPAA, SOX, ISO 27001, PCI DSS)',
-      'Audit-Ready Reporting and Evidence Management',
-    ],
-    image: ComplianceImg,
-    bg: '#fff',
-    reverse: false,
-  },
-  {
-    title: 'Data Privacy & Protection',
-    items: [
-      'Data Classification, Encryption, and Secure Access Controls',
-      'Privacy Impact Assessments and Cross-Border Compliance',
-    ],
-    image: DataPrivacyImg,
-    bg: '#fff',
-    reverse: true,
-  },
-  {
-    title: 'Internal Controls & Monitoring',
-    items: [
-      'Automated Control Implementation and Effectiveness Testing',
-      'Continuous Monitoring of Business and IT Processes',
-    ],
-    image: ControlsImg,
-    bg: '#fff',
-    reverse: false,
-  },
-  {
-    title: 'Reporting & Analytics',
-    items: [
-      'Real-Time Dashboards for Risk and Compliance Metrics',
-      'Customizable Reports for Management and Regulators',
-    ],
-    image: ReportingImg,
-    bg: '#fff',
-    reverse: true,
-  },
+const sections = [
+  { title: "The generative AI revolution", text: "Dive into our latest thought leadership to uncover gen AI's wide-ranging impacts across industries—and its transformative potential.", image: RevolutionImg },
+  { title: "The global impact of generative AI", text: "Here's a comprehensive look at macroeconomic and societal implications of gen AI and how it will impact productivity on a global scale.", tag: "INTERACTIVE REPORT", image: ImpactImg },
+  { title: "New work, new world", text: "Gen AI could deliver more than $1 trillion in annual growth by 2032, while disrupting up to 90% of jobs. Navigate this upheaval by investing in people.", tag: "INTERACTIVE REPORT", cta: "Read the interactive report", image: NewyorkImg, link: "https://www.cognizant.com/us/en/gen-ai-economic-model-oxford-economics" },
+  { title: "Gen AI momentum: accelerators and inhibitors", text: "By understanding the biggest barriers inhibiting gen AI adoption, businesses can continue to generate momentum and realize the powerful productivity gains it has to offer.", tag: "DEEP DIVE", image: DeepDiveImg, link: "https://www.cognizant.com/us/en/insights/insights-blog/gen-ai-strategy-wf2851465" },
+  { title: "What businesses need to know", text: "Take a look into the near future of orchestrated AI, when AI agents begin to talk to each other. Learn how to get your business started.", tag: "INTERACTIVE REPORT", cta: "Know more", image: BKImg, link: "https://www.cognizant.com/us/en/generative-ai-future-of-work" },
+  { title: "Tech evolution", text: "Gen AI creates business opportunities in unprecedented ways. But tech teams must see things in a completely new light to seize the prospects.", tag: "INTERACTIVE REPORT", image: TechEvolveImg },
+  { title: "Think like an AI native", text: "Existing businesses can't become AI natives themselves, but they need to stay vigilant as these AI upstarts seize new market opportunities. By actively studying how AI-native businesses put AI into the core of their operations and technology, established companies can reap the benefits of thinking and acting like their newest competitors.", tag: "INTERACTIVE REPORT", cta: "Know more", image: ThinkImg, link: "https://www.cognizant.com/us/en/ai-native-business" },
+  { title: "AI integration strategies for modern tech stacks", text: "Remain competitive within an AI-native world with four integration strategies that can help transform processes and create innovative product offerings.", tag: "INFOGRAPHIC", cta: "Know more", image: InfographicImg, link: "https://www.cognizant.com/en_us/insights/documents/cognizant-ai-integration-strategies-for-modern-tech-stacks.pdf" },
+  { title: "Technology lessons from AI natives", text: "Learn how traditional businesses can compete with emerging AI-native businesses.", tag: "ARTICLE", cta: "Know more", image: ArticleImg, link: "https://www.cognizant.com/us/en/insights/insights-blog/businesses-prepare-for-ai-natives-wf2777725" },
+  { title: "Multi-agent AI is set to revolutionize enterprise operations", text: "AI's killer function is coming, and it could transform business operations sooner than you think. Uncover how AI agents are breaking down silos and connecting disparate software to create a single-interface enterprise operations platform.", cta: "Know more", image: MultiAgentImg, link: "https://www.cognizant.com/us/en/insights/insights-blog/multi-agent-ai-to-revolutionize-enterprise-operations" },
+  { title: "Jobs and skilling", text: "Gen AI is set to shake up the job market, displacing some and prompting others to reskill.", tag: "ARTICLE", image: JobImg },
+  { title: "Will gen AI help or hinder women?", text: "The skewed impact of gen AI on women in the workplace cannot be ignored. Businesses must implement actions now to address this imbalance.", tag: "ARTICLE", cta: "Know more", image: HinderImg, link: "https://www.cognizant.com/us/en/insights/insights-blog/gen-ai-impact-on-women-in-the-workplace-wf2458851" },
+  { title: "Future of human skills", text: "HR leaders face a mammoth task in guiding their people through a period of adjustment—helping to work with gen AI and not against it.", tag: "ARTICLE", cta: "Know more", image: FutureImg, link: "https://www.cognizant.com/us/en/insights/insights-blog/the-people-who-will-thrive-as-ai-transforms-the-enterprise-wf2233399" },
+  { title: "Generative AI requires a skills rethink", text: "Gen AI is reshaping workforce skills, shining a spotlight on critical thinking, communication and decision-making.", tag: "ARTICLE", cta: "Know more", image: RethinkImg, link: "https://www.cognizant.com/us/en/insights/insights-blog/generative-ai-in-the-workforce-wf2343510" },
+  { title: "Building consumer trust in AI", text: "Only a third of consumers trust gen AI. But with the right approach, businesses can build strategies to win their hearts and minds.", tag: "DEEP DIVE", image: ConsumerImg, link: "https://www.cognizant.com/us/en/insights/insights-blog/building-consumer-trust-in-ai-wf2729750", cta: "Know more" },
+  { title: "Public-facing gen AI: Five tips to overcome skepticism", text: "Businesses must work to build a solid foundation of trust for their customers—from the very start of their AI adoption journey.", image: PublicFacImg, link: "https://www.cognizant.com/us/en/insights/insights-blog/5-tips-to-overcome-public-skepticism-of-gen-ai-wf2501119" },
 ];
 
-export default function GRC() {
+const stats = [
+  { value: '15+', label: 'AI Research Reports' },
+  { value: '$1T+', label: 'Economic Impact' },
+  { value: '90%', label: 'Jobs Impacted' },
+  { value: '2025', label: 'Latest Research' },
+];
+
+export default function GenerativeAI() {
+  const [expanded, setExpanded] = useState({});
   const baseUrl = window.location.origin;
 
-  // SEO Metadata for GRC
-  const seoData = {
-    title: 'GRC Solutions | Governance, Risk & Compliance Services 2024',
-    description: 'Enterprise GRC solutions for governance, risk management, compliance (GDPR, HIPAA, SOX), data privacy, internal controls, and regulatory reporting.',
-    keywords: 'GRC, governance risk compliance, GRC software, risk management, compliance management, GDPR compliance, HIPAA compliance, SOX compliance, ISO 27001, PCI DSS, data privacy, internal controls, regulatory compliance, audit management, enterprise risk management, compliance automation, risk assessment, corporate governance, cybersecurity compliance, third-party risk management',
-    canonicalUrl: `${baseUrl}/services/grc`,
-    ogImage: Image1,
-  };
-
-  // Structured Data for GRC Services
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Governance, Risk and Compliance (GRC) Solutions",
-    "description": "Comprehensive GRC services including governance frameworks, risk management, regulatory compliance, data privacy, and internal controls.",
-    "provider": {
-      "@type": "Organization",
-      "name": "ONAS",
-      "url": baseUrl
-    },
-    "serviceType": [
-      "Governance Services",
-      "Risk Management",
-      "Compliance Management",
-      "Data Privacy",
-      "Internal Controls",
-      "Regulatory Reporting"
-    ],
-    "areaServed": {
-      "@type": "Country",
-      "name": "Global"
-    }
-  };
-
-  // FAQ Schema for GRC
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is GRC (Governance, Risk and Compliance)?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "GRC is an integrated approach to governance, risk management, and compliance that helps organizations achieve objectives, manage uncertainty, and ensure regulatory compliance through coordinated strategy and processes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are the key components of a GRC framework?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A comprehensive GRC framework includes governance structures, risk management processes, compliance programs, internal controls, data privacy measures, and reporting mechanisms to ensure organizational integrity and regulatory adherence."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which regulations does GRC software help manage?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "GRC solutions help manage GDPR, HIPAA, SOX, ISO 27001, PCI DSS, CCPA, NIST, FedRAMP, FISMA, CMMC, MAS, and other industry-specific regulatory requirements."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does GRC improve organizational performance?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "GRC improves performance by reducing risks, ensuring compliance, enhancing decision-making, increasing operational efficiency, protecting reputation, and building stakeholder trust through transparent governance."
-        }
-      }
-    ]
-  };
-
-  // Breadcrumb Schema
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": baseUrl
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Services",
-        "item": `${baseUrl}/services`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "GRC Solutions",
-        "item": seoData.canonicalUrl
-      }
-    ]
+  const toggleExpand = (index) => {
+    setExpanded((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
   return (
-    <Box>
-      {/* SEO Meta Tags */}
+    <PageShell>
       <Helmet>
-        {/* Primary Meta Tags */}
-        <title>{seoData.title}</title>
-        <meta name="description" content={seoData.description} />
-        <meta name="keywords" content={seoData.keywords} />
-        <link rel="canonical" href={seoData.canonicalUrl} />
-
-        {/* Open Graph / Facebook */}
+        <title>Generative AI Insights & Research | Latest AI Trends & Business Impact 2024</title>
+        <meta name="description" content="Explore comprehensive Generative AI insights, research reports, and industry analysis. Discover AI trends, business impact, implementation strategies, and future predictions for enterprise transformation." />
+        <meta name="keywords" content="Generative AI, AI insights, ChatGPT, GPT-4, AI research, artificial intelligence, machine learning, AI business impact, AI implementation, AI strategy, enterprise AI" />
+        <link rel="canonical" href={`${baseUrl}/insights/generative-ai`} />
+        <meta property="og:title" content="Generative AI Insights & Research | Latest AI Trends & Business Impact 2024" />
+        <meta property="og:description" content="Comprehensive Generative AI insights, research reports, and industry analysis for business leaders and AI practitioners." />
+        <meta property="og:image" content={RevolutionImg} />
+        <meta property="og:url" content={`${baseUrl}/insights/generative-ai`} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={seoData.canonicalUrl} />
-        <meta property="og:title" content="GRC Solutions | Enterprise Governance, Risk & Compliance Services" />
-        <meta property="og:description" content="Comprehensive GRC services for governance, risk management, compliance, data privacy, and regulatory reporting." />
-        <meta property="og:image" content={seoData.ogImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="GRC Solutions | Governance, Risk & Compliance" />
-        <meta name="twitter:description" content="Enterprise GRC services for compliance, risk management, and governance frameworks." />
-        <meta name="twitter:image" content={seoData.ogImage} />
-
-        {/* Additional SEO Tags */}
+        <meta name="twitter:title" content="Generative AI Insights & Research | Latest AI Trends" />
+        <meta name="twitter:description" content="Explore comprehensive Generative AI insights and research for enterprise transformation." />
+        <meta name="twitter:image" content={RevolutionImg} />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="author" content="ONAS GRC Solutions" />
-        <meta httpEquiv="content-language" content="en" />
+        <meta name="author" content="ONAS AI Research Team" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
-
-        {/* Organization Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "ONAS",
-            "url": baseUrl,
-            "logo": `${baseUrl}/logo.png`,
-            "description": "GRC consulting and solutions provider specializing in governance, risk management, and compliance services"
-          })}
-        </script>
+        <meta httpEquiv="content-language" content="en" />
       </Helmet>
 
-      {/* Hidden SEO Content for Search Engines */}
-      <div style={{ display: 'none' }}>
-        <h1>GRC Solutions - Governance, Risk and Compliance Services</h1>
-        <p>Comprehensive GRC (Governance, Risk and Compliance) solutions for enterprise organizations. Our GRC services include governance frameworks, risk management programs, regulatory compliance, data privacy, internal controls, and audit management.</p>
+      {/* Heading */}
+      <Section>
+        <Box sx={{ textAlign: 'center' , mt: { xs: '3rem', md: '5rem' }}}>
+          <Eyebrow>Insights &amp; Research</Eyebrow>
+          <SectionHeading sx={{ marginTop: '.7rem', marginBottom: '1rem' }}>
+            Generative AI Insights &amp; Research
+          </SectionHeading>
+          <Body sx={{ maxWidth: 700, margin: '0 auto .6rem', fontSize: '.72rem', lineHeight: 1.75 }}>
+            Comprehensive analysis of Generative AI trends, business impact, implementation strategies, and future predictions.
+          </Body>
+          <Body sx={{ maxWidth: 700, margin: '0 auto', fontSize: '.68rem', lineHeight: 1.7 }}>
+            Explore our collection of research reports, articles, deep dives, and interactive content on Generative AI transformation.
+          </Body>
+        </Box>
+      </Section>
 
-        <h2>GRC Framework Components</h2>
-        <ul>
-          <li>Governance Structures and Policy Management</li>
-          <li>Risk Assessment and Mitigation Strategies</li>
-          <li>Compliance Management for GDPR, HIPAA, SOX, ISO 27001</li>
-          <li>Data Privacy and Protection Programs</li>
-          <li>Internal Controls and Process Monitoring</li>
-          <li>Regulatory Reporting and Audit Management</li>
-        </ul>
-
-        <h3>GRC Compliance Standards</h3>
-        <p>Our GRC solutions support compliance with GDPR, HIPAA, SOX, PCI DSS, ISO 27001, NIST, CCPA, CMMC, FedRAMP, and other regulatory frameworks. We provide audit-ready documentation and continuous compliance monitoring.</p>
-
-        <h4>GRC Software Features</h4>
-        <p>Integrated GRC platform with risk assessment tools, compliance tracking, policy management, incident reporting, control testing, and real-time dashboards for enterprise risk management.</p>
-      </div>
-
-      {/* Hero Section */}
-      <HeroMain
-        heading="Governance, Risk, and Compliance (GRC)"
-        description="Build stronger organizations by aligning governance, managing risks effectively, and ensuring regulatory compliance across all operations."
-        images={[Image1, Image2, Image3, Image4, Image5, Image6, Image7]}
-        buttons={[
-          { text: 'Contact Us', href: '/resources/contact-us', variant: 'primaryFilled' },
-        ]}
-      />
-
-      {/* GRC Sections - Enhanced with semantic markup */}
-      <Box sx={{
-        maxWidth: '1200px',
-        mx: 'auto',
-        px: { xs: 2, md: 2 },
-        py: 6
-      }}>
-        <Typography
-          component="h5"
-          variant="h6"
-          color="#0B4C74"
-          sx={{
-            textAlign: 'center',
-            mb: 4,
-            fontWeight: 700,
-            fontSize: { xs: '0.75rem', md: '2.0rem' }
-          }}
-        >
-          Comprehensive GRC Framework Components
-        </Typography>
-
-        {/* SEO Introduction */}
-        <Typography
-          variant="body1"
-          sx={{
-            textAlign: 'center',
-            maxWidth: '900px',
-            mx: 'auto',
-            mb: 4,
-            color: '#282825',
-            fontSize: '0.75rem',
-            lineHeight: 1.7
-          }}
-        >
-          Our integrated GRC framework provides comprehensive governance, risk management, and compliance solutions
-          to help organizations navigate regulatory complexities, manage risks, and build resilient governance structures.
-        </Typography>
-
-        {grcSections.map((section, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
+      {/* Stats strip */}
+      <Box sx={{ background: soft, borderTop: `1px solid ${line}`, borderBottom: `1px solid ${line}` }}>
+        <Container maxWidth={false} disableGutters sx={{ ...containerSx, paddingTop: '2rem', paddingBottom: '2rem' }}>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(4, 1fr)' },
+              gap: { xs: '1rem', md: '1.5rem' },
+            }}
           >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: {
-                  xs: 'column',
-                  md: section.reverse ? 'row-reverse' : 'row',
-                },
-                backgroundColor: section.bg,
-                borderRadius: 3,
-                mb: 4,
-                overflow: 'hidden',
-                boxShadow: 3,
-                border: '1px solid rgba(11, 76, 116, 0.1)',
-              }}
-              itemScope
-              itemType={`https://schema.org/${section.title === 'Governance' ? 'GovernmentOrganization' : 'Service'}`}
-            >
-              {/* Left Side - Image */}
-              <Box
-                sx={{
-                  width: { xs: '100%', md: '40%' },
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  p: 2,
-                }}
-              >
-                <motion.img
-                  src={section.image}
-                  alt={`GRC ${section.title.toLowerCase()} solutions and services`}
-                  title={`${section.title} - GRC Framework Component`}
-                  style={{
-                    width: '100%',
-                    height: 250,
-                    objectFit: 'cover',
-                    borderRadius: '8px',
-                    boxShadow: '0px 4px 10px rgba(0,0,0,0.3)',
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: 'spring', stiffness: 200 }}
-                  itemProp="image"
-                />
-              </Box>
-
-              {/* Right Side - Text + List */}
-              <Box
-                sx={{
-                  width: { xs: '100%', md: '60%' },
-                  p: { xs: 3, md: 6 },
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                }}
-              >
-                <Typography
-                  color="#0B4C74"
-                  variant="h6"
-                  sx={{
-                    fontWeight: 700,
-                    mb: 2,
-                    fontSize: { xs: '0.75rem', md: '1.5rem' }
-                  }}
-                  itemProp="name"
-                >
-                  {section.title}
+            {stats.map((stat, idx) => (
+              <Box key={idx} sx={{ textAlign: 'center' }}>
+                <Typography sx={{ margin: 0, color: ink, font: "400 clamp(1.4rem, 2.8vw, 2rem)/1 Georgia, 'Times New Roman', serif" }}>
+                  {stat.value}
                 </Typography>
-                <List dense sx={{ mb: 2 }}>
-                  {section.items.map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: idx * 0.1 }}
-                    >
-                      <ListItem sx={{ py: 0.5 }}>
-                        <ListItemText
-                          primary={item}
-                          primaryTypographyProps={{
-                            fontSize: { xs: '0.75rem', md: '1rem' },
-                            color: 'text.secondary',
-                            lineHeight: 1.6
-                          }}
-                          itemProp="description"
-                        />
-                      </ListItem>
-                    </motion.div>
-                  ))}
-                </List>
+                <Typography sx={{ margin: '.4rem 0 0', color: `${muted} !important`, fontFamily: "'Poppins', sans-serif", fontSize: '.58rem', letterSpacing: '.05em', textTransform: 'uppercase' }}>
+                  {stat.label}
+                </Typography>
               </Box>
-            </Box>
-          </motion.div>
-        ))}
-
-        {/* SEO Content Section */}
-        <Box sx={{
-          mt: 10,
-          p: { xs: 3, md: 4 },
-          backgroundColor: 'rgba(11, 76, 116, 0.05)',
-          borderRadius: 3,
-          border: '1px solid rgba(11, 76, 116, 0.1)'
-        }}>
-          <Typography
-            variant="h6"
-            color="#0B4C74"
-            gutterBottom
-            sx={{ fontWeight: 700, mb: 3, textAlign: 'center' }}
-          >
-            Benefits of Integrated GRC Solutions
-          </Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={4}>
-              <Typography variant="body1" color="#282825" paragraph>
-                <strong>Risk Reduction:</strong> Proactively identify, assess, and mitigate enterprise risks with continuous monitoring and automated controls.
-              </Typography>
-              <Typography variant="body1" color="#282825" paragraph>
-                <strong>Compliance Efficiency:</strong> Streamline compliance with GDPR, HIPAA, SOX, ISO 27001, and other regulations through centralized management.
-              </Typography>
-              <Typography variant="body1" color="#282825" paragraph>
-                <strong>Operational Excellence:</strong> Improve decision-making with integrated risk and compliance data, reducing silos and increasing transparency.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography variant="body1" color="#282825" paragraph>
-                <strong>Cost Optimization:</strong> Reduce audit costs, avoid regulatory fines, and optimize resource allocation with automated GRC processes.
-              </Typography>
-              <Typography variant="body1" color="#282825" paragraph>
-                <strong>Stakeholder Confidence:</strong> Build trust with customers, investors, and regulators through robust governance and compliance practices.
-              </Typography>
-              <Typography variant="body1" color="#282825">
-                <strong>Strategic Alignment:</strong> Align GRC activities with business objectives to drive growth while maintaining compliance and managing risks.
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
-
-        {/* GRC Compliance Table */}
-        <Box sx={{
-          mt: 8,
-          p: 3,
-          backgroundColor: 'white',
-          borderRadius: 2,
-          boxShadow: 2
-        }}>
-          <Typography
-            variant="h6"
-            color="#0B4C74"
-            gutterBottom
-            sx={{ fontWeight: 600, mb: 3 }}
-          >
-            Key Regulatory Frameworks We Support
-          </Typography>
-          <Grid container spacing={2}>
-            {[
-              { name: 'GDPR', desc: 'General Data Protection Regulation' },
-              { name: 'HIPAA', desc: 'Health Insurance Portability and Accountability Act' },
-              { name: 'SOX', desc: 'Sarbanes-Oxley Act' },
-              { name: 'ISO 27001', desc: 'Information Security Management' },
-              { name: 'PCI DSS', desc: 'Payment Card Industry Data Security Standard' },
-              { name: 'CCPA', desc: 'California Consumer Privacy Act' },
-            ].map((framework, idx) => (
-              <Grid item xs={12} sm={6} md={4} key={idx}>
-                <Box sx={{
-                  p: 2,
-                  border: '1px solid rgba(11, 76, 116, 0.2)',
-                  borderRadius: 2,
-                  textAlign: 'center'
-                }}>
-                  <Typography variant="subtitle1" color="#0B4C74" fontWeight="600">
-                    {framework.name}
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    {framework.desc}
-                  </Typography>
-                </Box>
-              </Grid>
             ))}
-          </Grid>
-        </Box>
+          </Box>
+        </Container>
       </Box>
-    </Box>
+
+      {/* Article grid */}
+      <Section>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+            gap: { xs: '1rem', md: '1.2rem' },
+            alignItems: 'stretch',
+          }}
+        >
+          {sections.map((sec, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.04 }}
+              viewport={{ once: true }}
+              style={{ display: 'flex', width: '100%' }}
+            >
+              <Box sx={cardSx}>
+                {sec.image && (
+                  <Box
+                    component="img"
+                    src={sec.image}
+                    alt={`Generative AI insights: ${sec.title}`}
+                    title={sec.title}
+                    sx={{
+                      width: '100%',
+                      height: 180,
+                      objectFit: 'cover',
+                      display: 'block',
+                      borderBottom: `1px solid ${line}`,
+                    }}
+                  />
+                )}
+
+                <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', padding: { xs: '1.2rem 1rem', md: '1.4rem 1.2rem' } }}>
+                  {sec.tag && (
+                    <Typography
+                      sx={{
+                        display: 'inline-block',
+                        alignSelf: 'flex-start',
+                        marginBottom: '.7rem',
+                        padding: '.25rem .55rem',
+                        border: `1px solid ${line}`,
+                        borderRadius: '20px',
+                        color: '#0B4C74',
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: '.52rem',
+                        fontWeight: 700,
+                        letterSpacing: '.1em',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      {sec.tag}
+                    </Typography>
+                  )}
+
+                  <SubHeading sx={{ marginBottom: '.6rem', minHeight: '2.5rem' }}>
+                    {sec.title}
+                  </SubHeading>
+
+                  <TruncatedText
+                    text={sec.text}
+                    isExpanded={expanded[i]}
+                    toggleExpand={() => toggleExpand(i)}
+                  />
+
+                  <Box sx={{ mt: 'auto', pt: '1rem' }}>
+                    {sec.cta && (
+                      <Box
+                        component="button"
+                        onClick={() => {
+                          if (sec.link?.startsWith('http')) window.open(sec.link, '_blank');
+                        }}
+                        aria-label={`Read more about ${sec.title}`}
+                        sx={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '.4rem',
+                          padding: '.5rem .8rem',
+                          borderRadius: '2px',
+                          border: 0,
+                          background: '#0B4C74',
+                          color: '#ffffff',
+                          fontWeight: 600,
+                          fontSize: '.58rem',
+                          fontFamily: "'Poppins', sans-serif",
+                          cursor: 'pointer',
+                          transition: 'background .2s ease',
+                          '&:hover': { background: '#d3ffb0', color: '#000000' },
+                        }}
+                      >
+                        {sec.cta} <ArrowForward sx={{ fontSize: 12 }} />
+                      </Box>
+                    )}
+                  </Box>
+                </Box>
+              </Box>
+            </motion.div>
+          ))}
+        </Box>
+      </Section>
+
+      {/* About our research */}
+      <Section bg={soft}>
+        <Box sx={{ textAlign: 'center', maxWidth: 900, margin: '0 auto' }}>
+          <Eyebrow>About Our Research</Eyebrow>
+          <SectionHeading sx={{ marginTop: '.7rem', marginBottom: '1rem' }}>
+            About Our Generative AI Research
+          </SectionHeading>
+          <Body sx={{ fontSize: '.72rem', lineHeight: 1.8, marginBottom: '.8rem' }}>
+            Our Generative AI research provides data-driven insights and analysis on AI transformation, business impact, and implementation strategies. We cover the latest developments in large language models (LLMs), multimodal AI, AI agents, and enterprise AI adoption across industries including healthcare, finance, retail, and manufacturing.
+          </Body>
+          <Body sx={{ fontSize: '.68rem', fontStyle: 'italic', lineHeight: 1.7 }}>
+            Stay updated with the latest Generative AI trends, research, and insights for informed decision-making and strategic AI implementation.
+          </Body>
+        </Box>
+      </Section>
+    </PageShell>
   );
 }
 
-// Add Grid import if not already present
-import { Grid } from '@mui/material';
+export function TruncatedText({ text, isExpanded, toggleExpand }) {
+  const textRef = useRef();
+  const [textExceedsLimit, setTextExceedsLimit] = useState(false);
+  const [maxLines, setMaxLines] = useState(4);
+
+  useEffect(() => {
+    const updateLines = () => {
+      if (window.innerWidth < 600) setMaxLines(4);
+      else if (window.innerWidth < 900) setMaxLines(3);
+      else setMaxLines(4);
+    };
+    updateLines();
+    window.addEventListener("resize", updateLines);
+    return () => window.removeEventListener("resize", updateLines);
+  }, []);
+
+  useEffect(() => {
+    if (textRef.current) {
+      setTextExceedsLimit(textRef.current.scrollHeight > textRef.current.clientHeight);
+    }
+  }, [text, maxLines]);
+
+  return (
+    <Box>
+      <Typography
+        ref={textRef}
+        sx={{
+          color: `${muted} !important`,
+          fontFamily: "'Poppins', sans-serif",
+          fontSize: '.66rem',
+          lineHeight: 1.75,
+          overflow: 'hidden',
+          display: '-webkit-box',
+          WebkitLineClamp: isExpanded ? 'none' : maxLines,
+          WebkitBoxOrient: 'vertical',
+        }}
+      >
+        {text}
+      </Typography>
+
+      {textExceedsLimit && (
+        <Button
+          onClick={toggleExpand}
+          aria-expanded={isExpanded}
+          sx={{
+            padding: '.3rem 0',
+            marginTop: '.5rem',
+            minWidth: 0,
+            color: '#0B4C74',
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: '.58rem',
+            fontWeight: 600,
+            textTransform: 'none',
+            '&:hover': { background: 'transparent', color: ink },
+          }}
+        >
+          {isExpanded ? 'Show less' : 'Read more'}
+        </Button>
+      )}
+    </Box>
+  );
+}

@@ -1,1001 +1,770 @@
 import React, { useState } from 'react';
 import {
-    Box,
-    Typography,
-    Grid,
-    Chip,
-    Button,
-    Container,
-    alpha,
-    Paper,
-    Stack,
-    useMediaQuery,
-    useTheme,
-    Tabs,
-    Tab,
-    Card,
-    CardContent,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
-    Avatar,
-    Fade,
-    Grow
+  Box,
+  Typography,
+  Container,
+  Tabs,
+  Tab,
+  Avatar,
 } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import GroupsIcon from '@mui/icons-material/Groups';
-import BusinessIcon from '@mui/icons-material/Business';
-import SchoolIcon from '@mui/icons-material/School';
-import CodeIcon from '@mui/icons-material/Code';
+import { motion } from 'framer-motion';
+
 import CloudIcon from '@mui/icons-material/Cloud';
+import BusinessIcon from '@mui/icons-material/Business';
+import GroupsIcon from '@mui/icons-material/Groups';
+import CodeIcon from '@mui/icons-material/Code';
+import SchoolIcon from '@mui/icons-material/School';
 import SecurityIcon from '@mui/icons-material/Security';
-import StarIcon from '@mui/icons-material/Star';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import BoltIcon from '@mui/icons-material/Bolt';
+import { ArrowForward, Check } from '@mui/icons-material';
+import { Link as RouterLink } from 'react-router-dom';
 
-// Import Poppins font
-import '@fontsource/poppins';
-import '@fontsource/poppins/100.css';
-import '@fontsource/poppins/200.css';
-import '@fontsource/poppins/300.css';
-import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/500.css';
-import '@fontsource/poppins/600.css';
-import '@fontsource/poppins/700.css';
-import '@fontsource/poppins/800.css';
-import '@fontsource/poppins/900.css';
+// ── Arvee editorial palette ──
+const ink = '#0B4C74';
+const muted = '#647572';
+const line = '#dfe8df';
+const soft = '#ffffff';
+const cream = '#ffffff';
+const lime = '#baf58c';
 
-// Color palette based on provided colors
-const COLORS = {
-    primary: '#0B4C74', // Dark Blue
-    secondary: '#F2F3F4', // Light Gray
-    accent: '#2E8BC0', // Medium Blue
-    accentLight: '#64B5F6', // Light Blue
-    success: '#4CAF50',
-    warning: '#FF9800',
-    textPrimary: '#212121',
-    textSecondary: '#757575',
+const eyebrowSx = {
+  color: '#0B4C74',
+  fontSize: '.55rem',
+  letterSpacing: '.12em',
+  textTransform: 'uppercase',
+  fontWeight: 700,
+  fontFamily: "'Poppins', sans-serif",
 };
 
-// Poppins font styles
-const POPPINS_STYLES = {
-    fontFamily: "'Poppins', sans-serif",
-    h1: { fontFamily: "'Poppins', sans-serif", fontWeight: 900 },
-    h2: { fontFamily: "'Poppins', sans-serif", fontWeight: 800 },
-    h3: { fontFamily: "'Poppins', sans-serif", fontWeight: 700 },
-    h4: { fontFamily: "'Poppins', sans-serif", fontWeight: 700 },
-    h5: { fontFamily: "'Poppins', sans-serif", fontWeight: 600 },
-    h6: { fontFamily: "'Poppins', sans-serif", fontWeight: 600 },
-    body1: { fontFamily: "'Poppins', sans-serif", fontWeight: 400 },
-    body2: { fontFamily: "'Poppins', sans-serif", fontWeight: 400 },
-    button: { fontFamily: "'Poppins', sans-serif", fontWeight: 600 },
-    caption: { fontFamily: "'Poppins', sans-serif", fontWeight: 400 },
-    subtitle1: { fontFamily: "'Poppins', sans-serif", fontWeight: 500 },
-    subtitle2: { fontFamily: "'Poppins', sans-serif", fontWeight: 500 },
+const containerSx = {
+  width: '100%',
+  maxWidth: { xs: '100%', md: '1240px' },
+  margin: '0 auto',
+  padding: { xs: '0 1rem', md: '0 1.5rem' },
+  boxSizing: 'border-box',
+};
+
+function Eyebrow({ children }) {
+  return <Typography sx={eyebrowSx}>{children}</Typography>;
+}
+
+const cardSx = {
+  display: 'flex',
+  flexDirection: 'column',
+  background: '#fff',
+  border: `1px solid ${line}`,
+  borderRadius: '2px',
+  overflow: 'hidden',
+  height: '100%',
+  width: '100%',
+  transition: 'all .25s ease',
+  '&:hover': {
+    borderColor: '#aac7b2',
+    transform: 'translateY(-3px)',
+  },
 };
 
 const expertiseData = [
-    {
-            id: 1,
-            category: 'ERP Services',
-            icon: <CloudIcon />,
-            description: 'Future-proofing your enterprise with AI-augmented ERP implementation and dynamic optimization for continuous excellence.',
-            examples: [
-                { label: 'SAP Implementation', link: '/how-we-help/erp/sap' },
-                { label: 'Oracle Cloud Solutions', link: 'https://www.onasit.com/', external: true },
-                { label: 'Salesforce CRM', link: '/how-we-help/erp/salesforce' },
-                { label: 'Workday Integration', link: '/how-we-help/erp/workday' },
-                { label: 'Service Now', link: '/how-we-help/erp/servicenow' },
-                { label: 'Netsuite', link: '/how-we-help/erp/netsuite' },
-            ],
-            stats: '7+ ERP Systems',
-            color: COLORS.accentLight,
-            bgColor: alpha(COLORS.accentLight, 0.08),
-            benefits: ['Streamlined Operations', 'Real-time Insights', 'Enhanced Collaboration']
-        },
-
-    {
-        id: 2,
-        category: 'IT Consulting',
-        icon: <BusinessIcon />,
-        description: 'Strategic IT consulting to transform operations and drive digital excellence.',
-        examples: [
-            { label: 'Digital Transformation Strategy', link: '/staffing/it-consulting#transformation' },
-            { label: 'Technology Roadmapping', link: '/staffing/it-consulting#roadmapping' },
-            { label: 'Business Process Optimization', link: '/staffing/it-consulting#optimization' },
-            { label: 'IT Infrastructure Planning', link: '/staffing/it-consulting#infrastructure' },
-            { label: 'Banking Finance Sales', link: '/staffing/it-consulting#banking-finance' },
-            { label: 'Finance & Accounting', link: '/staffing/it-consulting#finance-accounting' },
-            { label: 'HR & Support', link: '/staffing/it-consulting#hr-support' },
-            { label: 'Legal & Compliance', link: '/staffing/it-consulting#legal-compliance' },
-             { label: 'Pharma, Healthcare & Life Sciences', link: '/staffing/it-consulting#pharma-healthcare-lifesciences' },
-        ],
-        stats: '95% Client Satisfaction',
-        color: COLORS.primary,
-        bgColor: alpha(COLORS.primary, 0.08),
-        benefits: ['Cost Reduction', 'Improved Efficiency', 'Scalable Solutions']
-    },
-    {
-        id: 3,
-        category: 'Professional Services',
-        icon: <GroupsIcon />,
-        description: 'Elite staffing solutions with top-tier professionals for your business needs.',
-        examples: [
-            { label: 'Managed IT Services', link: '/staffing/professional-services#managed-it' },
-            { label: 'Expert Staff Augmentation', link: '/staffing/professional-services#staff-augmentation' },
-            { label: 'Contract Staffing Solutions', link: '/staffing/professional-services#temporary-contract' },
-            { label: 'Executive Placement', link: '/staffing/professional-services#permanent-executive' },
-             { label: 'Contract To Hire Staffing', link: '/staffing/professional-services#contract-to-hire' },
-             { label: 'Remote / Virtual Staffing', link: '/staffing/professional-services#remote-virtual' },
-        ],
-        stats: '100+ Professionals Placed',
-        color: COLORS.accent,
-        bgColor: alpha(COLORS.accent, 0.08),
-        benefits: ['Access to Top Talent', 'Flexible Staffing', 'Reduced Overhead']
-    },
-
-    {
-        id: 4,
-        category: 'Digital Solutions',
-        icon: <CodeIcon />,
-        description: 'Cutting-edge web and digital solutions to amplify your online presence.',
-        examples: [
-            { label: 'Custom Web Development', link: '/how-we-help/other-services/web-dev' },
-            { label: 'SEO & Digital Marketing', link: '/how-we-help/other-services/seo' },
-            { label: 'Mobile App Development', link: '/how-we-help/other-services/mobileapp' },
-            { label: 'UI/UX Design Excellence', link: '/how-we-help/other-services/uiuxsection' },
-            { label: 'Social Media Marketing', link: '/how-we-help/other-services/social-media' },
-            { label: 'Content Marketing', link: '/how-we-help/other-services/content-marketing' },
-        ],
-        stats: '25+ Projects Delivered',
-        color: COLORS.warning,
-        bgColor: alpha(COLORS.warning, 0.08),
-        benefits: ['Enhanced User Experience', 'Increased Conversions', 'Brand Visibility']
-    },
-    {
-            id: 5,
-            category: 'EdTech Services',
-            icon: <SchoolIcon />,
-            description: 'Innovative educational technology solutions for modern learning ecosystems.',
-            examples: [
-                { label: 'LMS Implementation', link: '/education/lms-implementation', external: true },
-                { label: 'E-Learning Platform Development', link: '/education/e-learning', external: true },
-                { label: 'Educational Analytics', link: '/education/analytics', external: true },
-                { label: 'Virtual Classroom Solutions', link: '/education/virtual-classroom', external: true },
-            ],
-            stats: '30+ Educational Institutions',
-            color: COLORS.success,
-            bgColor: alpha(COLORS.success, 0.08),
-            benefits: ['Enhanced Learning Outcomes', 'Scalable Education', 'Modern Learning Tools']
-        },
-    {
-            id: 6,
-            category: 'Cybersecurity',
-            icon: <SecurityIcon />,
-            description: 'Advanced security solutions to protect your digital assets and ensure compliance.',
-            examples: [
-                 { label: 'Security Risk Assessment', link: '/security/securityrisk' },
-                { label: 'Network Security Solutions', link: '/security/networksecurity' },
-                { label: 'Data Protection & Privacy', link: '/security/dataprotection' },
-                { label: 'Compliance Management', link: '/security/compliancemanagement' },
-            ],
-            stats: '99.9% Security Uptime',
-            color: '#9C27B0',
-            bgColor: alpha('#9C27B0', 0.08),
-            benefits: ['Data Protection', 'Regulatory Compliance', 'Threat Prevention']
-        }
+  {
+    id: 1,
+    category: 'ERP Services',
+    icon: <CloudIcon />,
+    description:
+      'Future-proofing your enterprise with AI-augmented ERP implementation and dynamic optimization for continuous excellence.',
+    examples: [
+      { label: 'SAP Implementation', link: '/how-we-help/erp/sap' },
+      { label: 'Oracle Cloud Solutions', link: 'https://www.onasit.com/', external: true },
+      { label: 'Salesforce CRM', link: '/how-we-help/erp/salesforce' },
+      { label: 'Workday Integration', link: '/how-we-help/erp/workday' },
+      { label: 'Service Now', link: '/how-we-help/erp/servicenow' },
+      { label: 'Netsuite', link: '/how-we-help/erp/netsuite' },
+    ],
+    stats: '7+ ERP Systems',
+    benefits: ['Streamlined Operations', 'Real-time Insights', 'Enhanced Collaboration'],
+  },
+  {
+    id: 2,
+    category: 'IT Consulting',
+    icon: <BusinessIcon />,
+    description: 'Strategic IT consulting to transform operations and drive digital excellence.',
+    examples: [
+      { label: 'Digital Transformation Strategy', link: '/staffing/it-consulting#transformation' },
+      { label: 'Technology Roadmapping', link: '/staffing/it-consulting#roadmapping' },
+      { label: 'Business Process Optimization', link: '/staffing/it-consulting#optimization' },
+      { label: 'IT Infrastructure Planning', link: '/staffing/it-consulting#infrastructure' },
+      { label: 'Banking Finance Sales', link: '/staffing/it-consulting#banking-finance' },
+      { label: 'Finance & Accounting', link: '/staffing/it-consulting#finance-accounting' },
+      { label: 'HR & Support', link: '/staffing/it-consulting#hr-support' },
+      { label: 'Legal & Compliance', link: '/staffing/it-consulting#legal-compliance' },
+      { label: 'Pharma, Healthcare & Life Sciences', link: '/staffing/it-consulting#pharma-healthcare-lifesciences' },
+    ],
+    stats: '95% Client Satisfaction',
+    benefits: ['Cost Reduction', 'Improved Efficiency', 'Scalable Solutions'],
+  },
+  {
+    id: 3,
+    category: 'Professional Services',
+    icon: <GroupsIcon />,
+    description: 'Elite staffing solutions with top-tier professionals for your business needs.',
+    examples: [
+      { label: 'Managed IT Services', link: '/staffing/professional-services#managed-it' },
+      { label: 'Expert Staff Augmentation', link: '/staffing/professional-services#staff-augmentation' },
+      { label: 'Contract Staffing Solutions', link: '/staffing/professional-services#temporary-contract' },
+      { label: 'Executive Placement', link: '/staffing/professional-services#permanent-executive' },
+      { label: 'Contract To Hire Staffing', link: '/staffing/professional-services#contract-to-hire' },
+      { label: 'Remote / Virtual Staffing', link: '/staffing/professional-services#remote-virtual' },
+    ],
+    stats: '100+ Professionals Placed',
+    benefits: ['Access to Top Talent', 'Flexible Staffing', 'Reduced Overhead'],
+  },
+  {
+    id: 4,
+    category: 'Digital Solutions',
+    icon: <CodeIcon />,
+    description: 'Cutting-edge web and digital solutions to amplify your online presence.',
+    examples: [
+      { label: 'Custom Web Development', link: '/how-we-help/other-services/web-dev' },
+      { label: 'SEO & Digital Marketing', link: '/how-we-help/other-services/seo' },
+      { label: 'Mobile App Development', link: '/how-we-help/other-services/mobileapp' },
+      { label: 'UI/UX Design Excellence', link: '/how-we-help/other-services/uiuxsection' },
+      { label: 'Social Media Marketing', link: '/how-we-help/other-services/social-media' },
+      { label: 'Content Marketing', link: '/how-we-help/other-services/content-marketing' },
+    ],
+    stats: '25+ Projects Delivered',
+    benefits: ['Enhanced User Experience', 'Increased Conversions', 'Brand Visibility'],
+  },
+  {
+    id: 5,
+    category: 'EdTech Services',
+    icon: <SchoolIcon />,
+    description: 'Innovative educational technology solutions for modern learning ecosystems.',
+    examples: [
+      { label: 'LMS Implementation', link: '/education/lms-implementation' },
+      { label: 'E-Learning Platform Development', link: '/education/e-learning' },
+      { label: 'Educational Analytics', link: '/education/analytics' },
+      { label: 'Virtual Classroom Solutions', link: '/education/virtual-classroom' },
+    ],
+    stats: '30+ Educational Institutions',
+    benefits: ['Enhanced Learning Outcomes', 'Scalable Education', 'Modern Learning Tools'],
+  },
+  {
+    id: 6,
+    category: 'Cybersecurity',
+    icon: <SecurityIcon />,
+    description: 'Advanced security solutions to protect your digital assets and ensure compliance.',
+    examples: [
+      { label: 'Security Risk Assessment', link: '/security/securityrisk' },
+      { label: 'Network Security Solutions', link: '/security/networksecurity' },
+      { label: 'Data Protection & Privacy', link: '/security/dataprotection' },
+      { label: 'Compliance Management', link: '/security/compliancemanagement' },
+    ],
+    stats: '99.9% Security Uptime',
+    benefits: ['Data Protection', 'Regulatory Compliance', 'Threat Prevention'],
+  },
 ];
 
 const industries = [
-    {
-        name: 'Banking & Finance',
-        icon: '🏦',
-        color: COLORS.primary,
-        link: '/industries/banking-finance'
-    },
-    {
-        name: 'Healthcare',
-        icon: '🏥',
-        color: COLORS.success,
-        link: '/industries/healthcare'
-    },
-    {
-        name: 'Education',
-        icon: '🎓',
-        color: COLORS.warning,
-        link: '/industries/education'
-    },
-    {
-        name: 'Manufacturing',
-        icon: '🏭',
-        color: COLORS.accent,
-        link: '/industries/manufacturing'
-    },
-    {
-        name: 'Retail',
-        icon: '🛒',
-        color: '#E91E63',
-        link: '/industries/retail'
-    },
-    {
-        name: 'Insurance',
-        icon: '🛡️',
-        color: COLORS.primary,
-        link: '/industries/insurance'
-    },
-    {
-        name: 'Energy & Utilities',
-        icon: '⚡',
-        color: '#FFC107',
-        link: '/industries/energy-utilities'
-    },
-    {
-        name: 'Professional Services',
-        icon: '💼',
-        color: COLORS.textSecondary,
-        link: '/industries/professional-services'
-    },
-    // New industries added below
-    {
-        name: 'Information Technology',
-        icon: '💻',
-        color: '#2196F3',
-        link: '/industries/information-technology'
-    },
-    {
-        name: 'Hi-Tech',
-        icon: '🚀',
-        color: '#9C27B0',
-        link: '/industries/hi-tech'
-    },
-    {
-        name: 'Energy Source & Utilities',
-        icon: '🔋',
-        color: '#FF9800',
-        link: '/industries/energy-source-utilities'
-    },
-    {
-        name: 'Communication Media & Information Services',
-        icon: '📡',
-        color: '#3F51B5',
-        link: '/industries/communication-media'
-    },
-    {
-        name: 'Engineering, Construction & Operations',
-        icon: '🏗️',
-        color: '#795548',
-        link: '/industries/engineering-construction'
-    },
-    {
-        name: 'Public Services',
-        icon: '🏛️',
-        color: '#607D8B',
-        link: '/industries/public-services'
-    },
-    {
-        name: 'Life Sciences & Pharma',
-        icon: '🧬',
-        color: '#4CAF50',
-        link: '/industries/life-sciences-pharma'
-    },
+  { name: 'Banking & Finance', icon: '🏦', link: '/industries/banking-finance' },
+  { name: 'Healthcare', icon: '🏥', link: '/industries/healthcare' },
+  { name: 'Education', icon: '🎓', link: '/industries/education' },
+  { name: 'Manufacturing', icon: '🏭', link: '/industries/manufacturing' },
+  { name: 'Retail', icon: '🛒', link: '/industries/retail' },
+  { name: 'Insurance', icon: '🛡️', link: '/industries/insurance' },
+  { name: 'Energy & Utilities', icon: '⚡', link: '/industries/energy-utilities' },
+  { name: 'Professional Services', icon: '💼', link: '/industries/professional-services' },
+  { name: 'Information Technology', icon: '💻', link: '/industries/information-technology' },
+  { name: 'Hi-Tech', icon: '🚀', link: '/industries/hi-tech' },
+  { name: 'Energy Source & Utilities', icon: '🔋', link: '/industries/energy-source-utilities' },
+  { name: 'Communication Media & Information Services', icon: '📡', link: '/industries/communication-media' },
+  { name: 'Engineering, Construction & Operations', icon: '🏗️', link: '/industries/engineering-construction' },
+  { name: 'Public Services', icon: '🏛️', link: '/industries/public-services' },
+  { name: 'Life Sciences & Pharma', icon: '🧬', link: '/industries/life-sciences-pharma' },
 ];
 
 export default function ExpertiseSection() {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-    const [activeCategory, setActiveCategory] = useState(expertiseData[0]);
-    const [activeTab, setActiveTab] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(expertiseData[0]);
+  const [activeTab, setActiveTab] = useState(0);
 
-    const handleTabChange = (event, newValue) => {
-        setActiveTab(newValue);
-        setActiveCategory(expertiseData[newValue]);
-    };
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
+    setActiveCategory(expertiseData[newValue]);
+  };
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.1
-            }
-        }
-    };
+  return (
+    <Box
+      sx={{
+        background: cream,
+        color: ink,
+        width: '100%',
+        overflowX: 'hidden',
+        '& h1, & h2, & h3': {
+          fontFamily: "Georgia, 'Times New Roman', serif",
+          fontWeight: 400,
+          letterSpacing: 0,
+        },
+      }}
+    >
+      <Container
+        maxWidth={false}
+        disableGutters
+        sx={{
+          ...containerSx,
+          paddingTop: { xs: '3.5rem', md: '5rem' },
+          paddingBottom: { xs: '3.5rem', md: '5rem' },
+        }}
+      >
+        {/* ── Heading + Image (two-column) ── */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1.1fr .9fr' },
+            gap: { xs: '2rem', md: 'clamp(2rem, 5vw, 4rem)' },
+            alignItems: 'center',
+            marginBottom: { xs: '2.5rem', md: '3.5rem' },
+          }}
+        >
+          <Box>
+            <Eyebrow>Our Expertise</Eyebrow>
+            <Typography
+              component="h2"
+              sx={{
+                margin: '.7rem 0 1rem',
+                font: "400 clamp(1.4rem, 2.4vw, 2rem)/1.1 Georgia, 'Times New Roman', serif",
+                color: ink,
+              }}
+            >
+              Transform Your Business With Expert Solutions
+            </Typography>
+            <Typography
+              sx={{
+                color: `${muted} !important`,
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '.72rem',
+                lineHeight: 1.75,
+                marginBottom: '1.6rem',
+              }}
+            >
+              Partner with us for comprehensive IT services that drive innovation, enhance
+              productivity, and deliver measurable business outcomes across industries.
+            </Typography>
 
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 12
-            }
-        }
-    };
-
-    return (
-        <Box sx={{
-            bgcolor: 'white',
-            py: { xs: 4, md: 2 },
-            position: 'relative',
-            overflow: 'hidden',
-            background: `linear-gradient(135deg, ${COLORS.secondary} 0%, white 30%, white 100%)`,
-            fontFamily: "Poppins, Montserrat, sans-serif"
-        }}>
-            {/* Background Elements */}
             <Box
-                sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '100%',
-                    background: `radial-gradient(circle at 10% 20%, ${alpha(COLORS.primary, 0.03)} 0%, transparent 40%),
-                                radial-gradient(circle at 90% 80%, ${alpha(COLORS.accent, 0.03)} 0%, transparent 40%)`,
-                    zIndex: 0
-                }}
-            />
-
-            <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-                {/* Header with Gradient */}
-                <Box sx={{
-                    textAlign: 'center',
-                    mb: { xs: 1, md: 2 },
-                    position: 'relative'
-                }}>
-                    <Chip
-                        icon={<StarIcon />}
-                        label="Our Expertise"
-                        sx={{
-                            bgcolor: alpha(COLORS.primary, 0.1),
-                            color: COLORS.primary,
-                            fontFamily: "Poppins, Montserrat, sans-serif",
-                            fontWeight: 700,
-                            px: 3,
-                            py: 1.5,
-                            mb: 1,
-                            fontSize: '1.2rem',
-                            border: `2px solid ${alpha(COLORS.primary, 0.2)}`,
-                            '& .MuiChip-icon': { color: COLORS.primary }
-                        }}
-                    />
-
-                    <Typography
-                        variant="h4"
-                        sx={{
-                            fontWeight: 800,
-                            mb: 2,
-                            fontSize: { xs: '1.0rem', md: '1.5rem' },
-                            background: `linear-gradient(90deg, ${COLORS.primary} 0%, ${COLORS.accent} 100%)`,
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            lineHeight: 1.1,
-                            fontFamily: "Poppins, Montserrat, sans-serif",
-                            letterSpacing: '-0.5px'
-                        }}
-                    >
-                        Transform Your Business
-                        <br />
-                        <Box component="span" sx={{ fontSize: '0.75em', fontWeight: 700, fontFamily: "Poppins, Montserrat, sans-serif" }}>
-                            With Expert Solutions
-                        </Box>
-                    </Typography>
-
-                    <Typography
-                        variant="h6"
-                        sx={{
-                            mb: 2,
-                            color: COLORS.textSecondary,
-                            maxWidth: 900,
-                            mx: 'auto',
-                            fontSize: { xs: '0.9rem', md: '1.0rem' },
-                            lineHeight: 1.6,
-                            fontWeight: 400,
-                            fontFamily: "Poppins, Montserrat, sans-serif",
-                        }}
-                    >
-                        Partner with us for comprehensive IT services that drive innovation,
-                        enhance productivity, and deliver measurable business outcomes across industries.
-                    </Typography>
-
-                    {/* Stats Banner */}
-                    <Grow in={true} timeout={1000}>
-                        <Box sx={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: 3,
-                            p: 2,
-                            px: 4,
-                            borderRadius: 3,
-                            bgcolor: alpha(COLORS.primary, 0.05),
-                            border: `1px solid ${alpha(COLORS.primary, 0.1)}`,
-                            mb: 4
-                        }}>
-                            {[
-                                { value: '7+', label: 'Years Experience' },
-                                { value: '40+', label: 'Clients Served' },
-                                { value: '98%', label: 'Satisfaction Rate' },
-                            ].map((stat, idx) => (
-                                <Box key={idx} sx={{ textAlign: 'center' }}>
-                                    <Typography sx={{
-                                        fontSize: '0.75rem',
-                                        fontWeight: 800,
-                                        color: COLORS.primary,
-                                        lineHeight: 1,
-                                        fontFamily: "Poppins, Montserrat, sans-serif",
-                                    }}>
-                                        {stat.value}
-                                    </Typography>
-                                    <Typography sx={{
-                                        fontSize: '0.75rem',
-                                        color: COLORS.textSecondary,
-                                        fontWeight: 500,
-                                        fontFamily: "Poppins, Montserrat, sans-serif"
-                                    }}>
-                                        {stat.label}
-                                    </Typography>
-                                </Box>
-                            ))}
-                        </Box>
-                    </Grow>
-                </Box>
-
-                {/* Tabbed Navigation */}
-                <Paper
-                    elevation={0}
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: { xs: 2, md: 3 },
+                padding: { xs: '0.8rem 1.2rem', md: '1rem 1.6rem' },
+                border: `1px solid ${line}`,
+                borderRadius: '2px',
+                background: '#fff',
+                flexWrap: 'wrap',
+              }}
+            >
+              {[
+                { value: '7+', label: 'Years' },
+                { value: '40+', label: 'Clients' },
+                { value: '98%', label: 'Satisfaction' },
+              ].map((stat, idx) => (
+                <Box key={idx} sx={{ textAlign: 'center' }}>
+                  <Typography
                     sx={{
-                        mb: 6,
-                        borderRadius: 3,
-                        bgcolor: 'transparent',
-                        borderBottom: `2px solid ${alpha(COLORS.primary, 0.1)}`
+                      fontSize: '.95rem',
+                      fontWeight: 700,
+                      color: ink,
+                      fontFamily: "Georgia, 'Times New Roman', serif",
+                      lineHeight: 1,
                     }}
-                >
-                    <Tabs
-                        value={activeTab}
-                        onChange={handleTabChange}
-                        variant="scrollable"
-                        scrollButtons="auto"
-                        sx={{
-                            '& .MuiTab-root': {
-                                minHeight: 72,
-                                fontSize: '1rem',
-                                fontWeight: 600,
-                                textTransform: 'none',
-                                color: COLORS.textSecondary,
-                                borderBottom: '3px solid transparent',
-                                fontFamily: "Poppins, Montserrat, sans-serif",
-                                '&.Mui-selected': {
-                                    color: COLORS.primary,
-                                },
-                                '&:hover': {
-                                    color: COLORS.primary,
-                                    bgcolor: alpha(COLORS.primary, 0.05),
-                                }
-                            },
-                            '& .MuiTabs-indicator': {
-                                backgroundColor: COLORS.primary,
-                                height: 3,
-                                borderRadius: 3
-                            }
-                        }}
-                    >
-                        {expertiseData.map((item, index) => (
-                            <Tab
-                                key={item.id}
-                                label={
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                                        <Box sx={{
-                                            color: activeTab === index ? item.color : COLORS.textSecondary,
-                                            transition: 'color 0.3s'
-                                        }}>
-                                            {item.icon}
-                                        </Box>
-                                        <Typography sx={{ fontWeight: 600, fontFamily: "Poppins, Montserrat, sans-serif" }}>
-                                            {item.category}
-                                        </Typography>
-                                    </Box>
-                                }
-                            />
-                        ))}
-                    </Tabs>
-                </Paper>
+                  >
+                    {stat.value}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: '.55rem',
+                      color: muted,
+                      fontFamily: "'Poppins', sans-serif",
+                      letterSpacing: '.05em',
+                      textTransform: 'uppercase',
+                      marginTop: '.3rem',
+                    }}
+                  >
+                    {stat.label}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          </Box>
 
-                {/* Main Content */}
-                <Grid container spacing={4} alignItems="stretch">
-                    {/* Left Column - Service Details */}
-                    <Grid item xs={12} lg={7}>
-                        <motion.div
-                            key={activeCategory.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <Paper
-                                elevation={0}
-                                sx={{
-                                    height: '100%',
-                                    borderRadius: 3,
-                                    bgcolor: 'white',
-                                    border: `1px solid ${alpha(COLORS.primary, 0.1)}`,
-                                    overflow: 'hidden',
-                                    position: 'relative'
-                                }}
-                            >
-                                {/* Header with Gradient */}
-                                <Box sx={{
-                                    p: { xs: 3, md: 2 },
-                                    background: `linear-gradient(135deg, ${activeCategory.bgColor} 0%, white 100%)`,
-                                    borderBottom: `1px solid ${alpha(activeCategory.color, 0.2)}`
-                                }}>
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 3, mb: 2 }}>
-                                        <Avatar
-                                            sx={{
-                                                width: 80,
-                                                height: 80,
-                                                bgcolor: activeCategory.color,
-                                                color: 'white',
-                                                fontSize: '1rem'
-                                            }}
-                                        >
-                                            {activeCategory.icon}
-                                        </Avatar>
-                                        <Box>
-                                            <Typography
-                                                variant="h5"
-                                                sx={{
-                                                    fontWeight: 800,
-                                                    mb: 1,
-                                                    color: activeCategory.color,
-                                                    fontSize: { xs: '1.8rem', md: '1rem' },
-                                                    fontFamily: "Poppins, Montserrat, sans-serif",
-                                                    letterSpacing: '-0.5px'
-                                                }}
-                                            >
-                                                {activeCategory.category}
-                                            </Typography>
-                                            <Chip
-                                                icon={<TrendingUpIcon />}
-                                                label={activeCategory.stats}
-                                                sx={{
-                                                    bgcolor: alpha(activeCategory.color, 0.1),
-                                                    color: activeCategory.color,
-                                                    fontWeight: 700,
-                                                    fontSize: '0.9rem',
-                                                    fontFamily: "Poppins, Montserrat, sans-serif",
-                                                }}
-                                            />
-                                        </Box>
-                                    </Box>
-
-                                    <Typography
-                                        variant="h6"
-                                        sx={{
-                                            color: COLORS.textPrimary,
-                                            lineHeight: 1.6,
-                                            fontSize: '1.0rem',
-                                            mb: 2,
-                                            fontFamily: "Poppins, Montserrat, sans-serif",
-                                            fontWeight: 400
-                                        }}
-                                    >
-                                        {activeCategory.description}
-                                    </Typography>
-
-                                    {/* Benefits */}
-                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
-                                        {activeCategory.benefits?.map((benefit, idx) => (
-                                            <Chip
-                                                key={idx}
-                                                icon={<BoltIcon sx={{ fontSize: 15 }} />}
-                                                label={benefit}
-                                                size="medium"
-                                                sx={{
-                                                    bgcolor: alpha(activeCategory.color, 0.05),
-                                                    color: activeCategory.color,
-                                                    border: `1px solid ${alpha(activeCategory.color, 0.2)}`,
-                                                    fontWeight: 600,
-                                                    fontSize: '0.75rem',
-                                                    fontFamily: "Poppins, Montserrat, sans-serif"
-                                                }}
-                                            />
-                                        ))}
-                                    </Box>
-                                </Box>
-
-                                {/* Services List */}
-                                <Box sx={{ p: { xs: 0.5, md: 2 } }}>
-                                    <Typography
-                                        variant="h5"
-                                        sx={{
-                                            fontWeight: 700,
-                                            mb: 2,
-                                            color: COLORS.textPrimary,
-                                            fontSize: '0.75rem',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: 1,
-                                            fontFamily: "Poppins, Montserrat, sans-serif",
-                                        }}
-                                    >
-                                        <StarIcon sx={{ color: activeCategory.color, fontSize: 15 }} />
-                                        Key Services
-                                    </Typography>
-
-                                    <Grid container spacing={2}>
-                                        {activeCategory.examples.map((example, idx) => (
-                                            <Grid item xs={10} sm={6} key={idx}>
-                                                <Card
-                                                    component="a"
-                                                    href={example.link}
-                                                    elevation={0}
-                                                    sx={{
-                                                        height: '100%',
-                                                        borderRadius: 2,
-                                                        bgcolor: COLORS.secondary,
-                                                        border: `1px solid ${alpha(activeCategory.color, 0.1)}`,
-                                                        textDecoration: 'none',
-                                                        transition: 'all 0.3s ease',
-                                                        '&:hover': {
-                                                            transform: 'translateY(-4px)',
-                                                            bgcolor: alpha(activeCategory.color, 0.05),
-                                                            borderColor: activeCategory.color,
-                                                            boxShadow: `0 8px 24px ${alpha(activeCategory.color, 0.15)}`,
-                                                        }
-                                                    }}
-                                                >
-                                                    <CardContent sx={{ p: 2.5 }}>
-                                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                                                            <Box sx={{
-                                                                width: 8,
-                                                                height: 6,
-                                                                borderRadius: '50%',
-                                                                bgcolor: activeCategory.color,
-                                                                flexShrink: 0
-                                                            }} />
-                                                            <Typography
-                                                                sx={{
-                                                                    color: COLORS.textPrimary,
-                                                                    fontWeight: 600,
-                                                                    flex: 1,
-                                                                    fontSize: '0.75rem',
-                                                                    fontFamily: "Poppins, Montserrat, sans-serif"
-                                                                }}
-                                                            >
-                                                                {example.label}
-                                                            </Typography>
-                                                            <ArrowForwardIcon
-                                                                sx={{
-                                                                    fontSize: 16,
-                                                                    color: activeCategory.color,
-                                                                    opacity: 0.7
-                                                                }}
-                                                            />
-                                                        </Box>
-                                                    </CardContent>
-                                                </Card>
-                                            </Grid>
-                                        ))}
-                                    </Grid>
-
-                                    {/* Quick Stats */}
-                                    <Box sx={{
-                                        mt: 1,
-                                        pt: 2,
-                                        borderTop: `1px solid ${alpha(COLORS.primary, 0.1)}`,
-                                        display: 'flex',
-                                        justifyContent: 'space-around',
-                                        textAlign: 'center'
-                                    }}>
-                                        {[
-                                            { label: 'AI-Accelerated Deployment', value: 'Adaptive to scope complexity' },
-                                            { label: 'Success Rate', value: '98%' },
-                                            { label: 'Support', value: '24/7' },
-                                        ].map((stat, idx) => (
-                                            <Box key={idx}>
-                                                <Typography sx={{
-                                                    fontSize: '0.75rem',
-                                                    fontWeight: 800,
-                                                    color: activeCategory.color,
-                                                    lineHeight: 1,
-                                                    fontFamily: "Poppins, Montserrat, sans-serif"
-                                                }}>
-                                                    {stat.value}
-                                                </Typography>
-                                                <Typography sx={{
-                                                    fontSize: '0.75rem',
-                                                    color: COLORS.textSecondary,
-                                                    fontWeight: 500,
-                                                    fontFamily: "Poppins, Montserrat, sans-serif"
-                                                }}>
-                                                    {stat.label}
-                                                </Typography>
-                                            </Box>
-                                        ))}
-                                    </Box>
-                                </Box>
-                            </Paper>
-                        </motion.div>
-                    </Grid>
-
-                    {/* Right Column - Industries & CTA */}
-                    <Grid item xs={12} lg={5}>
-                        <Stack spacing={4}>
-                            {/* Industries Card */}
-                            <Paper
-                                elevation={0}
-                                sx={{
-                                    borderRadius: 3,
-                                    bgcolor: 'white',
-                                    border: `1px solid ${alpha(COLORS.primary, 0.1)}`,
-                                    overflow: 'hidden'
-                                }}
-                            >
-                                <Box sx={{
-                                    p: { xs: 3, md: 2 },
-                                    bgcolor: alpha(COLORS.primary, 0.03),
-                                    borderBottom: `1px solid ${alpha(COLORS.primary, 0.1)}`
-                                }}>
-                                    <Typography
-                                        variant="h6"
-                                        sx={{
-                                            fontWeight: 700,
-                                            mb: 1,
-                                            color: COLORS.primary,
-                                            fontSize: '0.75rem',
-                                            fontFamily: "Poppins, Montserrat, sans-serif"
-                                        }}
-                                    >
-                                        Industries We Serve
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        sx={{
-                                            color: COLORS.textSecondary,
-                                            fontSize: '0.75rem',
-                                            fontFamily: "Poppins, Montserrat, sans-serif",
-                                            fontWeight: 400
-                                        }}
-                                    >
-                                        Tailored solutions for diverse sectors
-                                    </Typography>
-                                </Box>
-
-                                <Box sx={{ p: { xs: 3, md: 4 } }}>
-                                    <Grid container spacing={2}>
-                                        {industries.map((industry, idx) => (
-                                            <Grid item xs={6} sm={4} key={idx}>
-                                                <Box
-                                                    sx={{
-                                                        p: 2,
-                                                        borderRadius: 2,
-                                                        bgcolor: alpha(industry.color, 0.05),
-                                                        textAlign: 'center',
-                                                        border: `1px solid ${alpha(industry.color, 0.1)}`,
-                                                        transition: 'all 0.3s ease',
-                                                        '&:hover': {
-                                                            transform: 'translateY(-2px)',
-                                                            bgcolor: alpha(industry.color, 0.1),
-                                                            boxShadow: `0 4px 12px ${alpha(industry.color, 0.1)}`,
-                                                        }
-                                                    }}
-                                                >
-                                                    <Typography sx={{ fontSize: '2rem', mb: 1 }}>
-                                                        {industry.icon}
-                                                    </Typography>
-                                                    <Typography
-                                                        variant="caption"
-                                                        sx={{
-                                                            color: industry.color,
-                                                            fontWeight: 600,
-                                                            fontSize: '0.75rem',
-                                                            lineHeight: 1.3,
-                                                            display: 'block',
-                                                            fontFamily: "'Poppins', sans-serif"
-                                                        }}
-                                                    >
-                                                        {industry.name}
-                                                    </Typography>
-                                                </Box>
-                                            </Grid>
-                                        ))}
-                                    </Grid>
-                                </Box>
-                            </Paper>
-
-                            {/* CTA Card */}
-                            <Paper
-                                elevation={0}
-                                sx={{
-                                    borderRadius: 3,
-                                    bgcolor: COLORS.primary,
-                                    color: 'white',
-                                    overflow: 'hidden',
-                                    position: 'relative',
-                                    '&::before': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        height: 4,
-                                        background: `linear-gradient(90deg, ${COLORS.accent} 0%, ${COLORS.accentLight} 100%)`,
-                                    }
-                                }}
-                            >
-                                <Box sx={{ p: { xs: 3, md: 1 }, textAlign: 'center' }}>
-                                    <StarIcon sx={{ fontSize: 48, color: 'white', opacity: 0.9, mb: 0.5 }} />
-                                    <Typography
-                                        variant="h6"
-                                        sx={{
-                                            fontWeight: 800,
-                                            mb: 2,
-                                            fontSize: { xs: '1.0rem', md: '1.8rem' },
-                                            fontFamily: "Poppins, Montserrat, sans-serif",
-                                            letterSpacing: '-0.5px'
-                                        }}
-                                    >
-                                        Ready to Transform?
-                                    </Typography>
-                                    <Typography
-                                        variant="body1"
-                                        sx={{
-                                            mb: 1,
-                                            opacity: 0.9,
-                                            fontSize: '.76rem',
-                                            lineHeight: 1.6,
-                                            fontFamily: "Poppins, Montserrat, sans-serif",
-                                            fontWeight: 400
-                                        }}
-                                    >
-                                        Let's discuss how we can help you achieve your business goals with tailored IT solutions.
-                                    </Typography>
-
-                                    <Stack spacing={2}>
-                                        <Button
-                                            component="a"
-                                            href="/resources/contact-us"
-                                            variant="contained"
-                                            size="large"
-                                            sx={{
-                                                bgcolor: 'white',
-                                                color: COLORS.primary,
-                                                fontWeight: 700,
-                                                py: 2,
-                                                borderRadius: 2,
-                                                textTransform: 'none',
-                                                fontSize: '.75rem',
-                                                fontFamily: "Poppins, Montserrat, sans-serif",
-                                                '&:hover': {
-                                                    bgcolor: COLORS.secondary,
-                                                    transform: 'translateY(-2px)',
-                                                    boxShadow: '0 8px 24px rgba(255,255,255,0.3)',
-                                                },
-                                                transition: 'all 0.3s ease'
-                                            }}
-                                        >
-                                            Get Free Consultation
-                                            <ArrowForwardIcon sx={{ ml: 1 }} />
-                                        </Button>
-
-                                       <Button
-                                           component="a"
-                                           href={activeCategory.category === 'ERP Services' ? 'https://www.onasglobal.com/' : `/services/${activeCategory.category.toLowerCase().replace(' ', '-')}`}
-                                           target={activeCategory.category === 'ERP Services' ? '_blank' : '_self'}
-                                           rel={activeCategory.category === 'ERP Services' ? 'noopener noreferrer' : undefined}
-                                           variant="outlined"
-                                           size="large"
-                                           sx={{
-                                               borderColor: 'white',
-                                               color: 'white',
-                                               fontWeight: 600,
-                                               py: 1.5,
-                                               borderRadius: 2,
-                                               textTransform: 'none',
-                                               fontSize: '0.75rem',
-                                               fontFamily: "Poppins, Montserrat, sans-serif",
-                                               '&:hover': {
-                                                   bgcolor: 'rgba(255,255,255,0.1)',
-                                                   borderColor: 'white',
-                                               }
-                                           }}
-                                       >
-                                            Explore {activeCategory.category} in Detail
-                                        </Button>
-                                    </Stack>
-                                </Box>
-                            </Paper>
-                        </Stack>
-                    </Grid>
-                </Grid>
-
-                {/* Testimonial Banner */}
-                <Fade in={true} timeout={1000}>
-                    <Paper
-                        elevation={0}
-                        sx={{
-                            mt: 8,
-                            p: { xs: 3, md: 2 },
-                            borderRadius: 3,
-                            bgcolor: alpha(COLORS.primary, 0.05),
-                            border: `1px solid ${alpha(COLORS.primary, 0.1)}`,
-                            textAlign: 'center',
-                            position: 'relative',
-                            overflow: 'hidden'
-                        }}
-                    >
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                fontWeight: 700,
-                                mb: 1,
-                                color: COLORS.primary,
-                                fontSize: { xs: '0.75rem', md: '1.0rem' },
-                                fontFamily: "Poppins, Montserrat, sans-serif",
-                                letterSpacing: '-0.5px'
-                            }}
-                        >
-                            Trusted by Industry Leaders
-                        </Typography>
-
-                        <Typography
-                            variant="body1"
-                            sx={{
-                                mb: 2,
-                                color: COLORS.textSecondary,
-                                maxWidth: 600,
-                                mx: 'auto',
-                                fontSize: '0.75rem',
-                                lineHeight: 1.6,
-                                fontFamily: "'Poppins', sans-serif",
-                                fontWeight: 400
-                            }}
-                        >
-                            Align with forward-thinking innovators who have accelerated their digital evolution with our expertise.
-                        </Typography>
-
-                        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4, flexWrap: 'wrap' }}>
-                            {[
-                                { value: '40+', label: 'Global Clients' },
-                                { value: '+', label: 'Countries Served' },
-                                { value: '98%', label: 'Client Retention' },
-                                { value: '24/7', label: 'Support Coverage' },
-                            ].map((stat, idx) => (
-                                <Box key={idx} sx={{ textAlign: 'center', minWidth: 120 }}>
-                                    <Typography
-                                        variant="h6"
-                                        sx={{
-                                            fontWeight: 800,
-                                            mb: 0.5,
-                                            color: COLORS.primary,
-                                            fontSize: { xs: '2rem', md: '2.5rem' },
-                                            lineHeight: 1,
-                                            fontFamily: "'Poppins', sans-serif"
-                                        }}
-                                    >
-                                        {stat.value}
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        sx={{
-                                            color: COLORS.textSecondary,
-                                            fontWeight: 500,
-                                            fontSize: '0.9rem',
-                                            fontFamily: "'Poppins', sans-serif"
-                                        }}
-                                    >
-                                        {stat.label}
-                                    </Typography>
-                                </Box>
-                            ))}
-                        </Box>
-                    </Paper>
-                </Fade>
-            </Container>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+            <Box
+              component="img"
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=85"
+              alt="Our expertise"
+              sx={{
+                width: '100%',
+                height: 'auto',
+                maxHeight: { xs: 260, md: 360 },
+                objectFit: 'cover',
+                borderRadius: '2px',
+                display: 'block',
+              }}
+            />
+          </Box>
         </Box>
-    );
+
+        {/* ── Tabs — FULL WIDTH ── */}
+        <Box
+          sx={{
+            borderBottom: `1px solid ${line}`,
+            marginBottom: { xs: '2rem', md: '3rem' },
+            width: '100%',
+          }}
+        >
+          <Tabs
+            value={activeTab}
+            onChange={handleTabChange}
+            variant="fullWidth"
+            scrollButtons={false}
+            sx={{
+              width: '100%',
+              '& .MuiTabs-flexContainer': {
+                width: '100%',
+                justifyContent: 'space-between',
+              },
+              '& .MuiTab-root': {
+                flex: 1,
+                minHeight: 60,
+                fontSize: '.72rem',
+                fontWeight: 600,
+                textTransform: 'none',
+                color: muted,
+                fontFamily: "'Poppins', sans-serif",
+                '&.Mui-selected': { color: ink },
+              },
+              '& .MuiTabs-indicator': {
+                backgroundColor: '#0B4C74',
+                height: 2,
+              },
+            }}
+          >
+            {expertiseData.map((item, index) => (
+              <Tab
+                key={item.id}
+                label={
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center' }}>
+                    <Box
+                      sx={{
+                        color: activeTab === index ? '#0B4C74' : muted,
+                        transition: 'color 0.3s',
+                        display: 'flex',
+                        '& svg': { fontSize: 18 },
+                      }}
+                    >
+                      {item.icon}
+                    </Box>
+                    <Typography
+                      sx={{
+                        fontWeight: 600,
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: '.72rem',
+                      }}
+                    >
+                      {item.category}
+                    </Typography>
+                  </Box>
+                }
+              />
+            ))}
+          </Tabs>
+        </Box>
+
+        {/* ── ERP Services Card — FULL WIDTH ── */}
+        <motion.div
+          key={activeCategory.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <Box sx={{ ...cardSx, marginBottom: { xs: '2rem', md: '3rem' } }}>
+            {/* Header */}
+            <Box
+              sx={{
+                padding: { xs: '1.6rem 1.2rem', md: '1.8rem 1.6rem' },
+                borderBottom: `1px solid ${line}`,
+              }}
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                <Avatar
+                  sx={{
+                    width: 52,
+                    height: 52,
+                    bgcolor: '#e6efe8',
+                    color: '#0B4C74',
+                    '& svg': { fontSize: 26 },
+                  }}
+                >
+                  {activeCategory.icon}
+                </Avatar>
+                <Box>
+                  <Typography
+                    component="h3"
+                    sx={{
+                      margin: 0,
+                      font: "400 clamp(1rem, 1.8vw, 1.35rem)/1.2 Georgia, 'Times New Roman', serif",
+                      color: ink,
+                      marginBottom: '.4rem',
+                    }}
+                  >
+                    {activeCategory.category}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: '#0B4C74',
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: '.6rem',
+                      fontWeight: 700,
+                      letterSpacing: '.08em',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {activeCategory.stats}
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Typography
+                sx={{
+                  color: `${muted} !important`,
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: '.72rem',
+                  lineHeight: 1.8,
+                  marginBottom: '1.2rem',
+                  maxWidth: 900,
+                }}
+              >
+                {activeCategory.description}
+              </Typography>
+
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '.5rem' }}>
+                {activeCategory.benefits?.map((benefit, idx) => (
+                  <Box
+                    key={idx}
+                    sx={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '.35rem',
+                      padding: '.35rem .75rem',
+                      background: soft,
+                      border: `1px solid ${line}`,
+                      borderRadius: '2px',
+                      color: ink,
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: '.6rem',
+                      fontWeight: 500,
+                    }}
+                  >
+                    <Check sx={{ fontSize: 12, color: '#0B4C74' }} />
+                    {benefit}
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+
+            {/* Key Services */}
+            <Box sx={{ padding: { xs: '1.4rem 1.2rem', md: '1.8rem 1.6rem' }, flexGrow: 1 }}>
+              <Eyebrow>Key Services</Eyebrow>
+              <Typography
+                component="h4"
+                sx={{
+                  margin: '.5rem 0 1.2rem',
+                  font: "400 clamp(.9rem, 1.4vw, 1.05rem)/1.25 Georgia, 'Times New Roman', serif",
+                  color: ink,
+                }}
+              >
+                What we deliver in {activeCategory.category}
+              </Typography>
+
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: {
+                    xs: '1fr',
+                    sm: 'repeat(2, 1fr)',
+                    md: 'repeat(3, 1fr)',
+                  },
+                  gap: '.7rem',
+                }}
+              >
+                {activeCategory.examples.map((example, idx) => {
+                  const isExternal = example.external || /^https?:\/\//.test(example.link);
+                  return (
+                    <Box
+                      key={idx}
+                      {...(isExternal
+                        ? { component: 'a', href: example.link, target: '_blank', rel: 'noopener noreferrer' }
+                        : { component: RouterLink, to: example.link }
+                      )}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: '.6rem',
+                        padding: '.85rem 1rem',
+                        background: '#fff',
+                        border: `1px solid ${line}`,
+                        borderRadius: '2px',
+                        textDecoration: 'none',
+                        color: ink,
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: '.66rem',
+                        fontWeight: 500,
+                        transition: 'all .2s ease',
+                        '&:hover': {
+                          borderColor: '#aac7b2',
+                          background: soft,
+                        },
+                      }}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
+                        <Check sx={{ fontSize: 14, color: '#5e987f' }} />
+                        {example.label}
+                      </Box>
+                      <ArrowForward sx={{ fontSize: 12, color: '#0B4C74' }} />
+                    </Box>
+                  );
+                })}
+              </Box>
+            </Box>
+          </Box>
+        </motion.div>
+
+        {/* ── Industries Card — FULL WIDTH ── */}
+        <Box sx={{ ...cardSx, marginBottom: { xs: '2.5rem', md: '3.5rem' } }}>
+          <Box
+            sx={{
+              padding: { xs: '1.4rem 1.2rem', md: '1.6rem 1.6rem' },
+              borderBottom: `1px solid ${line}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '1rem',
+            }}
+          >
+            <Box>
+              <Eyebrow>Industries</Eyebrow>
+              <Typography
+                component="h3"
+                sx={{
+                  margin: '.5rem 0 0',
+                  font: "400 clamp(1rem, 1.8vw, 1.35rem)/1.2 Georgia, 'Times New Roman', serif",
+                  color: ink,
+                }}
+              >
+                Industries We Serve
+              </Typography>
+            </Box>
+            <Typography
+              sx={{
+                color: `${muted} !important`,
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '.66rem',
+                maxWidth: 400,
+              }}
+            >
+              Tailored solutions for diverse sectors — from banking to life sciences.
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              padding: { xs: '1.2rem', md: '1.4rem 1.6rem' },
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: 'repeat(2, 1fr)',
+                sm: 'repeat(3, 1fr)',
+                md: 'repeat(5, 1fr)',
+              },
+              gap: '.6rem',
+            }}
+          >
+            {industries.map((industry, idx) => (
+              <Box
+                key={idx}
+                component={RouterLink}
+                to={industry.link}
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '.35rem',
+                  padding: '.75rem .5rem',
+                  background: '#fff',
+                  border: `1px solid ${line}`,
+                  borderRadius: '2px',
+                  textDecoration: 'none',
+                  textAlign: 'center',
+                  transition: 'all .2s ease',
+                  '&:hover': {
+                    borderColor: '#aac7b2',
+                    background: soft,
+                  },
+                }}
+              >
+                <Typography sx={{ fontSize: '1.4rem', lineHeight: 1 }}>
+                  {industry.icon}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: `${muted} !important`,
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: '.55rem',
+                    lineHeight: 1.35,
+                    fontWeight: 500,
+                  }}
+                >
+                  {industry.name}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        {/* ── Bottom row: CTA + Trusted by ── */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+            gap: { xs: '1.5rem', md: '1.8rem' },
+            alignItems: 'stretch',
+          }}
+        >
+          {/* CTA */}
+          <Box
+            sx={{
+              background: ink,
+              borderRadius: '2px',
+              padding: { xs: '1.8rem 1.4rem', md: '2.2rem 1.8rem' },
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              textAlign: 'center',
+            }}
+          >
+            <Typography sx={{ ...eyebrowSx, color: lime }}>
+              Ready to Transform?
+            </Typography>
+            <Typography
+              component="h3"
+              sx={{
+                margin: '.7rem 0 1rem',
+                font: "400 clamp(1rem, 1.8vw, 1.35rem)/1.2 Georgia, 'Times New Roman', serif",
+                color: '#fff',
+              }}
+            >
+              Let&apos;s discuss how we can help you achieve your business goals.
+            </Typography>
+            <Typography
+              sx={{
+                color: 'rgba(255,255,255,.82) !important',
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '.66rem',
+                lineHeight: 1.75,
+                marginBottom: '1.4rem',
+              }}
+            >
+              Get tailored IT solutions that fit your exact needs.
+            </Typography>
+
+            <Box
+              component={RouterLink}
+              to="/resources/contact-us"
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '.5rem',
+                padding: '.75rem 1.4rem',
+                borderRadius: '2px',
+                background: '#0B4C74',
+                color: '#ffffff',
+                fontWeight: 600,
+                fontSize: '.62rem',
+                fontFamily: "'Poppins', sans-serif",
+                textDecoration: 'none',
+                margin: '0 auto',
+                transition: 'background .2s ease',
+                '&:hover': { background: '#d3ffb0', color: '#000000' },
+              }}
+            >
+              Get Free Consultation <ArrowForward sx={{ fontSize: 14 }} />
+            </Box>
+          </Box>
+
+          {/* Trusted by */}
+          <Box
+            sx={{
+              background: soft,
+              border: `1px solid ${line}`,
+              borderRadius: '2px',
+              padding: { xs: '1.8rem 1.4rem', md: '2.2rem 1.8rem' },
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <Eyebrow>Trusted by Industry Leaders</Eyebrow>
+            <Typography
+              component="h3"
+              sx={{
+                margin: '.7rem auto 1.6rem',
+                font: "400 clamp(.95rem, 1.5vw, 1.1rem)/1.25 Georgia, 'Times New Roman', serif",
+                color: ink,
+                maxWidth: 500,
+              }}
+            >
+              Align with forward-thinking innovators who have accelerated their digital evolution.
+            </Typography>
+
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: { xs: 1.5, md: 2 },
+              }}
+            >
+              {[
+                { value: '40+', label: 'Global Clients' },
+                { value: '10+', label: 'Countries Served' },
+                { value: '98%', label: 'Client Retention' },
+                { value: '24/7', label: 'Support Coverage' },
+              ].map((stat, idx) => (
+                <Box key={idx} sx={{ textAlign: 'center' }}>
+                  <Typography
+                    sx={{
+                      font: "400 clamp(1.4rem, 2.4vw, 1.9rem)/1 Georgia, 'Times New Roman', serif",
+                      color: ink,
+                      marginBottom: '.35rem',
+                    }}
+                  >
+                    {stat.value}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: `${muted} !important`,
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: '.55rem',
+                      letterSpacing: '.05em',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {stat.label}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        </Box>
+      </Container>
+    </Box>
+  );
 }
