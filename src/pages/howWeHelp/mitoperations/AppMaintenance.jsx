@@ -178,7 +178,7 @@ const ApplicationMaintenance = () => {
         <p>We maintain applications built with Java, .NET, Node.js, Python, PHP, React, Angular, Vue.js, legacy systems, and various databases and cloud platforms including AWS, Azure, and Google Cloud.</p>
       </div>
 
-      {/* ── Hero — Slideshow background ── */}
+      {/* ── Hero — Slideshow background (LIGHTER blue shade) ── */}
       <Box
         sx={{
           position: 'relative',
@@ -189,6 +189,7 @@ const ApplicationMaintenance = () => {
           isolation: 'isolate',
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <Box
@@ -202,7 +203,7 @@ const ApplicationMaintenance = () => {
               position: 'absolute',
               inset: 0,
               background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+                'linear-gradient(90deg, rgba(11,76,116,.45) 0%, rgba(11,76,116,.28) 55%, rgba(11,76,116,.40) 100%)',
               zIndex: 1,
             },
           }}
@@ -229,41 +230,43 @@ const ApplicationMaintenance = () => {
           </AnimatePresence>
         </Box>
 
-        <Box sx={{ position: 'relative', zIndex: 2, maxWidth: 1240, margin: '0 auto', width: '100%' }}>
-          <Typography sx={{ color: lime, fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: '.7rem' }}>
+        <Box sx={{ position: 'relative', zIndex: 2, maxWidth: 1240, margin: '0 auto', width: '100%', textAlign: 'center' }}>
+          <Typography sx={{ color: lime, fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: '.7rem', textShadow: '0 1px 6px rgba(0,0,0,.6)' }}>
             Application Maintenance
           </Typography>
           <Typography
             component="h1"
-            sx={{ margin: '.4rem 0 1rem', font: "400 clamp(2rem, 4.5vw, 3.6rem)/1.02 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 900 }}
+            sx={{ margin: '.4rem auto 1rem', font: "400 clamp(1.6rem, 3.2vw, 2.6rem)/1.05 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 800, textShadow: '0 2px 10px rgba(0,0,0,.65)' }}
           >
             Application Maintenance Services
           </Typography>
           <Typography
-            sx={{ color: 'rgba(255,255,255,.82) !important', fontFamily: "'Poppins', sans-serif", fontSize: { xs: '.72rem', md: '.78rem' }, lineHeight: 1.7, maxWidth: 640, marginBottom: '1.8rem' }}
+            sx={{ color: 'rgba(255,255,255,.95) !important', fontFamily: "'Poppins', sans-serif", fontSize: { xs: '.72rem', md: '.78rem' }, lineHeight: 1.7, maxWidth: 640, margin: '0 auto 1.8rem', textShadow: '0 1px 6px rgba(0,0,0,.65)' }}
           >
             Keep mission-critical systems stable, secure, and scalable with application maintenance services designed to eliminate downtime and optimize every layer of performance.
           </Typography>
-          <Box
-            component="a"
-            href="/resources/contact-us"
-            sx={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '.5rem',
-              padding: '.7rem 1.1rem',
-              borderRadius: '2px',
-              background: '#0B4C74',
-              color: '#ffffff',
-              fontWeight: 600,
-              fontSize: '.62rem',
-              fontFamily: "'Poppins', sans-serif",
-              textDecoration: 'none',
-              transition: 'background .2s ease',
-              '&:hover': { background: '#d3ffb0', color: '#000000' },
-            }}
-          >
-            Contact Us <ArrowForward sx={{ fontSize: 14 }} />
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Box
+              component="a"
+              href="/resources/contact-us"
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '.5rem',
+                padding: '.7rem 1.1rem',
+                borderRadius: '2px',
+                background: '#0B4C74',
+                color: '#ffffff',
+                fontWeight: 600,
+                fontSize: '.62rem',
+                fontFamily: "'Poppins', sans-serif",
+                textDecoration: 'none',
+                transition: 'background .2s ease',
+                '&:hover': { background: '#d3ffb0', color: '#000000' },
+              }}
+            >
+              Contact Us <ArrowForward sx={{ fontSize: 14 }} />
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -272,7 +275,7 @@ const ApplicationMaintenance = () => {
       <Container maxWidth={false} disableGutters sx={containerSx}>
         <Box sx={{ maxWidth: 900, mx: 'auto', padding: { xs: '3rem 1rem', md: '4rem 0' }, textAlign: 'center' }}>
           <Eyebrow>Introduction</Eyebrow>
-          <Typography component="h2" sx={{ margin: '.7rem auto 1rem', font: "400 clamp(1.6rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 800 }}>
+          <Typography component="h2" sx={{ margin: '.7rem auto 1rem', font: "400 clamp(1.3rem, 2.5vw, 1.9rem)/1.05 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 800 }}>
             Professional Application Maintenance for Business-Critical Systems
           </Typography>
           <Typography sx={{ color: `${muted} !important`, fontFamily: "'Poppins', sans-serif", fontSize: '.72rem', lineHeight: 1.75, maxWidth: 640, margin: '0 auto' }}>
@@ -286,7 +289,7 @@ const ApplicationMaintenance = () => {
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, paddingTop: { xs: '3.5rem', md: '5rem' }, paddingBottom: { xs: '3.5rem', md: '5rem' } }}>
           <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <Eyebrow>What We Offer</Eyebrow>
-            <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.8rem, 3.6vw, 3.6rem)/.98 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 720 }}>
+            <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.4rem, 2.6vw, 2.2rem)/.98 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 720 }}>
               Our Application Maintenance Offerings
             </Typography>
           </Box>
@@ -334,7 +337,7 @@ const ApplicationMaintenance = () => {
       <Container maxWidth={false} disableGutters sx={{ ...containerSx, paddingTop: { xs: '3.5rem', md: '5rem' }, paddingBottom: { xs: '3.5rem', md: '5rem' } }}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>Delivery</Eyebrow>
-          <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.8rem, 3.6vw, 3.6rem)/.98 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 720 }}>
+          <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.4rem, 2.6vw, 2.2rem)/.98 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 720 }}>
             How We Deliver Long-Term Value
           </Typography>
         </Box>
@@ -403,7 +406,7 @@ const ApplicationMaintenance = () => {
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, paddingTop: { xs: '3.5rem', md: '5rem' }, paddingBottom: { xs: '3.5rem', md: '5rem' } }}>
           <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <Eyebrow>Benefits</Eyebrow>
-            <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.8rem, 3.6vw, 3.6rem)/.98 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 720 }}>
+            <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.4rem, 2.6vw, 2.2rem)/.98 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 720 }}>
               Benefits of Professional Application Maintenance
             </Typography>
           </Box>
@@ -432,7 +435,7 @@ const ApplicationMaintenance = () => {
             {/* Right — Impact Metrics card */}
             <Box sx={{ background: '#fff', border: `1px solid ${line}`, borderRadius: '2px', padding: { xs: '1.8rem 1.4rem', md: '2.2rem' } }}>
               <Eyebrow>Impact Metrics</Eyebrow>
-              <Typography component="h3" sx={{ margin: '.6rem 0 1.4rem', font: "400 clamp(1.3rem, 2.2vw, 1.7rem)/1.15 Georgia, 'Times New Roman', serif", color: ink }}>
+              <Typography component="h3" sx={{ margin: '.6rem 0 1.4rem', font: "400 clamp(1rem, 1.7vw, 1.3rem)/1.15 Georgia, 'Times New Roman', serif", color: ink }}>
                 Application Maintenance Impact Metrics
               </Typography>
 
@@ -448,7 +451,7 @@ const ApplicationMaintenance = () => {
                       textAlign: 'center',
                     }}
                   >
-                    <Typography sx={{ margin: 0, color: ink, font: "400 clamp(1.1rem, 1.8vw, 1.5rem)/1 Georgia, 'Times New Roman', serif" }}>
+                    <Typography sx={{ margin: 0, color: ink, font: "400 clamp(1rem, 1.5vw, 1.25rem)/1 Georgia, 'Times New Roman', serif" }}>
                       {metric.value}
                     </Typography>
                     <Typography sx={{ margin: '.35rem 0 0', color: `${muted} !important`, fontFamily: "'Poppins', sans-serif", fontSize: '.55rem', letterSpacing: '.05em', textTransform: 'uppercase' }}>
@@ -466,7 +469,7 @@ const ApplicationMaintenance = () => {
       <Container maxWidth={false} disableGutters sx={{ ...containerSx, paddingTop: { xs: '3.5rem', md: '5rem' }, paddingBottom: { xs: '3.5rem', md: '5rem' } }}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>Technology Stack</Eyebrow>
-          <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.8rem, 3.6vw, 3.6rem)/.98 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 720 }}>
+          <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.4rem, 2.6vw, 2.2rem)/.98 Georgia, 'Times New Roman', serif", color: ink, maxWidth: 720 }}>
             Application Technologies We Maintain
           </Typography>
         </Box>
@@ -534,7 +537,7 @@ const ApplicationMaintenance = () => {
         <Container maxWidth={false} disableGutters sx={containerSx}>
           <Box sx={{ maxWidth: 800, mx: 'auto', padding: { xs: '4rem 1rem', md: '5rem 0' }, textAlign: 'center' }}>
             <Eyebrow>Get Started</Eyebrow>
-            <Typography component="h2" sx={{ margin: '.7rem auto 1rem', font: "400 clamp(1.8rem, 3.6vw, 3rem)/1.05 Georgia, 'Times New Roman', serif", color: ink }}>
+            <Typography component="h2" sx={{ margin: '.7rem auto 1rem', font: "400 clamp(1.4rem, 2.6vw, 2rem)/1.05 Georgia, 'Times New Roman', serif", color: ink }}>
               Ensure Application Reliability with Expert Maintenance
             </Typography>
             <Typography sx={{ color: `${muted} !important`, fontFamily: "'Poppins', sans-serif", fontSize: '.72rem', lineHeight: 1.75, marginBottom: '1.8rem' }}>

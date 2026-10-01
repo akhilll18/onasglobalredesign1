@@ -85,13 +85,12 @@ export const NAV_LINKS = [
         ],
       },
       {
-        category: 'Automation',
+        category: 'Custom Solutions',
         items: [
           { label: 'Custom Software Development', path: '/solutions/automation/custom-software' },
           { label: 'Enterprise Solutions', path: '/solutions/automation/enterprise-solutions' },
-          { label: 'Ai Based Process Automation', path: '/solutions/automation/ai-process-automation' },
+          { label: 'AI Based Process Automation', path: '/solutions/automation/ai-process-automation' },
           { label: 'Offshore Website Development', path: '/solutions/automation/offshore-web-dev' },
-         
           { label: 'Ecommerce Development', path: '/solutions/automation/ecommerce-dev' },
           { label: 'Devops', path: '/solutions/automation/devops' },
         ],

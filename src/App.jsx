@@ -157,6 +157,16 @@ import EBanking from './pages/solutions/automation/e-banking.jsx';
 import Reconciliation from './pages/solutions/automation/reconciliation.jsx';
 
 // =========================================================
+// SOLUTIONS - CUSTOM DEVELOPMENT
+// =========================================================
+import CustomSoftwareDevelopment from './pages/solutions/custom-development/CustomSoftwareDevelopment.jsx';
+import EnterpriseSolutions from './pages/solutions/custom-development/EnterpriseSolutions.jsx';
+import AIProcessAutomation from './pages/solutions/custom-development/AIProcessAutomation.jsx';
+import OffshoreWebsiteDevelopment from './pages/solutions/custom-development/OffshoreWebsiteDevelopment.jsx';
+import EcommerceDevelopment from './pages/solutions/custom-development/EcommerceDevelopment.jsx';
+import DevOpsSolutions from './pages/solutions/custom-development/DevOps.jsx';
+
+// =========================================================
 // SOLUTIONS - APP DEVELOPMENT
 // =========================================================
 import MobileAppSolutions from './pages/solutions/appdevelopment/MobileApp.jsx';
@@ -217,519 +227,151 @@ export default function App() {
         <Routes>
 
           {/* HOME */}
-          <Route
-            path="/"
-            element={<Home />}
-          />
+          <Route path="/" element={<Home />} />
 
           {/* ERP */}
-          <Route
-            path="/how-we-help/erp/sap"
-            element={<SAP />}
-          />
-
-          {/* <Route
-            path="/how-we-help/erp/oracle"
-            element={<Oracle />}
-          /> */}
-
-          <Route
-            path="/how-we-help/erp/salesforce"
-            element={<Salesforce />}
-          />
-
-          <Route
-            path="/how-we-help/erp/netsuite"
-            element={<Netsuite />}
-          />
-
-          <Route
-            path="/how-we-help/erp/servicenow"
-            element={<ServiceNow />}
-          />
-
-          <Route
-            path="/how-we-help/erp/workday"
-            element={<Workday />}
-          />
-
-          <Route
-            path="/how-we-help/erp/microsoft-dynamics-365"
-            element={<MicrosoftDynamics365 />}
-          />
-
-          <Route
-            path="/how-we-help/erp/ifs"
-            element={<IFSCloud />}
-          />
+          <Route path="/how-we-help/erp/sap" element={<SAP />} />
+          {/* <Route path="/how-we-help/erp/oracle" element={<Oracle />} /> */}
+          <Route path="/how-we-help/erp/salesforce" element={<Salesforce />} />
+          <Route path="/how-we-help/erp/netsuite" element={<Netsuite />} />
+          <Route path="/how-we-help/erp/servicenow" element={<ServiceNow />} />
+          <Route path="/how-we-help/erp/workday" element={<Workday />} />
+          <Route path="/how-we-help/erp/microsoft-dynamics-365" element={<MicrosoftDynamics365 />} />
+          <Route path="/how-we-help/erp/ifs" element={<IFSCloud />} />
 
           {/* DIGITAL TRANSFORMATION */}
-          <Route
-            path="/how-we-help/digital-transformation/ai-ml"
-            element={<AIML />}
-          />
-
-          <Route
-            path="/how-we-help/digital-transformation/cloud-integ"
-            element={<CloudMigrationIntegration />}
-          />
-
-          <Route
-            path="/how-we-help/digital-transformation/data-eng-ana"
-            element={<DataEngineeringAnalytics />}
-          />
-
-          <Route
-            path="/how-we-help/digital-transformation/iot-services"
-            element={<IoTServices />}
-          />
-
-          <Route
-            path="/how-we-help/digital-transformation/product-eng"
-            element={<ProductEngineering />}
-          />
-
-          <Route
-            path="/how-we-help/digital-transformation/test-automation"
-            element={<TestingAutomation />}
-          />
-
-          <Route
-            path="/how-we-help/digital-transformation/grc"
-            element={<GRC />}
-          />
-
-          <Route
-            path="/how-we-help/digital-transformation/it-asset-management"
-            element={<ITAssetManagement />}
-          />
-
-          <Route
-            path="/how-we-help/digital-transformation/genai"
-            element={<GenAI />}
-          />
-
-          <Route
-            path="/how-we-help/digital-transformation/devops"
-            element={<DevopsFeatures />}
-          />
+          <Route path="/how-we-help/digital-transformation/ai-ml" element={<AIML />} />
+          <Route path="/how-we-help/digital-transformation/cloud-integ" element={<CloudMigrationIntegration />} />
+          <Route path="/how-we-help/digital-transformation/data-eng-ana" element={<DataEngineeringAnalytics />} />
+          <Route path="/how-we-help/digital-transformation/iot-services" element={<IoTServices />} />
+          <Route path="/how-we-help/digital-transformation/product-eng" element={<ProductEngineering />} />
+          <Route path="/how-we-help/digital-transformation/test-automation" element={<TestingAutomation />} />
+          <Route path="/how-we-help/digital-transformation/grc" element={<GRC />} />
+          <Route path="/how-we-help/digital-transformation/it-asset-management" element={<ITAssetManagement />} />
+          <Route path="/how-we-help/digital-transformation/genai" element={<GenAI />} />
+          <Route path="/how-we-help/digital-transformation/devops" element={<DevopsFeatures />} />
 
           {/* MANAGED IT OPERATIONS */}
-          <Route
-            path="/how-we-help/managed-it-operations/app-maintenance"
-            element={<ApplicationMaintenanceServices />}
-          />
-
-          <Route
-            path="/how-we-help/managed-it-operations/cloud-support"
-            element={<CloudSupport />}
-          />
-
-          <Route
-            path="/how-we-help/managed-it-operations/cybersecurity"
-            element={<Cybersecurity />}
-          />
-
-          <Route
-            path="/how-we-help/managed-it-operations/it-infra"
-            element={<ITInfrastructureServices />}
-          />
-
-          <Route
-            path="/how-we-help/managed-it-operations/network-support"
-            element={<NetworkSupport />}
-          />
-
-          <Route
-            path="/how-we-help/managed-it-operations/helpdesk"
-            element={<Helpdesk />}
-          />
+          <Route path="/how-we-help/managed-it-operations/app-maintenance" element={<ApplicationMaintenanceServices />} />
+          <Route path="/how-we-help/managed-it-operations/cloud-support" element={<CloudSupport />} />
+          <Route path="/how-we-help/managed-it-operations/cybersecurity" element={<Cybersecurity />} />
+          <Route path="/how-we-help/managed-it-operations/it-infra" element={<ITInfrastructureServices />} />
+          <Route path="/how-we-help/managed-it-operations/network-support" element={<NetworkSupport />} />
+          <Route path="/how-we-help/managed-it-operations/helpdesk" element={<Helpdesk />} />
 
           {/* OTHER SERVICES */}
-          <Route
-            path="/how-we-help/other-services/web-dev"
-            element={<WebDevelopment />}
-          />
-
-          <Route
-            path="/how-we-help/other-services/seo"
-            element={<SEO />}
-          />
-
-          <Route
-            path="/how-we-help/other-services/social-media"
-            element={<SocialMediaMarketing />}
-          />
-
-          <Route
-            path="/how-we-help/other-services/content-marketing"
-            element={<ContentMarketing />}
-          />
-
-          <Route
-            path="/how-we-help/other-services/email-marketing"
-            element={<EmailMarketing />}
-          />
-
-          <Route
-            path="/how-we-help/other-services/ppc"
-            element={<PPCAdvertising />}
-          />
-
-          <Route
-            path="/how-we-help/other-services/mobileapp"
-            element={<MobileApp />}
-          />
-
-          <Route
-            path="/how-we-help/other-services/uiuxsection"
-            element={<UIUXSection />}
-          />
+          <Route path="/how-we-help/other-services/web-dev" element={<WebDevelopment />} />
+          <Route path="/how-we-help/other-services/seo" element={<SEO />} />
+          <Route path="/how-we-help/other-services/social-media" element={<SocialMediaMarketing />} />
+          <Route path="/how-we-help/other-services/content-marketing" element={<ContentMarketing />} />
+          <Route path="/how-we-help/other-services/email-marketing" element={<EmailMarketing />} />
+          <Route path="/how-we-help/other-services/ppc" element={<PPCAdvertising />} />
+          <Route path="/how-we-help/other-services/mobileapp" element={<MobileApp />} />
+          <Route path="/how-we-help/other-services/uiuxsection" element={<UIUXSection />} />
 
           {/* WHO WE HELP */}
-          <Route
-            path="/who-we-help/industries"
-            element={<Industries />}
-          />
+          <Route path="/who-we-help/industries" element={<Industries />} />
 
           {/* WHY ONAS */}
-          <Route
-            path="/why-onas/about-us"
-            element={<AboutUs />}
-          />
-
-          <Route
-            path="/why-onas/company"
-            element={<Company />}
-          />
-
-          <Route
-            path="/why-onas/mission-principles"
-            element={<MissionPrinciples />}
-          />
-
-          <Route
-            path="/why-onas/leadership"
-            element={<Leadership />}
-          />
-
-          <Route
-            path="/why-onas/culture-benefits"
-            element={<CultureBenefits />}
-          />
-
-          <Route
-            path="/why-onas/employees"
-            element={<Employees />}
-          />
-
-          <Route
-            path="/why-onas/investors"
-            element={<Investors />}
-          />
-
-          <Route
-            path="/why-onas/life"
-            element={<LifeAtOnas />}
-          />
+          <Route path="/why-onas/about-us" element={<AboutUs />} />
+          <Route path="/why-onas/company" element={<Company />} />
+          <Route path="/why-onas/mission-principles" element={<MissionPrinciples />} />
+          <Route path="/why-onas/leadership" element={<Leadership />} />
+          <Route path="/why-onas/culture-benefits" element={<CultureBenefits />} />
+          <Route path="/why-onas/employees" element={<Employees />} />
+          <Route path="/why-onas/investors" element={<Investors />} />
+          <Route path="/why-onas/life" element={<LifeAtOnas />} />
 
           {/* RESOURCES */}
-          <Route
-            path="/resources/media"
-            element={<Media />}
-          />
-
-          <Route
-            path="/resources/ideas"
-            element={<Ideas />}
-          />
-
-          <Route
-            path="/resources/awards"
-            element={<Awards />}
-          />
-
-          <Route
-            path="/resources/blogs"
-            element={<Blogs />}
-          />
-
-          <Route
-            path="/resources/contact-us"
-            element={<ContactUs />}
-          />
-
-          <Route
-            path="/resources/careers"
-            element={<Careers />}
-          />
-
-          <Route
-            path="/resources/case-studies"
-            element={<CaseStudies />}
-          />
-
-          <Route
-            path="/resources/newsroom"
-            element={<NewsRoom />}
-          />
+          <Route path="/resources/media" element={<Media />} />
+          <Route path="/resources/ideas" element={<Ideas />} />
+          <Route path="/resources/awards" element={<Awards />} />
+          <Route path="/resources/blogs" element={<Blogs />} />
+          <Route path="/resources/contact-us" element={<ContactUs />} />
+          <Route path="/resources/careers" element={<Careers />} />
+          <Route path="/resources/case-studies" element={<CaseStudies />} />
+          <Route path="/resources/newsroom" element={<NewsRoom />} />
 
           {/* STAFFING */}
-          <Route
-            path="/staffing/submit-a-vacancy/request-a-call-back"
-            element={<RequestCallback />}
-          />
-
-          <Route
-            path="/staffing/it-consulting"
-            element={<ITConsulting />}
-          />
-
-          <Route
-            path="/staffing/professional-services"
-            element={<ProfessionalServices />}
-          />
+          <Route path="/staffing/submit-a-vacancy/request-a-call-back" element={<RequestCallback />} />
+          <Route path="/staffing/it-consulting" element={<ITConsulting />} />
+          <Route path="/staffing/professional-services" element={<ProfessionalServices />} />
 
           {/* AI & EDTECH SERVICES */}
-          <Route
-            path="/staffing/ai-edtech/llm-development-services"
-            element={<LlmDevelopmentServices />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/generative-ai-development"
-            element={<GenerativeAiDevelopment />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/machine-learning-consulting"
-            element={<MachineLearningConsulting />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/ai-chatbot-development"
-            element={<AiChatbotDevelopment />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/ai-consulting-services"
-            element={<AiConsultingServices />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training"
-            element={<CorporateTraining />}
-          />
+          <Route path="/staffing/ai-edtech/llm-development-services" element={<LlmDevelopmentServices />} />
+          <Route path="/staffing/ai-edtech/generative-ai-development" element={<GenerativeAiDevelopment />} />
+          <Route path="/staffing/ai-edtech/machine-learning-consulting" element={<MachineLearningConsulting />} />
+          <Route path="/staffing/ai-edtech/ai-chatbot-development" element={<AiChatbotDevelopment />} />
+          <Route path="/staffing/ai-edtech/ai-consulting-services" element={<AiConsultingServices />} />
+          <Route path="/staffing/ai-edtech/corporate-training" element={<CorporateTraining />} />
 
           {/* Corporate Training → Technologies */}
-          <Route
-            path="/staffing/ai-edtech/corporate-training/angular"
-            element={<Angular />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/dotnet"
-            element={<DotNet />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/nodejs"
-            element={<NodeJs />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/flutter"
-            element={<Flutter />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/react-native"
-            element={<ReactNative />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/vue"
-            element={<Vue />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/react"
-            element={<ReactJs />}
-          />
+          <Route path="/staffing/ai-edtech/corporate-training/angular" element={<Angular />} />
+          <Route path="/staffing/ai-edtech/corporate-training/dotnet" element={<DotNet />} />
+          <Route path="/staffing/ai-edtech/corporate-training/nodejs" element={<NodeJs />} />
+          <Route path="/staffing/ai-edtech/corporate-training/flutter" element={<Flutter />} />
+          <Route path="/staffing/ai-edtech/corporate-training/react-native" element={<ReactNative />} />
+          <Route path="/staffing/ai-edtech/corporate-training/vue" element={<Vue />} />
+          <Route path="/staffing/ai-edtech/corporate-training/react" element={<ReactJs />} />
 
           {/* Corporate Training → Tech Services */}
-          <Route
-            path="/staffing/ai-edtech/corporate-training/software-development"
-            element={<SoftwareDevelopment />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/backend-development"
-            element={<BackendDevelopment />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/enterprise-development"
-            element={<EnterpriseDevelopment />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/mobile-app-development"
-            element={<MobileAppDevelopment />}
-          />
-
-          <Route
-            path="/staffing/ai-edtech/corporate-training/blockchain"
-            element={<Blockchain />}
-          />
+          <Route path="/staffing/ai-edtech/corporate-training/software-development" element={<SoftwareDevelopment />} />
+          <Route path="/staffing/ai-edtech/corporate-training/backend-development" element={<BackendDevelopment />} />
+          <Route path="/staffing/ai-edtech/corporate-training/enterprise-development" element={<EnterpriseDevelopment />} />
+          <Route path="/staffing/ai-edtech/corporate-training/mobile-app-development" element={<MobileAppDevelopment />} />
+          <Route path="/staffing/ai-edtech/corporate-training/blockchain" element={<Blockchain />} />
 
           {/* EDTECH SERVICES */}
-          <Route
-            path="/education/lms-implementation"
-            element={<LMSImplementation />}
-          />
-
-          <Route
-            path="/education/e-learning"
-            element={<ELearningPlatform />}
-          />
-
-          <Route
-            path="/education/analytics"
-            element={<EducationalAnalytics />}
-          />
-
-          <Route
-            path="/education/virtual-classroom"
-            element={<VirtualClassroom />}
-          />
+          <Route path="/education/lms-implementation" element={<LMSImplementation />} />
+          <Route path="/education/e-learning" element={<ELearningPlatform />} />
+          <Route path="/education/analytics" element={<EducationalAnalytics />} />
+          <Route path="/education/virtual-classroom" element={<VirtualClassroom />} />
 
           {/* SECURITY */}
-          <Route
-            path="/security/securityrisk"
-            element={<SecurityRisk />}
-          />
-
-          <Route
-            path="/security/dataprotection"
-            element={<Dataprotection />}
-          />
-
-          <Route
-            path="/security/networksecurity"
-            element={<NetworkSecurity />}
-          />
-
-          <Route
-            path="/security/compliancemanagement"
-            element={<ComplianceManagement />}
-          />
+          <Route path="/security/securityrisk" element={<SecurityRisk />} />
+          <Route path="/security/dataprotection" element={<Dataprotection />} />
+          <Route path="/security/networksecurity" element={<NetworkSecurity />} />
+          <Route path="/security/compliancemanagement" element={<ComplianceManagement />} />
 
           {/* SOLUTIONS - DRR */}
-          <Route
-            path="/solutions/drr/drr"
-            element={<Drrindex />}
-          />
-
-          <Route
-            path="/solutions/drr/e-invoicing"
-            element={<EInvoicing />}
-          />
-
-          <Route
-            path="/solutions/drr/invoice-reporting"
-            element={<InvoiceReporting />}
-          />
-
-          <Route
-            path="/solutions/drr/vida"
-            element={<VIDA />}
-          />
-
-          <Route
-            path="/solutions/drr/e-waybill"
-            element={<EWaybill />}
-          />
+          <Route path="/solutions/drr/drr" element={<Drrindex />} />
+          <Route path="/solutions/drr/e-invoicing" element={<EInvoicing />} />
+          <Route path="/solutions/drr/invoice-reporting" element={<InvoiceReporting />} />
+          <Route path="/solutions/drr/vida" element={<VIDA />} />
+          <Route path="/solutions/drr/e-waybill" element={<EWaybill />} />
 
           {/* SOLUTIONS - REPORTING */}
-          <Route
-            path="/solutions/reporting/saf-t"
-            element={<SAFT />}
-          />
-
-          <Route
-            path="/solutions/reporting/vat-return"
-            element={<VATReturn />}
-          />
-
-          <Route
-            path="/solutions/reporting/cbcr"
-            element={<CBCR />}
-          />
-
-          <Route
-            path="/solutions/reporting/intrastat"
-            element={<Intrastat />}
-          />
+          <Route path="/solutions/reporting/saf-t" element={<SAFT />} />
+          <Route path="/solutions/reporting/vat-return" element={<VATReturn />} />
+          <Route path="/solutions/reporting/cbcr" element={<CBCR />} />
+          <Route path="/solutions/reporting/intrastat" element={<Intrastat />} />
 
           {/* SOLUTIONS - AUTOMATION */}
-          <Route
-            path="/solutions/automation/ap-automation"
-            element={<APAutomation />}
-          />
+          <Route path="/solutions/automation/ap-automation" element={<APAutomation />} />
+          <Route path="/solutions/automation/e-banking" element={<EBanking />} />
+          <Route path="/solutions/automation/reconciliation" element={<Reconciliation />} />
 
-          <Route
-            path="/solutions/automation/e-banking"
-            element={<EBanking />}
-          />
-
-          <Route
-            path="/solutions/automation/reconciliation"
-            element={<Reconciliation />}
-          />
+          {/* SOLUTIONS - CUSTOM DEVELOPMENT */}
+          <Route path="/solutions/automation/custom-software" element={<CustomSoftwareDevelopment />} />
+          <Route path="/solutions/automation/enterprise-solutions" element={<EnterpriseSolutions />} />
+          <Route path="/solutions/automation/ai-process-automation" element={<AIProcessAutomation />} />
+          <Route path="/solutions/automation/offshore-web-dev" element={<OffshoreWebsiteDevelopment />} />
+          <Route path="/solutions/automation/ecommerce-dev" element={<EcommerceDevelopment />} />
+          <Route path="/solutions/automation/devops" element={<DevOpsSolutions />} />
 
           {/* SOLUTIONS - APP DEVELOPMENT */}
-          <Route
-            path="/solutions/app-development/mobile-app"
-            element={<MobileAppSolutions />}
-          />
-
-          <Route
-            path="/solutions/app-development/web-app"
-            element={<WebAppSolutions />}
-          />
+          <Route path="/solutions/app-development/mobile-app" element={<MobileAppSolutions />} />
+          <Route path="/solutions/app-development/web-app" element={<WebAppSolutions />} />
 
           {/* SOLUTIONS - DIGITAL MARKETING */}
-          <Route
-            path="/solutions/digital-marketing/seo"
-            element={<Seo />}
-          />
-
-          <Route
-            path="/solutions/digital-marketing/ppc"
-            element={<Ppc />}
-          />
-
-          <Route
-            path="/solutions/digital-marketing/smm"
-            element={<Smm />}
-          />
-
-          <Route
-            path="/solutions/digital-marketing/smo"
-            element={<Smo />}
-          />
-
-          <Route
-            path="/solutions/digital-marketing/content-writing"
-            element={<ContentWriting />}
-          />
+          <Route path="/solutions/digital-marketing/seo" element={<Seo />} />
+          <Route path="/solutions/digital-marketing/ppc" element={<Ppc />} />
+          <Route path="/solutions/digital-marketing/smm" element={<Smm />} />
+          <Route path="/solutions/digital-marketing/smo" element={<Smo />} />
+          <Route path="/solutions/digital-marketing/content-writing" element={<ContentWriting />} />
 
           {/* 404 */}
-          <Route
-            path="*"
-            element={<NotFound />}
-          />
+          <Route path="*" element={<NotFound />} />
 
         </Routes>
       </Layout>

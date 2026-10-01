@@ -85,32 +85,33 @@ export default function Header() {
     };
   }, [openMenu, isHoveringPopper]);
 
-  // --- TopBar — SHORTER + smaller buttons ---
+  // --- TopBar — shorter, buttons aligned to AppBar right edge ---
   const TopBar = () => (
     <Box
       sx={{
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        flexWrap: 'wrap',
-        gap: { xs: 1.5, sm: 3, md: 1 },
-        px: { xs: 2, sm: 4, md: 0, lg: 4, xl: 10, xxl: 14 },
-        py: { xs: 0.6, sm: 0.7, md: 0, lg: 0.7, xl: 0.8, xxl: 1 },
-        height: { lg: 44, xl: 44, xxl: 50 },
+        flexWrap: 'nowrap',
+        gap: { xs: 1.5, sm: 2, md: 2 },
+        px: { xs: 2, sm: 3, md: 2, lg: 16, xl: 4 },
+        py: { xs: 0.4, sm: 0.5, md: 0 },
+        height: { xs: 32, sm: 34, md: 36, lg: 36, xl: 38, xxl: 40 },
         fontFamily: "Poppins, Montserrat, sans-serif",
         bgcolor: '#282825',
         color: 'white',
-        fontSize: { xs: '0.65rem', sm: '0.75rem', md: '0.8rem', lg: '0.85rem', xl: '0.9rem' },
-        textAlign: 'center',
+        fontSize: { xs: '0.65rem', sm: '0.72rem', md: '0.75rem', lg: '0.8rem', xl: '0.85rem' },
         fontWeight: 400,
         letterSpacing: '0.2px',
       }}
     >
+      {/* Left: email + phones */}
       <Box
         sx={{
           display: { xs: "none", md: "flex" },
-          gap: 3,
+          gap: 2.5,
           alignItems: "center",
+          flexShrink: 0,
         }}
       >
         <MuiLink
@@ -118,20 +119,20 @@ export default function Header() {
           underline="none"
           color="inherit"
           sx={{
-            fontSize: '12px',
+            fontSize: '11px',
             display: "flex",
             alignItems: "center",
             gap: 0.5,
             fontFamily: "Poppins, Montserrat, sans-serif",
           }}
         >
-          <MailOutlineIcon sx={{ fontSize: 14 }} /> sales@onasglobal.com
+          <MailOutlineIcon sx={{ fontSize: 13 }} /> sales@onasglobal.com
         </MuiLink>
         <Box sx={{
-          fontSize: '12px',
+          fontSize: '11px',
           display: "flex",
           alignItems: "center",
-          gap: 2,
+          gap: 1.5,
           fontFamily: "Poppins, Montserrat, sans-serif",
         }}>
           <MuiLink
@@ -145,74 +146,66 @@ export default function Header() {
               fontFamily: "Poppins, Montserrat, sans-serif",
             }}
           >
-            <PhoneIcon sx={{ fontSize: 14 }} /> 91-928 150 6440 & 44 1
-          </MuiLink>&nbsp; &amp;&nbsp;
+            <PhoneIcon sx={{ fontSize: 13 }} /> 91-928 150 6440 &amp; 441
+          </MuiLink>
           <MuiLink
             href="tel:+16073262406"
             underline="none"
             color="inherit"
             sx={{
-              fontSize: '12px',
+              fontSize: '11px',
               display: "flex",
               alignItems: "center",
-              gap: 0.5,
+              gap: 1,
               fontFamily: "Poppins, Montserrat, sans-serif",
             }}
           >
-            <PhoneIcon sx={{ fontSize: 14 }} /> +1 607-326-2406
+            <PhoneIcon sx={{ fontSize: 13 }} /> +1 607-326-2406
           </MuiLink>
         </Box>
       </Box>
 
+      {/* Mobile phone display */}
       <Box
         sx={{
           display: { xs: "flex", md: "none" },
           alignItems: "center",
           gap: 0.5,
+          fontSize: '11px',
           fontFamily: "Poppins, Montserrat, sans-serif",
         }}
       >
-        <PhoneIcon sx={{ fontSize: 14 }} />
-        <MuiLink
-          href="tel:+919281506440"
-          underline="none"
-          color="inherit"
-          sx={{ fontFamily: "Poppins, Montserrat, sans-serif" }}
-        >
-          +91-9281506440
-        </MuiLink> &nbsp;&amp;&nbsp;
-        <MuiLink
-          href="tel:+16073262406"
-          underline="none"
-          color="inherit"
-          sx={{ fontFamily: "'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif" }}
-        >
-          +1 607 326 2406
+        <PhoneIcon sx={{ fontSize: 13 }} />
+        <MuiLink href="tel:+919281506440" underline="none" color="inherit">
+          +91-9281506440 
         </MuiLink>
       </Box>
 
+      {/* Right: socials + buttons (aligned to AppBar nav right edge) */}
       <Box
         sx={{
           display: { xs: "none", md: "flex" },
           alignItems: "center",
-          gap: 1.2,
+          gap: 1,
+          ml: 'auto',
+          pr: { md: 1, lg: 2, xl: 3, xxl: 4 },
           fontFamily: "Poppins, Montserrat, sans-serif",
         }}
       >
         <MuiLink href="https://www.facebook.com/profile.php?id=61581619530716" target="_blank" rel="noopener" color="inherit">
-          <FacebookIcon sx={{ fontSize: 14 }} />
+          <FacebookIcon sx={{ fontSize: 13 }} />
         </MuiLink>
-        <MuiLink href="https://www.instagram.com/onasglobalservices?igsh=aXVmdjVjdWVqcXE4" target="_blank" rel="noopener" color="inherit">
-          <InstagramIcon sx={{ fontSize: 14 }} />
+        <MuiLink href="https://www.instagram.com/onasglobalservices?igsh=aXVmdjV3dWVqcXE4" target="_blank" rel="noopener" color="inherit">
+          <InstagramIcon sx={{ fontSize: 13 }} />
         </MuiLink>
         <MuiLink href="https://www.linkedin.com/company/onas-consulting-services" target="_blank" rel="noopener" color="inherit">
-          <LinkedInIcon sx={{ fontSize: 14 }} />
+          <LinkedInIcon sx={{ fontSize: 13 }} />
         </MuiLink>
         <MuiLink href="https://www.youtube.com/@ONASGlobalServicess" target="_blank" rel="noopener" color="inherit">
-          <YouTubeIcon sx={{ fontSize: 14 }} />
+          <YouTubeIcon sx={{ fontSize: 13 }} />
         </MuiLink>
         <MuiLink href="https://x.com/ONAS261679" target="_blank" rel="noopener" color="inherit">
-          <XIcon sx={{ fontSize: 14 }} />
+          <XIcon sx={{ fontSize: 13 }} />
         </MuiLink>
 
         <Button
@@ -225,10 +218,12 @@ export default function Header() {
             fontWeight: 500,
             fontSize: '0.6rem',
             lineHeight: 1,
-            padding: '4px 10px',
+            padding: '6px 10px',
             minWidth: 'auto',
             textTransform: 'none',
+            borderRadius: '10px',
             ml: 0.5,
+            
           }}
         >
           Contact Us
@@ -243,10 +238,12 @@ export default function Header() {
             fontWeight: 500,
             fontSize: '0.6rem',
             lineHeight: 1,
-            padding: '4px 10px',
+            padding: '6px 10px',
             minWidth: 'auto',
             textTransform: 'none',
+            borderRadius: '8px',
             ml: 0.5,
+           
           }}
         >
           Careers
@@ -369,7 +366,6 @@ export default function Header() {
                                   )}
 
                                   {(group.items || [group]).map((child) => {
-                                    // ── Item with subgroups (e.g. Corporate Training) ──
                                     if (child.subgroups && child.subgroups.length > 0) {
                                       return (
                                         <Box key={child.label} sx={{ mt: 0.5 }}>
@@ -455,7 +451,6 @@ export default function Header() {
                                       );
                                     }
 
-                                    // ── Default plain menu item ──
                                     return (
                                       <MenuItem
                                         key={child.label}
@@ -649,7 +644,7 @@ export default function Header() {
           to="/resources/contact-us/"
           variant="primaryFilled"
           onClick={handleDrawerNavigation}
-          sx={{ fontFamily: "Poppins, Montserrat, sans-serif", mb: 1, }}
+          sx={{ fontFamily: "Poppins, Montserrat, sans-serif", mb: 1, borderRadius: '2px' }}
         >
           Contact Us
         </Button>
@@ -660,7 +655,7 @@ export default function Header() {
           to="/resources/careers/"
           variant="secondaryFilled"
           onClick={handleDrawerNavigation}
-          sx={{ fontFamily: "Poppins, Montserrat, sans-serif", mb: 2 }}
+          sx={{ fontFamily: "Poppins, Montserrat, sans-serif", mb: 2, borderRadius: '2px' }}
         >
           Careers
         </Button>
@@ -669,7 +664,7 @@ export default function Header() {
           <MuiLink href="https://www.facebook.com/profile.php?id=61581619530716" target="_blank" rel="noopener" color="inherit">
             <FacebookIcon fontSize="small" />
           </MuiLink>
-          <MuiLink href="https://www.instagram.com/onasglobalservices?igsh=aXVmdjVjdWVqcXE4" target="_blank" rel="noopener" color="inherit">
+          <MuiLink href="https://www.instagram.com/onasglobalservices?igsh=aXVmdjV3dWVqcXE4" target="_blank" rel="noopener" color="inherit">
             <InstagramIcon fontSize="small" />
           </MuiLink>
           <MuiLink href="https://www.linkedin.com/company/onas-consulting-services" target="_blank" rel="noopener" color="inherit">
@@ -706,7 +701,7 @@ export default function Header() {
         color="default"
         elevation={0}
         sx={{
-          top: { xs: 26, sm: 30, md: 38, lg: 40, xl: 44, xxl: 50 },
+          top: { xs: 32, sm: 34, md: 36, lg: 36, xl: 38, xxl: 40 },
           zIndex: (theme) => theme.zIndex.appBar,
           bgcolor: "background.paper",
           borderBottom: "1px solid #eee",
@@ -719,8 +714,8 @@ export default function Header() {
             justifyContent: "space-between",
             alignItems: "center",
             position: "relative",
-            minHeight: { xs: 56, sm: 56, md: 56, lg: 60, xl: 64, xxl: 70 },
-            height: { xs: 56, sm: 56, md: 56, lg: 60, xl: 64, xxl: 70 },
+            minHeight: { xs: 56, sm: 56, md: 56, lg: 64, xl: 70, xxl: 76 },
+            height: { xs: 56, sm: 56, md: 56, lg: 64, xl: 70, xxl: 76 },
             px: { xs: 1, sm: 2, md: 2, lg: 3, xl: 4 },
             letterSpacing: { xs: 0, sm: 0, md: 0.5, lg: 3.3, xl: 3.5 },
             mt: { xl: 0.5 },
@@ -734,8 +729,8 @@ export default function Header() {
               display: "flex",
               alignItems: "center",
               textDecoration: "none",
-              height: { xs: 38, sm: 40, md: 45, lg: 48, xl: 52, xxl: 56 },
-              minWidth: { xs: 130, sm: 140, md: 150, lg: 170, xl: 190, xxl: 210 },
+              height: { xs: 44, sm: 46, md: 52, lg: 58, xl: 62, xxl: 66 },
+              minWidth: { xs: 150, sm: 160, md: 180, lg: 200, xl: 220, xxl: 240 },
               ml: { xs: 2, sm: 3, md: 4, lg: 5, xl: 6, xxl: 8 },
               mt: { lg: 0.5, xl: 0.5, xxl: 1 },
               flexShrink: 0,
@@ -746,8 +741,8 @@ export default function Header() {
               src={Logo}
               alt="ONAS Logo"
               sx={{
-                height: { xs: "38px", sm: "40px", md: "45px", lg: "48px", xl: "52px", xxl: "56px" },
-                width: { xs: "130px", sm: "140px", md: "150px", lg: "170px", xl: "190px", xxl: "210px" },
+                height: { xs: "44px", sm: "46px", md: "52px", lg: "58px", xl: "62px", xxl: "66px" },
+                width: { xs: "150px", sm: "160px", md: "180px", lg: "200px", xl: "220px", xxl: "240px" },
                 maxWidth: "none",
                 objectFit: "contain",
                 pt: { xs: 0.5, md: 0, lg: 0, xl: 0, xxl: 0 }

@@ -12,48 +12,18 @@ import Image2 from '../../../assets/images/howWeHelp/mitoper/cybersecurity/img2.
 import Image3 from '../../../assets/images/howWeHelp/mitoper/cybersecurity/img3.png';
 import Image4 from '../../../assets/images/howWeHelp/mitoper/cybersecurity/img4.png';
 
-// ── Arvee editorial palette ──
-const ink = '#0B4C74';
-const muted = '#647572';
-const line = '#dfe8df';
-const soft = '#ffffff';
-const cream = '#ffffff';
-const lime = '#baf58c';
-
-const eyebrowSx = {
-  color: '#0B4C74',
-  fontSize: '.55rem',
-  letterSpacing: '.12em',
-  textTransform: 'uppercase',
-  fontWeight: 700,
-  fontFamily: "'Poppins', sans-serif",
-};
-
-const containerSx = {
-  width: '100%',
-  maxWidth: { xs: '100%', md: '1240px' },
-  margin: '0 auto',
-  padding: { xs: '0 1rem', md: '0 1.5rem' },
-  boxSizing: 'border-box',
-};
-
-const cardSx = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  textAlign: 'left',
-  background: '#fff',
-  border: `1px solid ${line}`,
-  borderRadius: '2px',
-  padding: { xs: '1.3rem 1.1rem', md: '1.6rem 1.4rem' },
-  height: '100%',
-  width: '100%',
-  transition: 'all .25s ease',
-  '&:hover': {
-    borderColor: '#aac7b2',
-    transform: 'translateY(-3px)',
-  },
-};
+// ── Shared theme imports (matches your other working pages) ──
+import {
+  Eyebrow,
+  cardSx,
+  containerSx,
+  ink,
+  muted,
+  line,
+  soft,
+  cream,
+  lime,
+} from '../../../theme/theme';
 
 const CyberSecurity = () => {
   const baseUrl = window.location.origin;
@@ -271,7 +241,7 @@ const CyberSecurity = () => {
         <p>We help organizations achieve compliance with GDPR, HIPAA, PCI DSS, SOC 2, ISO 27001, NIST, CMMC, FedRAMP, FISMA, and other industry-specific cybersecurity regulations and frameworks.</p>
       </div>
 
-      {/* ── Section 1: Hero — Slideshow background ── */}
+      {/* ── Section 1: Hero — Slideshow background (CENTERED + LIGHTER shade) ── */}
       <Box
         sx={{
           position: 'relative',
@@ -282,6 +252,7 @@ const CyberSecurity = () => {
           isolation: 'isolate',
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <Box
@@ -295,7 +266,7 @@ const CyberSecurity = () => {
               position: 'absolute',
               inset: 0,
               background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+                'linear-gradient(90deg, rgba(11,76,116,.45) 0%, rgba(11,76,116,.28) 55%, rgba(11,76,116,.40) 100%)',
               zIndex: 1,
             },
           }}
@@ -322,7 +293,7 @@ const CyberSecurity = () => {
           </AnimatePresence>
         </Box>
 
-        <Box sx={{ position: 'relative', zIndex: 2, maxWidth: 1240, margin: '0 auto', width: '100%' }}>
+        <Box sx={{ position: 'relative', zIndex: 2, maxWidth: 1240, margin: '0 auto', width: '100%', textAlign: 'center' }}>
           <Typography
             sx={{
               color: lime,
@@ -332,6 +303,7 @@ const CyberSecurity = () => {
               fontWeight: 700,
               fontFamily: "'Poppins', sans-serif",
               marginBottom: '.7rem',
+              textShadow: '0 1px 6px rgba(0,0,0,.6)',
             }}
           >
             Cyber Security
@@ -339,47 +311,51 @@ const CyberSecurity = () => {
           <Typography
             component="h1"
             sx={{
-              margin: '.4rem 0 1rem',
-              font: "400 clamp(2rem, 4.5vw, 3.6rem)/1.02 Georgia, 'Times New Roman', serif",
+              margin: '.4rem auto 1rem',
+              font: "400 clamp(1.6rem, 3.2vw, 2.6rem)/1.05 Georgia, 'Times New Roman', serif",
               color: '#fff',
-              maxWidth: 900,
+              maxWidth: 800,
+              textShadow: '0 2px 10px rgba(0,0,0,.65)',
             }}
           >
             Cyber Security Services
           </Typography>
           <Typography
             sx={{
-              color: 'rgba(255,255,255,.82) !important',
+              color: 'rgba(255,255,255,.95) !important',
               fontFamily: "'Poppins', sans-serif",
               fontSize: { xs: '.72rem', md: '.78rem' },
               lineHeight: 1.7,
               maxWidth: 640,
-              marginBottom: '1.8rem',
+              margin: '0 auto 1.8rem',
+              textShadow: '0 1px 6px rgba(0,0,0,.65)',
             }}
           >
             Protect your critical infrastructure with services designed to detect threats, manage
             risks, and guarantee business continuity across hybrid and multi-cloud environments.
           </Typography>
-          <Box
-            component="a"
-            href="/resources/contact-us"
-            sx={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '.5rem',
-              padding: '.7rem 1.1rem',
-              borderRadius: '2px',
-              background: '#0B4C74',
-              color: '#ffffff',
-              fontWeight: 600,
-              fontSize: '.62rem',
-              fontFamily: "'Poppins', sans-serif",
-              textDecoration: 'none',
-              transition: 'background .2s ease',
-              '&:hover': { background: '#d3ffb0', color: '#000000' },
-            }}
-          >
-            Contact Us <ArrowForward sx={{ fontSize: 14 }} />
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Box
+              component="a"
+              href="/resources/contact-us"
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '.5rem',
+                padding: '.7rem 1.1rem',
+                borderRadius: '2px',
+                background: '#0B4C74',
+                color: '#ffffff',
+                fontWeight: 600,
+                fontSize: '.62rem',
+                fontFamily: "'Poppins', sans-serif",
+                textDecoration: 'none',
+                transition: 'background .2s ease',
+                '&:hover': { background: '#d3ffb0', color: '#000000' },
+              }}
+            >
+              Contact Us <ArrowForward sx={{ fontSize: 14 }} />
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -401,7 +377,7 @@ const CyberSecurity = () => {
               component="h2"
               sx={{
                 margin: '.7rem 0 1rem',
-                font: "400 clamp(1.6rem, 3.2vw, 2.6rem)/1.08 Georgia, 'Times New Roman', serif",
+                font: "400 clamp(1.3rem, 2.5vw, 1.9rem)/1.08 Georgia, 'Times New Roman', serif",
                 color: ink,
               }}
             >
@@ -469,7 +445,7 @@ const CyberSecurity = () => {
               component="h2"
               sx={{
                 margin: '.7rem auto 0',
-                font: "400 clamp(1.8rem, 3.6vw, 3.6rem)/.98 Georgia, 'Times New Roman', serif",
+                font: "400 clamp(1.4rem, 2.6vw, 2.2rem)/.98 Georgia, 'Times New Roman', serif",
                 color: ink,
                 maxWidth: 720,
               }}
@@ -564,7 +540,7 @@ const CyberSecurity = () => {
             component="h2"
             sx={{
               margin: '.7rem auto 0',
-              font: "400 clamp(1.8rem, 3.6vw, 3.6rem)/.98 Georgia, 'Times New Roman', serif",
+              font: "400 clamp(1.4rem, 2.6vw, 2.2rem)/.98 Georgia, 'Times New Roman', serif",
               color: ink,
               maxWidth: 720,
             }}
@@ -655,7 +631,7 @@ const CyberSecurity = () => {
               component="h2"
               sx={{
                 margin: '.7rem auto 0',
-                font: "400 clamp(1.8rem, 3.6vw, 3.6rem)/.98 Georgia, 'Times New Roman', serif",
+                font: "400 clamp(1.4rem, 2.6vw, 2.2rem)/.98 Georgia, 'Times New Roman', serif",
                 color: ink,
                 maxWidth: 720,
               }}
@@ -697,7 +673,7 @@ const CyberSecurity = () => {
                 component="h3"
                 sx={{
                   margin: '.6rem 0 1.4rem',
-                  font: "400 clamp(1.3rem, 2.2vw, 1.7rem)/1.15 Georgia, 'Times New Roman', serif",
+                  font: "400 clamp(1rem, 1.7vw, 1.3rem)/1.15 Georgia, 'Times New Roman', serif",
                   color: ink,
                 }}
               >
@@ -716,7 +692,7 @@ const CyberSecurity = () => {
                       textAlign: 'center',
                     }}
                   >
-                    <Typography sx={{ margin: 0, color: ink, font: "400 clamp(1.1rem, 1.8vw, 1.5rem)/1 Georgia, 'Times New Roman', serif" }}>
+                    <Typography sx={{ margin: 0, color: ink, font: "400 clamp(1rem, 1.5vw, 1.25rem)/1 Georgia, 'Times New Roman', serif" }}>
                       {metric.value}
                     </Typography>
                     <Typography
@@ -739,7 +715,7 @@ const CyberSecurity = () => {
         </Container>
       </Box>
 
-      {/* ── Section 6: Technologies & Solutions — SLIDESHOW BACKGROUND ── */}
+      {/* ── Section 6: Technologies & Solutions — SLIDESHOW BACKGROUND (LIGHTER shade) ── */}
       <Box
         sx={{
           position: 'relative',
@@ -760,7 +736,7 @@ const CyberSecurity = () => {
               position: 'absolute',
               inset: 0,
               background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.78) 55%, rgba(11,76,116,.9) 100%)',
+                'linear-gradient(90deg, rgba(11,76,116,.55) 0%, rgba(11,76,116,.38) 55%, rgba(11,76,116,.50) 100%)',
               zIndex: 1,
             },
           }}
@@ -789,14 +765,15 @@ const CyberSecurity = () => {
 
         <Box sx={{ position: 'relative', zIndex: 2, maxWidth: 1240, margin: '0 auto', width: '100%' }}>
           <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <Typography sx={{ ...eyebrowSx, color: lime }}>Technology Stack</Typography>
+            <Eyebrow>Technology Stack</Eyebrow>
             <Typography
               component="h2"
               sx={{
                 margin: '.7rem auto 0',
-                font: "400 clamp(1.8rem, 3.6vw, 3.6rem)/.98 Georgia, 'Times New Roman', serif",
+                font: "400 clamp(1.4rem, 2.6vw, 2.2rem)/.98 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 720,
+                textShadow: '0 2px 10px rgba(0,0,0,.55)',
               }}
             >
               Cybersecurity Technologies &amp; Solutions
@@ -866,7 +843,7 @@ const CyberSecurity = () => {
               component="h2"
               sx={{
                 margin: '.7rem auto 1rem',
-                font: "400 clamp(1.8rem, 3.6vw, 3rem)/1.05 Georgia, 'Times New Roman', serif",
+                font: "400 clamp(1.4rem, 2.6vw, 2rem)/1.05 Georgia, 'Times New Roman', serif",
                 color: ink,
               }}
             >
