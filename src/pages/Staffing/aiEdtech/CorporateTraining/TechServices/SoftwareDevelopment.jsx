@@ -11,15 +11,22 @@ import {
   Body,
   cardSx,
   ink, muted, line, soft, cream, lime,
-} from '../../../../../theme/theme';
+} from '@/theme/theme';
+
+import SD1 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Software development/customsoftwaredev1.jpg';
+import SD2 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Software development/customsoftwaredev2.jpg';
+import SD3 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Software development/customsoftwaredev3.jpg';
+import SD4 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Software development/customsoftwaredev4.jpg';
+import SD5 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Software development/customsoftwaredev5.jpg';
+import SD6 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Software development/customsoftwaredev6.jpg';
+import SD7 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Software development/customsoftwaredev7.jpg';
 
 export default function SoftwareDevelopment() {
-  // ── Content ──
   const eyebrow = 'Software product delivery';
   const title = 'Software development outsourcing with clear ownership';
   const heroText = 'Extend your product team with an engineering partner who brings delivery structure, practical communication, and the technical depth to take software from discovery to ongoing improvement.';
   const heroCta = 'Discuss your roadmap';
-  const heroImage = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1100&q=85';
+  const heroImage = SD1;
   const heroImageAlt = 'Software team collaborating around a table';
   const stats = [
     { value: 'One team', label: 'Shared delivery ownership' },
@@ -33,7 +40,7 @@ export default function SoftwareDevelopment() {
     'Software outsourcing works best when your team keeps a clear line of sight into priorities, decisions, and delivery. We collaborate with your stakeholders to plan work in manageable increments and keep progress visible.',
     'Our teams can support product discovery, architecture, application development, quality engineering, and ongoing maintenance. Engagements are shaped around your requirements, team structure, and operating context.',
   ];
-  const overviewImage = 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85';
+  const overviewImage = SD2;
   const overviewImageAlt = 'Colleagues discussing product work together';
 
   const challengeEyebrow = 'Why outsource intentionally';
@@ -50,9 +57,9 @@ export default function SoftwareDevelopment() {
   const servicesTitle = 'Engineering capacity that connects to your product goals';
   const servicesIntro = 'Use a full delivery team or add specific skills to the team you already have.';
   const services = [
-    { title: 'Product engineering', text: 'Plan, design, build, test, and evolve web, mobile, and enterprise software.', image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=600&h=400&fit=crop' },
-    { title: 'Dedicated development teams', text: 'Add a stable cross-functional team that works alongside your product owners and internal engineers.', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop' },
-    { title: 'Modernization & maintenance', text: 'Improve legacy applications, address technical debt, and support secure, steady releases.', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop' },
+    { title: 'Product engineering', text: 'Plan, design, build, test, and evolve web, mobile, and enterprise software.', image: SD3 },
+    { title: 'Dedicated development teams', text: 'Add a stable cross-functional team that works alongside your product owners and internal engineers.', image: SD4 },
+    { title: 'Modernization & maintenance', text: 'Improve legacy applications, address technical debt, and support secure, steady releases.', image: SD5 },
   ];
 
   const processEyebrow = 'From discovery to dependable delivery';
@@ -74,13 +81,13 @@ export default function SoftwareDevelopment() {
       label: 'Unstructured outsourcing',
       title: 'Work moves across a handoff boundary',
       points: ['Priorities and acceptance criteria may be unclear.', 'Progress is hard to inspect between milestone reviews.', 'Product context can be lost between separate teams.'],
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop',
+      image: SD6,
     },
     {
       label: 'Collaborative engineering partner',
       title: 'The team shares context and accountability',
       points: ['Backlog, ownership, and decision paths are agreed together.', 'Working increments and risks stay visible throughout delivery.', 'Knowledge transfer and maintainability are part of the plan.'],
-      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop',
+      image: SD7,
     },
   ];
 
@@ -134,14 +141,29 @@ export default function SoftwareDevelopment() {
 
   return (
     <PageShell>
-      {/* ── HERO ── */}
-      <Box sx={{ position: 'relative', minHeight: { xs: 480, md: 560 }, padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' }, display: 'flex', alignItems: 'center', overflow: 'hidden', background: ink, isolation: 'isolate' }}>
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: -1, background: 'linear-gradient(120deg, rgba(11,76,116,.98) 0%, rgba(11,76,116,.85) 55%, rgba(11,76,116,.72) 100%)' }} />
+      <Box sx={{ position: 'relative', marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '10px' }, minHeight: { xs: 480, md: 560 }, padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' }, display: 'flex', alignItems: 'center', overflow: 'hidden', background: ink, isolation: 'isolate' }}>
+        {heroImage && (
+          <Box
+            component="img"
+            src={heroImage}
+            alt={heroImageAlt || title}
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              zIndex: -2,
+            }}
+          />
+        )}
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -1, background: 'linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.75) 100%)' }} />
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '2rem', md: '3rem' }, alignItems: 'center', maxWidth: 1240, margin: '0 auto', width: '100%' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            {eyebrow && <Eyebrow sx={{ color: lime }}>{eyebrow}</Eyebrow>}
-            <Typography component="h1" sx={{ margin: '.5rem 0 1.4rem', font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 640, letterSpacing: 0 }}>{title}</Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 560, marginBottom: '1.8rem' }}>{heroText}</Body>
+            {eyebrow && <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>{eyebrow}</Eyebrow>}
+            <Typography component="h1" sx={{ margin: '.5rem 0 1.4rem', font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 640, letterSpacing: 0, textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)' }}>{title}</Typography>
+            <Body sx={{ color: '#ffffff !important', maxWidth: 560, marginBottom: '1.8rem', textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>{heroText}</Body>
             <Box component="a" href="/resources/contact-us" sx={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.7rem 1.1rem', borderRadius: '2px', background: '#0B4C74', color: '#ffffff', fontWeight: 600, fontSize: '.62rem', fontFamily: "'Poppins', sans-serif", textDecoration: 'none', transition: 'background .2s ease', '&:hover': { background: '#d3ffb0', color: '#000000' } }}>
               {heroCta} <ArrowForward sx={{ fontSize: 14 }} />
             </Box>
@@ -150,23 +172,16 @@ export default function SoftwareDevelopment() {
                 {stats.map((stat, i) => (
                   <Box key={i} sx={{ borderLeft: `2px solid ${lime}`, paddingLeft: '.8rem' }}>
                     <Typography sx={{ fontFamily: "'Poppins', sans-serif", fontSize: '.72rem', fontWeight: 700, color: lime, lineHeight: 1.2, marginBottom: '.2rem' }}>{stat.value}</Typography>
-                    <Typography sx={{ fontFamily: "'Poppins', sans-serif", fontSize: '.58rem', color: 'rgba(255,255,255,.7)', lineHeight: 1.5, letterSpacing: '.04em', textTransform: 'uppercase' }}>{stat.label}</Typography>
+                    <Typography sx={{ fontFamily: "'Poppins', sans-serif", fontSize: '.58rem', color: '#ffffff', lineHeight: 1.5, letterSpacing: '.04em', textTransform: 'uppercase', textShadow: '0 1px 6px rgba(0,0,0,.85)' }}>{stat.label}</Typography>
                   </Box>
                 ))}
               </Box>
             )}
           </motion.div>
-          {heroImage && (
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Box sx={{ border: `1px solid ${line}`, borderRadius: '2px', overflow: 'hidden', background: '#fff', width: '100%', height: { xs: 240, md: 340 } }}>
-                <Box component="img" src={heroImage} alt={heroImageAlt || title} sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-              </Box>
-            </Box>
-          )}
+          <Box />
         </Box>
       </Box>
 
-      {/* ── OVERVIEW ── */}
       <Section>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '2rem', md: 'clamp(2rem, 5vw, 4rem)' }, alignItems: 'center' }}>
           <Box>
@@ -182,7 +197,6 @@ export default function SoftwareDevelopment() {
         </Box>
       </Section>
 
-      {/* ── CHALLENGES (left border removed) ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {challengeEyebrow && <Eyebrow>{challengeEyebrow}</Eyebrow>}
@@ -202,7 +216,6 @@ export default function SoftwareDevelopment() {
         </Box>
       </Section>
 
-      {/* ── SERVICES (with images) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {servicesEyebrow && <Eyebrow>{servicesEyebrow}</Eyebrow>}
@@ -229,7 +242,6 @@ export default function SoftwareDevelopment() {
         </Box>
       </Section>
 
-      {/* ── PROCESS ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {processEyebrow && <Eyebrow>{processEyebrow}</Eyebrow>}
@@ -249,7 +261,6 @@ export default function SoftwareDevelopment() {
         </Box>
       </Section>
 
-      {/* ── DELIVERY OPTIONS (with images, no left border) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {deliveryEyebrow && <Eyebrow>{deliveryEyebrow}</Eyebrow>}
@@ -281,7 +292,6 @@ export default function SoftwareDevelopment() {
         </Box>
       </Section>
 
-      {/* ── COMPARISON TABLE ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {comparisonEyebrow && <Eyebrow>{comparisonEyebrow}</Eyebrow>}
@@ -296,7 +306,6 @@ export default function SoftwareDevelopment() {
         </Box>
       </Section>
 
-      {/* ── ENGAGEMENTS ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {engagementEyebrow && <Eyebrow>{engagementEyebrow}</Eyebrow>}
@@ -316,18 +325,8 @@ export default function SoftwareDevelopment() {
         </Box>
       </Section>
 
-      {/* ── INDUSTRIES + CAPABILITIES (side by side) ── */}
       <Section bg={soft}>
-        <Box
-          sx={{
-            maxWidth: 1200,
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: { xs: '2.5rem', md: '3rem' },
-          }}
-        >
-          {/* Industries — left */}
+        <Box sx={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: '2.5rem', md: '3rem' } }}>
           <Box>
             {industriesEyebrow && <Eyebrow>{industriesEyebrow}</Eyebrow>}
             <SectionHeading sx={{ marginTop: '.7rem', marginBottom: '.9rem', textAlign: 'left' }}>{industriesTitle}</SectionHeading>
@@ -341,8 +340,6 @@ export default function SoftwareDevelopment() {
               ))}
             </Box>
           </Box>
-
-          {/* Capabilities — right */}
           <Box>
             {capabilitiesEyebrow && <Eyebrow>{capabilitiesEyebrow}</Eyebrow>}
             <SectionHeading sx={{ marginTop: '.7rem', marginBottom: '.9rem', textAlign: 'left' }}>{capabilitiesTitle}</SectionHeading>
@@ -359,7 +356,6 @@ export default function SoftwareDevelopment() {
         </Box>
       </Section>
 
-      {/* ── TECH STACK ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {stackEyebrow && <Eyebrow>{stackEyebrow}</Eyebrow>}
@@ -376,7 +372,6 @@ export default function SoftwareDevelopment() {
         </Box>
       </Section>
 
-      {/* ── CTA ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
           <Eyebrow>Get Started</Eyebrow>

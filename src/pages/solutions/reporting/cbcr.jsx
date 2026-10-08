@@ -8,9 +8,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import SecurityIcon from '@mui/icons-material/Security';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -22,7 +20,12 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Local-only info card (not part of shared theme)
+import C1 from '../../../assets/images/solutions/cbcr/cbcr1.jpg';
+import C2 from '../../../assets/images/solutions/cbcr/cbcr2.jpg';
+import C3 from '../../../assets/images/solutions/cbcr/cbcr3.jpg';
+import C4 from '../../../assets/images/solutions/cbcr/cbcr4.jpg';
+import C5 from '../../../assets/images/solutions/cbcr/cbcr5.jpg';
+
 const infoCardSx = {
   background: '#fff',
   border: `1px solid ${line}`,
@@ -35,27 +38,21 @@ const CBCR = () => {
   const valueProps = [
     {
       title: 'Data Gathering & Consistency',
-      description:
-        'ONAS Global offers centralized data management and integration capabilities, allowing for easy consolidation of data from various jurisdictions.',
+      description: 'ONAS Global offers centralized data management and integration capabilities, allowing for easy consolidation of data from various jurisdictions.',
       icon: <StorageIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgOgbhqi4sej65hcZ0BS1DHUXvXbiEMbuY5uMQI6Zqrw&s=10',
+      image: C1,
     },
     {
       title: 'Cost & Resource Saving',
-      description:
-        'Automating the CbCR reporting process via ONAS Global can lead to significant cost savings, reducing the need for external consultants.',
+      description: 'Automating the CbCR reporting process via ONAS Global can lead to significant cost savings, reducing the need for external consultants.',
       icon: <AttachMoneyIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL-b8lM_1VDPs2RgCNqgNkCzJsKyOQi99uCW_871CEMg&s=10',
+      image: C2,
     },
     {
       title: 'Effective Risk Management',
-      description:
-        'ONAS Global offers advanced data security features and audit trails, ensuring data is securely stored and changes are transparently tracked.',
+      description: 'ONAS Global offers advanced data security features and audit trails, ensuring data is securely stored and changes are transparently tracked.',
       icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShjl8siZVTE7GLHgVLeoQ3Qh2OYPn_JRXrhqUQb_0G5Q&s=10',
+      image: C3,
     },
   ];
 
@@ -68,18 +65,17 @@ const CBCR = () => {
 
   return (
     <PageShell>
-      {/* ── HERO ── */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage:
-            'url(https://transferpricingasia.com/wp-content/uploads/2019/02/country-by-country-reporting.jpg)',
+          backgroundImage: `url(${C4})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
@@ -90,8 +86,7 @@ const CBCR = () => {
             position: 'absolute',
             inset: 0,
             zIndex: -1,
-            background:
-              'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
           }}
         />
 
@@ -101,7 +96,9 @@ const CBCR = () => {
           sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}
         >
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>CbCR</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              CbCR
+            </Eyebrow>
 
             <Typography
               component="h1"
@@ -110,6 +107,7 @@ const CBCR = () => {
                 font: "400 clamp(1.15rem, 2.2vw, 1.75rem)/1.15 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               CbCR (Country by Country Reports)
@@ -117,22 +115,19 @@ const CBCR = () => {
 
             <Body
               sx={{
-                color: 'rgba(255,255,255,.82) !important',
+                color: '#ffffff !important',
                 maxWidth: 780,
                 marginLeft: 'auto',
                 marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
               }}
             >
-              Achieve global tax transparency with comprehensive Country-by-Country Reporting
-              solutions. Our platform helps multinational enterprises meet OECD compliance
-              requirements while streamlining data collection, analysis, and submission processes
-              across all operating jurisdictions.
+              Achieve global tax transparency with comprehensive Country-by-Country Reporting solutions. Our platform helps multinational enterprises meet OECD compliance requirements while streamlining data collection, analysis, and submission processes across all operating jurisdictions.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* ── Who Has to File ── */}
       <Section>
         <Box sx={{ ...infoCardSx, textAlign: 'center', maxWidth: 900, margin: '0 auto 1.5rem' }}>
           <Eyebrow>Eligibility</Eyebrow>
@@ -140,17 +135,11 @@ const CBCR = () => {
             Who Has to File Country-by-Country Reporting?
           </SectionHeading>
           <Body>
-            Multinational Enterprises (MNEs): The primary criterion for CbCR is the entity&apos;s
-            status as a large MNE. ONAS Global helps such MNEs prepare and submit CbCR reports
-            regardless of their operational scope. Across the European Union, the CbCR report is
-            required by law to be submitted annually. This obligation is mandatory for MNEs with
-            a turnover of €750,000 or more. ONAS Global provides comprehensive solutions to meet
-            these reporting obligations efficiently.
+            Multinational Enterprises (MNEs): The primary criterion for CbCR is the entity&apos;s status as a large MNE. ONAS Global helps such MNEs prepare and submit CbCR reports regardless of their operational scope. Across the European Union, the CbCR report is required by law to be submitted annually. This obligation is mandatory for MNEs with a turnover of €750,000 or more. ONAS Global provides comprehensive solutions to meet these reporting obligations efficiently.
           </Body>
         </Box>
       </Section>
 
-      {/* ── What is Included ── */}
       <Section bg={soft}>
         <Box sx={{ ...infoCardSx, background: 'transparent', border: 'none', marginBottom: 0 }}>
           <Eyebrow>Inclusions</Eyebrow>
@@ -175,7 +164,6 @@ const CBCR = () => {
         </Box>
       </Section>
 
-      {/* ── Value Proposition (3 cards) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Value Proposition</Eyebrow>
@@ -183,9 +171,7 @@ const CBCR = () => {
             The Value Proposition of CbCR with ONAS Global
           </SectionHeading>
           <Body sx={{ maxWidth: 800, margin: '0 auto' }}>
-            With the world&apos;s most advanced data security features and audit trails, ONAS
-            Global ensures that data is not only securely stored but also that any changes are
-            transparently tracked.
+            With the world&apos;s most advanced data security features and audit trails, ONAS Global ensures that data is not only securely stored but also that any changes are transparently tracked.
           </Body>
         </Box>
 
@@ -279,7 +265,6 @@ const CBCR = () => {
         </Box>
       </Section>
 
-      {/* ── What Is Country-by-Country Reporting? ── */}
       <Section bg={soft}>
         <Box
           sx={{
@@ -300,7 +285,7 @@ const CBCR = () => {
           >
             <Box
               component="img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF4JaAyAQ9c5hEpRr2zfhhrwhNEJ4-mAx21BNrg0t8Eg&s=10"
+              src={C5}
               alt="CbCR"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -312,20 +297,12 @@ const CBCR = () => {
               What Is Country-by-Country Reporting?
             </SectionHeading>
             <Body sx={{ fontSize: '.72rem', lineHeight: 1.8 }}>
-              Country-by-Country Reporting (CbCR) represents a pivotal shift in international
-              taxation, offering unprecedented transparency. It&apos;s a reporting mechanism
-              mandated by the OECD under the Base Erosion and Profit Shifting (BEPS) Action Plan.
-              Essentially, CbCR requires multinational enterprises (MNEs) to report income, taxes,
-              and other key financial data for each country where they operate. ONAS Global helps
-              businesses navigate this form of reporting that shines a spotlight on tax planning
-              strategies, aiming to curb tax avoidance and ensure a fair distribution of tax
-              revenues.
+              Country-by-Country Reporting (CbCR) represents a pivotal shift in international taxation, offering unprecedented transparency. It&apos;s a reporting mechanism mandated by the OECD under the Base Erosion and Profit Shifting (BEPS) Action Plan. Essentially, CbCR requires multinational enterprises (MNEs) to report income, taxes, and other key financial data for each country where they operate. ONAS Global helps businesses navigate this form of reporting that shines a spotlight on tax planning strategies, aiming to curb tax avoidance and ensure a fair distribution of tax revenues.
             </Body>
           </Box>
         </Box>
       </Section>
 
-      {/* ── Info Cards ── */}
       <Section>
         <Box sx={infoCardSx}>
           <Eyebrow>Filing</Eyebrow>
@@ -333,11 +310,7 @@ const CBCR = () => {
             Who needs to file CbCR?
           </SectionHeading>
           <Body sx={{ fontSize: '.72rem', lineHeight: 1.8 }}>
-            CbCR obligations fall primarily on MNEs with consolidated group revenue exceeding a
-            certain threshold, generally €750 million or its equivalent. ONAS Global helps these
-            entities file detailed reports, breaking down financial data for each jurisdiction
-            they operate in. This requirement applies not just to the parent companies but also
-            to subsidiaries and affiliates, depending on the rules of the specific country.
+            CbCR obligations fall primarily on MNEs with consolidated group revenue exceeding a certain threshold, generally €750 million or its equivalent. ONAS Global helps these entities file detailed reports, breaking down financial data for each jurisdiction they operate in. This requirement applies not just to the parent companies but also to subsidiaries and affiliates, depending on the rules of the specific country.
           </Body>
         </Box>
 
@@ -347,12 +320,7 @@ const CBCR = () => {
             CBC Reporting Obligations
           </SectionHeading>
           <Body sx={{ fontSize: '.72rem', lineHeight: 1.8 }}>
-            The reporting obligations under CbCR are comprehensive. MNEs must disclose a range of
-            data, including revenue generated, pre-tax profit or loss, income tax paid and
-            accrued, stated capital, accumulated earnings, number of employees, and tangible
-            assets other than cash or cash equivalents. ONAS Global helps businesses compile these
-            details crucial for tax authorities to assess where economic activity is taking place
-            and where taxation should rightfully occur.
+            The reporting obligations under CbCR are comprehensive. MNEs must disclose a range of data, including revenue generated, pre-tax profit or loss, income tax paid and accrued, stated capital, accumulated earnings, number of employees, and tangible assets other than cash or cash equivalents. ONAS Global helps businesses compile these details crucial for tax authorities to assess where economic activity is taking place and where taxation should rightfully occur.
           </Body>
         </Box>
 
@@ -362,13 +330,7 @@ const CBCR = () => {
             When will CbCR be implemented?
           </SectionHeading>
           <Body sx={{ fontSize: '.72rem', lineHeight: 1.8 }}>
-            CbCR is already in effect in many countries, with implementation dates varying
-            globally. Since its introduction in the BEPS Action Plan, numerous countries have
-            swiftly adopted CbCR, aligning their local laws with OECD guidelines. ONAS Global
-            helps businesses consult specific national regulations to determine the exact
-            implementation timelines. The exact date of implementation can vary from country to
-            country, with some nations adopting the practice shortly after the OECD&apos;s
-            recommendations, while others took longer.
+            CbCR is already in effect in many countries, with implementation dates varying globally. Since its introduction in the BEPS Action Plan, numerous countries have swiftly adopted CbCR, aligning their local laws with OECD guidelines. ONAS Global helps businesses consult specific national regulations to determine the exact implementation timelines. The exact date of implementation can vary from country to country, with some nations adopting the practice shortly after the OECD&apos;s recommendations, while others took longer.
           </Body>
         </Box>
 
@@ -378,11 +340,7 @@ const CBCR = () => {
             Why are CbCR Reports Needed?
           </SectionHeading>
           <Body sx={{ fontSize: '.72rem', lineHeight: 1.8 }}>
-            CbCR reports are a cornerstone in the fight against tax avoidance. By requiring
-            detailed reporting, tax authorities can better understand where profits are being made
-            and where taxes are being paid. ONAS Global helps businesses achieve this increased
-            transparency to prevent profit shifting and base erosion, ensuring that companies
-            contribute their fair share of taxes in the markets where they truly operate.
+            CbCR reports are a cornerstone in the fight against tax avoidance. By requiring detailed reporting, tax authorities can better understand where profits are being made and where taxes are being paid. ONAS Global helps businesses achieve this increased transparency to prevent profit shifting and base erosion, ensuring that companies contribute their fair share of taxes in the markets where they truly operate.
           </Body>
         </Box>
 
@@ -392,10 +350,7 @@ const CBCR = () => {
             When will CbCR reports need to be filed?
           </SectionHeading>
           <Body sx={{ fontSize: '.72rem', lineHeight: 1.8 }}>
-            Filing deadlines for CbCR reports vary by country but are generally required annually.
-            In many jurisdictions, the report is due within 12 months after the end of the
-            reporting fiscal year of the MNE group. ONAS Global helps businesses stay attentive in
-            understanding the specific deadlines in each jurisdiction to ensure timely compliance.
+            Filing deadlines for CbCR reports vary by country but are generally required annually. In many jurisdictions, the report is due within 12 months after the end of the reporting fiscal year of the MNE group. ONAS Global helps businesses stay attentive in understanding the specific deadlines in each jurisdiction to ensure timely compliance.
           </Body>
         </Box>
 
@@ -405,20 +360,12 @@ const CBCR = () => {
             Where is a CbCR report filed?
           </SectionHeading>
           <Body sx={{ fontSize: '.72rem', lineHeight: 1.8 }}>
-            The primary CbCR report is typically filed in the jurisdiction where the MNE&apos;s
-            ultimate parent entity resides. However, under certain conditions such as the lack of
-            an information exchange agreement, secondary filing may be required in other
-            jurisdictions. ONAS Global helps MNEs understand the global landscape of CbCR to
-            navigate the complexities of where and how to file.
+            The primary CbCR report is typically filed in the jurisdiction where the MNE&apos;s ultimate parent entity resides. However, under certain conditions such as the lack of an information exchange agreement, secondary filing may be required in other jurisdictions. ONAS Global helps MNEs understand the global landscape of CbCR to navigate the complexities of where and how to file.
           </Body>
         </Box>
       </Section>
 
-      {/* ── CTA ── */}
       <SolutionsCTA />
-
-      {/* ── Services ── */}
-      <SolutionsServices />
     </PageShell>
   );
 };

@@ -11,9 +11,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -25,66 +23,76 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
+import B1 from '../../../assets/images/solutions/e-banking/e-banking1.jpg';
+import B2 from '../../../assets/images/solutions/e-banking/e-banking2.jpg';
+import B3 from '../../../assets/images/solutions/e-banking/e-banking3.jpg';
+import B4 from '../../../assets/images/solutions/e-banking/e-banking4.jpg';
+import B5 from '../../../assets/images/solutions/e-banking/e-banking5.jpg';
+import B6 from '../../../assets/images/solutions/e-banking/e-banking6.jpg';
+import B7 from '../../../assets/images/solutions/e-banking/e-banking7.jpg';
+import B8 from '../../../assets/images/solutions/e-banking/e-banking8.jpg';
+import B9 from '../../../assets/images/solutions/e-banking/e-banking9.jpg';
+import B10 from '../../../assets/images/solutions/e-banking/e-banking10.jpg';
+
 const benefits = [
   {
     title: 'Connected Banking Operations',
     description: 'Connect banking activities with ERP finance processes to create a more coordinated and efficient financial workflow.',
     icon: <AccountBalanceIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/1368593225/photo/businessman-touching-virtual-screen-with-icon-online-banking-online-payments-cyber-security.jpg?s=612x612&w=0&k=20&c=ZaQih8Yl5W6DfBnFsV6-XVWhSIVOBXLeJlmgY2w73SA=',
+    image: B1,
   },
   {
     title: 'Secure Financial Transactions',
     description: 'Support secure financial operations with structured ERP workflows, controlled access, and centralized transaction information.',
     icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/1334591614/photo/man-using-digital-tablet-online-connect-to-internet-banking-currency-exchange-online-shopping.jpg?s=612x612&w=0&k=20&c=nejA5SuHcN2fAdO7Bkaf9pJrwzyLPBCyOLZgMaslGko=',
+    image: B2,
   },
   {
     title: 'Real-Time Financial Visibility',
     description: 'Get clearer visibility into banking activity, account information, cash positions, and financial transactions across the ERP.',
     icon: <PublicIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/973139084/photo/man-hands-using-online-banking-and-icon-on-tablet-screen-device-in-coffee-shop-technology-e.jpg?s=612x612&w=0&k=20&c=AR_HHzXl6p5-UpVIljom3fzSWYOcQXxkd-ewSfyaflU=',
+    image: B3,
   },
   {
     title: 'Automated Reconciliation',
     description: 'Reduce manual reconciliation effort by connecting banking information with ERP financial records and transaction data.',
     icon: <SyncAltIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/2215378645/photo/female-user-accessing-digital-banking-services-via-smartphone-and-laptop-at-home.jpg?s=612x612&w=0&k=20&c=Wi2xHZRk-dH47JmA40Cg6lQB4b8nthrSbKl44_Afld0=',
+    image: B4,
   },
   {
     title: 'Improved Cash Management',
     description: 'Use connected banking and ERP information to monitor cash flow and support better working-capital decisions.',
     icon: <BusinessIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&h=200&fit=crop',
+    image: B5,
   },
   {
     title: 'Actionable Financial Insights',
     description: 'Combine banking and ERP information to identify financial trends and support faster, data-driven business decisions.',
     icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop',
+    image: B6,
   },
   {
     title: 'Simplified Financial Reporting',
     description: 'Centralized banking information helps finance teams maintain structured records and produce more consistent financial reports.',
     icon: <ReceiptIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=400&h=200&fit=crop',
+    image: B7,
   },
 ];
 
 const EBanking = () => {
   return (
     <PageShell>
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage:
-            'url(https://media.istockphoto.com/id/1368593225/photo/businessman-touching-virtual-screen-with-icon-online-banking-online-payments-cyber-security.jpg?s=612x612&w=0&k=20&c=ZaQih8Yl5W6DfBnFsV6-XVWhSIVOBXLeJlmgY2w73SA=)',
+          backgroundImage: `url(${B8})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
@@ -95,14 +103,15 @@ const EBanking = () => {
             position: 'absolute',
             inset: 0,
             zIndex: -1,
-            background:
-              'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
           }}
         />
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>E-Banking</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              E-Banking
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -110,18 +119,26 @@ const EBanking = () => {
                 font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               Smarter E-Banking Integration for ERP Systems
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
               Connect banking operations with your ERP system to simplify financial processes, improve transaction visibility, streamline reconciliation, and give finance teams greater control.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* How It Works */}
       <Section>
         <Box
           sx={{
@@ -155,7 +172,7 @@ const EBanking = () => {
           >
             <Box
               component="img"
-              src="https://media.istockphoto.com/id/1401461124/photo/hand-of-businessman-using-smart-phone-with-coin-icon.jpg?s=612x612&w=0&k=20&c=937FY4moyMx2nplMSkHMSWMT4YpcHi1u7hykfYckwv0="
+              src={B9}
               alt="ERP E-Banking Integration"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -163,7 +180,6 @@ const EBanking = () => {
         </Box>
       </Section>
 
-      {/* Benefits */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Key Benefits</Eyebrow>
@@ -260,7 +276,6 @@ const EBanking = () => {
       </Section>
 
       <SolutionsCTA />
-      <SolutionsServices />
     </PageShell>
   );
 };

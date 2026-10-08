@@ -16,35 +16,21 @@ import {
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-// Shared design
 import {
-  PageShell,
-  Section,
-  Eyebrow,
-  SectionHeading,
-  SubHeading,
-  Body,
-  LimeButton,
-  cardSx,
-  containerSx,
-  heroHeadingSx,
+  PageShell, Section, Eyebrow, SectionHeading, SubHeading,
+  Body, LimeButton, cardSx, containerSx, heroHeadingSx,
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Images
 import Image1 from '../../../assets/images/howWeHelp/digitaltrans/AIML/img1.jpg';
 import Image2 from '../../../assets/images/howWeHelp/digitaltrans/AIML/img2.jpg';
 import Image3 from '../../../assets/images/howWeHelp/digitaltrans/AIML/img3.jpg';
-import Image4 from '../../../assets/images/howWeHelp/digitaltrans/AIML/img4.jpg';
-import Image5 from '../../../assets/images/howWeHelp/digitaltrans/AIML/img5.jpg';
-import Image6 from '../../../assets/images/howWeHelp/digitaltrans/AIML/img6.jpg';
-import Image7 from '../../../assets/images/howWeHelp/digitaltrans/AIML/img7.jpg';
 
 const AIML = () => {
   const location = useLocation();
   const baseUrl = 'https://onasglobal.com';
 
-  const slides = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
+  const slides = [Image1, Image2, Image3];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -109,7 +95,6 @@ const AIML = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Helmet>
 
-      {/* Hero — slideshow background */}
       <Box
         sx={{
           position: 'relative',
@@ -123,22 +108,7 @@ const AIML = () => {
           justifyContent: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -155,14 +125,42 @@ const AIML = () => {
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime }}>AI & Machine Learning</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+            AI &amp; Machine Learning
+          </Eyebrow>
+          <Typography
+            component="h1"
+            sx={{
+              ...heroHeadingSx,
+              color: '#ffffff',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
+            }}
+          >
             Artificial Intelligence Consulting Services for Enterprise Impact
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
+          <Body
+            sx={{
+              color: '#ffffff !important',
+              maxWidth: 780,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: '1.8rem',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
+            }}
+          >
             Drive enterprise performance with AI consulting services designed to enable intelligent automation, predictive analytics, and transformative customer experiences. Whether it's custom machine learning models or enterprise-grade generative AI, accelerate your journey from pilot projects to scalable AI implementation.
           </Body>
           <LimeButton href="/resources/contact-us">
@@ -171,7 +169,6 @@ const AIML = () => {
         </Container>
       </Box>
 
-      {/* Offerings */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>What We Offer</Eyebrow>
@@ -218,7 +215,6 @@ const AIML = () => {
         </Box>
       </Section>
 
-      {/* Value Delivery */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Our Impact</Eyebrow>
@@ -265,7 +261,6 @@ const AIML = () => {
         </Box>
       </Section>
 
-      {/* Why Choose Us */}
       <Section>
         <Box
           sx={{

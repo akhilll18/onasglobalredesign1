@@ -11,9 +11,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import GavelIcon from '@mui/icons-material/Gavel';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -25,7 +23,15 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Local-only info card (not part of shared theme)
+import V1 from '../../../assets/images/solutions/vat-return/vat1.jpg';
+import V2 from '../../../assets/images/solutions/vat-return/vat2.jpg';
+import V3 from '../../../assets/images/solutions/vat-return/vat3.jpg';
+import V4 from '../../../assets/images/solutions/vat-return/vat4.jpg';
+import V5 from '../../../assets/images/solutions/vat-return/vat5.jpg';
+import V6 from '../../../assets/images/solutions/vat-return/vat6.jpg';
+import V7 from '../../../assets/images/solutions/vat-return/vat7.jpg';
+import V8 from '../../../assets/images/solutions/vat-return/vat8.jpg';
+
 const infoCardSx = {
   background: '#fff',
   border: `1px solid ${line}`,
@@ -36,52 +42,12 @@ const infoCardSx = {
 
 const VATReturn = () => {
   const features = [
-    {
-      title: 'Automated Calculations',
-      description:
-        'ONAS Global automatically calculates VAT amounts based on set rates and rules for various jurisdictions.',
-      icon: <CalculateIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop',
-    },
-    {
-      title: 'Integration with Accounting Systems',
-      description:
-        "ONAS Global integrates seamlessly with businesses' existing accounting or ERP systems.",
-      icon: <IntegrationInstructionsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8tu__VkEPB0w9WLyickO-pHc5G4aWC2aPAXXi3isxuw&s=10',
-    },
-    {
-      title: 'Real-time Regulatory Updates',
-      description:
-        'ONAS Global reflects changes in VAT regulations across different jurisdictions in real-time.',
-      icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlHe-BlCqcMAWIgouRCtzgQNvox7RM9YKTkQJEEOmiIQ&s=10',
-    },
-    {
-      title: 'Centralized Record-Keeping',
-      description: 'ONAS Global provides a centralized platform for storing all relevant documentation.',
-      icon: <StorageIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkMcWc3cuFhvRb9Xw6JPMhVDdfhfbR9p7_PYVOoVzs0g&s',
-    },
-    {
-      title: 'Reporting and Analytics',
-      description:
-        'ONAS Global offers built-in reporting features, generating required VAT return forms and insights.',
-      icon: <ReceiptIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeGstMr3fO77eXhC67Xhn3V6YFRqqyIflyCWVh4xB0DA&s',
-    },
-    {
-      title: 'Automated Cross-border Considerations',
-      description:
-        'ONAS Global automatically determines the place of supply and applies the correct VAT treatment.',
-      icon: <GavelIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLO9Cf8pIC15r9Z00nakWs2JvEtMJl_3BDzoYUdp0-fA&s=10',
-    },
+    { title: 'Automated Calculations', description: 'ONAS Global automatically calculates VAT amounts based on set rates and rules for various jurisdictions.', icon: <CalculateIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V1 },
+    { title: 'Integration with Accounting Systems', description: "ONAS Global integrates seamlessly with businesses' existing accounting or ERP systems.", icon: <IntegrationInstructionsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V2 },
+    { title: 'Real-time Regulatory Updates', description: 'ONAS Global reflects changes in VAT regulations across different jurisdictions in real-time.', icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V3 },
+    { title: 'Centralized Record-Keeping', description: 'ONAS Global provides a centralized platform for storing all relevant documentation.', icon: <StorageIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V4 },
+    { title: 'Reporting and Analytics', description: 'ONAS Global offers built-in reporting features, generating required VAT return forms and insights.', icon: <ReceiptIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V5 },
+    { title: 'Automated Cross-border Considerations', description: 'ONAS Global automatically determines the place of supply and applies the correct VAT treatment.', icon: <GavelIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V6 },
   ];
 
   const vatSteps = [
@@ -114,47 +80,26 @@ const VATReturn = () => {
   ];
 
   const faqs = [
-    {
-      question: 'When to do a VAT Return?',
-      answer:
-        'In the realm of tax technology, a VAT Return is typically submitted at the end of each tax period as defined by the respective tax authority. ONAS Global provides advanced tax software solutions that notify businesses of upcoming VAT Return deadlines, ensuring compliance and timely submissions.',
-    },
-    {
-      question: 'How often should I submit a VAT Return?',
-      answer:
-        'The frequency of VAT Return submissions varies by jurisdiction. Most commonly, businesses are required to submit on a monthly or quarterly basis. ONAS Global tax technology platforms can automate this process, scheduling and reminding businesses based on their specific reporting requirements.',
-    },
-    {
-      question: "Can I resubmit my VAT return if I've made an error?",
-      answer:
-        'Yes, in most jurisdictions, if businesses discover errors in your submitted VAT Return, amendments can be made. ONAS Global modern tax technology systems have in-built error checks, greatly reducing discrepancies and miscalculations. However, if an error is detected post-submission, the software can aid in the correction and resubmission process.',
-    },
-    {
-      question: 'Is a VAT the same as a tax?',
-      answer:
-        'While VAT (Value Added Tax) is a form of tax, it specifically pertains to the added value on goods and services at each stage of production or distribution. ONAS Global tax technology distinguishes between different tax types, ensuring that VAT calculations and other tax computations are treated separately but integrated within the same system for seamless reporting.',
-    },
-    {
-      question: 'Who needs to complete a VAT return?',
-      answer:
-        "Any business registered for VAT in a jurisdiction that enforces it is typically required to submit a VAT Return. Through ONAS Global tax technology solutions, businesses can automate the process of determining whether they're liable for VAT in various jurisdictions, thereby streamlining compliance and reporting tasks.",
-    },
+    { question: 'When to do a VAT Return?', answer: 'In the realm of tax technology, a VAT Return is typically submitted at the end of each tax period as defined by the respective tax authority. ONAS Global provides advanced tax software solutions that notify businesses of upcoming VAT Return deadlines, ensuring compliance and timely submissions.' },
+    { question: 'How often should I submit a VAT Return?', answer: 'The frequency of VAT Return submissions varies by jurisdiction. Most commonly, businesses are required to submit on a monthly or quarterly basis. ONAS Global tax technology platforms can automate this process, scheduling and reminding businesses based on their specific reporting requirements.' },
+    { question: "Can I resubmit my VAT return if I've made an error?", answer: 'Yes, in most jurisdictions, if businesses discover errors in your submitted VAT Return, amendments can be made. ONAS Global modern tax technology systems have in-built error checks, greatly reducing discrepancies and miscalculations. However, if an error is detected post-submission, the software can aid in the correction and resubmission process.' },
+    { question: 'Is a VAT the same as a tax?', answer: 'While VAT (Value Added Tax) is a form of tax, it specifically pertains to the added value on goods and services at each stage of production or distribution. ONAS Global tax technology distinguishes between different tax types, ensuring that VAT calculations and other tax computations are treated separately but integrated within the same system for seamless reporting.' },
+    { question: 'Who needs to complete a VAT return?', answer: "Any business registered for VAT in a jurisdiction that enforces it is typically required to submit a VAT Return. Through ONAS Global tax technology solutions, businesses can automate the process of determining whether they're liable for VAT in various jurisdictions, thereby streamlining compliance and reporting tasks." },
   ];
 
   return (
     <PageShell>
-      {/* ── HERO ── */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage:
-            'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8tu__VkEPB0w9WLyickO-pHc5G4aWC2aPAXXi3isxuw&s=10)',
+          backgroundImage: `url(${V7})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
@@ -165,19 +110,15 @@ const VATReturn = () => {
             position: 'absolute',
             inset: 0,
             zIndex: -1,
-            background:
-              'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
           }}
         />
 
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}
-        >
+        <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>VAT Returns</Eyebrow>
-
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              VAT Returns
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -185,28 +126,26 @@ const VATReturn = () => {
                 font: "400 clamp(1.15rem, 2.2vw, 1.75rem)/1.15 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               VAT Returns: A Pillar of International Tax Compliance
             </Typography>
-
             <Body
               sx={{
-                color: 'rgba(255,255,255,.82) !important',
+                color: '#ffffff !important',
                 maxWidth: 780,
                 marginLeft: 'auto',
                 marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
               }}
             >
-              Simplify VAT compliance with intelligent automation. Our platform helps businesses
-              manage complex VAT return requirements across multiple jurisdictions, ensuring
-              accuracy, timeliness, and full regulatory adherence.
+              Simplify VAT compliance with intelligent automation. Our platform helps businesses manage complex VAT return requirements across multiple jurisdictions, ensuring accuracy, timeliness, and full regulatory adherence.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* ── What is a VAT Return? ── */}
       <Section>
         <Box
           sx={{
@@ -222,18 +161,10 @@ const VATReturn = () => {
               What is a VAT Return?
             </SectionHeading>
             <Body sx={{ marginBottom: '1rem' }}>
-              A VAT Return, led by European Commission guidelines, is a formal declaration
-              submitted by businesses. This document lists detailed data on sales and purchases
-              totals and their respective VAT. The resulting difference will determine whether
-              businesses must make a payment or receive a rebate. ONAS Global provides adapted
-              solutions for each country&apos;s frequency and specifics of submissions.
+              A VAT Return, led by European Commission guidelines, is a formal declaration submitted by businesses. This document lists detailed data on sales and purchases totals and their respective VAT. The resulting difference will determine whether businesses must make a payment or receive a rebate. ONAS Global provides adapted solutions for each country&apos;s frequency and specifics of submissions.
             </Body>
             <Body>
-              The deduction and reduction mechanism of the VAT ensures that no tax remains on
-              those outside the end consumer to whom sales are made. Those in the
-              producer-distributor chain deduct the tax they pay from the tax they collect and
-              thus ensure that no tax remains on them. ONAS Global helps businesses manage this
-              process efficiently, keeping the tax burden on the end consumer.
+              The deduction and reduction mechanism of the VAT ensures that no tax remains on those outside the end consumer to whom sales are made. Those in the producer-distributor chain deduct the tax they pay from the tax they collect and thus ensure that no tax remains on them. ONAS Global helps businesses manage this process efficiently, keeping the tax burden on the end consumer.
             </Body>
           </Box>
 
@@ -248,7 +179,7 @@ const VATReturn = () => {
           >
             <Box
               component="img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzw78EoYBfsZz5P2OYz4EDPv_jbZFZSHmYbb3_Jjr4xQ&s=10"
+              src={V8}
               alt="VAT Return"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -256,7 +187,6 @@ const VATReturn = () => {
         </Box>
       </Section>
 
-      {/* ── How ONAS Global Simplifies VAT Return Management ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>What We Offer</Eyebrow>
@@ -349,7 +279,6 @@ const VATReturn = () => {
         </Box>
       </Section>
 
-      {/* ── How Does VAT Return Work? ── */}
       <Section>
         <Box sx={infoCardSx}>
           <Eyebrow>Process</Eyebrow>
@@ -357,11 +286,7 @@ const VATReturn = () => {
             How Does VAT Return Work?
           </SectionHeading>
           <Body sx={{ marginBottom: '1.4rem' }}>
-            A VAT refund is a reimbursement by the government under the VAT law when the VAT paid
-            by a business on its purchases is more than the VAT collected on its sales. Your
-            business must be a VAT payer and you must file a VAT return. ONAS Global helps
-            businesses prepare VAT declarations and calculate VAT accruals and deductions
-            accurately.
+            A VAT refund is a reimbursement by the government under the VAT law when the VAT paid by a business on its purchases is more than the VAT collected on its sales. Your business must be a VAT payer and you must file a VAT return. ONAS Global helps businesses prepare VAT declarations and calculate VAT accruals and deductions accurately.
           </Body>
 
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '.7rem' }}>
@@ -404,7 +329,6 @@ const VATReturn = () => {
         </Box>
       </Section>
 
-      {/* ── How to Fill in a VAT Return ── */}
       <Section bg={soft}>
         <Box sx={{ ...infoCardSx, background: '#fff', marginBottom: 0 }}>
           <Eyebrow>How to File</Eyebrow>
@@ -412,20 +336,11 @@ const VATReturn = () => {
             How to Fill in a VAT Return?
           </SectionHeading>
           <Body sx={{ lineHeight: 1.8 }}>
-            To file a VAT return, start by providing business information, including the VAT
-            number and reporting period. Next, sales and purchases should be recorded,
-            distinguishing between standard rate, reduced rate and zero rate transactions.
-            Calculate the VAT owed to the tax authorities by deducting input VAT (VAT on
-            purchases) from output VAT (VAT on sales). ONAS Global helps businesses include any
-            additional information or adjustments required by the tax authorities, such as reverse
-            charge transactions or special schemes. Ensure that the VAT declaration is correct and
-            submitted to the tax authority within the specified deadline. Keeping records in order
-            and understanding local tax regulations is crucial for a smooth VAT refund process.
+            To file a VAT return, start by providing business information, including the VAT number and reporting period. Next, sales and purchases should be recorded, distinguishing between standard rate, reduced rate and zero rate transactions. Calculate the VAT owed to the tax authorities by deducting input VAT (VAT on purchases) from output VAT (VAT on sales). ONAS Global helps businesses include any additional information or adjustments required by the tax authorities, such as reverse charge transactions or special schemes. Ensure that the VAT declaration is correct and submitted to the tax authority within the specified deadline. Keeping records in order and understanding local tax regulations is crucial for a smooth VAT refund process.
           </Body>
         </Box>
       </Section>
 
-      {/* ── How to Calculate VAT? ── */}
       <Section>
         <Box sx={infoCardSx}>
           <Eyebrow>Calculation</Eyebrow>
@@ -433,9 +348,7 @@ const VATReturn = () => {
             How to Calculate VAT?
           </SectionHeading>
           <Body sx={{ marginBottom: '1.4rem' }}>
-            The calculation of value added tax (VAT) is a fundamental aspect of financial and
-            fiscal management for businesses in many countries. ONAS Global helps businesses
-            calculate VAT accurately:
+            The calculation of value added tax (VAT) is a fundamental aspect of financial and fiscal management for businesses in many countries. ONAS Global helps businesses calculate VAT accurately:
           </Body>
 
           <Box
@@ -455,7 +368,6 @@ const VATReturn = () => {
         </Box>
       </Section>
 
-      {/* ── Example of a VAT Return ── */}
       <Section bg={soft}>
         <Box sx={{ ...infoCardSx, background: '#fff', marginBottom: 0 }}>
           <Eyebrow>Example</Eyebrow>
@@ -463,9 +375,7 @@ const VATReturn = () => {
             Example of a VAT Return
           </SectionHeading>
           <Body sx={{ marginBottom: '1.4rem' }}>
-            A VAT refund claim application should be prepared to request a refund of VAT paid for
-            a specific period. ONAS Global helps businesses prepare comprehensive applications
-            with these important elements:
+            A VAT refund claim application should be prepared to request a refund of VAT paid for a specific period. ONAS Global helps businesses prepare comprehensive applications with these important elements:
           </Body>
 
           <Box
@@ -485,7 +395,6 @@ const VATReturn = () => {
         </Box>
       </Section>
 
-      {/* ── FAQ ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>FAQ</Eyebrow>
@@ -518,27 +427,13 @@ const VATReturn = () => {
                   '&.Mui-expanded': { minHeight: 'auto' },
                 }}
               >
-                <Typography
-                  sx={{
-                    color: `${ink} !important`,
-                    fontFamily: "Georgia, 'Times New Roman', serif",
-                    fontSize: '.82rem',
-                    lineHeight: 1.4,
-                  }}
-                >
+                <Typography sx={{ color: `${ink} !important`, fontFamily: "Georgia, 'Times New Roman', serif", fontSize: '.82rem', lineHeight: 1.4 }}>
                   {faq.question}
                 </Typography>
               </AccordionSummary>
 
               <AccordionDetails sx={{ padding: { xs: '.2rem 1rem 1.2rem', md: '.2rem 1.4rem 1.4rem' } }}>
-                <Typography
-                  sx={{
-                    color: `${muted} !important`,
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: '.68rem',
-                    lineHeight: 1.8,
-                  }}
-                >
+                <Typography sx={{ color: `${muted} !important`, fontFamily: "'Poppins', sans-serif", fontSize: '.68rem', lineHeight: 1.8 }}>
                   {faq.answer}
                 </Typography>
               </AccordionDetails>
@@ -547,11 +442,7 @@ const VATReturn = () => {
         </Box>
       </Section>
 
-      {/* ── CTA ── */}
       <SolutionsCTA />
-
-      {/* ── Services ── */}
-      <SolutionsServices />
     </PageShell>
   );
 };

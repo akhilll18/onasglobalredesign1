@@ -4,41 +4,21 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { ArrowForward } from '@mui/icons-material';
 import {
-  Server,
-  Users,
-  Link,
-  Wrench,
-  Headphones,
-  BarChart3,
-  Compass,
-  Settings,
-  Cloud,
-  BookOpen,
-  Layers,
-  Zap,
-  GitBranch,
-  Database,
-  ShoppingCart,
-  TrendingUp,
-  Shield,
+  Server, Users, Link, Wrench, Headphones, BarChart3,
+  Compass, Settings, Cloud, BookOpen, Layers, Zap,
+  GitBranch, Database, ShoppingCart, TrendingUp, Shield,
 } from 'lucide-react';
 
-// Shared design
 import {
-  PageShell,
-  Section,
-  Eyebrow,
-  SectionHeading,
-  SubHeading,
-  Body,
-  LimeButton,
-  cardSx,
-  containerSx,
-  heroHeadingSx,
+  PageShell, Section, Eyebrow, SectionHeading, SubHeading,
+  Body, LimeButton, cardSx, containerSx, heroHeadingSx,
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// 👇 same navy as the top navbar menu items
+import HeroImage from '../../../assets/images/howWeHelp/ERP/MicrosoftDynamics/hero.jpg';
+import Image1 from '../../../assets/images/howWeHelp/ERP/MicrosoftDynamics/img1.png';
+import Image2 from '../../../assets/images/howWeHelp/ERP/MicrosoftDynamics/img2.png';
+
 const NAVY = '#0B4C74';
 
 const MicrosoftDynamics365 = () => {
@@ -97,27 +77,66 @@ const MicrosoftDynamics365 = () => {
         <meta name="keywords" content={dynamicsKeywords} />
       </Helmet>
 
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
           minHeight: { xs: 480, md: 560 },
           padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
           overflow: 'hidden',
-          background: `linear-gradient(90deg, rgba(11,76,116,.96) 0%, rgba(11,76,116,.78) 55%, rgba(11,76,116,.88) 100%)`,
+          background: ink,
+          isolation: 'isolate',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          isolation: 'isolate',
         }}
       >
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: -2,
+            overflow: 'hidden',
+            backgroundImage: `url(${HeroImage})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+          }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: -1,
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+          }}
+        />
+
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>Microsoft Dynamics 365</Eyebrow>
-            <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              Microsoft Dynamics 365
+            </Eyebrow>
+            <Typography
+              component="h1"
+              sx={{
+                ...heroHeadingSx,
+                color: '#ffffff',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
+              }}
+            >
               Transform Your Business With Microsoft Dynamics 365
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginBottom: '1.8rem',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
               Microsoft Dynamics 365 is a portfolio of AI-powered, cloud-based CRM and ERP business applications designed to connect data, teams, and processes. It enables organizations to manage sales, customer service, finance, and supply chain operations using tools like Dynamics 365 Sales, Customer Insights, and Business Central.
             </Body>
             <LimeButton href="/resources/contact-us">
@@ -127,16 +146,8 @@ const MicrosoftDynamics365 = () => {
         </Container>
       </Box>
 
-      {/* Intelligent Business Applications — white bg */}
       <Section sx={{ background: '#ffffff' }}>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-            gap: { xs: '2rem', md: '2rem' },
-            alignItems: 'stretch',
-          }}
-        >
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: { xs: '2rem', md: '2rem' }, alignItems: 'stretch' }}>
           <Box>
             <Eyebrow>Intelligent Business Applications</Eyebrow>
             <SectionHeading sx={{ textAlign: 'left', margin: '.7rem 0 1.2rem', color: NAVY }}>
@@ -165,44 +176,24 @@ const MicrosoftDynamics365 = () => {
           >
             <Box
               component="img"
-              src="https://www.dynamicssquare.com/img/Dynamics-365-overview.svg"
+              src={Image1}
               alt="Dynamics 365 overview"
-              sx={{
-                width: '100%',
-                maxWidth: 400,
-                height: 'auto',
-                display: 'block',
-              }}
+              sx={{ width: '100%', maxWidth: 400, height: 'auto', display: 'block' }}
             />
           </Box>
         </Box>
       </Section>
 
-      {/* Comprehensive Services — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Core Services</Eyebrow>
           <SectionHeading sx={{ color: NAVY }}>Comprehensive Dynamics 365 Services</SectionHeading>
         </Box>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-            gap: { xs: '1rem', md: '1.2rem' },
-            alignItems: 'stretch',
-          }}
-        >
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: { xs: '1rem', md: '1.2rem' }, alignItems: 'stretch' }}>
           {offerings.map((item, i) => {
             const { Icon } = item;
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                style={{ display: 'flex', width: '100%' }}
-              >
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.05 }} style={{ display: 'flex', width: '100%' }}>
                 <Box sx={cardSx}>
                   <Box sx={{ display: 'grid', placeItems: 'center', width: 40, height: 40, borderRadius: '50%', background: '#fff', border: `1px solid ${line}`, marginBottom: '1rem', flexShrink: 0 }}>
                     <Icon size={20} color="#0B4C74" />
@@ -216,31 +207,16 @@ const MicrosoftDynamics365 = () => {
         </Box>
       </Section>
 
-      {/* End-to-End — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>End-to-End</Eyebrow>
           <SectionHeading sx={{ color: NAVY }}>Our End-to-End Dynamics 365 Implementation Approach</SectionHeading>
         </Box>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-            gap: { xs: '1rem', md: '1.2rem' },
-            alignItems: 'stretch',
-          }}
-        >
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: { xs: '1rem', md: '1.2rem' }, alignItems: 'stretch' }}>
           {endToEnd.map((item, i) => {
             const { Icon } = item;
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                style={{ display: 'flex', width: '100%' }}
-              >
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.05 }} style={{ display: 'flex', width: '100%' }}>
                 <Box sx={cardSx}>
                   <Box sx={{ display: 'grid', placeItems: 'center', width: 40, height: 40, borderRadius: '50%', background: '#fff', border: `1px solid ${line}`, marginBottom: '1rem', flexShrink: 0 }}>
                     <Icon size={20} color="#0B4C74" />
@@ -254,31 +230,16 @@ const MicrosoftDynamics365 = () => {
         </Box>
       </Section>
 
-      {/* Why Partner — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Why Us</Eyebrow>
           <SectionHeading sx={{ color: NAVY }}>Why Partner With Us for Dynamics 365</SectionHeading>
         </Box>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
-            gap: { xs: '1rem', md: '1.2rem' },
-            alignItems: 'stretch',
-          }}
-        >
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, gap: { xs: '1rem', md: '1.2rem' }, alignItems: 'stretch' }}>
           {valueDelivery.map((item, i) => {
             const { Icon } = item;
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                style={{ display: 'flex', width: '100%' }}
-              >
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.05 }} style={{ display: 'flex', width: '100%' }}>
                 <Box sx={cardSx}>
                   <Box sx={{ display: 'grid', placeItems: 'center', width: 40, height: 40, borderRadius: '50%', background: '#fff', border: `1px solid ${line}`, marginBottom: '1rem', flexShrink: 0 }}>
                     <Icon size={20} color="#0B4C74" />
@@ -292,76 +253,29 @@ const MicrosoftDynamics365 = () => {
         </Box>
       </Section>
 
-      {/* Why It Matters — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Why It Matters</Eyebrow>
           <SectionHeading sx={{ color: NAVY }}>Why Microsoft Dynamics 365 Matters for Your Business</SectionHeading>
         </Box>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1.1fr .9fr' },
-            gap: { xs: '2rem', md: 'clamp(2rem, 5vw, 4rem)' },
-            alignItems: 'center',
-          }}
-        >
-          <Box
-            sx={{
-              background: '#fff',
-              border: `1px solid ${line}`,
-              borderRadius: '2px',
-              padding: { xs: '1.6rem 1.2rem', md: '2.2rem 1.8rem' },
-            }}
-          >
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.1fr .9fr' }, gap: { xs: '2rem', md: 'clamp(2rem, 5vw, 4rem)' }, alignItems: 'center' }}>
+          <Box sx={{ background: '#fff', border: `1px solid ${line}`, borderRadius: '2px', padding: { xs: '1.6rem 1.2rem', md: '2.2rem 1.8rem' } }}>
             {whyMatters.map((point, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-              >
+              <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.05 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: '.75rem', marginBottom: i < whyMatters.length - 1 ? '1rem' : 0 }}>
-                  <Box
-                    sx={{
-                      display: 'grid',
-                      placeItems: 'center',
-                      width: 22,
-                      height: 22,
-                      borderRadius: '50%',
-                      background: '#fff',
-                      border: `1px solid ${line}`,
-                      flexShrink: 0,
-                      marginTop: '.1rem',
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: '.6rem',
-                      fontWeight: 700,
-                      color: '#0B4C74',
-                    }}
-                  >
+                  <Box sx={{ display: 'grid', placeItems: 'center', width: 22, height: 22, borderRadius: '50%', background: '#fff', border: `1px solid ${line}`, flexShrink: 0, marginTop: '.1rem', fontFamily: "'Poppins', sans-serif", fontSize: '.6rem', fontWeight: 700, color: '#0B4C74' }}>
                     {i + 1}
                   </Box>
-                  <Body sx={{ margin: 0, fontSize: '.72rem', lineHeight: 1.75 }}>
-                    {point}
-                  </Body>
+                  <Body sx={{ margin: 0, fontSize: '.72rem', lineHeight: 1.75 }}>{point}</Body>
                 </Box>
               </motion.div>
             ))}
           </Box>
 
-          <Box
-            sx={{
-              border: `1px solid ${line}`,
-              borderRadius: '2px',
-              overflow: 'hidden',
-              background: '#fff',
-              height: { xs: 320, sm: 400, md: 520 },
-            }}
-          >
+          <Box sx={{ border: `1px solid ${line}`, borderRadius: '2px', overflow: 'hidden', background: '#fff', height: { xs: 320, sm: 400, md: 360 } }}>
             <Box
               component="img"
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=85"
+              src={Image2}
               alt="Why Microsoft Dynamics 365 matters"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -369,31 +283,16 @@ const MicrosoftDynamics365 = () => {
         </Box>
       </Section>
 
-      {/* Key Modules — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Modules</Eyebrow>
           <SectionHeading sx={{ color: NAVY }}>Key Dynamics 365 Modules We Support</SectionHeading>
         </Box>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-            gap: { xs: '1rem', md: '1.2rem' },
-            alignItems: 'stretch',
-          }}
-        >
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: { xs: '1rem', md: '1.2rem' }, alignItems: 'stretch' }}>
           {modules.map((item, i) => {
             const { Icon } = item;
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-                style={{ display: 'flex', width: '100%' }}
-              >
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.06 }} style={{ display: 'flex', width: '100%' }}>
                 <Box sx={cardSx}>
                   <Box sx={{ display: 'grid', placeItems: 'center', width: 40, height: 40, borderRadius: '50%', background: '#fff', border: `1px solid ${line}`, marginBottom: '1rem', flexShrink: 0 }}>
                     <Icon size={20} color="#0B4C74" />

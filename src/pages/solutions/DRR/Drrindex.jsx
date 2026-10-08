@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Container, Typography } from '@mui/material';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -11,9 +11,8 @@ import AutorenewIcon from '@mui/icons-material/Autorenew';
 import GavelIcon from '@mui/icons-material/Gavel';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
+
 import {
   PageShell,
   Section,
@@ -25,24 +24,39 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
+import Drr1 from '../../../assets/images/solutions/drr/drr1.jpg';
+import Drr2 from '../../../assets/images/solutions/drr/drr2.jpg';
+import Drr3 from '../../../assets/images/solutions/drr/drr3.jpg';
+import Drr4 from '../../../assets/images/solutions/drr/drr4.jpg';
+import Drr5 from '../../../assets/images/solutions/drr/drr5.jpg';
+import Drr6 from '../../../assets/images/solutions/drr/drr6.jpg';
+import Drr7 from '../../../assets/images/solutions/drr/drr7.jpg';
+import Drr8 from '../../../assets/images/solutions/drr/drr8.jpg';
+import Drr9 from '../../../assets/images/solutions/drr/drr9.jpg';
+import Drr11 from '../../../assets/images/solutions/drr/drr11.jpg';
+import Drr19 from '../../../assets/images/solutions/drr/drr19.jpg';
+
+const OverviewImage = Drr2;
+const ComponentsImage = Drr3;
+
 const benefits = [
   {
     title: 'Consistent Digital Reporting',
     description: 'Bring reporting activities together through structured digital formats that make recurring tax submissions easier to manage.',
     icon: <CheckCircleIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop',
+    image: Drr4,
   },
   {
     title: 'Faster Data Validation',
     description: 'Structured digital information makes it easier to validate submitted records and identify inconsistencies before reporting.',
     icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=200&fit=crop',
+    image: Drr5,
   },
   {
     title: 'Clearer Reporting Insights',
     description: 'Organized reporting data gives finance teams better visibility for analysis, planning, and informed decision-making.',
     icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop',
+    image: Drr6,
   },
 ];
 
@@ -51,34 +65,34 @@ const challenges = [
     title: 'System Integration',
     description: 'Existing finance and tax systems may require additional integration to support changing digital reporting formats.',
     icon: <IntegrationInstructionsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=200&fit=crop',
+    image: Drr7,
   },
   {
     title: 'Information Security',
     description: 'Digital transmission of sensitive financial information requires strong access controls, secure connections, and appropriate safeguards.',
     icon: <DataUsageIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=200&fit=crop',
+    image: Drr8,
   },
   {
     title: 'Changing Reporting Requirements',
     description: 'Monitoring updates across different jurisdictions can become time-consuming as digital reporting requirements continue to change.',
     icon: <AutorenewIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm4XevPrZ4knaSAwVKHOTDw2VZF4-5Y9zIGIN0pvuV-g&s=10',
+    image: Drr9,
   },
   {
     title: 'Regulatory Changes',
     description: 'Regular monitoring helps organizations respond promptly when tax authorities introduce new reporting rules or submission requirements.',
     icon: <GavelIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=400&h=200&fit=crop',
+    image: Drr11,
   },
 ];
 
 const services = [
-  { title: 'DRR', description: 'Our Digital Reporting Requirements solution helps organizations manage tax data and reporting obligations across multiple jurisdictions.', path: '/solutions/drr/drr', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop' },
-  { title: 'e-Reporting', description: 'Our e-Reporting solution simplifies the preparation and submission of electronic reports while supporting accurate and efficient tax compliance across jurisdictions.', path: '/solutions/reporting/saf-t', image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&h=200&fit=crop' },
-  { title: 'SAF-T', description: 'Our SAF-T solution helps organizations prepare structured audit files containing the transactional information required for digital tax reporting.', path: '/solutions/reporting/saf-t', image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=200&fit=crop' },
-  { title: 'e-Invoicing', description: 'Our e-Invoicing solution simplifies digital invoicing while supporting different technical standards and reporting models, including periodic and real-time requirements.', path: '/solutions/drr/e-invoicing', image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=200&fit=crop' },
-  { title: 'ViDA', description: 'Our ViDA (VAT in the Digital Age) solution helps organizations prepare for evolving VAT reporting models through structured digital reporting and improved compliance visibility.', path: '/solutions/drr/vida', image: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=400&h=200&fit=crop' },
+  { title: 'DRR', description: 'Our Digital Reporting Requirements solution helps organizations manage tax data and reporting obligations across multiple jurisdictions.', path: '/solutions/drr/drr', image: Drr19 },
+  { title: 'e-Reporting', description: 'Our e-Reporting solution simplifies the preparation and submission of electronic reports while supporting accurate and efficient tax compliance across jurisdictions.', path: '/solutions/reporting/saf-t', image: Drr4 },
+  { title: 'SAF-T', description: 'Our SAF-T solution helps organizations prepare structured audit files containing the transactional information required for digital tax reporting.', path: '/solutions/reporting/saf-t', image: Drr5 },
+  { title: 'e-Invoicing', description: 'Our e-Invoicing solution simplifies digital invoicing while supporting different technical standards and reporting models, including periodic and real-time requirements.', path: '/solutions/drr/e-invoicing', image: Drr6 },
+  { title: 'ViDA', description: 'Our ViDA (VAT in the Digital Age) solution helps organizations prepare for evolving VAT reporting models through structured digital reporting and improved compliance visibility.', path: '/solutions/drr/vida', image: Drr7 },
 ];
 
 const drrComponents = [
@@ -93,38 +107,64 @@ const drrComponents = [
 ];
 
 const Drrindex = () => {
+  const slides = [Drr1, Drr11, Drr19];
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
   return (
     <PageShell>
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
           padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage:
-            'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuKMyluJ10goJyou-Fxy-G_MJc7mOoF6uQKXyi5-q3&s)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: '#0B4C74',
           isolation: 'isolate',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -1,
-            background:
-              'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-          }}
-        />
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 1.1, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${slides[currentSlide]})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+              }}
+            />
+          </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
+        </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>Digital Reporting</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              Digital Reporting
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -132,18 +172,26 @@ const Drrindex = () => {
                 font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               Digital Reporting Requirements (DRR)
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
               Tax reporting is becoming increasingly digital as authorities introduce new ways for businesses to submit transaction and tax information. Our DRR capabilities help organizations understand these requirements, organize reporting data, and manage digital submissions more efficiently.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* What are DRR? */}
       <Section>
         <Box
           sx={{
@@ -174,7 +222,7 @@ const Drrindex = () => {
           >
             <Box
               component="img"
-              src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&h=400&fit=crop"
+              src={OverviewImage}
               alt="DRR overview"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -182,7 +230,6 @@ const Drrindex = () => {
         </Box>
       </Section>
 
-      {/* DRR Components */}
       <Section bg={soft}>
         <Box
           sx={{
@@ -203,7 +250,7 @@ const Drrindex = () => {
           >
             <Box
               component="img"
-              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop"
+              src={ComponentsImage}
               alt="DRR Components"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -239,7 +286,7 @@ const Drrindex = () => {
                       width: item.level === 0 ? 8 : 6,
                       height: item.level === 0 ? 8 : 6,
                       borderRadius: '50%',
-                      background: item.level === 0 ? '#0B4C74' : '#0B4C74',
+                      background: '#0B4C74',
                       flexShrink: 0,
                     }}
                   />
@@ -261,7 +308,6 @@ const Drrindex = () => {
         </Box>
       </Section>
 
-      {/* Benefits */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Why It Matters</Eyebrow>
@@ -357,7 +403,6 @@ const Drrindex = () => {
         </Box>
       </Section>
 
-      {/* Challenges */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Challenges</Eyebrow>
@@ -449,7 +494,7 @@ const Drrindex = () => {
       </Section>
 
       <SolutionsCTA />
-      <SolutionsServices services={services} />
+      
     </PageShell>
   );
 };

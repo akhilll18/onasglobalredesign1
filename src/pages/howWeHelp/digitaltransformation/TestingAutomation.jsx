@@ -12,22 +12,12 @@ import {
   Layers,
 } from 'lucide-react';
 
-// Shared design
 import {
-  PageShell,
-  Section,
-  Eyebrow,
-  SectionHeading,
-  SubHeading,
-  Body,
-  LimeButton,
-  cardSx,
-  containerSx,
-  heroHeadingSx,
+  PageShell, Section, Eyebrow, SectionHeading, SubHeading,
+  Body, LimeButton, cardSx, containerSx, heroHeadingSx,
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Images
 import Image1 from '../../../assets/images/howWeHelp/digitaltrans/testingauto/img1.jpg';
 import Image2 from '../../../assets/images/howWeHelp/digitaltrans/testingauto/img2.png';
 import Image3 from '../../../assets/images/howWeHelp/digitaltrans/testingauto/img3.jpg';
@@ -37,7 +27,7 @@ const TestingAutomation = () => {
   const baseUrl = window.location.origin;
   const pageUrl = `${baseUrl}/services/testing-qa`;
 
-  const slides = [Image1, Image2, Image3, Image4];
+  const slides = [Image1, Image2, Image3];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -124,7 +114,6 @@ const TestingAutomation = () => {
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
@@ -138,22 +127,7 @@ const TestingAutomation = () => {
           justifyContent: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -170,14 +144,42 @@ const TestingAutomation = () => {
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime }}>Software Testing & QA</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
-            Software Testing & QA Services
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+            Software Testing &amp; QA
+          </Eyebrow>
+          <Typography
+            component="h1"
+            sx={{
+              ...heroHeadingSx,
+              color: '#ffffff',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
+            }}
+          >
+            Software Testing &amp; QA Services
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
+          <Body
+            sx={{
+              color: '#ffffff !important',
+              maxWidth: 780,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: '1.8rem',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
+            }}
+          >
             Go beyond traditional checkpoints—embed confidence into every release. Our software testing services integrate automation, precision, and performance engineering to ensure flawless user experiences at scale.
           </Body>
           <LimeButton href="/resources/contact-us">
@@ -186,7 +188,6 @@ const TestingAutomation = () => {
         </Container>
       </Box>
 
-      {/* Introduction */}
       <Section>
         <Box sx={{ maxWidth: 900, mx: 'auto', textAlign: 'center' }}>
           <Eyebrow>Introduction</Eyebrow>
@@ -199,7 +200,6 @@ const TestingAutomation = () => {
         </Box>
       </Section>
 
-      {/* Offerings */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>What We Offer</Eyebrow>
@@ -234,7 +234,6 @@ const TestingAutomation = () => {
         </Box>
       </Section>
 
-      {/* Benefits + Metrics */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Why Testing Matters</Eyebrow>
@@ -302,7 +301,6 @@ const TestingAutomation = () => {
         </Box>
       </Section>
 
-      {/* Testing Tools */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Our Stack</Eyebrow>
@@ -328,7 +326,7 @@ const TestingAutomation = () => {
           >
             <Box
               component="img"
-              src={Image3}
+              src={Image4}
               alt="Testing tools and technologies"
               sx={{ width: '100%', height: '100%', minHeight: 'inherit', objectFit: 'cover', display: 'block' }}
             />
@@ -361,7 +359,6 @@ const TestingAutomation = () => {
         </Box>
       </Section>
 
-      {/* Methodology */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Process</Eyebrow>
@@ -410,7 +407,6 @@ const TestingAutomation = () => {
         </Box>
       </Section>
 
-      {/* CTA */}
       <Section bg={soft}>
         <Box sx={{ maxWidth: 800, mx: 'auto', textAlign: 'center' }}>
           <Eyebrow>Get Started</Eyebrow>

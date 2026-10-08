@@ -3,30 +3,14 @@ import { Box, Container, Typography } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { ArrowForward } from '@mui/icons-material';
-import {
-  Compass,
-  Layers,
-  Zap,
-  GitBranch,
-  Server,
-} from 'lucide-react';
+import { Compass, Layers, Zap, GitBranch, Server } from 'lucide-react';
 
-// Shared design
 import {
-  PageShell,
-  Section,
-  Eyebrow,
-  SectionHeading,
-  SubHeading,
-  Body,
-  LimeButton,
-  cardSx,
-  containerSx,
-  heroHeadingSx,
+  PageShell, Section, Eyebrow, SectionHeading, SubHeading,
+  Body, LimeButton, cardSx, containerSx, heroHeadingSx,
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Images
 import Image1 from '../../../assets/images/howWeHelp/digitaltrans/productengg/img1.jpg';
 import Image2 from '../../../assets/images/howWeHelp/digitaltrans/productengg/img2.jpg';
 import Image3 from '../../../assets/images/howWeHelp/digitaltrans/productengg/img3.jpg';
@@ -36,7 +20,7 @@ const ProductEngineering = () => {
   const baseUrl = window.location.origin;
   const pageUrl = `${baseUrl}/services/product-engineering`;
 
-  const slides = [Image1, Image2, Image3, Image4];
+  const slides = [Image1, Image2, Image3];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -106,7 +90,6 @@ const ProductEngineering = () => {
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
@@ -120,22 +103,7 @@ const ProductEngineering = () => {
           justifyContent: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -152,14 +120,42 @@ const ProductEngineering = () => {
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime }}>Product Engineering</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+            Product Engineering
+          </Eyebrow>
+          <Typography
+            component="h1"
+            sx={{
+              ...heroHeadingSx,
+              color: '#ffffff',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
+            }}
+          >
             Product Engineering Services
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
+          <Body
+            sx={{
+              color: '#ffffff !important',
+              maxWidth: 780,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: '1.8rem',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
+            }}
+          >
             From idea to launch, and every iteration in between, our end-to-end product engineering services empower you to build innovative, reliable, and scalable digital solutions. Modern product engineering goes beyond writing code—it demands agility, resilience, and alignment with business goals.
           </Body>
           <LimeButton href="/resources/contact-us">
@@ -168,7 +164,6 @@ const ProductEngineering = () => {
         </Container>
       </Box>
 
-      {/* Introduction */}
       <Section>
         <Box sx={{ maxWidth: 900, mx: 'auto', textAlign: 'center' }}>
           <Eyebrow>Introduction</Eyebrow>
@@ -181,7 +176,6 @@ const ProductEngineering = () => {
         </Box>
       </Section>
 
-      {/* Offerings */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>What We Offer</Eyebrow>
@@ -216,7 +210,6 @@ const ProductEngineering = () => {
         </Box>
       </Section>
 
-      {/* Tech Stack */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Our Stack</Eyebrow>
@@ -242,7 +235,7 @@ const ProductEngineering = () => {
           >
             <Box
               component="img"
-              src={Image3}
+              src={Image4}
               alt="Technology stack for product engineering"
               sx={{ width: '100%', height: '100%', minHeight: 'inherit', objectFit: 'cover', display: 'block' }}
             />
@@ -275,7 +268,6 @@ const ProductEngineering = () => {
         </Box>
       </Section>
 
-      {/* CTA */}
       <Section bg={soft}>
         <Box sx={{ maxWidth: 800, mx: 'auto', textAlign: 'center' }}>
           <Eyebrow>Get Started</Eyebrow>

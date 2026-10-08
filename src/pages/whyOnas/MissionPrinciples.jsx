@@ -4,30 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowForward } from '@mui/icons-material';
 import { CheckCircle, Clock, Users, Smile, Cog } from 'lucide-react';
 
-// Hero Image
 import MissionHero from '../../assets/images/whyOnas/mission/mission.png';
-
-// Images
 import Image1 from '../../assets/images/whyOnas/mission/img1.png';
 import Image2 from '../../assets/images/whyOnas/mission/img2.png';
 import Image3 from '../../assets/images/whyOnas/mission/img3.png';
-import Image4 from '../../assets/images/whyOnas/mission/img4.png';
 
-// Shared design
 import {
-  PageShell,
-  Section,
-  Eyebrow,
-  SectionHeading,
-  Body,
-  cardSx,
-  containerSx,
-  ink, muted, line, lime,
+  PageShell, Section, Eyebrow, SectionHeading, Body,
+  cardSx, containerSx, ink, muted, line, lime,
 } from '../../theme/theme';
 
 const MissionPrinciples = () => {
-  // ── Slideshow state ──
-  const slides = [MissionHero, Image1, Image2, Image3, Image4];
+  const slides = [MissionHero, Image1, Image2, Image3];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -47,7 +35,6 @@ const MissionPrinciples = () => {
 
   return (
     <PageShell>
-      {/* ── Section 1: Hero — Slideshow background ── */}
       <Box
         sx={{
           position: 'relative',
@@ -60,22 +47,7 @@ const MissionPrinciples = () => {
           alignItems: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -96,10 +68,20 @@ const MissionPrinciples = () => {
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Box sx={{ position: 'relative', zIndex: 2, ...containerSx }}>
-          <Eyebrow sx={{ color: lime }}>Our Mission</Eyebrow>
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+            Our Mission
+          </Eyebrow>
           <Typography
             component="h1"
             sx={{
@@ -107,15 +89,17 @@ const MissionPrinciples = () => {
               font: "400 clamp(1.15rem, 2.2vw, 1.75rem)/1.15 Georgia, 'Times New Roman', serif",
               color: '#fff',
               maxWidth: 900,
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
             }}
           >
             Our Mission &amp; Principles
           </Typography>
           <Body
             sx={{
-              color: 'rgba(255,255,255,.82) !important',
+              color: '#ffffff !important',
               maxWidth: 640,
               marginBottom: '1.8rem',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
             }}
           >
             Simply enthused customers — this is our mission as a global IT infrastructure service
@@ -146,7 +130,6 @@ const MissionPrinciples = () => {
         </Box>
       </Box>
 
-      {/* ── Section 2: Principles Grid ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Our Principles</Eyebrow>

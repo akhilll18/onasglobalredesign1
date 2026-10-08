@@ -11,9 +11,7 @@ import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstruct
 import GavelIcon from '@mui/icons-material/Gavel';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -25,17 +23,28 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
+import IR1 from '../../../assets/images/solutions/invoice-reporting/invoicereporting1.jpg';
+import IR2 from '../../../assets/images/solutions/invoice-reporting/invoicereporting2.jpg';
+import IR3 from '../../../assets/images/solutions/invoice-reporting/invoicereporting3.jpg';
+import IR4 from '../../../assets/images/solutions/invoice-reporting/invoicereporting4.jpg';
+import IR5 from '../../../assets/images/solutions/invoice-reporting/invoicereporting5.jpg';
+import IR6 from '../../../assets/images/solutions/invoice-reporting/invoicereporting6.jpg';
+import IR7 from '../../../assets/images/solutions/invoice-reporting/invoicereporting7.jpg';
+import IR8 from '../../../assets/images/solutions/invoice-reporting/invoicereporting8.jpg';
+import IR9 from '../../../assets/images/solutions/invoice-reporting/invoicereporting9.jpg';
+import IR10 from '../../../assets/images/solutions/invoice-reporting/invoicereporting10.jpg';
+
 const challenges = [
-  { title: 'Integration with Current Systems', description: 'Seamlessly connect ERP systems and financial management tools to streamline invoicing workflows and enhance data accuracy across platforms.', icon: <IntegrationInstructionsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROE211NUZrw0U_is3GQfF3G6nVFYLr0Z8x9rFr9GS5Bw&s=10' },
-  { title: 'Data Security and Privacy', description: 'Ensure compliance with global data protection regulations including GDPR, safeguarding sensitive financial information with enterprise-grade security.', icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-bez1tqgu9bU0WfZ9Zagj7SwEd1EwXLxw4hW1R-c_bw&s=10' },
-  { title: 'Regulatory Updates', description: 'Stay ahead of changing regulations with automated updates that keep your reporting processes aligned with dynamic jurisdictional requirements.', icon: <GavelIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSua21yDjw8uuCPIzJoKCH2Af4-1pLi7C6zK2z2y0C3qA&s=10' },
+  { title: 'Integration with Current Systems', description: 'Seamlessly connect ERP systems and financial management tools to streamline invoicing workflows and enhance data accuracy across platforms.', icon: <IntegrationInstructionsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: IR1 },
+  { title: 'Data Security and Privacy', description: 'Ensure compliance with global data protection regulations including GDPR, safeguarding sensitive financial information with enterprise-grade security.', icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: IR2 },
+  { title: 'Regulatory Updates', description: 'Stay ahead of changing regulations with automated updates that keep your reporting processes aligned with dynamic jurisdictional requirements.', icon: <GavelIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: IR3 },
 ];
 
 const features = [
-  { title: 'Unified Reporting Interface', description: 'A centralized dashboard that consolidates invoice reporting across multiple jurisdictions, enabling companies to monitor and manage global invoicing activities effortlessly.', icon: <DashboardIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop' },
-  { title: 'Automated Compliance Updates', description: 'Stay current with evolving regulations through automatic system updates that ensure your company always adheres to the latest compliance standards.', icon: <UpdateIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=200&fit=crop' },
-  { title: 'Real-time Error Detection', description: 'Leverage advanced analytics to instantly identify discrepancies or errors in invoice reports, minimizing penalty risks and ensuring accurate submissions.', icon: <ErrorIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFbmEzurYuctbs9dxOhQ5vh_JmZPwIuP348aiQX1xnPQ&s=10' },
-  { title: 'Scalable for Growth', description: "Designed to adapt to your business needs, whether you're a growing enterprise or a large multinational, with seamless integration of new countries and regions.", icon: <ScaleIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeODJBz2WwPloqCOxeMO_mVeyuBkAm6pT57EMyROGkug&s=10' },
+  { title: 'Unified Reporting Interface', description: 'A centralized dashboard that consolidates invoice reporting across multiple jurisdictions, enabling companies to monitor and manage global invoicing activities effortlessly.', icon: <DashboardIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: IR4 },
+  { title: 'Automated Compliance Updates', description: 'Stay current with evolving regulations through automatic system updates that ensure your company always adheres to the latest compliance standards.', icon: <UpdateIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: IR5 },
+  { title: 'Real-time Error Detection', description: 'Leverage advanced analytics to instantly identify discrepancies or errors in invoice reports, minimizing penalty risks and ensuring accurate submissions.', icon: <ErrorIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: IR6 },
+  { title: 'Scalable for Growth', description: "Designed to adapt to your business needs, whether you're a growing enterprise or a large multinational, with seamless integration of new countries and regions.", icon: <ScaleIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: IR7 },
 ];
 
 const countries = [
@@ -49,17 +58,17 @@ const countries = [
 const InvoiceReporting = () => {
   return (
     <PageShell>
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage: 'url(https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=400&fit=crop)',
+          backgroundImage: `url(${IR8})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
@@ -70,13 +79,15 @@ const InvoiceReporting = () => {
             position: 'absolute',
             inset: 0,
             zIndex: -1,
-            background: 'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
           }}
         />
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>Invoice Reporting</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              Invoice Reporting
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -84,18 +95,26 @@ const InvoiceReporting = () => {
                 font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               Invoice Reporting
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
               Simplify global invoice compliance with intelligent reporting solutions. Our platform helps businesses navigate diverse regulatory requirements, ensuring accurate, timely submissions across multiple jurisdictions.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* What is Invoice Reporting? */}
       <Section>
         <Box
           sx={{
@@ -129,7 +148,7 @@ const InvoiceReporting = () => {
           >
             <Box
               component="img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-m2w9bKu6Np-BVkZ0irKcVdlruZDylScQAFAk5nvpCg&s=10"
+              src={IR1}
               alt="Invoice Reporting"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -137,7 +156,6 @@ const InvoiceReporting = () => {
         </Box>
       </Section>
 
-      {/* What is Real-Time Invoice Reporting? */}
       <Section>
         <Box
           sx={{
@@ -158,7 +176,7 @@ const InvoiceReporting = () => {
           >
             <Box
               component="img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeODJBz2WwPloqCOxeMO_mVeyuBkAm6pT57EMyROGkug&s=10"
+              src={IR2}
               alt="Real-Time Invoice Reporting"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -179,7 +197,6 @@ const InvoiceReporting = () => {
         </Box>
       </Section>
 
-      {/* Challenges */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Challenges</Eyebrow>
@@ -272,7 +289,6 @@ const InvoiceReporting = () => {
         </Box>
       </Section>
 
-      {/* Features */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Our Solution</Eyebrow>
@@ -360,7 +376,6 @@ const InvoiceReporting = () => {
         </Box>
       </Section>
 
-      {/* Countries */}
       <Section bg={soft}>
         <Box
           sx={{
@@ -402,7 +417,6 @@ const InvoiceReporting = () => {
         </Box>
       </Section>
 
-      {/* Requirements */}
       <Section>
         <Box
           sx={{
@@ -423,7 +437,6 @@ const InvoiceReporting = () => {
       </Section>
 
       <SolutionsCTA />
-      <SolutionsServices />
     </PageShell>
   );
 };

@@ -10,9 +10,7 @@ import PublicIcon from '@mui/icons-material/Public';
 import BusinessIcon from '@mui/icons-material/Business';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -24,33 +22,43 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
+import V1 from '../../../assets/images/solutions/vida/vida1.jpg';
+import V2 from '../../../assets/images/solutions/vida/vida2.jpg';
+import V3 from '../../../assets/images/solutions/vida/vida3.jpg';
+import V4 from '../../../assets/images/solutions/vida/vida4.jpg';
+import V5 from '../../../assets/images/solutions/vida/vida5.jpg';
+import V6 from '../../../assets/images/solutions/vida/vida6.jpg';
+import V7 from '../../../assets/images/solutions/vida/vida7.jpg';
+import V8 from '../../../assets/images/solutions/vida/vida8.jpg';
+import V9 from '../../../assets/images/solutions/vida/vida9.jpg';
+
 const proposals = [
-  { title: 'Improved Efficiency', description: 'ONAS Global Services helps streamline the collection and distribution of VAT between EU countries using advanced technology for smooth and transparent operations.', icon: <SpeedIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=200&fit=crop' },
-  { title: 'Fighting Fraud', description: 'ONAS Global Services solutions help reduce tax evasion, protecting the interest of governments and businesses through robust compliance systems.', icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=200&fit=crop' },
-  { title: 'Uniformity and Clarity', description: 'ONAS Global Services enables harmonization of VAT practices for all EU countries to operate more easily across borders with standardized processes.', icon: <GavelIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=200&fit=crop' },
+  { title: 'Improved Efficiency', description: 'ONAS Global Services helps streamline the collection and distribution of VAT between EU countries using advanced technology for smooth and transparent operations.', icon: <SpeedIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V1 },
+  { title: 'Fighting Fraud', description: 'ONAS Global Services solutions help reduce tax evasion, protecting the interest of governments and businesses through robust compliance systems.', icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V2 },
+  { title: 'Uniformity and Clarity', description: 'ONAS Global Services enables harmonization of VAT practices for all EU countries to operate more easily across borders with standardized processes.', icon: <GavelIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V3 },
 ];
 
 const areas = [
-  { title: 'e-Invoicing', description: 'ONAS Global Services provides standardized e-invoicing solutions across the EU for efficient and error-free invoicing processes.', icon: <ReceiptIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop' },
-  { title: 'Real-Time Reporting', description: 'ONAS Global Services enables real-time or near-real-time transmission of invoice data to tax authorities for quicker VAT reporting.', icon: <SpeedIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop' },
-  { title: 'Digital Platforms', description: 'ONAS Global Services helps digital platform operators comply with VAT obligations through comprehensive compliance solutions.', icon: <PublicIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=200&fit=crop' },
-  { title: 'Cross-Border Transactions', description: 'ONAS Global Services simplifies VAT management for cross-border transactions with cohesive EU-wide solutions.', icon: <BusinessIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS30faJEfYBDfszEcQHgkk-0v_UX0eWsTrCONOjcerCYw&s=10' },
+  { title: 'e-Invoicing', description: 'ONAS Global Services provides standardized e-invoicing solutions across the EU for efficient and error-free invoicing processes.', icon: <ReceiptIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V4 },
+  { title: 'Real-Time Reporting', description: 'ONAS Global Services enables real-time or near-real-time transmission of invoice data to tax authorities for quicker VAT reporting.', icon: <SpeedIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V5 },
+  { title: 'Digital Platforms', description: 'ONAS Global Services helps digital platform operators comply with VAT obligations through comprehensive compliance solutions.', icon: <PublicIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V6 },
+  { title: 'Cross-Border Transactions', description: 'ONAS Global Services simplifies VAT management for cross-border transactions with cohesive EU-wide solutions.', icon: <BusinessIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: V7 },
 ];
 
 const VIDA = () => {
   return (
     <PageShell>
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage: 'url(https://images.unsplash.com/photo-1432889821006-cceb7e4ad9e4?w=1200&h=400&fit=crop)',
+          backgroundImage: `url(${V8})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
@@ -61,13 +69,15 @@ const VIDA = () => {
             position: 'absolute',
             inset: 0,
             zIndex: -1,
-            background: 'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
           }}
         />
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>ViDA</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              ViDA
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -75,18 +85,26 @@ const VIDA = () => {
                 font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               Understanding ViDA: The EU Perspective on VAT Changes
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
               In an effort to streamline and modernize the taxation process, the European Union is introducing the ViDA proposal as a cornerstone of its revamped VAT strategy. ONAS Global Services helps businesses navigate this paradigm shift, addressing the challenges posed by the digital economy and cross-border transactions.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* Navigating ViDA */}
       <Section>
         <Box
           sx={{
@@ -106,7 +124,6 @@ const VIDA = () => {
         </Box>
       </Section>
 
-      {/* ViDA Proposals */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Proposals</Eyebrow>
@@ -194,7 +211,6 @@ const VIDA = () => {
         </Box>
       </Section>
 
-      {/* Preparing for ViDA */}
       <Section>
         <Box
           sx={{
@@ -214,7 +230,6 @@ const VIDA = () => {
         </Box>
       </Section>
 
-      {/* What is VAT in the Digital Age? */}
       <Section>
         <Box
           sx={{
@@ -235,7 +250,7 @@ const VIDA = () => {
           >
             <Box
               component="img"
-              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop"
+              src={V9}
               alt="VAT in Digital Age"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -259,7 +274,6 @@ const VIDA = () => {
         </Box>
       </Section>
 
-      {/* Why is ViDA Necessary? */}
       <Section>
         <Box
           sx={{
@@ -279,7 +293,6 @@ const VIDA = () => {
         </Box>
       </Section>
 
-      {/* Areas Covered by ViDA */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Areas</Eyebrow>
@@ -372,7 +385,6 @@ const VIDA = () => {
         </Box>
       </Section>
 
-      {/* Who Does ViDA Apply To? */}
       <Section>
         <Box
           sx={{
@@ -392,10 +404,9 @@ const VIDA = () => {
         </Box>
       </Section>
 
-      {/* Conclusion */}
       <Section>
         <Box sx={{ background: ink, borderRadius: '2px', padding: { xs: '1.8rem 1.4rem', md: '2.4rem 2rem' } }}>
-          <Typography sx={{ color: lime, fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
+          <Typography sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)', fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
             Conclusion
           </Typography>
           <Typography
@@ -404,18 +415,18 @@ const VIDA = () => {
               margin: '.7rem 0 1rem',
               font: "400 clamp(1.3rem, 2.4vw, 1.9rem)/1.1 Georgia, 'Times New Roman', serif",
               color: '#fff',
+              textShadow: '0 2px 12px rgba(0,0,0,.95)',
             }}
           >
             Conclusion
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', fontSize: '.72rem', lineHeight: 1.8, maxWidth: 900, margin: 0 }}>
+          <Body sx={{ color: '#ffffff !important', fontSize: '.72rem', lineHeight: 1.8, maxWidth: 900, margin: 0, textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>
             VAT in the Digital Age is a pivotal move towards a more efficient, transparent, and fraud-resistant VAT system in the EU. While it may require adjustments and investments initially, the long-term benefits for businesses and the overall economy are substantial. ONAS Global Services helps businesses understand and prepare for these changes, ensuring a smooth transition to the new digital VAT landscape.
           </Body>
         </Box>
       </Section>
 
       <SolutionsCTA />
-      <SolutionsServices />
     </PageShell>
   );
 };

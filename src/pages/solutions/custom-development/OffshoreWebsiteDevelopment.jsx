@@ -12,14 +12,14 @@ import {
 } from '../../../theme/theme';
 
 const slides = [
-  'https://images.unsplash.com/photo-1547658719-da2b51169166?w=1600&q=80',
-  'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&q=80',
-  'https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=1600&q=80',
-  'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1600&q=80',
-  'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1600&q=80',
+  '/offshorewebdev1.jpg',
+  '/offshorewebdev2.jpg',
+  '/offshorewebdev3.jpg',
+  '/offshorewebdev4.jpg',
+  '/offshorewebdev5.jpg',
 ];
-const bgImage = 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&q=80';
-const contentImage = 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=80';
+const bgImage = '/offshorewebdev6.jpg';
+const contentImage = '/offshorewebdev1.jpg';
 
 const OffshoreWebsiteDevelopment = () => {
   const location = useLocation();

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowForward, ExpandMore } from '@mui/icons-material';
@@ -16,15 +16,18 @@ import {
   ink, muted, line, soft, cream, lime,
 } from '../../../theme/theme';
 
+import M1 from '../../../assets/images/solutions/mobile-app/mobileappdev-1.jpg';
+import M2 from '../../../assets/images/solutions/mobile-app/mobileappdev-2.jpg';
+import M3 from '../../../assets/images/solutions/mobile-app/mobileappdev-3.jpg';
+import M4 from '../../../assets/images/solutions/mobile-app/mobileappdev-4.jpg';
+import M5 from '../../../assets/images/solutions/mobile-app/mobileappdev-5.jpg';
+import M6 from '../../../assets/images/solutions/mobile-app/mobileappdev-6.jpg';
+import M7 from '../../../assets/images/solutions/mobile-app/mobileappdev-7.jpg';
+import M8 from '../../../assets/images/solutions/mobile-app/mobileappdev-8.jpg';
+import M9 from '../../../assets/images/solutions/mobile-app/mobileappdev-9.jpg';
+
 const MobileApp = () => {
-  // ── Slideshow state ──
-  const slides = [
-    'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9a?w=1600&q=80',
-    'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1600&q=80',
-    'https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=1600&q=80',
-    'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80',
-    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80',
-  ];
+  const slides = [M1, M2, M3];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
@@ -38,21 +41,19 @@ const MobileApp = () => {
   const handleAccordionChange = (panel) => (_, isExpanded) =>
     setExpanded(isExpanded ? panel : false);
 
-  // ── Content ──
   const painPoints = [
     { title: 'One Team, Two Codebases', text: "Maintaining separate iOS and Android projects doubles engineering effort and slows every release." },
     { title: 'Inconsistent User Experience', text: "Native silos cause UI drift, feature parity gaps, and QA overhead you can't afford at scale." },
     { title: 'No Clear Cross-Platform Strategy', text: "Choosing the wrong stack or framework early forces rewrites that delay market entry by months." },
-
   ];
 
   const services = [
-    { Icon: Layers, title: 'Cross-Platform App Development', text: 'One React Native or Flutter codebase that ships native-quality experiences to iOS, Android, and beyond.', image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9a?w=600&h=400&fit=crop' },
-    { Icon: Smartphone, title: 'Native iOS & Android Development', text: 'When the product demands it, we build native with Swift, SwiftUI, Kotlin, and Jetpack Compose.', image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop' },
-    { Icon: Zap, title: 'Feature-First Development', text: 'We ship in reviewable increments so you see working software on real devices from week one.', image: 'https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=600&h=400&fit=crop' },
-    { Icon: Shield, title: 'Security & Compliance', text: 'Secure identity, encrypted data, HIPAA and GDPR alignment, and audit-ready logging built into every release.', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop' },
-    { Icon: RefreshCw, title: 'App Modernization', text: 'Move legacy apps to modern architectures, upgrade dependencies, and remove technical debt without disrupting users.', image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=600&h=400&fit=crop' },
-    { Icon: Database, title: 'Backend & API Integration', text: 'Connect your app to REST, GraphQL, identity providers, payments, analytics, and internal systems.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop' },
+    { Icon: Layers, title: 'Cross-Platform App Development', text: 'One React Native or Flutter codebase that ships native-quality experiences to iOS, Android, and beyond.', image: M4 },
+    { Icon: Smartphone, title: 'Native iOS & Android Development', text: 'When the product demands it, we build native with Swift, SwiftUI, Kotlin, and Jetpack Compose.', image: M5 },
+    { Icon: Zap, title: 'Feature-First Development', text: 'We ship in reviewable increments so you see working software on real devices from week one.', image: M6 },
+    { Icon: Shield, title: 'Security & Compliance', text: 'Secure identity, encrypted data, HIPAA and GDPR alignment, and audit-ready logging built into every release.', image: M7 },
+    { Icon: RefreshCw, title: 'App Modernization', text: 'Move legacy apps to modern architectures, upgrade dependencies, and remove technical debt without disrupting users.', image: M8 },
+    { Icon: Database, title: 'Backend & API Integration', text: 'Connect your app to REST, GraphQL, identity providers, payments, analytics, and internal systems.', image: M9 },
   ];
 
   const industries = [
@@ -77,35 +78,20 @@ const MobileApp = () => {
 
   return (
     <PageShell>
-      {/* ── HERO — SEO-style centered hero with slideshow ── */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 480, md: 560 },
-          padding: { xs: '3.5rem 1rem', md: '5rem 2.5rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           overflow: 'hidden',
-          background: ink,
+          background: '#0B4C74',
           isolation: 'isolate',
           display: 'flex',
           alignItems: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -126,12 +112,21 @@ const MobileApp = () => {
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Box sx={{ position: 'relative', zIndex: 2, maxWidth: 1240, margin: '0 auto', width: '100%', textAlign: 'center' }}>
           <Typography
             sx={{
-              color: lime,
+              color: '#ffffff',
+              textShadow: '0 2px 8px rgba(0,0,0,.95)',
               fontSize: '.55rem',
               letterSpacing: '.12em',
               textTransform: 'uppercase',
@@ -149,13 +144,15 @@ const MobileApp = () => {
               font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.1 Georgia, 'Times New Roman', serif",
               color: '#fff',
               maxWidth: 900,
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
             }}
           >
             Mobile App Development Services
           </Typography>
           <Typography
             sx={{
-              color: 'rgba(255,255,255,.82) !important',
+              color: '#ffffff !important',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
               fontFamily: "'Poppins', sans-serif",
               fontSize: { xs: '.72rem', md: '.78rem' },
               lineHeight: 1.7,
@@ -163,8 +160,7 @@ const MobileApp = () => {
               margin: '0 auto 1.8rem',
             }}
           >
-            Build mobile products that scale with your business. From cross-platform MVPs to
-            native iOS and Android apps, ONAS engineers mobile experiences users return to.
+            Build mobile products that scale with your business. From cross-platform MVPs to native iOS and Android apps, ONAS engineers mobile experiences users return to.
           </Typography>
           <Box
             component="a"
@@ -190,7 +186,6 @@ const MobileApp = () => {
         </Box>
       </Box>
 
-      {/* ── PAIN POINTS — small cards left + image right ── */}
       <Section bg={soft}>
         <Box
           sx={{
@@ -202,7 +197,6 @@ const MobileApp = () => {
             alignItems: 'center',
           }}
         >
-          {/* LEFT — heading + small stacked cards */}
           <Box>
             <Eyebrow>The Problem</Eyebrow>
             <SectionHeading sx={{ marginTop: '.7rem', maxWidth: 620, textAlign: 'left', marginLeft: 0, marginRight: 0 }}>
@@ -262,7 +256,6 @@ const MobileApp = () => {
             </Box>
           </Box>
 
-          {/* RIGHT — image */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -281,7 +274,7 @@ const MobileApp = () => {
             >
               <Box
                 component="img"
-                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9a?w=900&h=1200&fit=crop"
+                src={M1}
                 alt="Mobile app development"
                 sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
@@ -290,7 +283,6 @@ const MobileApp = () => {
         </Box>
       </Section>
 
-      {/* ── SERVICES — SEO style (image top, icon circle overlapping) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>What We Build</Eyebrow>
@@ -342,7 +334,6 @@ const MobileApp = () => {
         </Box>
       </Section>
 
-      {/* ── INDUSTRIES — SEO style with RouterLink + Learn More ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>Industries</Eyebrow>
@@ -380,7 +371,6 @@ const MobileApp = () => {
         </Box>
       </Section>
 
-      {/* ── FAQ ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>FAQ</Eyebrow>
@@ -434,7 +424,6 @@ const MobileApp = () => {
         </Box>
       </Section>
 
-      {/* ── CTA — SEO style ── */}
       <Box sx={{ background: soft, borderTop: `1px solid ${line}` }}>
         <Container maxWidth={false} disableGutters sx={containerSx}>
           <Box sx={{ maxWidth: 800, mx: 'auto', padding: { xs: '4rem 1rem', md: '5rem 0' }, textAlign: 'center' }}>

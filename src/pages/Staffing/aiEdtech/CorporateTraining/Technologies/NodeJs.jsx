@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { motion } from 'framer-motion';
-import { ArrowForward, Check } from '@mui/icons-material';
+import { ArrowForward, Check, ExpandMore } from '@mui/icons-material';
 
 import {
   PageShell,
@@ -9,8 +9,17 @@ import {
   Eyebrow,
   SectionHeading,
   Body,
-  ink, line, soft, lime,
-} from '../../../../../theme/theme';
+  cardSx,
+  ink, muted, line, soft, lime,
+} from '@/theme/theme';
+
+// ✅ Local images (same folder as Flutter, but nodejs subfolder)
+import NodeHero from '@/assets/images/staffing/AI & EdTech Services/technologies/nodejs/nodejs1.jpg';
+import NodeImg1 from '@/assets/images/staffing/AI & EdTech Services/technologies/nodejs/nodejs2.jpg';
+import NodeImg2 from '@/assets/images/staffing/AI & EdTech Services/technologies/nodejs/nodejs3.jpg';
+import NodeImg3 from '@/assets/images/staffing/AI & EdTech Services/technologies/nodejs/nodejs4.jpg';
+import NodeImg4 from '@/assets/images/staffing/AI & EdTech Services/technologies/nodejs/nodejs5.jpg';
+import NodeImg5 from '@/assets/images/staffing/AI & EdTech Services/technologies/nodejs/nodejs6.jpg';
 
 const benefits = [
   {
@@ -22,86 +31,151 @@ const benefits = [
       'A larger number of free tools.',
       'Cross-platform.',
     ],
-    after: 'All this allows us to make the development process as flexible and less time-consuming as possible. As a result, you get high-quality and reliable software in the shortest possible time. JavaScript developers can start programming the backend with minimal effort by packaging existing code into modules and creating new levels of abstraction.',
-    image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=800&q=80',
+    after:
+      'All this allows us to make the development process as flexible and less time-consuming as possible. As a result, you get high-quality and reliable software in the shortest possible time. JavaScript developers can start programming the backend with minimal effort by packaging existing code into modules and creating new levels of abstraction.',
+    image: NodeImg1,
   },
   {
     title: 'Fast Request Processing and Efficient Event-Driven Model',
     text: 'Node.js is fast thanks to its V8 engine. Another important advantage is the synchronous processing of requests. In the context of the server-side, synchronous processing assumes that the code is executed sequentially. The third aspect is the event model. When using the same language on both the client and the backend, synchronization is much faster as it is possible. Which is precisely why we have built real-time applications. Due to its asynchronous, single-threaded nature, Node.js is ideal for online games, chat rooms, video conferencing, or any other project that requires constant data updates.',
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',
+    image: NodeImg2,
   },
   {
     title: 'Ideal Choice for Microservices Architecture',
     text: 'As a simple and lightweight programming environment, Node.js has become an ideal solution for the so-called microservice architecture. You can split a single development process into a collection of small services, each of which contains its own simple technological base, often the HTTP REST protocol. Since each microservice communicates directly with the database, this architecture can improve the performance and speed of the application.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',
+    image: NodeImg3,
   },
   {
     title: 'Rich Ecosystem',
     text: 'NPM - the default Node.js package manager - also serves as the primary platform for open-source JavaScript tools that have played an important role in the development of this programming language. With about a million ready-to-use packages, this runtime ecosystem can solve 99.99% of the problems. Node.js is ecosystem is quite rich. With such a huge variety of free tools available in a few clicks, there is a huge potential for using Node.js. At the same time, open-source software is gaining popularity as it allows new solutions to be created, reducing overall development costs and time-to-market.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
+    image: NodeImg4,
   },
   {
     title: 'Full JSON Support',
     text: 'Node.js uses JSON for communication, without conversion between binary models via JavaScript. This is especially useful when you need to create RESTful API to support NoSQL database. The seamless connection to one of the major data transfer standards is another advantage of the JavaScript ecosystem.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
+    image: NodeImg5,
   },
 ];
 
 const NodeJs = () => {
   return (
     <PageShell>
-      {/* ── HERO ── */}
+      {/* ===== HERO (matches Flutter pattern) ===== */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 480, md: 560 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
           overflow: 'hidden',
-          background: ink,
+          backgroundImage: `url(${NodeHero})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: ink,
           isolation: 'isolate',
         }}
       >
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: -1, background: 'linear-gradient(120deg, rgba(11,76,116,.98) 0%, rgba(11,76,116,.85) 55%, rgba(11,76,116,.72) 100%)' }} />
+        {/* Gradient overlay */}
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: -1,
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.65) 100%)',
+          }}
+        />
 
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.1fr .9fr' }, gap: { xs: '2rem', md: '3rem' }, alignItems: 'center', maxWidth: 1240, margin: '0 auto', width: '100%' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>Corporate Training</Eyebrow>
+        <Box
+          sx={{
+            maxWidth: 900,
+            margin: '0 auto',
+            textAlign: 'center',
+            width: '100%',
+            position: 'relative',
+            zIndex: 2,
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              Corporate Training
+            </Eyebrow>
+
             <Typography
               component="h1"
               sx={{
-                margin: '.5rem 0 1.4rem',
-                font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
+                margin: '.5rem auto 1rem',
+                font: "400 clamp(1.1rem, 2.2vw, 1.7rem)/1.15 Georgia, 'Times New Roman', serif",
                 color: '#fff',
-                maxWidth: 640,
+                maxWidth: 620,
                 letterSpacing: 0,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
-              Node.js Development Services <Box component="span" sx={{ color: lime }}>by ONAS Solutions</Box>
+              Node.js Development Services{' '}
+              <Box component="span" sx={{ color: lime }}>
+                by ONAS Solutions
+              </Box>
             </Typography>
 
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 560, marginBottom: '1rem' }}>
-              Node.js is an open source cross-platform JavaScript runtime developed in JavaScript in V8 Chrome directly into machine code. It is a lightweight framework used to develop server-side web applications.
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 560,
+                margin: '0 auto .8rem',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
+              Node.js is an open source cross-platform JavaScript runtime developed in JavaScript in V8 Chrome
+              directly into machine code. It is a lightweight framework used to develop server-side web applications.
             </Body>
 
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 560 }}>
-              It is mainly used for building large-scale applications, mainly for streaming websites, single page and other web applications. Node.js uses an event-driven, non-blocking I/O model, which makes it suitable for real-time data-intensive applications.
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 560,
+                margin: '0 auto 1.8rem',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
+              It is mainly used for building large-scale applications, mainly for streaming websites, single page
+              and other web applications. Node.js uses an event-driven, non-blocking I/O model, which makes it
+              suitable for real-time data-intensive applications.
             </Body>
-          </motion.div>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Box
-              component="img"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/512px-Node.js_logo.svg.png"
-              alt="Node.js"
-              sx={{ width: { xs: 200, md: 300 }, height: 'auto', display: 'block' }}
-            />
-          </Box>
+              component="a"
+              href="/resources/contact-us"
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '.5rem',
+                padding: '.7rem 1.1rem',
+                borderRadius: '2px',
+                background: '#0B4C74',
+                color: '#ffffff',
+                fontWeight: 600,
+                fontSize: '.62rem',
+                fontFamily: "'Poppins', sans-serif",
+                textDecoration: 'none',
+                transition: 'background .2s ease',
+                '&:hover': { background: '#d3ffb0', color: '#000000' },
+              }}
+            >
+              Discuss Node.js Training <ArrowForward sx={{ fontSize: 14 }} />
+            </Box>
+          </motion.div>
         </Box>
       </Box>
 
-      {/* ── BENEFITS (alternating left/right) ── */}
+      {/* ===== BENEFITS ===== */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>Benefits</Eyebrow>
@@ -110,7 +184,15 @@ const NodeJs = () => {
           </SectionHeading>
         </Box>
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: '2.5rem', md: '4rem' }, maxWidth: 1100, margin: '0 auto' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: { xs: '2.5rem', md: '4rem' },
+            maxWidth: 1100,
+            margin: '0 auto',
+          }}
+        >
           {benefits.map((b, i) => {
             const isReversed = i % 2 === 1;
             return (
@@ -130,7 +212,6 @@ const NodeJs = () => {
                     direction: { xs: 'ltr', md: isReversed ? 'rtl' : 'ltr' },
                   }}
                 >
-                  {/* Text side */}
                   <Box sx={{ direction: 'ltr' }}>
                     <Typography
                       component="h3"
@@ -145,12 +226,25 @@ const NodeJs = () => {
                       {b.title}
                     </Typography>
 
-                    <Body sx={{ fontSize: '.68rem', lineHeight: 1.8, marginBottom: b.bullets?.length ? '.8rem' : 0 }}>
+                    <Body
+                      sx={{
+                        fontSize: '.68rem',
+                        lineHeight: 1.8,
+                        marginBottom: b.bullets?.length ? '.8rem' : 0,
+                      }}
+                    >
                       {b.text}
                     </Body>
 
                     {b.bullets && b.bullets.length > 0 && (
-                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '.45rem', marginBottom: b.after ? '.8rem' : 0 }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '.45rem',
+                          marginBottom: b.after ? '.8rem' : 0,
+                        }}
+                      >
                         {b.bullets.map((bp, bi) => (
                           <Box key={bi} sx={{ display: 'flex', alignItems: 'flex-start', gap: '.6rem' }}>
                             <Check sx={{ fontSize: 14, color: '#0B4C74', marginTop: '3px', flexShrink: 0 }} />
@@ -165,7 +259,6 @@ const NodeJs = () => {
                     )}
                   </Box>
 
-                  {/* Image side */}
                   <Box
                     sx={{
                       direction: 'ltr',
@@ -190,7 +283,7 @@ const NodeJs = () => {
         </Box>
       </Section>
 
-      {/* ── CTA ── */}
+      {/* ===== CTA ===== */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
           <Eyebrow>Get Started</Eyebrow>
@@ -198,7 +291,8 @@ const NodeJs = () => {
             Train Your Team on Node.js
           </SectionHeading>
           <Body sx={{ marginBottom: '1.6rem' }}>
-            Let&apos;s design a Node.js training program that fits your engineers&apos; existing experience, your tech stack, and your delivery goals.
+            Let&apos;s design a Node.js training program that fits your engineers&apos; existing experience, your
+            tech stack, and your delivery goals.
           </Body>
           <Box
             component="a"

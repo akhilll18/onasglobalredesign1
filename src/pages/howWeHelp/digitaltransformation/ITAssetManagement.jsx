@@ -4,22 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { ArrowForward } from '@mui/icons-material';
 
-// Shared design
 import {
-  PageShell,
-  Section,
-  Eyebrow,
-  SectionHeading,
-  SubHeading,
-  Body,
-  LimeButton,
-  cardSx,
-  containerSx,
-  heroHeadingSx,
+  PageShell, Section, Eyebrow, SectionHeading, SubHeading,
+  Body, LimeButton, cardSx, containerSx, heroHeadingSx,
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Images
 import CmdbImage from '../../../assets/images/howWeHelp/ITAssetMangement/cmdb.png';
 import WorkflowImage from '../../../assets/images/howWeHelp/ITAssetMangement/workflow.png';
 import RiskImage from '../../../assets/images/howWeHelp/ITAssetMangement/risk.png';
@@ -62,7 +52,7 @@ const ITAssetManagement = () => {
   const baseUrl = window.location.origin;
   const pageUrl = `${baseUrl}/services/it-asset-management`;
 
-  const slides = [ITAMImage, Image2, Image3, Image4];
+  const slides = [ITAMImage, Image2, Image3];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -115,7 +105,6 @@ const ITAssetManagement = () => {
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
@@ -129,22 +118,7 @@ const ITAssetManagement = () => {
           justifyContent: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -161,14 +135,42 @@ const ITAssetManagement = () => {
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime }}>IT Asset Management</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+            IT Asset Management
+          </Eyebrow>
+          <Typography
+            component="h1"
+            sx={{
+              ...heroHeadingSx,
+              color: '#ffffff',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
+            }}
+          >
             IT Asset Management Solutions
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
+          <Body
+            sx={{
+              color: '#ffffff !important',
+              maxWidth: 780,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: '1.8rem',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
+            }}
+          >
             Drive full lifecycle tracking and visibility into hardware assets and software licenses with costs, processes, and data on a single platform.
           </Body>
           <LimeButton href="/resources/contact-us">
@@ -177,7 +179,6 @@ const ITAssetManagement = () => {
         </Container>
       </Box>
 
-      {/* Introduction */}
       <Section>
         <Box sx={{ maxWidth: 900, mx: 'auto', textAlign: 'center' }}>
           <Eyebrow>Introduction</Eyebrow>
@@ -190,7 +191,6 @@ const ITAssetManagement = () => {
         </Box>
       </Section>
 
-      {/* Outcome Focused Deployment */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Outcome Focused</Eyebrow>
@@ -237,7 +237,6 @@ const ITAssetManagement = () => {
         </Box>
       </Section>
 
-      {/* ITAM Benefits + KPI */}
       <Section>
         <Box
           sx={{
@@ -294,14 +293,13 @@ const ITAssetManagement = () => {
         </Box>
       </Section>
 
-      {/* Impact Stats */}
       <Box sx={{ background: ink, color: '#fff' }}>
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, paddingTop: { xs: '3rem', md: '4rem' }, paddingBottom: { xs: '3rem', md: '4rem' } }}>
           <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
-            <Typography sx={{ ...{ color: lime, fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif" } }}>
+            <Typography sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)', fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
               Our Impact
             </Typography>
-            <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.2rem, 2.2vw, 1.7rem)/1.15 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 720 }}>
+            <Typography component="h2" sx={{ margin: '.7rem auto 0', font: "400 clamp(1.2rem, 2.2vw, 1.7rem)/1.15 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 720, textShadow: '0 2px 12px rgba(0,0,0,.95)' }}>
               IT Asset Management Impact
             </Typography>
           </Box>

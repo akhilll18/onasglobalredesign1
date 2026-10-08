@@ -8,7 +8,6 @@ import {
   Lightbulb, Cpu, Box as LucideBox, Brain,
 } from 'lucide-react';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -23,16 +22,17 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Images
 import SAPHeroImage from '../../../assets/images/howWeHelp/ERP/sap/SAP.jpg';
+import Image2 from '../../../assets/images/howWeHelp/ERP/sap/img2.jpg';
+import Image3 from '../../../assets/images/howWeHelp/ERP/sap/img3.jpg';
+import Image4 from '../../../assets/images/howWeHelp/ERP/sap/img4.jpg';
 import Image5 from '../../../assets/images/howWeHelp/ERP/sap/img5.jpg';
 import Image6 from '../../../assets/images/howWeHelp/ERP/sap/img6.png';
 
-// 👇 same navy as the top navbar menu items
 const NAVY = '#0B4C74';
 
 const SAP = () => {
-  const slides = [SAPHeroImage, Image5, Image6];
+  const slides = [Image4, Image5, SAPHeroImage];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -54,11 +54,10 @@ const SAP = () => {
     { Icon: Brain, title: 'Intelligent Data + AI', text: 'Transform your business and unlock new opportunities by harnessing the power of Data & AI to generate actionable insights. Staying competitive is now a click-away with our team of seasoned experts.' },
   ];
 
-  // Lifecycle with images for zig-zag
   const lifecycleBlocks = [
     {
       title: 'Implementation & Support Services',
-      image: Image5,
+      image: Image6,
       paragraphs: [
         'Comprehensive SAP S/4HANA implementation methodology following SAP Activate methodology with detailed project plan templates. Clear blueprint deliverables and testing strategy (unit, integration, UAT) implementation.',
         'SAP AMS (Application Managed Services) with production support model L1 L2 L3. Performance tuning guide and user authorization troubleshooting.',
@@ -67,7 +66,7 @@ const SAP = () => {
     },
     {
       title: 'Upgrade & Migration Services',
-      image: Image6,
+      image: Image2,
       paragraphs: [
         'Comprehensive SAP upgrade project planning and S/4HANA 2023 to S/4HANA 2028 upgrade with downtime minimization strategies. SAP SUM tool tutorials and custom code impact management (SPAU/SPDD).',
         'SAP S/4HANA migration checklists, evaluate Greenfield vs Brownfield options, execute SAP Brownfield migration (SUM/DMO) with migration cockpit expertise.',
@@ -85,26 +84,25 @@ const SAP = () => {
     { title: 'Advisory & Strategy', paragraphs: ['Comparative analysis of SAP RISE vs LEGACY model considering total cost of ownership, operational flexibility, and business agility. Guidance on SAP support models: break-fix vs managed services selection.', 'Development of comprehensive SAP transformation roadmap and assistance in choosing an SAP partner for implementation.'] },
   ];
 
-  // Delivery Framework with images
   const deliveryFramework = [
     {
       title: 'SAP Implementation Excellence',
-      image: SAPHeroImage,
+      image: Image3,
       paragraphs: ['SAP S/4HANA implementation methodology following SAP Activate methodology with clear blueprint deliverables and comprehensive testing strategy (unit, integration, UAT).', 'Detailed project plan templates, best practices for SAP data migration, and thorough partner selection criteria evaluation.', 'Clear team structure roles definition and transparent cost breakdown with realistic implementation timelines.'],
     },
     {
       title: 'SAP Support & Maintenance',
-      image: Image5,
+      image: SAPHeroImage,
       paragraphs: ['Comprehensive SAP AMS (Application Managed Services) with multi-tier production support model L1 L2 L3 coverage.', 'Efficient support ticket process best practices, proactive performance tuning, and timely security patches implementation.', 'Comprehensive basis support checklist, specialized user authorization troubleshooting, and dedicated year-end closing support activities SAP FICO.'],
     },
     {
       title: 'SAP Upgrade Services',
-      image: Image6,
+      image: Image4,
       paragraphs: ['Comprehensive SAP upgrade project planning including enhancement package (EhP) installation and strategic S/4HANA 2023 to S/4HANA 2028 upgrade execution.', 'Specialized upgrade downtime minimization strategies using advanced SAP SUM (Software Update Manager) tool techniques.', 'Thorough testing strategy for SAP upgrades, management of custom code impact (SPAU/SPDD), and comprehensive post-upgrade checklists.'],
     },
     {
       title: 'SAP Migration Expertise',
-      image: SAPHeroImage,
+      image: Image5,
       paragraphs: ['End-to-end SAP S/4HANA migration services with comprehensive checklists covering both Greenfield vs Brownfield approaches.', 'Detailed SAP Brownfield migration (SUM/DMO) steps and custom code adaptation for S/4HANA (ADT).', 'Comprehensive data migration strategy (LTMC, LSMW, S/4HANA DMIS), thorough S/4HANA readiness check report analysis, and transparent cost analysis.'],
     },
   ];
@@ -140,7 +138,6 @@ const SAP = () => {
         <link rel="canonical" href="https://www.onasglobal.com/sap-services" />
       </Helmet>
 
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
@@ -154,7 +151,7 @@ const SAP = () => {
           justifyContent: 'center',
         }}
       >
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden', '&::after': { content: '""', position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)', zIndex: 1 } }}>
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -162,26 +159,77 @@ const SAP = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 1.1, ease: 'easeInOut' }}
-              style={{ position: 'absolute', inset: 0, backgroundImage: `url(${slides[currentSlide]})`, backgroundPosition: 'center', backgroundSize: 'cover' }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${slides[currentSlide]})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+              }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
-        <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime }}>SAP Services</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
-            SAP AI for Comprehensive SAP Services: Implementation, Support, Upgrade &amp; Migration
-          </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
-            Expert SAP services enhanced by SAP AI including SAP S/4HANA implementation methodology, SAP Activate methodology step-by-step guidance, SAP AMS (Application Managed Services), S/4HANA 2023 to 2028 upgrade planning, SAP S/4HANA migration, and comprehensive SAP transformation roadmap development.
-          </Body>
-          <LimeButton href="/resources/contact-us">
-            Contact Us <ArrowForward sx={{ fontSize: 14 }} />
-          </LimeButton>
+        <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2 }}>
+          <Box
+            sx={{
+              maxWidth: 900,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              padding: { xs: '1.8rem 1.2rem', md: '2.5rem 2.5rem' },
+              textAlign: 'center',
+            }}
+          >
+            <Eyebrow
+              sx={{
+                color: '#ffffff',
+                textShadow: '0 2px 8px rgba(0,0,0,.95)',
+              }}
+            >
+              SAP Services
+            </Eyebrow>
+
+            <Typography
+              component="h1"
+              sx={{
+                ...heroHeadingSx,
+                color: '#ffffff',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
+              }}
+            >
+              SAP AI for Comprehensive SAP Services: Implementation, Support, Upgrade &amp; Migration
+            </Typography>
+
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginBottom: '1.8rem',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
+              Expert SAP services enhanced by SAP AI including SAP S/4HANA implementation methodology, SAP Activate methodology step-by-step guidance, SAP AMS (Application Managed Services), S/4HANA 2023 to 2028 upgrade planning, SAP S/4HANA migration, and comprehensive SAP transformation roadmap development.
+            </Body>
+
+            <LimeButton href="/resources/contact-us">
+              Contact Us <ArrowForward sx={{ fontSize: 14 }} />
+            </LimeButton>
+          </Box>
         </Container>
       </Box>
 
-      {/* Full Lifecycle — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Full Lifecycle</Eyebrow>
@@ -201,7 +249,6 @@ const SAP = () => {
         </Box>
       </Section>
 
-      {/* Portfolio — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Portfolio</Eyebrow>
@@ -225,7 +272,6 @@ const SAP = () => {
         </Box>
       </Section>
 
-      {/* Lifecycle Management — zig-zag text/image */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>Lifecycle</Eyebrow>
@@ -252,7 +298,6 @@ const SAP = () => {
                     marginBottom: { xs: '2.5rem', md: '3rem' },
                   }}
                 >
-                  {/* Text — order depends on isEven */}
                   <Box
                     sx={{
                       order: { xs: 1, md: isEven ? 1 : 2 },
@@ -276,7 +321,6 @@ const SAP = () => {
                     ))}
                   </Box>
 
-                  {/* Image — opposite side */}
                   <Box
                     sx={{
                       order: { xs: 2, md: isEven ? 2 : 1 },
@@ -306,7 +350,6 @@ const SAP = () => {
         </Box>
       </Section>
 
-      {/* FAQ — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>FAQ</Eyebrow>
@@ -326,7 +369,6 @@ const SAP = () => {
         </Box>
       </Section>
 
-      {/* Delivery Framework — cards with images */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>Delivery Framework</Eyebrow>
@@ -351,7 +393,6 @@ const SAP = () => {
                   flexDirection: 'column',
                 }}
               >
-                {/* Image on top */}
                 <Box
                   sx={{
                     width: '100%',
@@ -373,7 +414,6 @@ const SAP = () => {
                   />
                 </Box>
 
-                {/* Text */}
                 <Box sx={{ padding: '1.4rem 1.4rem' }}>
                   <SubHeading sx={{ marginBottom: '1rem', color: NAVY }}>{block.title}</SubHeading>
                   {block.paragraphs.map((p, idx) => (
@@ -386,7 +426,6 @@ const SAP = () => {
         </Box>
       </Section>
 
-      {/* Keyword Footer — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <SectionHeading sx={{ textAlign: 'center', color: NAVY, marginBottom: '2rem' }}>
           ONAS Comprehensive SAP Services

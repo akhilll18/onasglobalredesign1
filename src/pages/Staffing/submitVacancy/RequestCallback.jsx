@@ -3,7 +3,7 @@ import { Box, Typography, TextField, Button, MenuItem, FormGroup, FormControlLab
 import { motion } from 'framer-motion';
 import { ArrowForward } from '@mui/icons-material';
 import emailjs from '@emailjs/browser';
-import RequestImage from '../../../assets/images/staffing/submitVacancy/vacancy.png';
+import RequestImage from '../../../assets/images/staffing/submitVacancy/vacancy.jpg';
 
 // Shared design
 import {

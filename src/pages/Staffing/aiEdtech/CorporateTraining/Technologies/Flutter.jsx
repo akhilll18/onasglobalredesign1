@@ -11,7 +11,14 @@ import {
   Body,
   cardSx,
   ink, muted, line, soft, lime,
-} from '../../../../../theme/theme';
+} from '@/theme/theme';
+
+import FlutterLogo from '@/assets/images/staffing/AI & EdTech Services/technologies/Flutter/flutter1.jpg';
+import Process1 from '@/assets/images/staffing/AI & EdTech Services/technologies/Flutter/flutter2.jpg';
+import Process2 from '@/assets/images/staffing/AI & EdTech Services/technologies/Flutter/flutter3.jpg';
+import Process3 from '@/assets/images/staffing/AI & EdTech Services/technologies/Flutter/flutter4.jpg';
+import Process4 from '@/assets/images/staffing/AI & EdTech Services/technologies/Flutter/flutter5.jpg';
+import Process5 from '@/assets/images/staffing/AI & EdTech Services/technologies/Flutter/flutter6.jpg';
 
 const frictionPoints = [
   { label: 'UI Drift', text: 'Keeping iOS and Android experiences aligned gets harder as product details multiply.' },
@@ -35,11 +42,11 @@ const services = [
 ];
 
 const processSteps = [
-  { number: '01', title: 'Discover', text: 'Align on users, workflows, constraints, integrations, and what success means for this release.', image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
-  { number: '02', title: 'Shape', text: 'Agree on the experience, technical approach, delivery milestones, and a testable first slice.', image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=250&fit=crop' },
-  { number: '03', title: 'Build', text: 'Deliver in increments, with regular reviews and working software visible throughout.', image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop' },
-  { number: '04', title: 'Validate', text: 'Test across target devices, accessibility needs, network conditions, and backend integrations.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop' },
-  { number: '05', title: 'Launch & Improve', text: 'Prepare the release, monitor real usage, and prioritize the next improvements with your team.', image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=250&fit=crop' },
+  { number: '01', title: 'Discover', text: 'Align on users, workflows, constraints, integrations, and what success means for this release.', image: Process1 },
+  { number: '02', title: 'Shape', text: 'Agree on the experience, technical approach, delivery milestones, and a testable first slice.', image: Process2 },
+  { number: '03', title: 'Build', text: 'Deliver in increments, with regular reviews and working software visible throughout.', image: Process3 },
+  { number: '04', title: 'Validate', text: 'Test across target devices, accessibility needs, network conditions, and backend integrations.', image: Process4 },
+  { number: '05', title: 'Launch & Improve', text: 'Prepare the release, monitor real usage, and prioritize the next improvements with your team.', image: Process5 },
 ];
 
 const comparisonRows = [
@@ -51,9 +58,9 @@ const comparisonRows = [
 ];
 
 const engagementModels = [
-  { title: 'Discovery Sprint', detail: 'A short, focused start', text: 'Clarify user journeys, technical constraints, architecture options, and a practical delivery roadmap.', image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=250&fit=crop' },
-  { title: 'Product Squad', detail: 'A dedicated delivery team', text: 'Bring product, design, and engineering together to build and evolve your Flutter application.', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop' },
-  { title: 'Specialist Support', detail: 'Targeted expertise', text: 'Get help with a defined challenge such as performance, integrations, release readiness, or team mentoring.', image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=250&fit=crop' },
+  { title: 'Discovery Sprint', detail: 'A short, focused start', text: 'Clarify user journeys, technical constraints, architecture options, and a practical delivery roadmap.', image: Process1 },
+  { title: 'Product Squad', detail: 'A dedicated delivery team', text: 'Bring product, design, and engineering together to build and evolve your Flutter application.', image: Process3 },
+  { title: 'Specialist Support', detail: 'Targeted expertise', text: 'Get help with a defined challenge such as performance, integrations, release readiness, or team mentoring.', image: Process5 },
 ];
 
 const industries = [
@@ -85,80 +92,65 @@ const faqs = [
 const Flutter = () => {
   return (
     <PageShell>
-      {/* ── HERO ── */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 480, md: 560 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
           overflow: 'hidden',
-          background: ink,
+          backgroundImage: `url(${FlutterLogo})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: ink,
           isolation: 'isolate',
         }}
       >
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: -1, background: 'linear-gradient(120deg, rgba(11,76,116,.98) 0%, rgba(11,76,116,.85) 55%, rgba(11,76,116,.72) 100%)' }} />
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: -1,
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.65) 100%)',
+          }}
+        />
 
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '2rem', md: '3rem' }, alignItems: 'center', maxWidth: 1240, margin: '0 auto', width: '100%' }}>
+        <Box sx={{ maxWidth: 900, margin: '0 auto', textAlign: 'center', width: '100%', position: 'relative', zIndex: 2 }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>Corporate Training</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>Corporate Training</Eyebrow>
             <Typography
               component="h1"
               sx={{
-                margin: '.5rem 0 1.4rem',
-                font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
+                margin: '.5rem auto 1rem',
+                font: "400 clamp(1.1rem, 2.2vw, 1.7rem)/1.15 Georgia, 'Times New Roman', serif",
                 color: '#fff',
-                maxWidth: 640,
+                maxWidth: 620,
                 letterSpacing: 0,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               Flutter App Development <Box component="span" sx={{ color: lime }}>by ONAS Solutions</Box>
             </Typography>
 
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 560, marginBottom: '1rem' }}>
+            <Body sx={{ color: '#ffffff !important', maxWidth: 560, margin: '0 auto .8rem', textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>
               Turn a product idea into a dependable mobile experience for iOS and Android. ONAS brings product thinking, Flutter engineering, and release support together from the first conversation.
             </Body>
 
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 560, marginBottom: '1.8rem' }}>
+            <Body sx={{ color: '#ffffff !important', maxWidth: 560, margin: '0 auto 1.8rem', textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>
               A shared codebase, shaped for the people who use it.
             </Body>
 
-            <Box
-              component="a"
-              href="/resources/contact-us"
-              sx={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '.5rem',
-                padding: '.7rem 1.1rem',
-                borderRadius: '2px',
-                background: '#0B4C74',
-                color: '#ffffff',
-                fontWeight: 600,
-                fontSize: '.62rem',
-                fontFamily: "'Poppins', sans-serif",
-                textDecoration: 'none',
-                transition: 'background .2s ease',
-                '&:hover': { background: '#d3ffb0', color: '#000000' },
-              }}
-            >
+            <Box component="a" href="/resources/contact-us" sx={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.7rem 1.1rem', borderRadius: '2px', background: '#0B4C74', color: '#ffffff', fontWeight: 600, fontSize: '.62rem', fontFamily: "'Poppins', sans-serif", textDecoration: 'none', transition: 'background .2s ease', '&:hover': { background: '#d3ffb0', color: '#000000' } }}>
               Discuss Your App <ArrowForward sx={{ fontSize: 14 }} />
             </Box>
           </motion.div>
-
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Box
-              component="img"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Google-flutter-logo.png/512px-Google-flutter-logo.png"
-              alt="Flutter"
-              sx={{ width: { xs: 200, md: 300 }, height: 'auto', display: 'block' }}
-            />
-          </Box>
         </Box>
       </Box>
 
-      {/* ── INTRO / CONTEXT ── */}
       <Section>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '2rem', md: 'clamp(2rem, 5vw, 4rem)' }, alignItems: 'center' }}>
           <Box>
@@ -174,12 +166,11 @@ const Flutter = () => {
             </Body>
           </Box>
           <Box sx={{ border: `1px solid ${line}`, borderRadius: '2px', overflow: 'hidden', background: '#fff', height: { xs: 240, md: 340 } }}>
-            <Box component="img" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt="Product team collaborating" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <Box component="img" src={Process2} alt="Product team collaborating" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </Box>
         </Box>
       </Section>
 
-      {/* ── FRICTION POINTS ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Common Delivery Friction</Eyebrow>
@@ -194,7 +185,7 @@ const Flutter = () => {
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: { xs: '1rem', md: '1.2rem' } }}>
           {frictionPoints.map((item, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: (i % 4) * 0.05 }} style={{ display: 'flex' }}>
-              <Box sx={{ ...cardSx, borderLeft: `3px solid ${i % 2 === 0 ? '#0B4C74' : '#5e987f'}` }}>
+              <Box sx={{ ...cardSx }}>
                 <Typography sx={{ font: "400 clamp(1.4rem, 2.4vw, 1.9rem)/1 Georgia, 'Times New Roman', serif", color: '#bcd0c5', marginBottom: '.5rem' }}>
                   {String(i + 1).padStart(2, '0')}
                 </Typography>
@@ -208,7 +199,6 @@ const Flutter = () => {
         </Box>
       </Section>
 
-      {/* ── OUTCOMES ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Designed for Outcomes</Eyebrow>
@@ -239,7 +229,6 @@ const Flutter = () => {
         </Box>
       </Section>
 
-      {/* ── SERVICES ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>How We Can Help</Eyebrow>
@@ -268,7 +257,6 @@ const Flutter = () => {
         </Box>
       </Section>
 
-      {/* ── PROCESS (with images) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>From First Brief to First Release</Eyebrow>
@@ -302,7 +290,6 @@ const Flutter = () => {
         </Box>
       </Section>
 
-      {/* ── COMPARISON TABLE ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Choose the Right Approach</Eyebrow>
@@ -315,53 +302,19 @@ const Flutter = () => {
         </Box>
 
         <Box sx={{ overflowX: 'auto', border: `1px solid ${line}`, borderRadius: '2px', background: '#fff' }}>
-          <Box
-            component="table"
-            sx={{
-              width: '100%',
-              minWidth: 620,
-              borderCollapse: 'collapse',
-              '& th, & td': {
-                padding: { xs: '.9rem 1rem', md: '1rem 1.4rem' },
-                textAlign: 'left',
-                borderBottom: `1px solid ${line}`,
-                fontSize: '.68rem',
-                fontFamily: "'Poppins', sans-serif",
-              },
-              '& th': {
-                background: soft,
-                color: ink,
-                textTransform: 'uppercase',
-                fontSize: '.6rem',
-                fontWeight: 700,
-                letterSpacing: '.05em',
-              },
-              '& td': { color: muted },
-              '& td:first-of-type': { color: ink, fontWeight: 600 },
-              '& tr:last-of-type td': { borderBottom: 0 },
-            }}
-          >
+          <Box component="table" sx={{ width: '100%', minWidth: 620, borderCollapse: 'collapse', '& th, & td': { padding: { xs: '.9rem 1rem', md: '1rem 1.4rem' }, textAlign: 'left', borderBottom: `1px solid ${line}`, fontSize: '.68rem', fontFamily: "'Poppins', sans-serif" }, '& th': { background: soft, color: ink, textTransform: 'uppercase', fontSize: '.6rem', fontWeight: 700, letterSpacing: '.05em' }, '& td': { color: muted }, '& td:first-of-type': { color: ink, fontWeight: 600 }, '& tr:last-of-type td': { borderBottom: 0 } }}>
             <thead>
-              <tr>
-                <th>Consideration</th>
-                <th>Flutter</th>
-                <th>Native Apps</th>
-              </tr>
+              <tr><th>Consideration</th><th>Flutter</th><th>Native Apps</th></tr>
             </thead>
             <tbody>
               {comparisonRows.map(([criteria, flutter, native]) => (
-                <tr key={criteria}>
-                  <td>{criteria}</td>
-                  <td>{flutter}</td>
-                  <td>{native}</td>
-                </tr>
+                <tr key={criteria}><td>{criteria}</td><td>{flutter}</td><td>{native}</td></tr>
               ))}
             </tbody>
           </Box>
         </Box>
       </Section>
 
-      {/* ── ENGAGEMENT MODELS (with images) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Flexible Ways to Engage</Eyebrow>
@@ -395,11 +348,10 @@ const Flutter = () => {
         </Box>
       </Section>
 
-      {/* ── INDUSTRIES ── */}
       <Section bg={soft}>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: '2rem', md: '3rem' }, alignItems: 'center' }}>
           <Box sx={{ border: `1px solid ${line}`, borderRadius: '2px', overflow: 'hidden', background: '#fff', height: { xs: 240, md: 340 } }}>
-            <Box component="img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Mobile app usage" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <Box component="img" src={Process4} alt="Mobile app usage" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </Box>
           <Box>
             <Eyebrow>Built Around Real Workflows</Eyebrow>
@@ -423,7 +375,6 @@ const Flutter = () => {
         </Box>
       </Section>
 
-      {/* ── CAPABILITIES ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Product Capabilities</Eyebrow>
@@ -439,15 +390,12 @@ const Flutter = () => {
           {capabilities.map((item, i) => (
             <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: '.6rem', background: '#fff', border: `1px solid ${line}`, borderRadius: '2px', padding: '.9rem 1rem' }}>
               <Check sx={{ fontSize: 16, color: '#0B4C74', flexShrink: 0 }} />
-              <Typography sx={{ fontFamily: "'Poppins', sans-serif", fontSize: '.68rem', color: ink, lineHeight: 1.5 }}>
-                {item}
-              </Typography>
+              <Typography sx={{ fontFamily: "'Poppins', sans-serif", fontSize: '.68rem', color: ink, lineHeight: 1.5 }}>{item}</Typography>
             </Box>
           ))}
         </Box>
       </Section>
 
-      {/* ── TECHNOLOGY STACK ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Technology Choices</Eyebrow>
@@ -473,7 +421,6 @@ const Flutter = () => {
         </Box>
       </Section>
 
-      {/* ── CTA ── */}
       <Section>
         <Box sx={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
           <Eyebrow>Make the Next Move</Eyebrow>
@@ -483,31 +430,12 @@ const Flutter = () => {
           <Body sx={{ marginBottom: '1.6rem' }}>
             Share where you are today and what you want the app to make possible. We&apos;ll help map a practical way forward.
           </Body>
-          <Box
-            component="a"
-            href="/resources/contact-us"
-            sx={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '.5rem',
-              padding: '.7rem 1.1rem',
-              borderRadius: '2px',
-              background: '#0B4C74',
-              color: '#ffffff',
-              fontWeight: 600,
-              fontSize: '.62rem',
-              fontFamily: "'Poppins', sans-serif",
-              textDecoration: 'none',
-              transition: 'background .2s ease',
-              '&:hover': { background: '#d3ffb0', color: '#000000' },
-            }}
-          >
+          <Box component="a" href="/resources/contact-us" sx={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.7rem 1.1rem', borderRadius: '2px', background: '#0B4C74', color: '#ffffff', fontWeight: 600, fontSize: '.62rem', fontFamily: "'Poppins', sans-serif", textDecoration: 'none', transition: 'background .2s ease', '&:hover': { background: '#d3ffb0', color: '#000000' } }}>
             Talk to Our Team <ArrowForward sx={{ fontSize: 14 }} />
           </Box>
         </Box>
       </Section>
 
-      {/* ── FAQ ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Flutter FAQ</Eyebrow>
@@ -518,31 +446,9 @@ const Flutter = () => {
 
         <Box sx={{ maxWidth: 900, margin: '0 auto' }}>
           {faqs.map((f, i) => (
-            <Accordion
-              key={i}
-              elevation={0}
-              disableGutters
-              sx={{
-                marginBottom: '.6rem',
-                background: '#fff',
-                border: `1px solid ${line}`,
-                borderRadius: '2px !important',
-                overflow: 'hidden',
-                '&:before': { display: 'none' },
-                '&.Mui-expanded': { margin: '0 0 .6rem 0', borderColor: '#aac7b2' },
-              }}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMore sx={{ color: '#0B4C74', fontSize: 20 }} />}
-                sx={{
-                  padding: { xs: '.6rem 1rem', md: '.7rem 1.4rem' },
-                  '& .MuiAccordionSummary-content': { margin: '.6rem 0' },
-                  '&.Mui-expanded': { minHeight: 'auto' },
-                }}
-              >
-                <Typography sx={{ color: `${ink} !important`, fontFamily: "Georgia, 'Times New Roman', serif", fontSize: '.82rem', lineHeight: 1.4 }}>
-                  {f.q}
-                </Typography>
+            <Accordion key={i} elevation={0} disableGutters sx={{ marginBottom: '.6rem', background: '#fff', border: `1px solid ${line}`, borderRadius: '2px !important', overflow: 'hidden', '&:before': { display: 'none' }, '&.Mui-expanded': { margin: '0 0 .6rem 0', borderColor: '#aac7b2' } }}>
+              <AccordionSummary expandIcon={<ExpandMore sx={{ color: '#0B4C74', fontSize: 20 }} />} sx={{ padding: { xs: '.6rem 1rem', md: '.7rem 1.4rem' }, '& .MuiAccordionSummary-content': { margin: '.6rem 0' }, '&.Mui-expanded': { minHeight: 'auto' } }}>
+                <Typography sx={{ color: `${ink} !important`, fontFamily: "Georgia, 'Times New Roman', serif", fontSize: '.82rem', lineHeight: 1.4 }}>{f.q}</Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ padding: { xs: '.2rem 1rem 1.2rem', md: '.2rem 1.4rem 1.4rem' } }}>
                 <Body sx={{ fontSize: '.68rem', lineHeight: 1.8 }}>{f.a}</Body>

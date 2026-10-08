@@ -20,7 +20,6 @@ import {
   Database,
 } from 'lucide-react';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -35,17 +34,15 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Images
 import Image1 from '../../../assets/images/howWeHelp/ERP/Netsuite/img1.jpg';
 import Image2 from '../../../assets/images/howWeHelp/ERP/Netsuite/img2.png';
 import Image3 from '../../../assets/images/howWeHelp/ERP/Netsuite/img3.png';
 import Image4 from '../../../assets/images/howWeHelp/ERP/Netsuite/img4.png';
 
-// 👇 same navy as the top navbar menu items
 const NAVY = '#0B4C74';
 
 const NetSuite = () => {
-  const slides = [Image1, Image2, Image3, Image4];
+  const slides = [Image1, Image2, Image3];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -121,7 +118,6 @@ const NetSuite = () => {
         <meta name="theme-color" content="#0B4C74" />
       </Helmet>
 
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
@@ -135,22 +131,7 @@ const NetSuite = () => {
           justifyContent: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -167,23 +148,53 @@ const NetSuite = () => {
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime }}>Oracle NetSuite</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+            Oracle NetSuite
+          </Eyebrow>
+
+          <Typography
+            component="h1"
+            sx={{
+              ...heroHeadingSx,
+              color: '#ffffff',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
+            }}
+          >
             Modern NetSuite Consulting Services for Agile Enterprises
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
+
+          <Body
+            sx={{
+              color: '#ffffff !important',
+              maxWidth: 780,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: '1.8rem',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
+            }}
+          >
             Supercharge growth with NetSuite consulting services tailored to your workflows. From ERP implementation and CRM setup to cloud integration, we deliver agility, insight, and scalability - without the overhead.
           </Body>
+
           <LimeButton href="/resources/contact-us">
             Contact Us <ArrowForward sx={{ fontSize: 14 }} />
           </LimeButton>
         </Container>
       </Box>
 
-      {/* Scalable Deployments — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box
           sx={{
@@ -217,7 +228,7 @@ const NetSuite = () => {
           >
             <Box
               component="img"
-              src={Image2}
+              src={Image4}
               alt="Scalable NetSuite deployments"
               sx={{ width: '100%', height: '100%', minHeight: 'inherit', objectFit: 'cover', display: 'block' }}
             />
@@ -225,7 +236,6 @@ const NetSuite = () => {
         </Box>
       </Section>
 
-      {/* Core Services — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Core Services</Eyebrow>
@@ -263,7 +273,6 @@ const NetSuite = () => {
         </Box>
       </Section>
 
-      {/* End-to-End — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>End-to-End</Eyebrow>
@@ -301,7 +310,6 @@ const NetSuite = () => {
         </Box>
       </Section>
 
-      {/* Delivery — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Delivery</Eyebrow>
@@ -310,62 +318,35 @@ const NetSuite = () => {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-            gap: { xs: '2rem', md: '2rem' },
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
+            gap: { xs: '1rem', md: '1.2rem' },
             alignItems: 'stretch',
           }}
         >
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
-              gap: { xs: '1rem', md: '1.2rem' },
-              alignItems: 'stretch',
-            }}
-          >
-            {valueDelivery.map((item, i) => {
-              const { Icon } = item;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.06 }}
-                  style={{ display: 'flex', width: '100%' }}
-                >
-                  <Box sx={cardSx}>
-                    <Box sx={{ display: 'grid', placeItems: 'center', width: 40, height: 40, borderRadius: '50%', background: '#fff', border: `1px solid ${line}`, marginBottom: '1rem', flexShrink: 0 }}>
-                      <Icon size={20} color="#0B4C74" />
-                    </Box>
-                    <SubHeading sx={{ marginBottom: '.5rem', color: NAVY }}>{item.title}</SubHeading>
-                    <Body sx={{ flexGrow: 1 }}>{item.text}</Body>
+          {valueDelivery.map((item, i) => {
+            const { Icon } = item;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                style={{ display: 'flex', width: '100%' }}
+              >
+                <Box sx={cardSx}>
+                  <Box sx={{ display: 'grid', placeItems: 'center', width: 40, height: 40, borderRadius: '50%', background: '#fff', border: `1px solid ${line}`, marginBottom: '1rem', flexShrink: 0 }}>
+                    <Icon size={20} color="#0B4C74" />
                   </Box>
-                </motion.div>
-              );
-            })}
-          </Box>
-
-          <Box
-            sx={{
-              border: `1px solid ${line}`,
-              borderRadius: '2px',
-              overflow: 'hidden',
-              background: '#fff',
-              minHeight: { xs: 280, sm: 420, md: 480 },
-            }}
-          >
-            <Box
-              component="img"
-              src={Image3}
-              alt="NetSuite success delivery"
-              sx={{ width: '100%', height: '100%', minHeight: 'inherit', objectFit: 'cover', display: 'block' }}
-            />
-          </Box>
+                  <SubHeading sx={{ marginBottom: '.5rem', color: NAVY }}>{item.title}</SubHeading>
+                  <Body sx={{ flexGrow: 1 }}>{item.text}</Body>
+                </Box>
+              </motion.div>
+            );
+          })}
         </Box>
       </Section>
 
-      {/* Why It Matters — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Why It Matters</Eyebrow>

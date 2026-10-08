@@ -14,13 +14,16 @@ import {
   cardSx, containerSx, heroHeadingSx, ink, muted, line, soft, cream, lime,
 } from '../../../theme/theme';
 
-const slides = [
-  'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=1600&q=80',
-  'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=1600&q=80',
-  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80',
-  'https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1600&q=80',
-  'https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1600&q=80',
-];
+import D1 from '../../../assets/images/solutions/devops/devops1.jpg';
+import D2 from '../../../assets/images/solutions/devops/devops2.jpg';
+import D3 from '../../../assets/images/solutions/devops/devops3.jpg';
+import D4 from '../../../assets/images/solutions/devops/devops4.jpg';
+import D5 from '../../../assets/images/solutions/devops/devops5.jpg';
+import D6 from '../../../assets/images/solutions/devops/devops6.jpg';
+import D7 from '../../../assets/images/solutions/devops/devops7.jpg';
+import D8 from '../../../assets/images/solutions/devops/devops8.jpg';
+
+const slides = [D1, D2, D3];
 
 const sectionSurface = '#f3f7fa';
 const customCardSx = {
@@ -80,12 +83,12 @@ const DevOps = () => {
   ];
 
   const offerings = [
-    { num: '01', icon: <GitBranch size={20} color="#0B4C74" />, title: 'CI/CD Pipelines', text: 'Automated builds, tests, and zero-downtime deployments across GitHub Actions, GitLab CI, Jenkins, and ArgoCD.', image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=85', bullets: ['Multi-stage pipelines with quality gates', 'Blue/green and canary deployments', 'Automated rollback on failure'] },
-    { num: '02', icon: <Cloud size={20} color="#0B4C74" />, title: 'Kubernetes & Containers', text: 'Production-grade EKS, AKS, GKE, or self-managed clusters with Helm, Istio service mesh, and autoscaling.', image: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?w=800&q=85', bullets: ['EKS, AKS, GKE, self-managed', 'Helm charts and GitOps workflows', 'Autoscaling and cost optimization'] },
-    { num: '03', icon: <Server size={20} color="#0B4C74" />, title: 'Infrastructure as Code', text: 'Terraform, Pulumi, CloudFormation, and Ansible pipelines that make infrastructure reproducible and auditable.', image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=85', bullets: ['Terraform, Pulumi, CloudFormation', 'GitOps-driven infrastructure changes', 'Full audit trail for compliance'] },
-    { num: '04', icon: <Shield size={20} color="#0B4C74" />, title: 'DevSecOps', text: 'Shift security left with SAST, DAST, secret scanning, and policy-as-code baked into every pipeline.', image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=85', bullets: ['SAST, DAST, SCA in pipelines', 'Secret scanning and rotation', 'Policy-as-code enforcement'] },
-    { num: '05', icon: <Activity size={20} color="#0B4C74" />, title: 'Observability', text: 'Logs, metrics, and traces unified with Prometheus, Grafana, Datadog, or ELK — with actionable alerting.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85', bullets: ['Prometheus, Grafana, Datadog, ELK', 'Distributed tracing and APM', 'SLO-based alerting'] },
-    { num: '06', icon: <Terminal size={20} color="#0B4C74" />, title: 'Platform Engineering', text: 'Internal developer platforms that abstract away complexity and give teams self-service deployment capabilities.', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=85', bullets: ['Internal developer portals', 'Self-service environments', 'Golden paths and templates'] },
+    { num: '01', icon: <GitBranch size={20} color="#0B4C74" />, title: 'CI/CD Pipelines', text: 'Automated builds, tests, and zero-downtime deployments across GitHub Actions, GitLab CI, Jenkins, and ArgoCD.', image: D4, bullets: ['Multi-stage pipelines with quality gates', 'Blue/green and canary deployments', 'Automated rollback on failure'] },
+    { num: '02', icon: <Cloud size={20} color="#0B4C74" />, title: 'Kubernetes & Containers', text: 'Production-grade EKS, AKS, GKE, or self-managed clusters with Helm, Istio service mesh, and autoscaling.', image: D5, bullets: ['EKS, AKS, GKE, self-managed', 'Helm charts and GitOps workflows', 'Autoscaling and cost optimization'] },
+    { num: '03', icon: <Server size={20} color="#0B4C74" />, title: 'Infrastructure as Code', text: 'Terraform, Pulumi, CloudFormation, and Ansible pipelines that make infrastructure reproducible and auditable.', image: D6, bullets: ['Terraform, Pulumi, CloudFormation', 'GitOps-driven infrastructure changes', 'Full audit trail for compliance'] },
+    { num: '04', icon: <Shield size={20} color="#0B4C74" />, title: 'DevSecOps', text: 'Shift security left with SAST, DAST, secret scanning, and policy-as-code baked into every pipeline.', image: D7, bullets: ['SAST, DAST, SCA in pipelines', 'Secret scanning and rotation', 'Policy-as-code enforcement'] },
+    { num: '05', icon: <Activity size={20} color="#0B4C74" />, title: 'Observability', text: 'Logs, metrics, and traces unified with Prometheus, Grafana, Datadog, or ELK — with actionable alerting.', image: D8, bullets: ['Prometheus, Grafana, Datadog, ELK', 'Distributed tracing and APM', 'SLO-based alerting'] },
+    { num: '06', icon: <Terminal size={20} color="#0B4C74" />, title: 'Platform Engineering', text: 'Internal developer platforms that abstract away complexity and give teams self-service deployment capabilities.', image: D1, bullets: ['Internal developer portals', 'Self-service environments', 'Golden paths and templates'] },
   ];
 
   const layers = [
@@ -147,36 +150,31 @@ const DevOps = () => {
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
       </Helmet>
 
-      {/* ── HERO (centered) ── */}
-      <Box sx={{ position: 'relative', minHeight: { xs: 520, md: 580 }, padding: { xs: '4rem 1rem 3rem', md: '6rem 2.5rem 4rem' }, overflow: 'hidden', background: ink, isolation: 'isolate', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden', '&::after': { content: '""', position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(11,76,116,.45) 0%, rgba(11,76,116,.28) 55%, rgba(11,76,116,.40) 100%)', zIndex: 1 } }}>
+      <Box sx={{ position: 'relative', marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' }, minHeight: { xs: 520, md: 580 }, padding: { xs: '4rem 1rem 3rem', md: '6rem 2.5rem 4rem' }, overflow: 'hidden', background: ink, isolation: 'isolate', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div key={currentSlide} initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 1.1, ease: 'easeInOut' }} style={{ position: 'absolute', inset: 0, backgroundImage: `url(${slides[currentSlide]})`, backgroundPosition: 'center', backgroundSize: 'cover' }} />
           </AnimatePresence>
+          <Box sx={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)' }} />
         </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime, textShadow: '0 1px 6px rgba(0,0,0,.6)' }}>DevOps Services</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto', textShadow: '0 2px 10px rgba(0,0,0,.65)' }}>
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>DevOps Services</Eyebrow>
+          <Typography component="h1" sx={{ ...heroHeadingSx, color: '#ffffff', marginLeft: 'auto', marginRight: 'auto', textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)' }}>
             DevOps That Ships Faster, Safer, and Cheaper
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.95) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem', textShadow: '0 1px 6px rgba(0,0,0,.65)' }}>
+          <Body sx={{ color: '#ffffff !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem', textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>
             Modernize your delivery pipeline with CI/CD, Kubernetes, IaC, and observability — engineered to ship 10x faster with confidence.
           </Body>
           <LimeButton href="/resources/contact-us">Contact Us <ArrowForward sx={{ fontSize: 14 }} /></LimeButton>
         </Container>
       </Box>
 
-      {/* ── THE PROBLEM (section 2) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>The Problem</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 800, margin: '.6rem auto 1rem' }}>
-            Why Most Engineering Teams Are Stuck in Delivery Debt
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            At ONAS, we see the same delivery bottlenecks before every DevOps engagement.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 800, margin: '.6rem auto 1rem' }}>Why Most Engineering Teams Are Stuck in Delivery Debt</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>At ONAS, we see the same delivery bottlenecks before every DevOps engagement.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -192,23 +190,16 @@ const DevOps = () => {
         </Box>
 
         <Box sx={{ textAlign: 'center', marginTop: '2rem' }}>
-          <Body sx={{ fontSize: '.62rem', fontStyle: 'italic', marginBottom: '1rem' }}>
-            If three or more of these sound familiar, your delivery pipeline is costing you more than you think.
-          </Body>
+          <Body sx={{ fontSize: '.62rem', fontStyle: 'italic', marginBottom: '1rem' }}>If three or more of these sound familiar, your delivery pipeline is costing you more than you think.</Body>
           <LimeButton href="/resources/contact-us">Book A Free DevOps Audit <ArrowForward sx={{ fontSize: 14 }} /></LimeButton>
         </Box>
       </Section>
 
-      {/* ── LAYERS DIAGRAM (section 3) ── */}
       <Section bg={sectionSurface}>
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>Architecture</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>
-            How a Modern DevOps Stack Layers Together
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            Developers at the top. Cloud infrastructure at the bottom. CI/CD and orchestration in the middle connect everything.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>How a Modern DevOps Stack Layers Together</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>Developers at the top. Cloud infrastructure at the bottom. CI/CD and orchestration in the middle connect everything.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '1.5rem', md: '2rem' }, alignItems: 'center' }}>
@@ -232,21 +223,16 @@ const DevOps = () => {
             ))}
           </Box>
           <Box sx={{ minHeight: { xs: 260, md: 440 }, height: '100%', overflow: 'hidden', border: `1px solid ${line}`, borderRadius: '6px' }}>
-            <Box component="img" src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=1000&q=85" alt="DevOps pipeline visualization" sx={{ width: '100%', height: '100%', minHeight: { xs: 260, md: 440 }, objectFit: 'cover', display: 'block' }} />
+            <Box component="img" src={D2} alt="DevOps pipeline visualization" sx={{ width: '100%', height: '100%', minHeight: { xs: 260, md: 440 }, objectFit: 'cover', display: 'block' }} />
           </Box>
         </Box>
       </Section>
 
-      {/* ── OFFERINGS (section 4) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>The Work</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 800, margin: '.6rem auto 1rem' }}>
-            End-to-End DevOps Services for Modern Engineering Teams
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            From pipelines to platform engineering — everything that lets your team ship faster with confidence.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 800, margin: '.6rem auto 1rem' }}>End-to-End DevOps Services for Modern Engineering Teams</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>From pipelines to platform engineering — everything that lets your team ship faster with confidence.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -283,7 +269,6 @@ const DevOps = () => {
         </Box>
       </Section>
 
-      {/* ── STATS (section 5) ── */}
       <Box sx={{ background: soft, borderTop: `1px solid ${line}`, borderBottom: `1px solid ${line}` }}>
         <Container maxWidth={false} disableGutters sx={containerSx}>
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(6, 1fr)' }, padding: { xs: '1.5rem 0', md: '2rem 0' } }}>
@@ -297,16 +282,11 @@ const DevOps = () => {
         </Container>
       </Box>
 
-      {/* ── HOW WE WORK (section 6) ── */}
       <Section id="how-we-work">
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>Our Process</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>
-            How We Modernize Your Delivery Pipeline
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            Four stages, each designed to compound velocity and reliability. If the audit says you should optimize rather than rebuild, you hear that in week one.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>How We Modernize Your Delivery Pipeline</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>Four stages, each designed to compound velocity and reliability. If the audit says you should optimize rather than rebuild, you hear that in week one.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(4, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -322,9 +302,7 @@ const DevOps = () => {
         </Box>
 
         <Box sx={{ marginTop: '2rem', background: sectionSurface, border: `1px solid ${line}`, borderRadius: '2px', padding: '1.4rem' }}>
-          <Typography sx={{ fontWeight: 400, color: ink, fontSize: '.75rem', marginBottom: '1rem', fontFamily: "Georgia, serif" }}>
-            From First Call to Operated Pipeline
-          </Typography>
+          <Typography sx={{ fontWeight: 400, color: ink, fontSize: '.75rem', marginBottom: '1rem', fontFamily: "Georgia, serif" }}>From First Call to Operated Pipeline</Typography>
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(5, minmax(0, 1fr))' }, gap: 1.5 }}>
             {timeline.map((t, i) => (
               <Box key={i}>
@@ -339,16 +317,11 @@ const DevOps = () => {
         </Box>
       </Section>
 
-      {/* ── TECH STACK (section 7) ── */}
       <Section bg={sectionSurface}>
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>Technology Stack</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>
-            Our DevOps Technology Expertise
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            The tools we work in daily — chosen by what fits your team, not by what is trending.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>Our DevOps Technology Expertise</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>The tools we work in daily — chosen by what fits your team, not by what is trending.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -367,16 +340,11 @@ const DevOps = () => {
         </Box>
       </Section>
 
-      {/* ── WHY CHOOSE ONAS (section 8) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>Why ONAS</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>
-            Why Choose ONAS for DevOps?
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            Here is what differentiates ONAS in delivering DevOps transformation for enterprise teams.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>Why Choose ONAS for DevOps?</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>Here is what differentiates ONAS in delivering DevOps transformation for enterprise teams.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -395,22 +363,16 @@ const DevOps = () => {
         </Box>
       </Section>
 
-      {/* ── FINAL CTA ── */}
       <Box sx={{ background: sectionSurface, borderTop: `1px solid ${line}` }}>
         <Container maxWidth={false} disableGutters sx={containerSx}>
           <Box sx={{ maxWidth: 800, mx: 'auto', padding: { xs: '3rem 1rem', md: '4rem 0' }, textAlign: 'center' }}>
             <Eyebrow>Get Started</Eyebrow>
-            <SectionHeading sx={{ margin: '.6rem auto 1rem' }}>
-              Ready to Modernize Your Delivery Pipeline?
-            </SectionHeading>
-            <Body sx={{ marginBottom: '1.8rem', maxWidth: 640, marginLeft: 'auto', marginRight: 'auto' }}>
-              At ONAS, we combine platform engineering, SRE discipline, and cloud economics to transform how your team ships software. Let's talk about your delivery goals.
-            </Body>
+            <SectionHeading sx={{ margin: '.6rem auto 1rem' }}>Ready to Modernize Your Delivery Pipeline?</SectionHeading>
+            <Body sx={{ marginBottom: '1.8rem', maxWidth: 640, marginLeft: 'auto', marginRight: 'auto' }}>At ONAS, we combine platform engineering, SRE discipline, and cloud economics to transform how your team ships software. Let's talk about your delivery goals.</Body>
             <LimeButton href="/resources/contact-us">Book An Appointment <ArrowForward sx={{ fontSize: 14 }} /></LimeButton>
           </Box>
         </Container>
       </Box>
-
     </PageShell>
   );
 };

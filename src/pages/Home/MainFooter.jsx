@@ -7,7 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import PublicIcon from '@mui/icons-material/Public';
 
-import FooterLogo from '../../../public/images/footerlogo.png';
+const FooterLogo = '/images/footerlogo.png';
 
 const NAV_LINKS = [
   {
@@ -329,13 +329,18 @@ export default function MainFooter() {
           boxSizing: 'border-box',
         }}
       >
-        <Grid
-          container
-          spacing={{ xs: 3, md: 3 }}
-          alignItems="flex-start"
-          sx={{ mb: { xs: 3, md: 4 } }}
+        {/* ══════════ ROW 1 — FLEX LAYOUT (logo 18%, others 14%) ══════════ */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: { xs: 'wrap', md: 'nowrap' },
+            gap: { xs: 2, md: 1.5 },
+            alignItems: 'flex-start',
+            mb: { xs: 3, md: 4 },
+          }}
         >
-          <Grid item xs={12} sm={6} md={2}>
+          {/* LOGO — 18% width */}
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 45%', md: '0 0 18%' }, minWidth: 0 }}>
             <Box
               sx={{
                 border: `1px solid ${alpha('#fff', 0.18)}`,
@@ -343,70 +348,44 @@ export default function MainFooter() {
                 padding: '0.7rem 0.8rem',
                 background: '#ffffff',
                 color: '#0B4C74',
-                display: 'inline-block',
-                width: '100%',
-                maxWidth: '100%',
                 textAlign: 'center',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
               <Box
+                component="img"
+                src={FooterLogo}
+                alt="ONAS Logo"
                 sx={{
+                  width: '100%',
+                  maxWidth: '140px',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block',
                   mb: 0.8,
-                  pb: 0.6,
-                  borderBottom: `1px solid ${alpha('#0B4C74', 0.15)}`,
-                  display: 'flex',
-                  justifyContent: 'center',
                 }}
-              >
-                <Box
-                  component="img"
-                  src={FooterLogo}
-                  alt="ONAS Logo"
-                  sx={{
-                    width: 'auto',
-                    maxWidth: '110px',
-                    height: 'auto',
-                    display: 'block',
-                  }}
-                />
-              </Box>
-
-              <Typography
-                sx={{
-                  fontWeight: 700,
-                  color: '#0B4C74',
-                  fontSize: '0.52rem',
-                  pb: 0.4,
-                  display: 'inline-block',
-                  borderBottom: `1px solid ${alpha('#0B4C74', 0.25)}`,
-                  textTransform: 'uppercase',
-                  letterSpacing: '.06em',
-                  mb: 0.6,
-                }}
-              >
-                About ONAS
-              </Typography>
+              />
 
               <Typography
                 sx={{
                   color: alpha('#0B4C74', 0.85),
-                  lineHeight: 1.5,
-                  fontSize: '0.46rem',
+                  lineHeight: 1.4,
+                  fontSize: '0.44rem',
                   mb: 0.8,
                 }}
               >
-                A full-spectrum technology &amp; talent partner
-                <br />
-                delivering AI-driven ERP &amp; CRM, digital transformation,
-                <br />
-                and managed IT worldwide.
+                A full-spectrum technology &amp; talent partner delivering AI-driven ERP &amp; CRM, digital transformation, and managed IT worldwide.
               </Typography>
 
               <Typography
                 sx={{
                   fontWeight: 700,
                   color: '#0B4C74',
-                  fontSize: '0.5rem',
+                  fontSize: '0.48rem',
                   pb: 0.3,
                   display: 'inline-block',
                   borderBottom: `1px solid ${alpha('#0B4C74', 0.25)}`,
@@ -417,22 +396,11 @@ export default function MainFooter() {
               >
                 Connect With Us
               </Typography>
-              <Typography
-                sx={{
-                  color: alpha('#0B4C74', 0.75),
-                  lineHeight: 1.5,
-                  fontSize: '0.44rem',
-                  mb: 0.8,
-                }}
-              >
-                Follow us for insights and updates.
-              </Typography>
 
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  mt: 0.3,
                   '& svg': { fontSize: '12px !important' },
                   '& a': {
                     fontSize: '12px !important',
@@ -446,24 +414,28 @@ export default function MainFooter() {
                 <SocialIcons color="#0B4C74" />
               </Box>
             </Box>
-          </Grid>
+          </Box>
 
-          <Grid item xs={6} sm={3} md={2}>
+          {/* ERP & CRM — 14% */}
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 45%', md: '0 0 14%' }, minWidth: 0 }}>
             <ColumnHeading>ERP &amp; CRM</ColumnHeading>
             <LinkList items={servicesERP?.items || []} />
-          </Grid>
+          </Box>
 
-          <Grid item xs={6} sm={3} md={2}>
+          {/* DIGITAL TRANSFORMATION — 14% */}
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 45%', md: '0 0 14%' }, minWidth: 0 }}>
             <ColumnHeading>Digital Transformation</ColumnHeading>
             <LinkList items={servicesDigital?.items || []} />
-          </Grid>
+          </Box>
 
-          <Grid item xs={6} sm={3} md={2}>
+          {/* MANAGED IT — 14% */}
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 45%', md: '0 0 14%' }, minWidth: 0 }}>
             <ColumnHeading>Managed IT</ColumnHeading>
             <LinkList items={servicesManaged?.items || []} />
-          </Grid>
+          </Box>
 
-          <Grid item xs={6} sm={3} md={2}>
+          {/* SOLUTIONS — 14% */}
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 45%', md: '0 0 14%' }, minWidth: 0 }}>
             <ColumnHeading>Solutions</ColumnHeading>
             <LinkList
               items={[
@@ -472,9 +444,10 @@ export default function MainFooter() {
                 ...(solutions?.children?.find((c) => c.category === 'Automation')?.items || []),
               ]}
             />
-          </Grid>
+          </Box>
 
-          <Grid item xs={6} sm={3} md={2}>
+          {/* INDUSTRIES — 14% */}
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 45%', md: '0 0 14%' }, minWidth: 0 }}>
             <ColumnHeading>Industries</ColumnHeading>
             <LinkList
               items={[
@@ -485,10 +458,11 @@ export default function MainFooter() {
                 ...(industries?.children?.find((c) => c.category === 'Government & Education')?.items || []),
               ]}
             />
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
-        <Grid container spacing={{ xs: 3, md: 3 }} alignItems="flex-start">
+        {/* ══════════ ROW 2 — KEEP AS GRID ══════════ */}
+        <Grid container spacing={{ xs: 2, md: 2 }} alignItems="flex-start">
           <Grid item xs={6} sm={3} md={2}>
             <ColumnHeading>Why ONAS</ColumnHeading>
             <LinkList items={whyOnasItems} />

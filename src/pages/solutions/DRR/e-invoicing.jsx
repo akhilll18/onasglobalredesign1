@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowForward } from '@mui/icons-material';
 
 import PublicIcon from '@mui/icons-material/Public';
@@ -9,7 +9,6 @@ import CloudIcon from '@mui/icons-material/Cloud';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -21,26 +20,34 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
+import E1 from '../../../assets/images/solutions/e-invoicing/e-invoicing1.jpg';
+import E2 from '../../../assets/images/solutions/e-invoicing/e-invoicing2.jpg';
+import E3 from '../../../assets/images/solutions/e-invoicing/e-invoicing3.jpg';
+import E4 from '../../../assets/images/solutions/e-invoicing/e-invoicing4.jpg';
+import E5 from '../../../assets/images/solutions/e-invoicing/e-invoicing5.jpg';
+import E6 from '../../../assets/images/solutions/e-invoicing/e-invoicing6.jpg';
+import E7 from '../../../assets/images/solutions/e-invoicing/e-invoicing7.jpg';
+
 const benefits = [
   {
     title: 'Cost Savings',
     description: 'Our platform helps businesses reduce costs by eliminating paper-based processes, minimizing manual intervention, and lowering operational expenses.',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=200&fit=crop',
+    image: E1,
   },
   {
     title: 'Time Efficiency',
     description: 'Accelerate your invoicing cycle from creation to delivery with automated workflows that eliminate delays and streamline the entire process.',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wOJiUz5ntuirHvUrKPmQ97QNJIMGWgCf-wiAtlPs0A&s=10',
+    image: E2,
   },
   {
     title: 'Enhanced Accuracy',
     description: 'Eliminate manual data entry errors, reduce processing delays, and ensure data integrity across your entire invoicing ecosystem.',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ7UKgPMsQZljZlsqlAC43LYZM_m9cufiKVZ9aeKWzzw&s=10',
+    image: E3,
   },
   {
     title: 'Regulatory Compliance',
     description: 'Stay ahead of evolving regulations with built-in compliance features that support global standards including PEPPOL, XML, UBL, and PDF formats.',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1eQmGjBAwG1YEsGqKzUtB5KcQWM3-VhG17Q1OipU2DA&s=10',
+    image: E4,
   },
 ];
 
@@ -51,47 +58,65 @@ const globalStandards = [
   { region: 'United States', description: 'E-Invoicing is accepted but not yet mandated at the federal level, though some states have specific requirements.', icon: <ReceiptIcon sx={{ fontSize: 22, color: '#0B4C74' }} /> },
 ];
 
-const services = [
-  { title: 'DRR', description: 'Comprehensive Digital Reporting Requirements solutions designed to streamline tax compliance and reporting across multiple jurisdictions.', path: '/solutions/drr/drr', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop' },
-  { title: 'e-Reporting', description: 'Simplify electronic reporting and improve tax compliance with automated reporting workflows.', path: '/solutions/reporting', image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=200&fit=crop' },
-  { title: 'e-Invoicing', description: 'Simplify invoicing with support for diverse standards, periodic reporting and real-time compliance.', path: '/solutions/drr/e-invoicing', image: 'https://images.unsplash.com/photo-1735825764485-93a381fd5779?w=400&h=200&fit=crop' },
-  { title: 'SAF-T', description: 'Standard Audit File for Tax solutions for detailed transactional data reporting.', path: '/solutions/reporting/saf-t', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop' },
-  { title: 'Invoice Reporting', description: 'Support invoice reporting requirements across multiple countries and jurisdictions.', path: '/solutions/drr/invoice-reporting', image: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=400&h=200&fit=crop' },
-];
-
 const EInvoicing = () => {
+  const slides = [E5, E6, E7];
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
   return (
     <PageShell>
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
           padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1735825764485-93a381fd5779?w=1600&h=600&fit=crop)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: '#0B4C74',
           isolation: 'isolate',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -1,
-            background:
-              'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-          }}
-        />
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 1.1, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${slides[currentSlide]})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+              }}
+            />
+          </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
+        </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>e-Invoicing</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              e-Invoicing
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -99,18 +124,26 @@ const EInvoicing = () => {
                 font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               e-Invoicing: Transforming Global Financial Operations
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
               As businesses worldwide embrace digital transformation, financial operations are evolving rapidly. Our advanced e-Invoicing platform enables organizations to automate their billing processes, ensuring faster transactions, improved accuracy, and seamless compliance with international regulations.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* What is e-Invoicing? */}
       <Section>
         <Box
           sx={{
@@ -131,7 +164,7 @@ const EInvoicing = () => {
           >
             <Box
               component="img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUAqZid6AB7K446qOX4rvMXSKENL2e_RBXRyZZGtAbpg&s=10"
+              src={E1}
               alt="e-Invoicing"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -152,7 +185,6 @@ const EInvoicing = () => {
         </Box>
       </Section>
 
-      {/* Global Adoption and Standards */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Global Standards</Eyebrow>
@@ -228,7 +260,6 @@ const EInvoicing = () => {
         </Box>
       </Section>
 
-      {/* How does e-Invoicing work? */}
       <Section>
         <Box
           sx={{
@@ -262,7 +293,7 @@ const EInvoicing = () => {
           >
             <Box
               component="img"
-              src="https://images.unsplash.com/photo-1735825764485-93a381fd5779?w=800&h=600&fit=crop"
+              src={E2}
               alt="How e-Invoice works"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -270,7 +301,6 @@ const EInvoicing = () => {
         </Box>
       </Section>
 
-      {/* Benefits */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Key Benefits</Eyebrow>
@@ -343,7 +373,6 @@ const EInvoicing = () => {
         </Box>
       </Section>
 
-      {/* Legal + PEPPOL */}
       <Section>
         <Box
           sx={{
@@ -402,11 +431,10 @@ const EInvoicing = () => {
         </Box>
       </Section>
 
-      {/* CTA */}
       <Box sx={{ background: ink, paddingTop: { xs: '3rem', md: '4rem' }, paddingBottom: { xs: '3rem', md: '4rem' } }}>
         <Container maxWidth={false} disableGutters sx={containerSx}>
           <Box sx={{ maxWidth: 800, mx: 'auto', textAlign: 'center' }}>
-            <Typography sx={{ color: lime, fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
+            <Typography sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)', fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
               Get Started
             </Typography>
             <Typography
@@ -416,11 +444,12 @@ const EInvoicing = () => {
                 font: "400 clamp(1.5rem, 3vw, 2.2rem)/1.1 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 720,
+                textShadow: '0 2px 12px rgba(0,0,0,.95)',
               }}
             >
               Schedule a Consultation
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 600, margin: '0 auto 1.6rem', fontSize: '.72rem', lineHeight: 1.75 }}>
+            <Body sx={{ color: '#ffffff !important', maxWidth: 600, margin: '0 auto 1.6rem', fontSize: '.72rem', lineHeight: 1.75, textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>
               Connect with our specialists to explore how e-Invoicing can transform your financial operations. Get personalized guidance on implementation, compliance, and optimization strategies.
             </Body>
             <Box
@@ -447,128 +476,6 @@ const EInvoicing = () => {
           </Box>
         </Container>
       </Box>
-
-      {/* Explore Our Solutions */}
-      <Section bg={soft}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' },
-            justifyContent: 'space-between',
-            alignItems: { xs: 'flex-start', sm: 'center' },
-            gap: { xs: '1rem', sm: 0 },
-            marginBottom: '1.8rem',
-          }}
-        >
-          <Box>
-            <Eyebrow>Explore</Eyebrow>
-            <SectionHeading sx={{ textAlign: 'left', margin: '.7rem 0 .3rem', font: "400 clamp(1.4rem, 2.4vw, 1.9rem)/1.1 Georgia, 'Times New Roman', serif" }}>
-              Explore Our Solutions
-            </SectionHeading>
-            <Body sx={{ fontSize: '.66rem', lineHeight: 1.6, margin: 0 }}>
-              A comprehensive suite for e-Documents, VAT Reports and Reconciliation
-            </Body>
-          </Box>
-
-          <Box
-            component={RouterLink}
-            to="/solutions"
-            sx={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '.4rem',
-              color: '#0B4C74',
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: '.66rem',
-              fontWeight: 600,
-              textDecoration: 'none',
-              '&:hover': { color: ink },
-            }}
-          >
-            View All Solutions <ArrowForward sx={{ fontSize: 14 }} />
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(5, 1fr)' },
-            gap: { xs: '1rem', md: '1.2rem' },
-            alignItems: 'stretch',
-          }}
-        >
-          {services.map((service, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (i % 5) * 0.05 }}
-              style={{ display: 'flex', width: '100%' }}
-            >
-              <Box
-                component={RouterLink}
-                to={service.path}
-                sx={{
-                  ...cardSx,
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                <Box
-                  sx={{
-                    width: '100%',
-                    height: 120,
-                    overflow: 'hidden',
-                    background: soft,
-                    borderBottom: `1px solid ${line}`,
-                  }}
-                >
-                  <Box
-                    component="img"
-                    src={service.image}
-                    alt={service.title}
-                    sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  />
-                </Box>
-                <Box
-                  sx={{
-                    padding: { xs: '1.1rem .9rem', md: '1.2rem 1rem' },
-                    display: 'flex',
-                    flexDirection: 'column',
-                    flexGrow: 1,
-                  }}
-                >
-                  <Typography
-                    component="h3"
-                    sx={{
-                      margin: '0 0 .4rem',
-                      font: "400 .9rem Georgia, 'Times New Roman', serif",
-                      color: ink,
-                      lineHeight: 1.25,
-                    }}
-                  >
-                    {service.title}
-                  </Typography>
-                  <Body
-                    sx={{
-                      fontSize: '.6rem',
-                      lineHeight: 1.65,
-                      margin: 0,
-                      display: '-webkit-box',
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    {service.description}
-                  </Body>
-                </Box>
-              </Box>
-            </motion.div>
-          ))}
-        </Box>
-      </Section>
     </PageShell>
   );
 };

@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import { Box, Container, Typography, TextField, MenuItem, Snackbar, Alert, CircularProgress, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import React from 'react';
+import { Box, Container, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { motion } from 'framer-motion';
 import { ArrowForward, Check, ExpandMore } from '@mui/icons-material';
-import emailjs from '@emailjs/browser';
 
-// Icons
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import SecurityIcon from '@mui/icons-material/Security';
-import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import PsychologyIcon from '@mui/icons-material/Psychology';
@@ -15,10 +12,8 @@ import InsightsIcon from '@mui/icons-material/Insights';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
-import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
+import SolutionsCTA from '@/components/SolutionsCTA';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -28,50 +23,23 @@ import {
   cardSx,
   containerSx,
   ink, muted, line, soft, lime,
-} from '../../../theme/theme';
+} from '@/theme/theme';
 
-// EmailJS Configuration
-const EMAILJS_SERVICE_ID = 'service_z6cwp83';
-const EMAILJS_ADMIN_TEMPLATE_ID = 'template_airu3dh';
-const EMAILJS_USER_TEMPLATE_ID = 'template_17ujefq';
-const EMAILJS_PUBLIC_KEY = 'SP7FmVESGAZ0wXGhK';
-
-const servicesList = [
-  'LLM Development Services',
-  'Generative AI Development',
-  'Machine Learning Consulting',
-  'AI Chatbot Development',
-  'AI Consulting Services',
-  'Other',
-];
-
-// ── Data ──
+import ML2 from '@/assets/images/staffing/AI & EdTech Services/Machine Learning/machinelearning2.jpg';
+import ML3 from '@/assets/images/staffing/AI & EdTech Services/Machine Learning/machinelearning3.jpg';
+import ML4 from '@/assets/images/staffing/AI & EdTech Services/Machine Learning/machinelearning4.jpg';
+import ML5 from '@/assets/images/staffing/AI & EdTech Services/Machine Learning/machinelearning5.jpg';
+import ML6 from '@/assets/images/staffing/AI & EdTech Services/Machine Learning/machinelearning6.jpg';
+import ML7 from '@/assets/images/staffing/AI & EdTech Services/Machine Learning/machinelearning7.jpg';
+import ML8 from '@/assets/images/staffing/AI & EdTech Services/Machine Learning/machinelearning8.jpg';
+import ML9 from '@/assets/images/staffing/AI & EdTech Services/Machine Learning/machinelearning9.jpg';
+import ML10 from '@/assets/images/staffing/AI & EdTech Services/Machine Learning/machinelearning10.jpg';
 
 const challenges = [
-  {
-    title: 'Lack of ML Strategy and Roadmap',
-    description: 'Organizations lack clear ML strategy and roadmap, making it difficult to align initiatives with business goals, measure impact, and map competitive advantages.',
-    icon: <InsightsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop',
-  },
-  {
-    title: 'ML Model Development Complexity',
-    description: 'Over 80% of ML projects fail due to poor problem framing, inaccurate model training, monitoring, and evaluation — leading to unreliable business decisions.',
-    icon: <PsychologyIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&h=200&fit=crop',
-  },
-  {
-    title: 'Data Pipeline and Quality Issues',
-    description: 'Inconsistent data pipelines and poor data quality frame models the wrong way, leading to unreliable predictions and inaccurate decision-making.',
-    icon: <DataUsageIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop',
-  },
-  {
-    title: 'ML Talent Gap and Skill Shortage',
-    description: 'Companies struggle to hire ML scientists, data scientists, and ML engineers — leading to delayed deployment timelines and scalability challenges.',
-    icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop',
-  },
+  { title: 'Lack of ML Strategy and Roadmap', description: 'Organizations lack clear ML strategy and roadmap, making it difficult to align initiatives with business goals, measure impact, and map competitive advantages.', icon: <InsightsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: ML2 },
+  { title: 'ML Model Development Complexity', description: 'Over 80% of ML projects fail due to poor problem framing, inaccurate model training, monitoring, and evaluation — leading to unreliable business decisions.', icon: <PsychologyIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: ML3 },
+  { title: 'Data Pipeline and Quality Issues', description: 'Inconsistent data pipelines and poor data quality frame models the wrong way, leading to unreliable predictions and inaccurate decision-making.', icon: <DataUsageIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: ML4 },
+  { title: 'ML Talent Gap and Skill Shortage', description: 'Companies struggle to hire ML scientists, data scientists, and ML engineers — leading to delayed deployment timelines and scalability challenges.', icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: ML5 },
 ];
 
 const offerings = [
@@ -92,36 +60,11 @@ const capabilities = [
 ];
 
 const dedicated = [
-  {
-    title: 'Enterprise ML Transformation',
-    description: 'We help organizations harness machine learning solutions at scale, from proof-of-concept to full deployment. Our enterprise-grade ML capabilities drive efficiency, innovation, and competitive advantage.',
-    icon: <AutoAwesomeIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=200&fit=crop',
-  },
-  {
-    title: 'Predictive Modeling & Forecasting',
-    description: 'Our expert team develops custom machine learning models that solve complex business challenges — from predictive forecasting to data-driven decision-making.',
-    icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop',
-  },
-  {
-    title: 'MLOps and Model Governance',
-    description: 'We implement robust ML governance frameworks covering model monitoring, bias detection, transparency, compliance, and security — to protect sensitive data and scale ML across your organization.',
-    icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=200&fit=crop',
-  },
-  {
-    title: 'Intelligent Process Automation',
-    description: 'Transform your operations with ML-powered automation solutions. We streamline workflows, reduce manual tasks, enhance productivity, and improve decision-making through intelligent automation.',
-    icon: <AutorenewIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop',
-  },
-  {
-    title: 'ML Consulting for Startups',
-    description: 'Unlock the power of machine learning to drive innovation, scalability, and growth. Our solutions help startups accelerate ML adoption, streamline operations, and enable real-time decision-making and business growth.',
-    icon: <RocketLaunchIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop',
-  },
+  { title: 'Enterprise ML Transformation', description: 'We help organizations harness machine learning solutions at scale, from proof-of-concept to full deployment. Our enterprise-grade ML capabilities drive efficiency, innovation, and competitive advantage.', icon: <AutoAwesomeIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: ML6 },
+  { title: 'Predictive Modeling & Forecasting', description: 'Our expert team develops custom machine learning models that solve complex business challenges — from predictive forecasting to data-driven decision-making.', icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: ML7 },
+  { title: 'MLOps and Model Governance', description: 'We implement robust ML governance frameworks covering model monitoring, bias detection, transparency, compliance, and security — to protect sensitive data and scale ML across your organization.', icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: ML8 },
+  { title: 'Intelligent Process Automation', description: 'Transform your operations with ML-powered automation solutions. We streamline workflows, reduce manual tasks, enhance productivity, and improve decision-making through intelligent automation.', icon: <AutorenewIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: ML9 },
+  { title: 'ML Consulting for Startups', description: 'Unlock the power of machine learning to drive innovation, scalability, and growth. Our solutions help startups accelerate ML adoption, streamline operations, and enable real-time decision-making and business growth.', icon: <RocketLaunchIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: ML10 },
 ];
 
 const industries = [
@@ -144,23 +87,10 @@ const solutionsDelivered = [
 ];
 
 const whyChoose = [
-  {
-    title: 'Customization',
-    intro: 'Our ML solutions are tailored to your industry, data, and business objectives, ensuring optimal performance and ROI.',
-    points: ['Custom AI Model Development', 'Industry-Specific AI Solutions', 'AI Process Automation', 'Predictive Analytics Systems', 'Computer Vision Solutions', 'Natural Language Processing', 'AI-Powered Analytics', 'Deep Learning Systems'],
-  },
-  {
-    title: 'Innovation',
-    text: 'We bring cutting-edge ML architectures and evaluation methods to every engagement — from predictive modeling to real-time inference systems and beyond.',
-  },
-  {
-    title: 'Expertise',
-    text: 'Data scientists, MLOps engineers, and domain specialists in the loop with measurable benchmarks at every stage of development.',
-  },
-  {
-    title: 'Scalability',
-    text: 'Production-grade ML systems with cost governance, observability, and a documented handoff plan for your internal team.',
-  },
+  { title: 'Customization', intro: 'Our ML solutions are tailored to your industry, data, and business objectives, ensuring optimal performance and ROI.', points: ['Custom AI Model Development', 'Industry-Specific AI Solutions', 'AI Process Automation', 'Predictive Analytics Systems', 'Computer Vision Solutions', 'Natural Language Processing', 'AI-Powered Analytics', 'Deep Learning Systems'] },
+  { title: 'Innovation', text: 'We bring cutting-edge ML architectures and evaluation methods to every engagement — from predictive modeling to real-time inference systems and beyond.' },
+  { title: 'Expertise', text: 'Data scientists, MLOps engineers, and domain specialists in the loop with measurable benchmarks at every stage of development.' },
+  { title: 'Scalability', text: 'Production-grade ML systems with cost governance, observability, and a documented handoff plan for your internal team.' },
 ];
 
 const frameworks = [
@@ -173,157 +103,47 @@ const frameworks = [
 ];
 
 const faqs = [
-  {
-    q: 'What are the main benefits of machine learning consulting services for businesses?',
-    a: 'ML consulting helps businesses identify high-impact use cases, build reliable models, and deploy them into production with governance. Organizations gain faster time-to-value, improved decision-making, reduced operational costs, and a competitive edge driven by data.',
-  },
-  {
-    q: 'How can ML strategy consulting transform business operations and outcomes?',
-    a: 'A clear ML strategy aligns initiatives with business goals, defines measurable outcomes, and sequences investments. It transforms operations by embedding predictive and automated decision-making into core workflows — improving efficiency, personalization, and forecasting accuracy.',
-  },
-  {
-    q: 'What are the common challenges organizations face when implementing ML?',
-    a: 'Common challenges include the lack of a clear ML roadmap, model development complexity, poor data pipelines and quality, and a shortage of ML talent. Addressing these early with a phased strategy, strong data foundations, and MLOps practices prevents costly re-work.',
-  },
-  {
-    q: 'How can ONAS Solutions help organizations with ML transformation?',
-    a: 'ONAS Solutions provides end-to-end ML consulting and implementation — from strategy and use-case selection through model development, MLOps, deployment, and handoff. We combine domain expertise, governance frameworks, and production-grade engineering to help you scale ML safely.',
-  },
-  {
-    q: 'Why is ML governance important, and how do you ensure responsible ML implementation?',
-    a: 'ML governance protects brand trust, regulatory compliance, and user safety. We embed model monitoring, bias detection, transparency, human-in-the-loop review, and evaluation harnesses into every deployment so outcomes remain accurate, auditable, and aligned with your organization\'s policies.',
-  },
+  { q: 'What are the main benefits of machine learning consulting services for businesses?', a: 'ML consulting helps businesses identify high-impact use cases, build reliable models, and deploy them into production with governance. Organizations gain faster time-to-value, improved decision-making, reduced operational costs, and a competitive edge driven by data.' },
+  { q: 'How can ML strategy consulting transform business operations and outcomes?', a: 'A clear ML strategy aligns initiatives with business goals, defines measurable outcomes, and sequences investments. It transforms operations by embedding predictive and automated decision-making into core workflows — improving efficiency, personalization, and forecasting accuracy.' },
+  { q: 'What are the common challenges organizations face when implementing ML?', a: 'Common challenges include the lack of a clear ML roadmap, model development complexity, poor data pipelines and quality, and a shortage of ML talent. Addressing these early with a phased strategy, strong data foundations, and MLOps practices prevents costly re-work.' },
+  { q: 'How can ONAS Solutions help organizations with ML transformation?', a: 'ONAS Solutions provides end-to-end ML consulting and implementation — from strategy and use-case selection through model development, MLOps, deployment, and handoff. We combine domain expertise, governance frameworks, and production-grade engineering to help you scale ML safely.' },
+  { q: 'Why is ML governance important, and how do you ensure responsible ML implementation?', a: "ML governance protects brand trust, regulatory compliance, and user safety. We embed model monitoring, bias detection, transparency, human-in-the-loop review, and evaluation harnesses into every deployment so outcomes remain accurate, auditable, and aligned with your organization's policies." },
 ];
 
 const MachineLearningConsulting = () => {
-  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '', service: '', message: '' });
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    if (errors[name]) setErrors({ ...errors, [name]: '' });
-  };
-
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.firstName.trim()) newErrors.firstName = 'Required';
-    if (!formData.lastName.trim()) newErrors.lastName = 'Required';
-    if (!formData.email.trim()) newErrors.email = 'Required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email format';
-    if (!formData.company.trim()) newErrors.company = 'Required';
-    if (!formData.service) newErrors.service = 'Required';
-    if (!formData.message.trim()) newErrors.message = 'Required';
-    return newErrors;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formErrors = validate();
-    setErrors(formErrors);
-    if (Object.keys(formErrors).length !== 0) return;
-
-    setLoading(true);
-    try {
-      const dateTime = new Date();
-      const date = dateTime.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-      const time = dateTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-      const fullName = `${formData.firstName} ${formData.lastName}`;
-
-      const adminParams = {
-        to_email: 'sales@onasglobal.com',
-        from_name: fullName,
-        from_email: formData.email,
-        phone: formData.phone || 'Not provided',
-        company: formData.company,
-        service: formData.service,
-        message: formData.message,
-        date, time,
-      };
-      const userParams = {
-        to_email: formData.email,
-        to_name: fullName,
-        from_name: 'ONAS Global Services',
-        company: formData.company,
-        service: formData.service,
-        date,
-      };
-
-      emailjs.init(EMAILJS_PUBLIC_KEY);
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_ADMIN_TEMPLATE_ID, adminParams);
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_USER_TEMPLATE_ID, userParams).catch(() => {});
-
-      setSnackbar({ open: true, message: '✓ Thank you! Your message has been sent. Our team will contact you within 24 hours.', severity: 'success' });
-      setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', service: '', message: '' });
-      setErrors({});
-    } catch (error) {
-      if (error.status === 200 || error.text === 'OK' || error.message?.includes('200')) {
-        setSnackbar({ open: true, message: '✓ Thank you! Your message has been sent.', severity: 'success' });
-        setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', service: '', message: '' });
-        setErrors({});
-      } else {
-        setSnackbar({ open: true, message: 'Unable to send. Please contact sales@onasglobal.com or call +91-928 150 6440.', severity: 'error' });
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const inputSx = {
-    '& .MuiOutlinedInput-root': {
-      borderRadius: '2px',
-      fontFamily: "'Poppins', sans-serif",
-      fontSize: '.72rem',
-      background: '#fff',
-      '& fieldset': { borderColor: line },
-      '&:hover fieldset': { borderColor: '#aac7b2' },
-      '&.Mui-focused fieldset': { borderColor: '#0B4C74' },
-    },
-    '& .MuiInputLabel-root': {
-      fontFamily: "'Poppins', sans-serif",
-      fontSize: '.72rem',
-      color: muted,
-      '&.Mui-focused': { color: '#0B4C74' },
-    },
-    '& .MuiFormHelperText-root': { fontFamily: "'Poppins', sans-serif", fontSize: '.6rem' },
-  };
-
   return (
     <PageShell>
-      {/* ── Hero ── */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage: 'url(https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80)',
+          backgroundImage: `url(${ML6})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
         }}
       >
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: -1, background: 'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -1, background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)' }} />
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>AI &amp; EdTech Services</Eyebrow>
-            <Typography component="h1" sx={{ margin: '.4rem auto 1rem', font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 900 }}>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>AI &amp; EdTech Services</Eyebrow>
+            <Typography component="h1" sx={{ margin: '.4rem auto 1rem', font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 900, textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)' }}>
               Accelerating Growth Through Machine Learning Consulting and Strategic Implementation
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Body sx={{ color: '#ffffff !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>
               We help organizations design, build, and deploy machine learning solutions — from strategy and roadmap to production-grade systems — that improve decision-making, unlock insights, and drive measurable business outcomes.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* ── ML Strategy Implementation Challenges ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Challenges</Eyebrow>
@@ -357,7 +177,6 @@ const MachineLearningConsulting = () => {
         </Box>
       </Section>
 
-      {/* ── What We Offer ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>What We Do</Eyebrow>
@@ -380,9 +199,7 @@ const MachineLearningConsulting = () => {
               ML Strategy Consulting
             </Typography>
             <Body sx={{ marginBottom: '1.4rem' }}>
-              We develop custom ML strategies aligned with your business objectives, creating clear
-              implementation roadmaps that maximize ROI and ensure successful machine learning
-              adoption across your organization.
+              We develop custom ML strategies aligned with your business objectives, creating clear implementation roadmaps that maximize ROI and ensure successful machine learning adoption across your organization.
             </Body>
 
             <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: '.7rem' }}>
@@ -399,7 +216,6 @@ const MachineLearningConsulting = () => {
         </Box>
       </Section>
 
-      {/* ── Leading Advisory Firm ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Our Focus</Eyebrow>
@@ -430,7 +246,6 @@ const MachineLearningConsulting = () => {
         </Box>
       </Section>
 
-      {/* ── Industries We Serve ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Who We Serve</Eyebrow>
@@ -445,7 +260,6 @@ const MachineLearningConsulting = () => {
         </Box>
       </Section>
 
-      {/* ── Success Stories ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Case Study</Eyebrow>
@@ -455,9 +269,7 @@ const MachineLearningConsulting = () => {
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '1.5rem', md: '2.5rem' }, alignItems: 'center' }}>
           <Box>
             <Body sx={{ marginBottom: '1rem' }}>
-              These AI models can later be used to score chemical compound IDs. They can give a
-              descriptive name to the AI model when doing so, and the system keeps track of the
-              dataset used — creating a reproducible pipeline from raw data to deployment.
+              These AI models can later be used to score chemical compound IDs. They can give a descriptive name to the AI model when doing so, and the system keeps track of the dataset used — creating a reproducible pipeline from raw data to deployment.
             </Body>
             <Box sx={{ display: 'flex', gap: '1.5rem', marginBottom: '1.2rem', flexWrap: 'wrap' }}>
               <Box>
@@ -484,12 +296,11 @@ const MachineLearningConsulting = () => {
           </Box>
 
           <Box sx={{ border: `1px solid ${line}`, borderRadius: '2px', overflow: 'hidden', background: '#fff', height: { xs: 240, md: 320 } }}>
-            <Box component="img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Success Story" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <Box component="img" src={ML7} alt="Success Story" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </Box>
         </Box>
       </Section>
 
-      {/* ── Why Choose ONAS ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Why ONAS</Eyebrow>
@@ -528,7 +339,6 @@ const MachineLearningConsulting = () => {
         </Box>
       </Section>
 
-      {/* ── Solutions We Deliver ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Solutions</Eyebrow>
@@ -550,7 +360,6 @@ const MachineLearningConsulting = () => {
         </Box>
       </Section>
 
-      {/* ── Ready to Transform CTA ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
           <Eyebrow>Get Started</Eyebrow>
@@ -558,34 +367,14 @@ const MachineLearningConsulting = () => {
             Ready to Transform Your Business with Machine Learning Consulting?
           </SectionHeading>
           <Body sx={{ marginBottom: '1.6rem' }}>
-            Schedule a free consultation today and discover how ONAS Solutions can help you
-            innovate, optimize operations, and drive growth through strategic ML implementation.
+            Schedule a free consultation today and discover how ONAS Solutions can help you innovate, optimize operations, and drive growth through strategic ML implementation.
           </Body>
-          <Box
-            component="a"
-            href="#contact"
-            sx={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '.5rem',
-              padding: '.7rem 1.1rem',
-              borderRadius: '2px',
-              background: '#0B4C74',
-              color: '#ffffff',
-              fontWeight: 600,
-              fontSize: '.62rem',
-              fontFamily: "'Poppins', sans-serif",
-              textDecoration: 'none',
-              transition: 'background .2s ease',
-              '&:hover': { background: '#d3ffb0', color: '#000000' },
-            }}
-          >
+          <Box component="a" href="#contact" sx={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.7rem 1.1rem', borderRadius: '2px', background: '#0B4C74', color: '#ffffff', fontWeight: 600, fontSize: '.62rem', fontFamily: "'Poppins', sans-serif", textDecoration: 'none', transition: 'background .2s ease', '&:hover': { background: '#d3ffb0', color: '#000000' } }}>
             Let&apos;s Discuss <ArrowForward sx={{ fontSize: 14 }} />
           </Box>
         </Box>
       </Section>
 
-      {/* ── Languages, Tools, Frameworks ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Tooling</Eyebrow>
@@ -609,44 +398,6 @@ const MachineLearningConsulting = () => {
         </Box>
       </Section>
 
-      {/* ── Contact Form ── */}
-      <Section bg={soft}>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: '2rem', md: 'clamp(2rem, 5vw, 3.5rem)' }, alignItems: 'stretch' }}>
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <Box sx={{ width: '100%', border: `1px solid ${line}`, borderRadius: '2px', overflow: 'hidden', background: '#fff', height: '100%' }}>
-              <Box component="img" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80" alt="Contact" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: { xs: 260, md: 420 } }} />
-            </Box>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', background: '#fff', border: `1px solid ${line}`, borderRadius: '2px', padding: { xs: '1.6rem 1.2rem', md: '2rem 1.7rem' } }}>
-              <Box>
-                <Eyebrow>Get in Touch</Eyebrow>
-                <Typography component="h2" sx={{ margin: '.5rem 0 0', font: "400 clamp(1rem, 1.8vw, 1.35rem)/1.2 Georgia, 'Times New Roman', serif", color: ink }}>
-                  Here&apos;s how you can get in touch
-                </Typography>
-              </Box>
-
-              <TextField name="firstName" label="First Name" fullWidth required onChange={handleChange} value={formData.firstName} error={!!errors.firstName} helperText={errors.firstName} disabled={loading} sx={inputSx} />
-              <TextField name="lastName" label="Last Name" fullWidth required onChange={handleChange} value={formData.lastName} error={!!errors.lastName} helperText={errors.lastName} disabled={loading} sx={inputSx} />
-              <TextField name="email" label="Business Email" type="email" fullWidth required onChange={handleChange} value={formData.email} error={!!errors.email} helperText={errors.email || "We'll send confirmation to this email"} disabled={loading} sx={inputSx} />
-              <TextField name="phone" label="Phone Number (Optional)" type="tel" fullWidth onChange={handleChange} value={formData.phone} error={!!errors.phone} helperText={errors.phone} disabled={loading} sx={inputSx} />
-              <TextField name="company" label="Company Name" fullWidth required onChange={handleChange} value={formData.company} error={!!errors.company} helperText={errors.company} disabled={loading} sx={inputSx} />
-              <TextField name="service" label="Looking For?" select fullWidth required value={formData.service} onChange={handleChange} error={!!errors.service} helperText={errors.service} disabled={loading} sx={inputSx}>
-                <MenuItem value="">Select Service</MenuItem>
-                {servicesList.map((s, i) => <MenuItem key={i} value={s}>{s}</MenuItem>)}
-              </TextField>
-              <TextField name="message" label="Tell us about your project" multiline rows={4} fullWidth required onChange={handleChange} value={formData.message} error={!!errors.message} helperText={errors.message} disabled={loading} sx={inputSx} />
-
-              <Box component="button" type="submit" disabled={loading} sx={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '.5rem', padding: '.75rem 1.2rem', marginTop: '.4rem', border: 0, borderRadius: '2px', background: '#0B4C74', color: '#ffffff', fontWeight: 600, fontSize: '.66rem', fontFamily: "'Poppins', sans-serif", cursor: loading ? 'not-allowed' : 'pointer', transition: 'background .2s ease', '&:hover': { background: loading ? '#0B4C74' : '#d3ffb0', color: loading ? '#ffffff' : '#000000' } }}>
-                {loading ? <CircularProgress size={18} sx={{ color: '#ffffff' }} /> : (<>Submit Form <ArrowForward sx={{ fontSize: 14 }} /></>)}
-              </Box>
-            </Box>
-          </motion.div>
-        </Box>
-      </Section>
-
-      {/* ── FAQ ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>FAQ</Eyebrow>
@@ -667,13 +418,6 @@ const MachineLearningConsulting = () => {
       </Section>
 
       <SolutionsCTA />
-      <SolutionsServices />
-
-      <Snackbar open={snackbar.open} autoHideDuration={5000} onClose={() => setSnackbar({ ...snackbar, open: false })} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-        <Alert onClose={() => setSnackbar({ ...snackbar, open: false })} severity={snackbar.severity} sx={{ width: '100%' }}>
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
     </PageShell>
   );
 };

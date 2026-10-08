@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowForward, ExpandMore } from '@mui/icons-material';
@@ -16,15 +16,18 @@ import {
   ink, muted, line, soft, cream, lime,
 } from '../../../theme/theme';
 
+import W1 from '../../../assets/images/solutions/web-app/webdev1.jpg';
+import W2 from '../../../assets/images/solutions/web-app/webdev2.jpg';
+import W3 from '../../../assets/images/solutions/web-app/webdev3.jpg';
+import W4 from '../../../assets/images/solutions/web-app/webdev4.jpg';
+import W5 from '../../../assets/images/solutions/web-app/webdev5.jpg';
+import W6 from '../../../assets/images/solutions/web-app/webdev6.jpg';
+import W7 from '../../../assets/images/solutions/web-app/webdev7.jpg';
+import W8 from '../../../assets/images/solutions/web-app/webdev8.jpg';
+import W9 from '../../../assets/images/solutions/web-app/webdev9.jpg';
+
 const WebApp = () => {
-  // ── Slideshow state ──
-  const slides = [
-    'https://images.unsplash.com/photo-1547658719-da2b51169166?w=1600&q=80',
-    'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&q=80',
-    'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=1600&q=80',
-    'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1600&q=80',
-    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80',
-  ];
+  const slides = [W1, W2, W3];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
@@ -38,7 +41,6 @@ const WebApp = () => {
   const handleAccordionChange = (panel) => (_, isExpanded) =>
     setExpanded(isExpanded ? panel : false);
 
-  // ── Content (trimmed to 4 shorter items) ──
   const painPoints = [
     { title: 'Performance Collapses Under Load', text: "Sites built for demos can't handle real traffic. Latency and cold starts destroy conversion the moment volume arrives." },
     { title: 'Mobile as an Afterthought', text: 'Layouts that break on phones and content built for desktop create friction mobile-first users will not tolerate.' },
@@ -47,12 +49,12 @@ const WebApp = () => {
   ];
 
   const services = [
-    { Icon: Gauge, title: 'Fast Platforms', text: 'Server-rendered, CDN-cached, and edge-optimized apps that stay fast under load — with measurable performance budgets enforced in CI.', image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop' },
-    { Icon: Layers, title: 'Internal Tools & Portals', text: 'Role-based dashboards, admin consoles, and workflow portals that reduce manual work and make teams faster.', image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop' },
-    { Icon: Code, title: 'Progressive Web Apps', text: 'Installable, offline-capable, and push-enabled apps that give users an app-like experience without the store tax.', image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9a?w=600&h=400&fit=crop' },
-    { Icon: Zap, title: 'Headless & Composable', text: 'A hardened frontend over your existing CMS, ERP, or commerce platform — decoupled, composable, and easy to evolve.', image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop' },
-    { Icon: Shield, title: 'AI Features in the Product', text: 'Search, ranking, recommendations, and workflow automation built into the app — with guardrails, evaluation, and auditability.', image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop' },
-    { Icon: RefreshCw, title: 'Performance & Conversion Remediation', text: 'Audits, Core Web Vitals fixes, and iterative optimization that ship measurable improvements, not just reports.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop' },
+    { Icon: Gauge, title: 'Fast Platforms', text: 'Server-rendered, CDN-cached, and edge-optimized apps that stay fast under load — with measurable performance budgets enforced in CI.', image: W4 },
+    { Icon: Layers, title: 'Internal Tools & Portals', text: 'Role-based dashboards, admin consoles, and workflow portals that reduce manual work and make teams faster.', image: W5 },
+    { Icon: Code, title: 'Progressive Web Apps', text: 'Installable, offline-capable, and push-enabled apps that give users an app-like experience without the store tax.', image: W6 },
+    { Icon: Zap, title: 'Headless & Composable', text: 'A hardened frontend over your existing CMS, ERP, or commerce platform — decoupled, composable, and easy to evolve.', image: W7 },
+    { Icon: Shield, title: 'AI Features in the Product', text: 'Search, ranking, recommendations, and workflow automation built into the app — with guardrails, evaluation, and auditability.', image: W8 },
+    { Icon: RefreshCw, title: 'Performance & Conversion Remediation', text: 'Audits, Core Web Vitals fixes, and iterative optimization that ship measurable improvements, not just reports.', image: W9 },
   ];
 
   const industries = [
@@ -77,35 +79,20 @@ const WebApp = () => {
 
   return (
     <PageShell>
-      {/* ── HERO — SEO-style centered hero with slideshow ── */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 480, md: 560 },
-          padding: { xs: '3.5rem 1rem', md: '5rem 2.5rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           overflow: 'hidden',
-          background: ink,
+          background: '#0B4C74',
           isolation: 'isolate',
           display: 'flex',
           alignItems: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -126,12 +113,21 @@ const WebApp = () => {
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Box sx={{ position: 'relative', zIndex: 2, maxWidth: 1240, margin: '0 auto', width: '100%', textAlign: 'center' }}>
           <Typography
             sx={{
-              color: lime,
+              color: '#ffffff',
+              textShadow: '0 2px 8px rgba(0,0,0,.95)',
               fontSize: '.55rem',
               letterSpacing: '.12em',
               textTransform: 'uppercase',
@@ -149,13 +145,15 @@ const WebApp = () => {
               font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.1 Georgia, 'Times New Roman', serif",
               color: '#fff',
               maxWidth: 900,
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
             }}
           >
             Web Application Development Where Performance Is an Acceptance Criterion
           </Typography>
           <Typography
             sx={{
-              color: 'rgba(255,255,255,.82) !important',
+              color: '#ffffff !important',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
               fontFamily: "'Poppins', sans-serif",
               fontSize: { xs: '.72rem', md: '.78rem' },
               lineHeight: 1.7,
@@ -163,8 +161,7 @@ const WebApp = () => {
               margin: '0 auto 1.8rem',
             }}
           >
-            From marketing sites to complex internal platforms, ONAS builds web applications that
-            are fast, accessible, and built to scale with your business.
+            From marketing sites to complex internal platforms, ONAS builds web applications that are fast, accessible, and built to scale with your business.
           </Typography>
           <Box
             component="a"
@@ -190,7 +187,6 @@ const WebApp = () => {
         </Box>
       </Box>
 
-      {/* ── PAIN POINTS — trimmed left + 2 smaller images right ── */}
       <Section bg={soft} sx={{ padding: { xs: '3rem 1.5rem', md: '3.5rem 1.5rem' } }}>
         <Box
           sx={{
@@ -202,7 +198,6 @@ const WebApp = () => {
             alignItems: 'stretch',
           }}
         >
-          {/* LEFT — heading + 4 compact cards */}
           <Box>
             <Eyebrow>The Problem</Eyebrow>
             <SectionHeading
@@ -271,7 +266,6 @@ const WebApp = () => {
             </Box>
           </Box>
 
-          {/* RIGHT — two smaller stacked images */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -279,15 +273,7 @@ const WebApp = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             style={{ display: 'flex' }}
           >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '.8rem',
-                width: '100%',
-                height: '100%',
-              }}
-            >
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '.8rem', width: '100%', height: '100%' }}>
               <Box
                 sx={{
                   flex: 1,
@@ -300,7 +286,7 @@ const WebApp = () => {
               >
                 <Box
                   component="img"
-                  src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=900&h=600&fit=crop"
+                  src={W1}
                   alt="Web application development"
                   sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
@@ -317,7 +303,7 @@ const WebApp = () => {
               >
                 <Box
                   component="img"
-                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&h=600&fit=crop"
+                  src={W2}
                   alt="Web platform engineering"
                   sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
@@ -327,7 +313,6 @@ const WebApp = () => {
         </Box>
       </Section>
 
-      {/* ── SERVICES — SEO style (image top, icon circle overlapping) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>What We Build</Eyebrow>
@@ -379,7 +364,6 @@ const WebApp = () => {
         </Box>
       </Section>
 
-      {/* ── INDUSTRIES — SEO style with RouterLink + Learn More ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>Industries</Eyebrow>
@@ -417,7 +401,6 @@ const WebApp = () => {
         </Box>
       </Section>
 
-      {/* ── FAQ ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>FAQ</Eyebrow>
@@ -471,7 +454,6 @@ const WebApp = () => {
         </Box>
       </Section>
 
-      {/* ── CTA — SEO style ── */}
       <Box sx={{ background: soft, borderTop: `1px solid ${line}` }}>
         <Container maxWidth={false} disableGutters sx={containerSx}>
           <Box sx={{ maxWidth: 800, mx: 'auto', padding: { xs: '4rem 1rem', md: '5rem 0' }, textAlign: 'center' }}>

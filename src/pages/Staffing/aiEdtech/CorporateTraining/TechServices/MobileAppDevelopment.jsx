@@ -11,15 +11,24 @@ import {
   Body,
   cardSx,
   ink, muted, line, soft, cream, lime,
-} from '../../../../../theme/theme';
+} from '@/theme/theme';
+
+import MA1 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Mobile apps/mobileappdev-1.jpg';
+import MA2 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Mobile apps/mobileappdev-2.jpg';
+import MA3 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Mobile apps/mobileappdev-3.jpg';
+import MA4 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Mobile apps/mobileappdev-4.jpg';
+import MA5 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Mobile apps/mobileappdev-5.jpg';
+import MA6 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Mobile apps/mobileappdev-6.jpg';
+import MA7 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Mobile apps/mobileappdev-7.jpg';
+import MA8 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Mobile apps/mobileappdev-8.jpg';
+import MA9 from '@/assets/images/staffing/AI & EdTech Services/tech-services/Mobile apps/mobileappdev-9.jpg';
 
 export default function MobileAppDevelopment() {
-  // ── Content ──
   const eyebrow = 'Custom mobile product engineering';
   const title = 'Mobile apps made around your users and workflows';
   const heroText = 'Design and develop mobile applications that help people get things done. We work across product strategy, iOS and Android engineering, integrations, release, and ongoing improvement.';
   const heroCta = 'Plan your mobile app';
-  const heroImage = 'https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1100&q=85';
+  const heroImage = MA1;
   const heroImageAlt = 'Mobile application displayed on a smartphone';
   const stats = [
     { value: 'iOS + Android', label: 'Native and cross-platform options' },
@@ -33,7 +42,7 @@ export default function MobileAppDevelopment() {
     'A successful mobile app is shaped by more than its screens. It depends on clear user journeys, considered platform choices, dependable backend services, and a release process that supports ongoing change.',
     'ONAS can help at the start of a new product or join an existing team to extend, modernize, and maintain a mobile experience. We help you weigh native, cross-platform, and hybrid approaches against your specific constraints.',
   ];
-  const overviewImage = 'https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=1000&q=85';
+  const overviewImage = MA2;
   const overviewImageAlt = 'Team reviewing a mobile product on a laptop';
 
   const challengeEyebrow = 'Why mobile products stall';
@@ -50,9 +59,9 @@ export default function MobileAppDevelopment() {
   const servicesTitle = 'One partner from first sketch to ongoing care';
   const servicesIntro = 'Shape the engagement around what your product needs now, with a clear path for what comes next.';
   const services = [
-    { title: 'Custom app development', text: 'Create customer, workforce, or enterprise apps for iOS and Android around your product goals.', image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9a?w=600&h=400&fit=crop' },
-    { title: 'Mobile modernization', text: 'Improve an established app, update its architecture, or plan a staged migration to a new platform.', image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=600&h=400&fit=crop' },
-    { title: 'Integration & operations', text: 'Connect mobile experiences to business systems and prepare for monitoring, support, and releases.', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop' },
+    { title: 'Custom app development', text: 'Create customer, workforce, or enterprise apps for iOS and Android around your product goals.', image: MA3 },
+    { title: 'Mobile modernization', text: 'Improve an established app, update its architecture, or plan a staged migration to a new platform.', image: MA4 },
+    { title: 'Integration & operations', text: 'Connect mobile experiences to business systems and prepare for monitoring, support, and releases.', image: MA5 },
   ];
 
   const processEyebrow = 'From discovery to app store';
@@ -74,13 +83,13 @@ export default function MobileAppDevelopment() {
       label: 'Native development',
       title: 'Deep platform control',
       points: ['Useful when platform-specific APIs or interactions are central.', 'Separate iOS and Android implementations may require more platform capacity.', 'A strong fit when each platform experience needs distinct behavior.'],
-      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop',
+      image: MA6,
     },
     {
       label: 'Cross-platform or hybrid',
       title: 'Shared delivery where it makes sense',
       points: ['Can reuse selected code and product logic across platforms.', 'Frameworks differ in rendering, integration, and platform behavior.', 'The right choice depends on your app, not on code reuse alone.'],
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9a?w=600&h=400&fit=crop',
+      image: MA7,
     },
   ];
 
@@ -128,20 +137,33 @@ export default function MobileAppDevelopment() {
     { title: 'Testing & release', items: 'Appium · XCTest · Detox · CI/CD · store pipelines' },
   ];
 
-  const ctaTitle = 'Let’s shape the right mobile app for your users';
-  const ctaText = 'Share your product idea, existing app, or delivery challenge. We can help clarify the next practical step.';
-  const ctaButton = 'Talk to our mobile team';
+
 
   return (
     <PageShell>
-      {/* ── HERO ── */}
-      <Box sx={{ position: 'relative', minHeight: { xs: 480, md: 560 }, padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' }, display: 'flex', alignItems: 'center', overflow: 'hidden', background: ink, isolation: 'isolate' }}>
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: -1, background: 'linear-gradient(120deg, rgba(11,76,116,.98) 0%, rgba(11,76,116,.85) 55%, rgba(11,76,116,.72) 100%)' }} />
+      <Box sx={{ position: 'relative', marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' }, minHeight: { xs: 480, md: 560 }, padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' }, display: 'flex', alignItems: 'center', overflow: 'hidden', background: ink, isolation: 'isolate' }}>
+        {heroImage && (
+          <Box
+            component="img"
+            src={heroImage}
+            alt={heroImageAlt || title}
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              zIndex: -2,
+            }}
+          />
+        )}
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -1, background: 'linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.75) 100%)' }} />
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '2rem', md: '3rem' }, alignItems: 'center', maxWidth: 1240, margin: '0 auto', width: '100%' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            {eyebrow && <Eyebrow sx={{ color: lime }}>{eyebrow}</Eyebrow>}
-            <Typography component="h1" sx={{ margin: '.5rem 0 1.4rem', font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 640, letterSpacing: 0 }}>{title}</Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 560, marginBottom: '1.8rem' }}>{heroText}</Body>
+            {eyebrow && <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>{eyebrow}</Eyebrow>}
+            <Typography component="h1" sx={{ margin: '.5rem 0 1.4rem', font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 640, letterSpacing: 0, textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)' }}>{title}</Typography>
+            <Body sx={{ color: '#ffffff !important', maxWidth: 560, marginBottom: '1.8rem', textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>{heroText}</Body>
             <Box component="a" href="/resources/contact-us" sx={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.7rem 1.1rem', borderRadius: '2px', background: '#0B4C74', color: '#ffffff', fontWeight: 600, fontSize: '.62rem', fontFamily: "'Poppins', sans-serif", textDecoration: 'none', transition: 'background .2s ease', '&:hover': { background: '#d3ffb0', color: '#000000' } }}>
               {heroCta} <ArrowForward sx={{ fontSize: 14 }} />
             </Box>
@@ -150,23 +172,16 @@ export default function MobileAppDevelopment() {
                 {stats.map((stat, i) => (
                   <Box key={i} sx={{ borderLeft: `2px solid ${lime}`, paddingLeft: '.8rem' }}>
                     <Typography sx={{ fontFamily: "'Poppins', sans-serif", fontSize: '.72rem', fontWeight: 700, color: lime, lineHeight: 1.2, marginBottom: '.2rem' }}>{stat.value}</Typography>
-                    <Typography sx={{ fontFamily: "'Poppins', sans-serif", fontSize: '.58rem', color: 'rgba(255,255,255,.7)', lineHeight: 1.5, letterSpacing: '.04em', textTransform: 'uppercase' }}>{stat.label}</Typography>
+                    <Typography sx={{ fontFamily: "'Poppins', sans-serif", fontSize: '.58rem', color: '#ffffff', lineHeight: 1.5, letterSpacing: '.04em', textTransform: 'uppercase', textShadow: '0 1px 6px rgba(0,0,0,.85)' }}>{stat.label}</Typography>
                   </Box>
                 ))}
               </Box>
             )}
           </motion.div>
-          {heroImage && (
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Box sx={{ border: `1px solid ${line}`, borderRadius: '2px', overflow: 'hidden', background: '#fff', width: '100%', height: { xs: 240, md: 340 } }}>
-                <Box component="img" src={heroImage} alt={heroImageAlt || title} sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-              </Box>
-            </Box>
-          )}
+          <Box />
         </Box>
       </Box>
 
-      {/* ── OVERVIEW ── */}
       <Section>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '2rem', md: 'clamp(2rem, 5vw, 4rem)' }, alignItems: 'center' }}>
           <Box>
@@ -182,7 +197,6 @@ export default function MobileAppDevelopment() {
         </Box>
       </Section>
 
-      {/* ── CHALLENGES (no left border) ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {challengeEyebrow && <Eyebrow>{challengeEyebrow}</Eyebrow>}
@@ -202,7 +216,6 @@ export default function MobileAppDevelopment() {
         </Box>
       </Section>
 
-      {/* ── SERVICES (with images) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {servicesEyebrow && <Eyebrow>{servicesEyebrow}</Eyebrow>}
@@ -229,7 +242,6 @@ export default function MobileAppDevelopment() {
         </Box>
       </Section>
 
-      {/* ── PROCESS ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {processEyebrow && <Eyebrow>{processEyebrow}</Eyebrow>}
@@ -249,7 +261,6 @@ export default function MobileAppDevelopment() {
         </Box>
       </Section>
 
-      {/* ── DELIVERY OPTIONS (with images, no left border) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {deliveryEyebrow && <Eyebrow>{deliveryEyebrow}</Eyebrow>}
@@ -281,7 +292,6 @@ export default function MobileAppDevelopment() {
         </Box>
       </Section>
 
-      {/* ── COMPARISON TABLE ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {comparisonEyebrow && <Eyebrow>{comparisonEyebrow}</Eyebrow>}
@@ -296,7 +306,6 @@ export default function MobileAppDevelopment() {
         </Box>
       </Section>
 
-      {/* ── ENGAGEMENTS ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {engagementEyebrow && <Eyebrow>{engagementEyebrow}</Eyebrow>}
@@ -316,18 +325,8 @@ export default function MobileAppDevelopment() {
         </Box>
       </Section>
 
-      {/* ── INDUSTRIES + CAPABILITIES (side by side) ── */}
       <Section bg={soft}>
-        <Box
-          sx={{
-            maxWidth: 1200,
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: { xs: '2.5rem', md: '3rem' },
-          }}
-        >
-          {/* Industries — left */}
+        <Box sx={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: '2.5rem', md: '3rem' } }}>
           <Box>
             {industriesEyebrow && <Eyebrow>{industriesEyebrow}</Eyebrow>}
             <SectionHeading sx={{ marginTop: '.7rem', marginBottom: '.9rem', textAlign: 'left' }}>{industriesTitle}</SectionHeading>
@@ -341,8 +340,6 @@ export default function MobileAppDevelopment() {
               ))}
             </Box>
           </Box>
-
-          {/* Capabilities — right */}
           <Box>
             {capabilitiesEyebrow && <Eyebrow>{capabilitiesEyebrow}</Eyebrow>}
             <SectionHeading sx={{ marginTop: '.7rem', marginBottom: '.9rem', textAlign: 'left' }}>{capabilitiesTitle}</SectionHeading>
@@ -359,7 +356,6 @@ export default function MobileAppDevelopment() {
         </Box>
       </Section>
 
-      {/* ── TECH STACK ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           {stackEyebrow && <Eyebrow>{stackEyebrow}</Eyebrow>}
@@ -376,17 +372,7 @@ export default function MobileAppDevelopment() {
         </Box>
       </Section>
 
-      {/* ── CTA ── */}
-      <Section bg={soft}>
-        <Box sx={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
-          <Eyebrow>Get Started</Eyebrow>
-          <SectionHeading sx={{ marginTop: '.7rem', marginBottom: '1rem' }}>{ctaTitle}</SectionHeading>
-          {ctaText && <Body sx={{ marginBottom: '1.6rem' }}>{ctaText}</Body>}
-          <Box component="a" href="/resources/contact-us" sx={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.7rem 1.1rem', borderRadius: '2px', background: '#0B4C74', color: '#ffffff', fontWeight: 600, fontSize: '.62rem', fontFamily: "'Poppins', sans-serif", textDecoration: 'none', transition: 'background .2s ease', '&:hover': { background: '#d3ffb0', color: '#000000' } }}>
-            {ctaButton || 'Talk to Our Team'} <ArrowForward sx={{ fontSize: 14 }} />
-          </Box>
-        </Box>
-      </Section>
+      
     </PageShell>
   );
 }

@@ -11,9 +11,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -25,48 +23,58 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
+import R1 from '../../../assets/images/solutions/reconciliation/reconciliation1.jpg';
+import R2 from '../../../assets/images/solutions/reconciliation/reconciliation2.jpg';
+import R3 from '../../../assets/images/solutions/reconciliation/reconciliation3.jpg';
+import R4 from '../../../assets/images/solutions/reconciliation/reconciliation4.jpg';
+import R5 from '../../../assets/images/solutions/reconciliation/reconciliation5.jpg';
+import R6 from '../../../assets/images/solutions/reconciliation/reconciliation6.jpg';
+import R7 from '../../../assets/images/solutions/reconciliation/reconciliation7.jpg';
+import R8 from '../../../assets/images/solutions/reconciliation/reconciliation8.jpg';
+import R9 from '../../../assets/images/solutions/reconciliation/reconciliation9.jpg';
+
 const benefits = [
   {
     title: 'Accurate Financial Matching',
     description: 'Match invoices, payments, journal entries, and financial records within the ERP system to identify differences and maintain accurate accounts.',
     icon: <FactCheckIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/2276476149/photo/two-accountants-work-together-on-computer-analyzing-bank-transactions.jpg?s=612x612&w=0&k=20&c=Z4sYWleDlz4oSWsFEWnie_I60X8NdCbJ94bXS727Zv4=',
+    image: R1,
   },
   {
     title: 'Automated Reconciliation',
     description: 'Automate repetitive reconciliation activities by comparing ERP records and identifying transactions that require attention.',
     icon: <AutoModeIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/1409560349/photo/the-businessman-holds-on-scales-bags-profits-expenses-summary-and-balance-sheet-income-and.jpg?s=612x612&w=0&k=20&c=r7Etl8o3DACQNhrYeBO7Anrg-6WooW675XWZLW0ZTJA=',
+    image: R2,
   },
   {
     title: 'Invoice & Payment Verification',
     description: 'Verify invoice, payment, and ledger information inside the ERP environment to reduce duplicate, missing, or incorrectly recorded transactions.',
     icon: <ReceiptLongIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/2032561021/vector/accounting-icons-in-line-design-blue-accounting-analytics-finance-business-money-financial.jpg?s=612x612&w=0&k=20&c=p7WIl8FSj3PTMkqrdHQkZzhYTBcbHPfSbyAwV0hpXCI=',
+    image: R3,
   },
   {
     title: 'Transaction Exception Tracking',
     description: 'Identify unmatched and inconsistent transactions so finance teams can investigate exceptions and resolve discrepancies efficiently.',
     icon: <FindInPageIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=350&fit=crop',
+    image: R4,
   },
   {
     title: 'ERP Financial Insights',
     description: 'Use reconciled ERP data to understand financial activity, monitor account balances, and support reliable business reporting.',
     icon: <AnalyticsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/139672999/photo/check-register.jpg?s=612x612&w=0&k=20&c=oNdJHqCn6rmEbXHjgWSBn13HAP5XmpJYG-HFA7yZyc4=',
+    image: R5,
   },
   {
     title: 'Centralized Account Control',
     description: 'Maintain a consistent view of account activity across general ledger, accounts payable, accounts receivable, and other ERP modules.',
     icon: <AccountBalanceIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/1296838512/photo/business-people-shaking-hands.jpg?s=612x612&w=0&k=20&c=gel29VlJ_7ZFemUne3z-A26YnTMf2jKRsjEYSIg4po4=',
+    image: R6,
   },
   {
     title: 'Audit-Ready Records',
     description: 'Maintain structured reconciliation records and transaction history within the ERP system to support internal controls and audit activities.',
     icon: <VerifiedUserIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://media.istockphoto.com/id/2288004788/photo/woman-reviews-expense-reports-and-tracks-company-costs.jpg?s=612x612&w=0&k=20&c=UGTQwImcSZPBXca1W637L7cHqoUIn2Bq4kgsxbxsjuY=',
+    image: R7,
   },
 ];
 
@@ -80,18 +88,17 @@ const processSteps = [
 const Reconciliation = () => {
   return (
     <PageShell>
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage:
-            'url(https://media.istockphoto.com/id/1194689166/photo/reconciliation-accounting-papers-in-the-accountant-hand.jpg?s=612x612&w=0&k=20&c=4l6etz2WT2rDLqoammt-3sSxMonjbr0KSc_VcsxczvA=)',
+          backgroundImage: `url(${R8})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
@@ -102,14 +109,15 @@ const Reconciliation = () => {
             position: 'absolute',
             inset: 0,
             zIndex: -1,
-            background:
-              'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
           }}
         />
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>Reconciliation</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              Reconciliation
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -117,18 +125,26 @@ const Reconciliation = () => {
                 font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               Intelligent Reconciliation for Modern ERP Systems
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
               Simplify financial reconciliation within your ERP system by matching records, identifying discrepancies, improving data accuracy, and creating a reliable foundation for financial reporting and business operations.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* Introduction */}
       <Section>
         <Box
           sx={{
@@ -165,7 +181,7 @@ const Reconciliation = () => {
           >
             <Box
               component="img"
-              src="https://media.istockphoto.com/id/1286772106/photo/handshake-between-a-man-and-woman-in-office.jpg?s=612x612&w=0&k=20&c=v8qpsZUNvYCyhb5bIBHsF0eT2H9Lt6Z1RmGwaiuRrGk="
+              src={R9}
               alt="ERP financial reconciliation"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -173,7 +189,6 @@ const Reconciliation = () => {
         </Box>
       </Section>
 
-      {/* Process */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem', maxWidth: 850, mx: 'auto' }}>
           <Eyebrow>Process</Eyebrow>
@@ -232,7 +247,6 @@ const Reconciliation = () => {
         </Box>
       </Section>
 
-      {/* Benefits */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Key Benefits</Eyebrow>
@@ -329,7 +343,6 @@ const Reconciliation = () => {
       </Section>
 
       <SolutionsCTA />
-      <SolutionsServices />
     </PageShell>
   );
 };

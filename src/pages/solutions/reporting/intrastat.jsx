@@ -9,9 +9,7 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PublicIcon from '@mui/icons-material/Public';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -23,7 +21,13 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Local-only info card (not part of shared theme)
+import I1 from '../../../assets/images/solutions/intrastat/intrastatreports1.jpg';
+import I2 from '../../../assets/images/solutions/intrastat/intrastatreports2.jpg';
+import I3 from '../../../assets/images/solutions/intrastat/intrastatreports3.jpg';
+import I4 from '../../../assets/images/solutions/intrastat/intrastatreports4.jpg';
+import I5 from '../../../assets/images/solutions/intrastat/intrastatreports5.jpg';
+import I6 from '../../../assets/images/solutions/intrastat/intrastatreports6.jpg';
+
 const infoCardSx = {
   background: '#fff',
   border: `1px solid ${line}`,
@@ -34,37 +38,10 @@ const infoCardSx = {
 
 const Intrastat = () => {
   const features = [
-    {
-      title: 'Guided Filings',
-      description:
-        'Get step-by-step assistance from ONAS Global to ensure your reports are accurate and compliant.',
-      icon: <DescriptionIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image: 'https://community.sap.com/legacyfs/online/storage/blog_attachments/2019/04/Figure-25.png',
-    },
-    {
-      title: 'Automated Data Aggregation',
-      description:
-        'ONAS Global tools swiftly collate the required data, decreasing manual errors and saving time.',
-      icon: <StorageIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKoclXsnNlkuohOH3dlE-VyHNalcq7B4ZF6JdZ_Up7TA&s=10',
-    },
-    {
-      title: 'Up-to-date Information',
-      description:
-        'Stay informed about any changes in EU regulations or reporting standards with ONAS Global.',
-      icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLDPbDiqylZ5ECY1oN-TaK-qseArwhldR96O6b5P6p-g&s=10',
-    },
-    {
-      title: 'Holistic Analysis',
-      description:
-        'Dive deep into your trade data to acquire actionable insights and drive business strategies with ONAS Global.',
-      icon: <PublicIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNUdP02W9wIX0rcKhNG9GxUabVaBdIKKH8tvPmKdkqng&s',
-    },
+    { title: 'Guided Filings', description: 'Get step-by-step assistance from ONAS Global to ensure your reports are accurate and compliant.', icon: <DescriptionIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: I1 },
+    { title: 'Automated Data Aggregation', description: 'ONAS Global tools swiftly collate the required data, decreasing manual errors and saving time.', icon: <StorageIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: I2 },
+    { title: 'Up-to-date Information', description: 'Stay informed about any changes in EU regulations or reporting standards with ONAS Global.', icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: I3 },
+    { title: 'Holistic Analysis', description: 'Dive deep into your trade data to acquire actionable insights and drive business strategies with ONAS Global.', icon: <PublicIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: I4 },
   ];
 
   const declarationData = [
@@ -78,18 +55,17 @@ const Intrastat = () => {
 
   return (
     <PageShell>
-      {/* ── HERO ── */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage:
-            'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9hX8L5FvtPoAGTnZ9vwZblpTVJHEybn8quXutmwP9AA&s=10)',
+          backgroundImage: `url(${I5})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
@@ -100,19 +76,15 @@ const Intrastat = () => {
             position: 'absolute',
             inset: 0,
             zIndex: -1,
-            background:
-              'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
           }}
         />
 
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}
-        >
+        <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>Intrastat</Eyebrow>
-
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              Intrastat
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -120,29 +92,26 @@ const Intrastat = () => {
                 font: "400 clamp(1.15rem, 2.2vw, 1.75rem)/1.15 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               Intrastat Reports
             </Typography>
-
             <Body
               sx={{
-                color: 'rgba(255,255,255,.82) !important',
+                color: '#ffffff !important',
                 maxWidth: 780,
                 marginLeft: 'auto',
                 marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
               }}
             >
-              Simplify EU trade reporting with comprehensive Intrastat solutions. Our platform
-              helps businesses navigate the complexities of intra-EU goods movement reporting,
-              ensuring accurate submissions and seamless compliance with statistical requirements
-              across all member states.
+              Simplify EU trade reporting with comprehensive Intrastat solutions. Our platform helps businesses navigate the complexities of intra-EU goods movement reporting, ensuring accurate submissions and seamless compliance with statistical requirements across all member states.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* ── Reporting Timelines ── */}
       <Section>
         <Box sx={{ ...infoCardSx, textAlign: 'center', maxWidth: 900, margin: '0 auto 1.5rem' }}>
           <Eyebrow>Timelines</Eyebrow>
@@ -150,21 +119,14 @@ const Intrastat = () => {
             Intrastat Reporting Timelines
           </SectionHeading>
           <Body sx={{ marginBottom: '1rem' }}>
-            The agreement to report depends on certain thresholds defined for each EU nation.
-            ONAS Global helps businesses understand these thresholds that can vary between
-            dispatch and arrivals, even within a single country, and are individually higher
-            than VAT registration thresholds.
+            The agreement to report depends on certain thresholds defined for each EU nation. ONAS Global helps businesses understand these thresholds that can vary between dispatch and arrivals, even within a single country, and are individually higher than VAT registration thresholds.
           </Body>
           <Body>
-            Across the European Union, Intrastat reporting especially follows a monthly measure.
-            These filings usually correspond with VAT return submissions and are directed to the
-            respective statistical office of the concerned country. ONAS Global ensures timely
-            and accurate submissions.
+            Across the European Union, Intrastat reporting especially follows a monthly measure. These filings usually correspond with VAT return submissions and are directed to the respective statistical office of the concerned country. ONAS Global ensures timely and accurate submissions.
           </Body>
         </Box>
       </Section>
 
-      {/* ── What is Intrastat Reporting? ── */}
       <Section>
         <Box
           sx={{
@@ -185,7 +147,7 @@ const Intrastat = () => {
           >
             <Box
               component="img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDaedQD3BsaZPPa4mENqqCt5xCpulsSe8C6-EFToHwuA&s=10"
+              src={I6}
               alt="Intrastat Reporting"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -197,23 +159,15 @@ const Intrastat = () => {
               What is Intrastat Reporting?
             </SectionHeading>
             <Body sx={{ marginBottom: '1rem' }}>
-              Intrastat Reporting is a vital statistical tool used within the European Union (EU)
-              to collect data on the movement of goods between EU member states. ONAS Global helps
-              businesses navigate this reporting mechanism that plays a crucial role in
-              understanding trade patterns, supporting economic policies, and ensuring the smooth
-              functioning of the internal market.
+              Intrastat Reporting is a vital statistical tool used within the European Union (EU) to collect data on the movement of goods between EU member states. ONAS Global helps businesses navigate this reporting mechanism that plays a crucial role in understanding trade patterns, supporting economic policies, and ensuring the smooth functioning of the internal market.
             </Body>
             <Body>
-              Across the European Union, Intrastat reporting especially follows a monthly measure.
-              These filings usually correspond with VAT return submissions and are directed to the
-              respective statistical office of the concerned country. ONAS Global ensures seamless
-              submission processes.
+              Across the European Union, Intrastat reporting especially follows a monthly measure. These filings usually correspond with VAT return submissions and are directed to the respective statistical office of the concerned country. ONAS Global ensures seamless submission processes.
             </Body>
           </Box>
         </Box>
       </Section>
 
-      {/* ── Intrastat Declaration Table ── */}
       <Section bg={soft}>
         <Box sx={{ ...infoCardSx, background: 'transparent', border: 'none', marginBottom: 0, padding: 0 }}>
           <Eyebrow>Declaration</Eyebrow>
@@ -221,20 +175,10 @@ const Intrastat = () => {
             Diving Deep: What Constitutes an Intrastat Declaration?
           </SectionHeading>
           <Body sx={{ marginBottom: '1.4rem' }}>
-            Intrastat filings demand an in-depth analysis of the data to determine whether the
-            information is accurate and complete. ONAS Global provides comprehensive solutions
-            for Intrastat declarations.
+            Intrastat filings demand an in-depth analysis of the data to determine whether the information is accurate and complete. ONAS Global provides comprehensive solutions for Intrastat declarations.
           </Body>
 
-          <Box
-            sx={{
-              border: `1px solid ${line}`,
-              borderRadius: '2px',
-              overflow: 'hidden',
-              background: '#fff',
-            }}
-          >
-            {/* Header row */}
+          <Box sx={{ border: `1px solid ${line}`, borderRadius: '2px', overflow: 'hidden', background: '#fff' }}>
             <Box
               sx={{
                 display: 'grid',
@@ -244,34 +188,14 @@ const Intrastat = () => {
                 padding: { xs: '.7rem 1rem', md: '.8rem 1.4rem' },
               }}
             >
-              <Typography
-                sx={{
-                  color: '#fff !important',
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: '.66rem',
-                  fontWeight: 700,
-                  letterSpacing: '.05em',
-                  textTransform: 'uppercase',
-                }}
-              >
+              <Typography sx={{ color: '#fff !important', fontFamily: "'Poppins', sans-serif", fontSize: '.66rem', fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase' }}>
                 Declaration
               </Typography>
-              <Typography
-                sx={{
-                  color: '#fff !important',
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: '.66rem',
-                  fontWeight: 700,
-                  letterSpacing: '.05em',
-                  textTransform: 'uppercase',
-                  display: { xs: 'none', sm: 'block' },
-                }}
-              >
+              <Typography sx={{ color: '#fff !important', fontFamily: "'Poppins', sans-serif", fontSize: '.66rem', fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase', display: { xs: 'none', sm: 'block' } }}>
                 Description
               </Typography>
             </Box>
 
-            {/* Body rows */}
             {declarationData.map((row, i) => (
               <Box
                 key={i}
@@ -284,24 +208,10 @@ const Intrastat = () => {
                   gap: { xs: '.3rem', sm: 0 },
                 }}
               >
-                <Typography
-                  sx={{
-                    color: `${ink} !important`,
-                    fontFamily: "Georgia, 'Times New Roman', serif",
-                    fontSize: '.82rem',
-                    fontWeight: 400,
-                  }}
-                >
+                <Typography sx={{ color: `${ink} !important`, fontFamily: "Georgia, 'Times New Roman', serif", fontSize: '.82rem', fontWeight: 400 }}>
                   {row.declaration}
                 </Typography>
-                <Typography
-                  sx={{
-                    color: `${muted} !important`,
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: '.66rem',
-                    lineHeight: 1.7,
-                  }}
-                >
+                <Typography sx={{ color: `${muted} !important`, fontFamily: "'Poppins', sans-serif", fontSize: '.66rem', lineHeight: 1.7 }}>
                   {row.description}
                 </Typography>
               </Box>
@@ -310,7 +220,6 @@ const Intrastat = () => {
         </Box>
       </Section>
 
-      {/* ── Intrastat with ONAS Global (4 cards) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>With ONAS Global</Eyebrow>
@@ -403,7 +312,6 @@ const Intrastat = () => {
         </Box>
       </Section>
 
-      {/* ── Info Cards ── */}
       <Section bg={soft}>
         <Box sx={{ ...infoCardSx, background: '#fff' }}>
           <Eyebrow>Purpose</Eyebrow>
@@ -434,10 +342,7 @@ const Intrastat = () => {
             Intrastat Declaration Required Information
           </SectionHeading>
           <Body sx={{ lineHeight: 1.8 }}>
-            When submitting an Intrastat declaration, businesses must provide detailed information
-            including the value and nature of the goods, the partner country, and the mode of
-            transport. ONAS Global ensures accurate and complete data is crucial for compliance
-            and for providing meaningful insights into trade flows.
+            When submitting an Intrastat declaration, businesses must provide detailed information including the value and nature of the goods, the partner country, and the mode of transport. ONAS Global ensures accurate and complete data is crucial for compliance and for providing meaningful insights into trade flows.
           </Body>
         </Box>
 
@@ -447,10 +352,7 @@ const Intrastat = () => {
             When to Submit Intrastat Reporting?
           </SectionHeading>
           <Body sx={{ lineHeight: 1.8 }}>
-            Timely submission of Intrastat Reporting is critical. In general, businesses are
-            required to submit their reports within a month following the reference period. ONAS
-            Global helps businesses meet their national deadlines to avoid late submission
-            penalties.
+            Timely submission of Intrastat Reporting is critical. In general, businesses are required to submit their reports within a month following the reference period. ONAS Global helps businesses meet their national deadlines to avoid late submission penalties.
           </Body>
         </Box>
 
@@ -460,11 +362,7 @@ const Intrastat = () => {
             Who is required to make Intrastat declarations?
           </SectionHeading>
           <Body sx={{ lineHeight: 1.8 }}>
-            Businesses engaged in the trade of goods across EU borders are typically required to
-            submit Intrastat declarations. ONAS Global helps businesses understand their
-            obligations when their trade exceeds a certain threshold, which varies from one member
-            state to another. It&apos;s essential for companies to stay informed about their
-            country-specific thresholds to ensure compliance.
+            Businesses engaged in the trade of goods across EU borders are typically required to submit Intrastat declarations. ONAS Global helps businesses understand their obligations when their trade exceeds a certain threshold, which varies from one member state to another. It&apos;s essential for companies to stay informed about their country-specific thresholds to ensure compliance.
           </Body>
         </Box>
 
@@ -474,10 +372,7 @@ const Intrastat = () => {
             Who is exempt from Intrastat reporting?
           </SectionHeading>
           <Body sx={{ lineHeight: 1.8 }}>
-            Small businesses that do not exceed the predefined thresholds for Intrastat
-            declarations are generally exempt. These thresholds are set by individual EU member
-            states and can change annually. ONAS Global helps companies regularly check their
-            national regulations to verify if they fall under the exemption criteria.
+            Small businesses that do not exceed the predefined thresholds for Intrastat declarations are generally exempt. These thresholds are set by individual EU member states and can change annually. ONAS Global helps companies regularly check their national regulations to verify if they fall under the exemption criteria.
           </Body>
         </Box>
 
@@ -487,10 +382,7 @@ const Intrastat = () => {
             When does the Intrastat declaration take place?
           </SectionHeading>
           <Body sx={{ lineHeight: 1.8 }}>
-            Intrastat declarations are typically submitted on a monthly basis. The specific
-            deadlines for submission can vary among EU member states, so it&apos;s important for
-            businesses to be aware of the deadlines set by their respective national statistical
-            authorities. ONAS Global helps businesses stay on top of these deadlines.
+            Intrastat declarations are typically submitted on a monthly basis. The specific deadlines for submission can vary among EU member states, so it&apos;s important for businesses to be aware of the deadlines set by their respective national statistical authorities. ONAS Global helps businesses stay on top of these deadlines.
           </Body>
         </Box>
 
@@ -500,19 +392,12 @@ const Intrastat = () => {
             Is Intrastat still required after Brexit?
           </SectionHeading>
           <Body sx={{ lineHeight: 1.8 }}>
-            Post-Brexit, the United Kingdom is no longer part of the EU Intrastat system for the
-            movement of goods. However, businesses in Northern Ireland continue to be subject to
-            Intrastat reporting for goods received from or sent to the EU. ONAS Global helps
-            companies affected by Brexit understand the new regulations and comply accordingly.
+            Post-Brexit, the United Kingdom is no longer part of the EU Intrastat system for the movement of goods. However, businesses in Northern Ireland continue to be subject to Intrastat reporting for goods received from or sent to the EU. ONAS Global helps companies affected by Brexit understand the new regulations and comply accordingly.
           </Body>
         </Box>
       </Section>
 
-      {/* ── CTA ── */}
       <SolutionsCTA />
-
-      {/* ── Services ── */}
-      <SolutionsServices />
     </PageShell>
   );
 };

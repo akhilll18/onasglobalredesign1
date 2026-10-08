@@ -26,48 +26,17 @@ const keyTakeaways = [
   { Icon: SupportAgent, title: 'Post-Training Support', text: 'Guidance, mentorship, and assistance on live projects after the training ends.' },
 ];
 
-const popularCourses = [
-  { title: 'Frontend Engineering', subtitle: 'Angular · Vue · React · TypeScript · Tailwind', image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=250&fit=crop' },
-  { title: 'Backend & APIs', subtitle: '.NET · Node.js · Python · FastAPI · Express', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop' },
-  { title: 'Mobile Development', subtitle: 'Flutter · React Native · Swift · Kotlin', image: 'https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=400&h=250&fit=crop' },
-  { title: 'Enterprise & Cloud', subtitle: 'Blockchain · DevOps · Cloud · Enterprise Architecture', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop' },
-  { title: 'Data & AI', subtitle: 'Machine Learning · LLMs · Analytics · MLOps', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop' },
-  { title: 'Cloud & DevOps', subtitle: 'AWS · Azure · GCP · Kubernetes · Terraform', image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=250&fit=crop' },
+const technologies = [
+  'Angular',
+  '.NET',
+  'Node.js',
+  'Flutter',
+  'React Native',
+  'Vue',
+  'React',
 ];
 
 const CorporateTraining = () => {
-  // ── Carousel state ──
-  const [isPaused, setIsPaused] = useState(false);
-  const trackRef = useRef(null);
-  const scrollPosRef = useRef(0);
-
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-
-    let rafId;
-    const speed = 0.6; // px per frame
-
-    const step = () => {
-      if (!isPaused && el) {
-        scrollPosRef.current += speed;
-
-        // Reset when we've scrolled past half the width (since cards are duplicated)
-        if (scrollPosRef.current >= el.scrollWidth / 2) {
-          scrollPosRef.current = 0;
-        }
-        el.scrollLeft = scrollPosRef.current;
-      }
-      rafId = requestAnimationFrame(step);
-    };
-
-    rafId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafId);
-  }, [isPaused]);
-
-  // Duplicate the array so the loop is seamless
-  const carouselItems = [...popularCourses, ...popularCourses];
-
   return (
     <PageShell>
       {/* ── HERO ── */}
@@ -80,7 +49,7 @@ const CorporateTraining = () => {
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage: 'url(https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80)',
+          backgroundImage: 'url(/corporate-training1.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
@@ -100,7 +69,7 @@ const CorporateTraining = () => {
         </Box>
       </Box>
 
-      {/* ── We Help Brands to Connect & Grow ── */}
+      {/* ── Overview ── */}
       <Section>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '2rem', md: 'clamp(2rem, 5vw, 4rem)' }, alignItems: 'center' }}>
           <Box>
@@ -116,7 +85,7 @@ const CorporateTraining = () => {
             </Body>
           </Box>
           <Box sx={{ border: `1px solid ${line}`, borderRadius: '2px', overflow: 'hidden', background: '#fff', height: { xs: 240, md: 340 } }}>
-            <Box component="img" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" alt="Corporate Training" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <Box component="img" src="/corporate-training.jpg" alt="Corporate Training" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </Box>
         </Box>
       </Section>
@@ -147,76 +116,60 @@ const CorporateTraining = () => {
         </Box>
       </Section>
 
-      {/* ── Popular Courses — auto-scrolling carousel ── */}
+      {/* ── Technologies ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Training Tracks</Eyebrow>
-          <SectionHeading sx={{ marginTop: '.7rem' }}>Popular Courses</SectionHeading>
+          <SectionHeading sx={{ marginTop: '.7rem' }}>Technologies</SectionHeading>
         </Box>
 
         <Box
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
           sx={{
-            position: 'relative',
-            overflow: 'hidden',
-            width: '100%',
-            // Fade edges for a polished look
-            '&::before, &::after': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              width: { xs: 30, md: 80 },
-              zIndex: 2,
-              pointerEvents: 'none',
-            },
-            '&::before': {
-              left: 0,
-              background: 'linear-gradient(to right, #ffffff 0%, rgba(251,252,247,0) 100%)',
-            },
-            '&::after': {
-              right: 0,
-              background: 'linear-gradient(to left, #ffffff 0%, rgba(251,252,247,0) 100%)',
-            },
+            display: 'grid',
+            gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(4, 1fr)' },
+            gap: { xs: '1rem', md: '1.2rem' },
+            maxWidth: 1000,
+            margin: '0 auto',
           }}
         >
-          <Box
-            ref={trackRef}
-            sx={{
-              display: 'flex',
-              gap: { xs: '1rem', md: '1.4rem' },
-              overflowX: 'hidden',
-              scrollBehavior: 'auto',
-              py: '.5rem',
-              // Prevent scrollbar jitter
-              '&::-webkit-scrollbar': { display: 'none' },
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-            }}
-          >
-            {carouselItems.map((c, i) => (
+          {technologies.map((tech, i) => (
+            <motion.div
+              key={tech}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+            >
               <Box
-                key={`${c.title}-${i}`}
                 sx={{
-                  flex: '0 0 auto',
-                  width: { xs: 260, sm: 280, md: 300 },
+                  ...cardSx,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '1.4rem 1rem',
+                  minHeight: 80,
+                  cursor: 'pointer',
+                  transition: 'all .25s ease',
+                  '&:hover': {
+                    borderColor: '#aac7b2',
+                    transform: 'translateY(-3px)',
+                    boxShadow: '0 6px 16px rgba(11,76,116,.08)',
+                  },
                 }}
               >
-                <Box sx={{ ...cardSx, padding: 0, overflow: 'hidden', height: '100%', cursor: 'pointer', transition: 'all .25s ease', '&:hover': { borderColor: '#aac7b2', transform: 'translateY(-3px)' } }}>
-                  <Box sx={{ width: '100%', height: 140, overflow: 'hidden', borderBottom: `1px solid ${line}` }}>
-                    <Box component="img" src={c.image} alt={c.title} sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                  </Box>
-                  <Box sx={{ padding: '1.3rem 1.2rem' }}>
-                    <Typography component="h3" sx={{ margin: '0 0 .4rem', font: "400 clamp(.9rem, 1.4vw, 1.05rem)/1.25 Georgia, 'Times New Roman', serif", color: ink }}>
-                      {c.title}
-                    </Typography>
-                    <Body sx={{ fontSize: '.64rem' }}>{c.subtitle}</Body>
-                  </Box>
-                </Box>
+                <Typography
+                  sx={{
+                    font: "400 clamp(.9rem, 1.5vw, 1.1rem)/1.2 Georgia, 'Times New Roman', serif",
+                    color: ink,
+                    textAlign: 'center',
+                    letterSpacing: '.02em',
+                  }}
+                >
+                  {tech}
+                </Typography>
               </Box>
-            ))}
-          </Box>
+            </motion.div>
+          ))}
         </Box>
       </Section>
 

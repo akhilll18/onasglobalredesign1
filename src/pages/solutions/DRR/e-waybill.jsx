@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Container, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import { motion } from 'framer-motion';
-import { ExpandMore, ArrowForward } from '@mui/icons-material';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExpandMore } from '@mui/icons-material';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -12,9 +12,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -26,6 +24,16 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
+import B1 from '../../../assets/images/solutions/e-waybill/e-bill1.jpg';
+import B2 from '../../../assets/images/solutions/e-waybill/e-bill2.jpg';
+import B3 from '../../../assets/images/solutions/e-waybill/e-bill3.jpg';
+import B4 from '../../../assets/images/solutions/e-waybill/e-bill4.jpg';
+import B5 from '../../../assets/images/solutions/e-waybill/e-bill5.jpg';
+import B6 from '../../../assets/images/solutions/e-waybill/e-bill6.jpg';
+import B7 from '../../../assets/images/solutions/e-waybill/e-bill7.jpg';
+import B8 from '../../../assets/images/solutions/e-waybill/e-bill8.jpg';
+import B9 from '../../../assets/images/solutions/e-waybill/e-bill9.jpg';
+
 const countries = [
   { name: 'India', description: "India's e-Waybill system is one of the first pioneers among countries as a comprehensive and widely used system for intra and inter-state movement of goods.", flag: '🇮🇳' },
   { name: 'Brazil', description: 'Brazil uses an electronic tracking system for goods in transit called "Conhecimento de Transporte Eletrônico" (CT-e).', flag: '🇧🇷' },
@@ -35,12 +43,12 @@ const countries = [
 ];
 
 const features = [
-  { title: 'Centralized Management', description: 'Manage, modify and monitor e-Waybills from a single integrated platform without switching between multiple systems.', icon: <DashboardIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1773126378915-793b5c48fb38?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=800' },
-  { title: 'Compliance Assurance', description: 'Stay aligned with changing e-Waybill requirements and regional tax regulations through automated compliance processes.', icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1774929107410-9cb5fb83fea6?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=800' },
-  { title: 'Automated Validations', description: 'Automated validation checks help ensure that e-Waybills are accurate, complete and ready for submission.', icon: <CheckCircleIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1778015862504-b877b548266e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=800' },
-  { title: 'Real-Time Tracking', description: 'Monitor e-Waybill status in real time and receive timely notifications when actions or updates are required.', icon: <NotificationsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://mastergst.com/static/images/ewaybill/ewaybillsoftware/eway-generate-hor.png' },
-  { title: 'Global Compliance', description: 'Support e-Waybill requirements across multiple jurisdictions with a solution designed for global tax compliance.', icon: <PublicIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=800' },
-  { title: 'Efficient Logistics', description: 'Connect logistics and tax processes to improve operational efficiency and maintain visibility throughout goods movement.', icon: <LocalShippingIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: 'https://images.unsplash.com/photo-1714627798569-b3e36d409c4b?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=800' },
+  { title: 'Centralized Management', description: 'Manage, modify and monitor e-Waybills from a single integrated platform without switching between multiple systems.', icon: <DashboardIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: B1 },
+  { title: 'Compliance Assurance', description: 'Stay aligned with changing e-Waybill requirements and regional tax regulations through automated compliance processes.', icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: B2 },
+  { title: 'Automated Validations', description: 'Automated validation checks help ensure that e-Waybills are accurate, complete and ready for submission.', icon: <CheckCircleIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: B3 },
+  { title: 'Real-Time Tracking', description: 'Monitor e-Waybill status in real time and receive timely notifications when actions or updates are required.', icon: <NotificationsIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: B4 },
+  { title: 'Global Compliance', description: 'Support e-Waybill requirements across multiple jurisdictions with a solution designed for global tax compliance.', icon: <PublicIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: B5 },
+  { title: 'Efficient Logistics', description: 'Connect logistics and tax processes to improve operational efficiency and maintain visibility throughout goods movement.', icon: <LocalShippingIcon sx={{ fontSize: 22, color: '#0B4C74' }} />, image: B6 },
 ];
 
 const faqs = [
@@ -53,14 +61,6 @@ const faqs = [
   { question: 'Is an e-Waybill required for every shipment?', answer: 'Not necessarily. Requirements depend on transaction type, value, goods classification, and local regulations. Our platform helps determine when an e-Waybill is applicable.' },
 ];
 
-const solutions = [
-  { title: 'DRR', description: 'Comprehensive Digital Reporting Requirements solutions designed to streamline tax compliance and reporting across multiple jurisdictions.', path: '/solutions/drr/drr', image: 'https://images.unsplash.com/photo-1735825764485-93a381fd5779?auto=format&fit=crop&q=80&w=800' },
-  { title: 'e-Reporting', description: 'Simplify electronic reporting and improve tax compliance with automated reporting workflows.', path: '/solutions/reporting', image: 'https://images.unsplash.com/photo-1774929105002-64492268fb47?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=800' },
-  { title: 'e-Invoicing', description: 'Simplify invoicing with support for diverse standards, periodic reporting and real-time compliance.', path: '/solutions/drr/e-invoicing', image: 'https://images.unsplash.com/photo-1694885156873-6a0823e14848?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=800' },
-  { title: 'SAF-T', description: 'Standard Audit File for Tax solutions for detailed transactional data reporting.', path: '/solutions/reporting/saf-t', image: 'https://images.unsplash.com/photo-1659974764744-fc7a8333e8d3?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=800' },
-  { title: 'Invoice Reporting', description: 'Support invoice reporting requirements across multiple countries and jurisdictions.', path: '/solutions/drr/invoice-reporting', image: 'https://images.unsplash.com/photo-1627309366653-2dedc084cdf1?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=800' },
-];
-
 const howItWorks = [
   { Icon: ReceiptIcon, text: 'Generate e-Waybills using business and transaction information.' },
   { Icon: CheckCircleIcon, text: 'Automatically validate required information before submission.' },
@@ -69,36 +69,64 @@ const howItWorks = [
 ];
 
 const EWaybill = () => {
+  const slides = [B7, B8, B9];
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
   return (
     <PageShell>
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage: 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToeDC99abAxRh4QuHSfzmQdu5_jip6wo2R7t5JDiinnA&s=10")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: '#0B4C74',
           isolation: 'isolate',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -1,
-            background: 'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-          }}
-        />
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 1.1, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${slides[currentSlide]})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+              }}
+            />
+          </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
+        </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>e-Waybill</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              e-Waybill
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -106,18 +134,26 @@ const EWaybill = () => {
                 font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               e-Waybill
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
               Streamline logistics and tax compliance with digital tracking. Our integrated e-Waybill solution helps businesses generate, validate, monitor, and manage electronic waybills seamlessly across jurisdictions.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* What is an e-Waybill? */}
       <Section>
         <Box
           sx={{
@@ -154,7 +190,7 @@ const EWaybill = () => {
           >
             <Box
               component="img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR07ctuBk11okHFJYvWslqaomd-NZHQSOvaOHUadbThcw&s=10"
+              src={B1}
               alt="Logistics and transportation"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -162,7 +198,6 @@ const EWaybill = () => {
         </Box>
       </Section>
 
-      {/* Countries */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Global Coverage</Eyebrow>
@@ -211,7 +246,6 @@ const EWaybill = () => {
         </Box>
       </Section>
 
-      {/* How Does e-Waybill Management Work? */}
       <Section>
         <Box
           sx={{
@@ -249,7 +283,7 @@ const EWaybill = () => {
           >
             <Box
               component="img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJOD3n9uWewuunp6aVF5fJjVLUhrfaOvnhOaVbqyDSEw&s=10"
+              src={B2}
               alt="Digital logistics management"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -257,7 +291,6 @@ const EWaybill = () => {
         </Box>
       </Section>
 
-      {/* Managing e-Waybill */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Features</Eyebrow>
@@ -350,10 +383,9 @@ const EWaybill = () => {
         </Box>
       </Section>
 
-      {/* Summary */}
       <Section>
         <Box sx={{ background: ink, borderRadius: '2px', padding: { xs: '1.8rem 1.4rem', md: '2.4rem 2rem' } }}>
-          <Typography sx={{ color: lime, fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
+          <Typography sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)', fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
             Summary
           </Typography>
           <Typography
@@ -363,17 +395,17 @@ const EWaybill = () => {
               font: "400 clamp(1.3rem, 2.4vw, 1.9rem)/1.1 Georgia, 'Times New Roman', serif",
               color: '#fff',
               maxWidth: 720,
+              textShadow: '0 2px 12px rgba(0,0,0,.95)',
             }}
           >
             Simplify e-Waybill Compliance
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', fontSize: '.72rem', lineHeight: 1.8, maxWidth: 900, margin: 0 }}>
+          <Body sx={{ color: '#ffffff !important', fontSize: '.72rem', lineHeight: 1.8, maxWidth: 900, margin: 0, textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>
             Understanding and adapting to diverse e-Waybill practices is essential for businesses involved in domestic and international trade. Our platform provides a centralized compliance solution that helps organizations manage e-Waybills efficiently while improving visibility, accuracy, and supply-chain operations.
           </Body>
         </Box>
       </Section>
 
-      {/* FAQ */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>FAQ</Eyebrow>
@@ -425,7 +457,6 @@ const EWaybill = () => {
       </Section>
 
       <SolutionsCTA />
-      <SolutionsServices services={solutions} />
     </PageShell>
   );
 };

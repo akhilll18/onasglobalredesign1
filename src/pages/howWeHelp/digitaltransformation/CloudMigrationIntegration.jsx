@@ -6,23 +6,12 @@ import { Cloud, Server, Link, Settings, Zap, GitBranch, Database } from 'lucide-
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-// Shared design
 import {
-  PageShell,
-  Section,
-  Eyebrow,
-  SectionHeading,
-  SubHeading,
-  Body,
-  LimeButton,
-  cardSx,
-  containerSx,
-  heroHeadingSx,
+  PageShell, Section, Eyebrow, SectionHeading, SubHeading,
+  Body, LimeButton, cardSx, containerSx, heroHeadingSx,
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Images
-import CloudHeroImage from '../../../assets/images/howWeHelp/digitaltrans/cloud.png';
 import Image1 from '../../../assets/images/howWeHelp/digitaltrans/cloud-integ/img1.jpg';
 import Image2 from '../../../assets/images/howWeHelp/digitaltrans/cloud-integ/img2.jpg';
 import Image3 from '../../../assets/images/howWeHelp/digitaltrans/cloud-integ/img3.jpg';
@@ -33,7 +22,7 @@ const CloudMigrationIntegration = () => {
   const location = useLocation();
   const baseUrl = 'https://onasglobal.com';
 
-  const slides = [Image1, Image2, Image3, Image4, Image5];
+  const slides = [Image1, Image4, Image5];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -116,7 +105,6 @@ Security and compliance automation`,
         <meta name="author" content="ONAS" />
       </Helmet>
 
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
@@ -130,22 +118,7 @@ Security and compliance automation`,
           justifyContent: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -162,14 +135,42 @@ Security and compliance automation`,
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime }}>Cloud Migration & Integration</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
-            Cloud Migration & Integration Services That De-Risk and Deliver ROI
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+            Cloud Migration &amp; Integration
+          </Eyebrow>
+          <Typography
+            component="h1"
+            sx={{
+              ...heroHeadingSx,
+              color: '#ffffff',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
+            }}
+          >
+            Cloud Migration &amp; Integration Services That De-Risk and Deliver ROI
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
+          <Body
+            sx={{
+              color: '#ffffff !important',
+              maxWidth: 780,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: '1.8rem',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
+            }}
+          >
             Modernize with confidence through comprehensive cloud migration and integration services that ensure zero disruption and deliver measurable outcomes. From replatforming legacy systems to enabling hybrid cloud agility, our solutions support secure, scalable integration across AWS, Azure, and GCP.
           </Body>
           <LimeButton href="/resources/contact-us">
@@ -178,7 +179,6 @@ Security and compliance automation`,
         </Container>
       </Box>
 
-      {/* Why Cloud Migration Matters */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Our Impact</Eyebrow>
@@ -252,7 +252,6 @@ Security and compliance automation`,
         </Box>
       </Section>
 
-      {/* Offerings — dark background */}
       <Box
         sx={{
           position: 'relative',
@@ -265,27 +264,26 @@ Security and compliance automation`,
           sx={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: `url(${CloudHeroImage})`,
+            backgroundImage: `url(${Image3})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
-            filter: 'brightness(.35)',
+            filter: 'brightness(.4)',
           }}
         />
         <Box
           sx={{
             position: 'absolute',
             inset: 0,
-            background:
-              'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.55) 100%)',
           }}
         />
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 1 }}>
           <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
-            <Typography sx={{ color: lime, fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: '.5rem' }}>
+            <Typography sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)', fontSize: '.55rem', letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: '.5rem' }}>
               What We Offer
             </Typography>
-            <Typography component="h2" sx={{ margin: '.4rem auto 0', font: "400 clamp(1.2rem, 2.2vw, 1.7rem)/1.15 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 720 }}>
+            <Typography component="h2" sx={{ margin: '.4rem auto 0', font: "400 clamp(1.2rem, 2.2vw, 1.7rem)/1.15 Georgia, 'Times New Roman', serif", color: '#fff', maxWidth: 720, textShadow: '0 2px 12px rgba(0,0,0,.95)' }}>
               Our Cloud Services
             </Typography>
           </Box>
@@ -332,7 +330,6 @@ Security and compliance automation`,
         </Container>
       </Box>
 
-      {/* Additional SEO block */}
       <Section>
         <Box
           sx={{

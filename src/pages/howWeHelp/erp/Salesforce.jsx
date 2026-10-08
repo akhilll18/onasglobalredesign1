@@ -15,7 +15,6 @@ import {
   Layers,
 } from 'lucide-react';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -30,21 +29,19 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
-// Images
 import Image1 from '../../../assets/images/howWeHelp/ERP/SalesForce/img1.jpg';
-import Image2 from '../../../assets/images/howWeHelp/ERP/SalesForce/img2.jpg';
-import Image3 from '../../../assets/images/howWeHelp/ERP/SalesForce/img3.jpg';
+
+import Image3 from '../../../assets/images/howWeHelp/ERP/SalesForce/img2.jpg';
 import Image4 from '../../../assets/images/howWeHelp/ERP/SalesForce/img4.jpg';
 import Image5 from '../../../assets/images/howWeHelp/ERP/SalesForce/img5.jpg';
 import Image6 from '../../../assets/images/howWeHelp/ERP/SalesForce/img6.png';
 import Image7 from '../../../assets/images/howWeHelp/ERP/SalesForce/img7.jpg';
 import Image8 from '../../../assets/images/howWeHelp/ERP/SalesForce/img8.jpg';
 
-// 👇 same navy as the top navbar menu items
 const NAVY = '#0B4C74';
 
 const Salesforce = () => {
-  const slides = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8];
+  const slides = [Image1, Image3, Image4];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -72,7 +69,6 @@ const Salesforce = () => {
 
   return (
     <PageShell>
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
@@ -86,22 +82,7 @@ const Salesforce = () => {
           justifyContent: 'center',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: -2,
-            overflow: 'hidden',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
-              zIndex: 1,
-            },
-          }}
-        >
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -118,14 +99,42 @@ const Salesforce = () => {
               }}
             />
           </AnimatePresence>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
+            }}
+          />
         </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime }}>Salesforce</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto' }}>
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+            Salesforce
+          </Eyebrow>
+          <Typography
+            component="h1"
+            sx={{
+              ...heroHeadingSx,
+              color: '#ffffff',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
+            }}
+          >
             Salesforce Consulting Services That Turn CRM Into ROI
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem' }}>
+          <Body
+            sx={{
+              color: '#ffffff !important',
+              maxWidth: 780,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: '1.8rem',
+              textShadow: '0 1px 8px rgba(0,0,0,.95)',
+            }}
+          >
             Unlock CRM power through tailored Salesforce consulting services. From strategic deployment to ongoing enhancements, we help businesses streamline sales, service, and marketing operations with measurable, scalable impact.
           </Body>
           <LimeButton href="/resources/contact-us">
@@ -134,7 +143,6 @@ const Salesforce = () => {
         </Container>
       </Box>
 
-      {/* Core Services — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Core Services</Eyebrow>
@@ -172,7 +180,6 @@ const Salesforce = () => {
         </Box>
       </Section>
 
-      {/* Powering CRM Success — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box
           sx={{
@@ -193,7 +200,7 @@ const Salesforce = () => {
           >
             <Box
               component="img"
-              src={Image2}
+              src={Image5}
               alt="Salesforce CRM consulting"
               sx={{ width: '100%', height: '100%', minHeight: 'inherit', objectFit: 'cover', display: 'block' }}
             />
@@ -217,7 +224,6 @@ const Salesforce = () => {
         </Box>
       </Section>
 
-      {/* End-to-End — white bg */}
       <Section sx={{ background: '#ffffff' }}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>End-to-End</Eyebrow>

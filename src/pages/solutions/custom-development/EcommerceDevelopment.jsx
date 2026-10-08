@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Container, Typography, Button } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { ArrowForward, Check } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -14,13 +14,16 @@ import {
   cardSx, containerSx, heroHeadingSx, ink, muted, line, soft, cream, lime,
 } from '../../../theme/theme';
 
-const slides = [
-  'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80',
-  'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1600&q=80',
-  'https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1600&q=80',
-  'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=1600&q=80',
-  'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=1600&q=80',
-];
+import E1 from '../../../assets/images/solutions/ecommerce-dev/e-commercedev1.jpg';
+import E2 from '../../../assets/images/solutions/ecommerce-dev/e-commercedev2.jpg';
+import E3 from '../../../assets/images/solutions/ecommerce-dev/e-commercedev3.jpg';
+import E4 from '../../../assets/images/solutions/ecommerce-dev/e-commercedev4.jpg';
+import E5 from '../../../assets/images/solutions/ecommerce-dev/e-commercedev5.jpg';
+import E6 from '../../../assets/images/solutions/ecommerce-dev/e-commercedev6.jpg';
+import E7 from '../../../assets/images/solutions/ecommerce-dev/e-commercedev7.jpg';
+import E8 from '../../../assets/images/solutions/ecommerce-dev/e-commercedev8.jpg';
+
+const slides = [E1, E2, E3];
 
 const sectionSurface = '#f3f7fa';
 const customCardSx = {
@@ -80,12 +83,12 @@ const EcommerceDevelopment = () => {
   ];
 
   const offerings = [
-    { num: '01', icon: <ShoppingCart size={20} color="#0B4C74" />, title: 'Shopify & WooCommerce', text: 'Custom themes and app development, migration from legacy platforms, and checkout flows optimized for conversion.', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=85', bullets: ['Custom Shopify / WooCommerce themes', 'App development and integrations', 'Migration with zero data loss'] },
-    { num: '02', icon: <Zap size={20} color="#0B4C74" />, title: 'Headless Commerce', text: 'Next.js + Shopify / BigCommerce / CommerceTools storefronts — blazing fast, omni-channel ready, and SEO-first.', image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=85', bullets: ['Next.js + Shopify / CommerceTools', 'Sub-1s page loads', 'Omni-channel ready (web, mobile, POS)'] },
-    { num: '03', icon: <CreditCard size={20} color="#0B4C74" />, title: 'Payments & Gateways', text: 'Stripe, Razorpay, PayPal, Adyen, and regional gateways with tokenization, multi-currency, and tax support.', image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=85', bullets: ['Stripe, Razorpay, PayPal, Adyen', 'Multi-currency and tax handling', 'PCI-DSS compliant tokenization'] },
-    { num: '04', icon: <Database size={20} color="#0B4C74" />, title: 'ERP & Inventory Integration', text: 'Real-time sync of orders, stock, and pricing with your ERP, CRM, and warehouse systems.', image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=85', bullets: ['SAP, NetSuite, Dynamics, Oracle sync', 'Real-time inventory updates', 'Automated order fulfilment'] },
-    { num: '05', icon: <Smartphone size={20} color="#0B4C74" />, title: 'Mobile-First & PWA', text: 'Progressive web apps and native mobile shopping experiences built for thumb-first customers.', image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=85', bullets: ['React Native / PWA storefronts', 'Offline browsing support', 'Push notifications for re-engagement'] },
-    { num: '06', icon: <TrendingUp size={20} color="#0B4C74" />, title: 'CRO & Analytics', text: 'Continuous conversion optimization with A/B testing, funnel analytics, and behavioural insights.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85', bullets: ['A/B testing across funnels', 'Heatmaps and session replay', 'Revenue attribution analytics'] },
+    { num: '01', icon: <ShoppingCart size={20} color="#0B4C74" />, title: 'Shopify & WooCommerce', text: 'Custom themes and app development, migration from legacy platforms, and checkout flows optimized for conversion.', image: E4, bullets: ['Custom Shopify / WooCommerce themes', 'App development and integrations', 'Migration with zero data loss'] },
+    { num: '02', icon: <Zap size={20} color="#0B4C74" />, title: 'Headless Commerce', text: 'Next.js + Shopify / BigCommerce / CommerceTools storefronts — blazing fast, omni-channel ready, and SEO-first.', image: E5, bullets: ['Next.js + Shopify / CommerceTools', 'Sub-1s page loads', 'Omni-channel ready (web, mobile, POS)'] },
+    { num: '03', icon: <CreditCard size={20} color="#0B4C74" />, title: 'Payments & Gateways', text: 'Stripe, Razorpay, PayPal, Adyen, and regional gateways with tokenization, multi-currency, and tax support.', image: E6, bullets: ['Stripe, Razorpay, PayPal, Adyen', 'Multi-currency and tax handling', 'PCI-DSS compliant tokenization'] },
+    { num: '04', icon: <Database size={20} color="#0B4C74" />, title: 'ERP & Inventory Integration', text: 'Real-time sync of orders, stock, and pricing with your ERP, CRM, and warehouse systems.', image: E7, bullets: ['SAP, NetSuite, Dynamics, Oracle sync', 'Real-time inventory updates', 'Automated order fulfilment'] },
+    { num: '05', icon: <Smartphone size={20} color="#0B4C74" />, title: 'Mobile-First & PWA', text: 'Progressive web apps and native mobile shopping experiences built for thumb-first customers.', image: E8, bullets: ['React Native / PWA storefronts', 'Offline browsing support', 'Push notifications for re-engagement'] },
+    { num: '06', icon: <TrendingUp size={20} color="#0B4C74" />, title: 'CRO & Analytics', text: 'Continuous conversion optimization with A/B testing, funnel analytics, and behavioural insights.', image: E1, bullets: ['A/B testing across funnels', 'Heatmaps and session replay', 'Revenue attribution analytics'] },
   ];
 
   const layers = [
@@ -147,27 +150,26 @@ const EcommerceDevelopment = () => {
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
       </Helmet>
 
-      {/* ── HERO (centered) ── */}
-      <Box sx={{ position: 'relative', minHeight: { xs: 520, md: 580 }, padding: { xs: '4rem 1rem 3rem', md: '6rem 2.5rem 4rem' }, overflow: 'hidden', background: ink, isolation: 'isolate', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden', '&::after': { content: '""', position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(11,76,116,.45) 0%, rgba(11,76,116,.28) 55%, rgba(11,76,116,.40) 100%)', zIndex: 1 } }}>
+      <Box sx={{ position: 'relative', marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' }, minHeight: { xs: 520, md: 580 }, padding: { xs: '4rem 1rem 3rem', md: '6rem 2.5rem 4rem' }, overflow: 'hidden', background: ink, isolation: 'isolate', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Box sx={{ position: 'absolute', inset: 0, zIndex: -2, overflow: 'hidden' }}>
           <AnimatePresence mode="wait">
             <motion.div key={currentSlide} initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 1.1, ease: 'easeInOut' }} style={{ position: 'absolute', inset: 0, backgroundImage: `url(${slides[currentSlide]})`, backgroundPosition: 'center', backgroundSize: 'cover' }} />
           </AnimatePresence>
+          <Box sx={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)' }} />
         </Box>
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <Eyebrow sx={{ color: lime, textShadow: '0 1px 6px rgba(0,0,0,.6)' }}>Ecommerce Development</Eyebrow>
-          <Typography component="h1" sx={{ ...heroHeadingSx, marginLeft: 'auto', marginRight: 'auto', textShadow: '0 2px 10px rgba(0,0,0,.65)' }}>
+          <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>Ecommerce Development</Eyebrow>
+          <Typography component="h1" sx={{ ...heroHeadingSx, color: '#ffffff', marginLeft: 'auto', marginRight: 'auto', textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)' }}>
             Ecommerce Stores Built for Conversion &amp; Scale
           </Typography>
-          <Body sx={{ color: 'rgba(255,255,255,.95) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem', textShadow: '0 1px 6px rgba(0,0,0,.65)' }}>
+          <Body sx={{ color: '#ffffff !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.8rem', textShadow: '0 1px 8px rgba(0,0,0,.95)' }}>
             High-performance ecommerce stores built on Shopify, headless stacks, or custom frameworks — engineered for speed, SEO, and revenue.
           </Body>
           <LimeButton href="/resources/contact-us">Contact Us <ArrowForward sx={{ fontSize: 14 }} /></LimeButton>
         </Container>
       </Box>
 
-      {/* ── STATS ── */}
       <Box sx={{ background: soft, borderBottom: `1px solid ${line}` }}>
         <Container maxWidth={false} disableGutters sx={containerSx}>
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(6, 1fr)' }, padding: { xs: '1.5rem 0', md: '2rem 0' } }}>
@@ -181,16 +183,11 @@ const EcommerceDevelopment = () => {
         </Container>
       </Box>
 
-      {/* ── THE PROBLEM (section 2) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>The Problem</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 800, margin: '.6rem auto 1rem' }}>
-            Why Most Ecommerce Stores Leave Revenue on the Table
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            At ONAS, we see the same conversion killers before every build.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 800, margin: '.6rem auto 1rem' }}>Why Most Ecommerce Stores Leave Revenue on the Table</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>At ONAS, we see the same conversion killers before every build.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -206,24 +203,17 @@ const EcommerceDevelopment = () => {
         </Box>
 
         <Box sx={{ textAlign: 'center', marginTop: '2rem' }}>
-          <Body sx={{ fontSize: '.62rem', fontStyle: 'italic', marginBottom: '1rem' }}>
-            If three or more of these ring true, your storefront is likely losing 15–30% of potential revenue.
-          </Body>
+          <Body sx={{ fontSize: '.62rem', fontStyle: 'italic', marginBottom: '1rem' }}>If three or more of these ring true, your storefront is likely losing 15–30% of potential revenue.</Body>
           <LimeButton href="/resources/contact-us">Book A Free Store Audit <ArrowForward sx={{ fontSize: 14 }} /></LimeButton>
         </Box>
       </Section>
 
-      {/* ── OFFERINGS (section 3) ── */}
       <Box sx={{ background: sectionSurface }}>
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, paddingTop: { xs: '2.5rem', md: '3.5rem' }, paddingBottom: { xs: '2.5rem', md: '3.5rem' } }}>
           <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
             <Eyebrow>The Work</Eyebrow>
-            <SectionHeading sx={{ maxWidth: 800, margin: '.6rem auto 1rem' }}>
-              End-to-End Ecommerce Development Services
-            </SectionHeading>
-            <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-              From storefronts to payments, ERP sync to CRO — everything that makes an online store actually sell.
-            </Body>
+            <SectionHeading sx={{ maxWidth: 800, margin: '.6rem auto 1rem' }}>End-to-End Ecommerce Development Services</SectionHeading>
+            <Body sx={{ maxWidth: 720, margin: '0 auto' }}>From storefronts to payments, ERP sync to CRO — everything that makes an online store actually sell.</Body>
           </Box>
 
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -261,16 +251,11 @@ const EcommerceDevelopment = () => {
         </Container>
       </Box>
 
-      {/* ── LAYERS DIAGRAM (section 4) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>Architecture</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>
-            How a Modern Ecommerce Stack Layers Together
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            Customers at the top. Your ERP, warehouse, and payment systems at the bottom. The storefront and commerce logic sit in the middle and connect everything.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>How a Modern Ecommerce Stack Layers Together</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>Customers at the top. Your ERP, warehouse, and payment systems at the bottom. The storefront and commerce logic sit in the middle and connect everything.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.05fr .95fr' }, gap: { xs: '1.5rem', md: '2rem' }, alignItems: 'center' }}>
@@ -294,21 +279,16 @@ const EcommerceDevelopment = () => {
             ))}
           </Box>
           <Box sx={{ minHeight: { xs: 260, md: 440 }, height: '100%', overflow: 'hidden', border: `1px solid ${line}`, borderRadius: '6px' }}>
-            <Box component="img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000&q=85" alt="Ecommerce storefront" sx={{ width: '100%', height: '100%', minHeight: { xs: 260, md: 440 }, objectFit: 'cover', display: 'block' }} />
+            <Box component="img" src={E2} alt="Ecommerce storefront" sx={{ width: '100%', height: '100%', minHeight: { xs: 260, md: 440 }, objectFit: 'cover', display: 'block' }} />
           </Box>
         </Box>
       </Section>
 
-      {/* ── HOW WE WORK (section 5) ── */}
       <Section id="how-we-work" bg={sectionSurface}>
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>Our Process</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>
-            How We Build Ecommerce Stores
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            Four stages, each designed to compound revenue from day one. If the audit says your current storefront should be optimized rather than rebuilt, you hear that in week one.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>How We Build Ecommerce Stores</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>Four stages, each designed to compound revenue from day one. If the audit says your current storefront should be optimized rather than rebuilt, you hear that in week one.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(4, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -324,9 +304,7 @@ const EcommerceDevelopment = () => {
         </Box>
 
         <Box sx={{ marginTop: '2rem', background: cream, border: `1px solid ${line}`, borderRadius: '2px', padding: '1.4rem' }}>
-          <Typography sx={{ fontWeight: 400, color: ink, fontSize: '.75rem', marginBottom: '1rem', fontFamily: "Georgia, serif" }}>
-            From First Call to Live Store
-          </Typography>
+          <Typography sx={{ fontWeight: 400, color: ink, fontSize: '.75rem', marginBottom: '1rem', fontFamily: "Georgia, serif" }}>From First Call to Live Store</Typography>
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(5, minmax(0, 1fr))' }, gap: 1.5 }}>
             {timeline.map((t, i) => (
               <Box key={i}>
@@ -341,17 +319,12 @@ const EcommerceDevelopment = () => {
         </Box>
       </Section>
 
-      {/* ── WHY CHOOSE ONAS (section 6) ── */}
       <Box sx={{ background: soft }}>
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, paddingTop: { xs: '2.5rem', md: '3.5rem' }, paddingBottom: { xs: '2.5rem', md: '3.5rem' } }}>
           <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
             <Eyebrow>Why ONAS</Eyebrow>
-            <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>
-              Why Choose ONAS for Ecommerce?
-            </SectionHeading>
-            <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-              Here is what differentiates ONAS in delivering ecommerce development for global brands.
-            </Body>
+            <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>Why Choose ONAS for Ecommerce?</SectionHeading>
+            <Body sx={{ maxWidth: 720, margin: '0 auto' }}>Here is what differentiates ONAS in delivering ecommerce development for global brands.</Body>
           </Box>
 
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -371,16 +344,11 @@ const EcommerceDevelopment = () => {
         </Container>
       </Box>
 
-      {/* ── TECH STACK (section 7) ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Eyebrow>Technology Stack</Eyebrow>
-          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>
-            Our Ecommerce Technology Expertise
-          </SectionHeading>
-          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>
-            The full stack we work in — chosen by what fits your brand, not by what is easiest for us.
-          </Body>
+          <SectionHeading sx={{ maxWidth: 720, margin: '.6rem auto 1rem' }}>Our Ecommerce Technology Expertise</SectionHeading>
+          <Body sx={{ maxWidth: 720, margin: '0 auto' }}>The full stack we work in — chosen by what fits your brand, not by what is easiest for us.</Body>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2, alignItems: 'stretch' }}>
@@ -399,22 +367,16 @@ const EcommerceDevelopment = () => {
         </Box>
       </Section>
 
-      {/* ── FINAL CTA ── */}
       <Box sx={{ background: sectionSurface, borderTop: `1px solid ${line}` }}>
         <Container maxWidth={false} disableGutters sx={containerSx}>
           <Box sx={{ maxWidth: 800, mx: 'auto', padding: { xs: '3rem 1rem', md: '4rem 0' }, textAlign: 'center' }}>
             <Eyebrow>Get Started</Eyebrow>
-            <SectionHeading sx={{ margin: '.6rem auto 1rem' }}>
-              Ready to Turn Your Storefront Into a Revenue Engine?
-            </SectionHeading>
-            <Body sx={{ marginBottom: '1.8rem', maxWidth: 640, marginLeft: 'auto', marginRight: 'auto' }}>
-              At ONAS, we combine commerce strategy, engineering depth, and CRO obsession to build ecommerce stores that actually sell. Let's talk about your growth targets.
-            </Body>
+            <SectionHeading sx={{ margin: '.6rem auto 1rem' }}>Ready to Turn Your Storefront Into a Revenue Engine?</SectionHeading>
+            <Body sx={{ marginBottom: '1.8rem', maxWidth: 640, marginLeft: 'auto', marginRight: 'auto' }}>At ONAS, we combine commerce strategy, engineering depth, and CRO obsession to build ecommerce stores that actually sell. Let's talk about your growth targets.</Body>
             <LimeButton href="/resources/contact-us">Book An Appointment <ArrowForward sx={{ fontSize: 14 }} /></LimeButton>
           </Box>
         </Container>
       </Box>
-
     </PageShell>
   );
 };

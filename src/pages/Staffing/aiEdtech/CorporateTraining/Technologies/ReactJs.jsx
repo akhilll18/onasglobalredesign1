@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
-import { ArrowForward, Check } from '@mui/icons-material';
+import { ArrowForward } from '@mui/icons-material';
 
 import {
   PageShell,
@@ -11,101 +11,203 @@ import {
   Body,
   cardSx,
   ink, line, soft, lime,
-} from '../../../../../theme/theme';
+} from '@/theme/theme';
+
+
+import ReactHero from '@/assets/images/staffing/AI & EdTech Services/technologies/react/react1.jpg';
+import Feature1 from '@/assets/images/staffing/AI & EdTech Services/technologies/react/react2.jpg';
+import Feature2 from '@/assets/images/staffing/AI & EdTech Services/technologies/react/react3.jpg';
+import Feature3 from '@/assets/images/staffing/AI & EdTech Services/technologies/react/react4.jpg';
+import Feature4 from '@/assets/images/staffing/AI & EdTech Services/technologies/react/react5.jpg';
+import Feature5 from '@/assets/images/staffing/AI & EdTech Services/technologies/react/react6.jpg';
 
 const features = [
   {
     title: 'Versatility',
     text: 'This library can be used on the server and mobile platforms using React Native.',
-    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=250&fit=crop',
+    image: Feature1,
   },
   {
     title: 'Declarativeness',
     text: 'With the help of React you can describe how the components of the interface look in different states. A declarative approach shortens the code and makes it understandable.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop',
+    image: Feature2,
   },
   {
     title: 'Component-Based',
     text: 'Each component returns a part of the user interface with its own state. By combining the components, you can create a complex web application interface.',
-    image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=400&h=250&fit=crop',
+    image: Feature3,
   },
   {
     title: 'Using JSX',
     text: 'This is a JavaScript syntax extension that is convenient to use to describe an interface. JSX allows you to write JavaScript code using ready-made components that almost completely repeat HTML. This simplifies software development and saves costs.',
-    image: 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?w=400&h=250&fit=crop',
+    image: Feature4,
   },
   {
     title: 'Using the Virtual DOM',
     text: 'This is an object that stores information about the state of an interface. When the state changes, React calculates the difference between the old and the new state. The library then renders the new state. Using the virtual DOM allows the library to efficiently update the real DOM.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop',
+    image: Feature5,
   },
 ];
 
 const advantages = [
-  { n: '01', title: 'Extreme Application Flexibility', text: 'Extreme application flexibility.' },
-  { n: '02', title: 'Ensures That Parental Data is Immutable', text: 'Ensures that parental data is immutable.' },
-  { n: '03', title: 'Using the Virtual DOM', text: 'Using the virtual DOM.' },
-  { n: '04', title: 'Provides Easy Migration Between Versions', text: 'Provides easy migration between versions.' },
-  { n: '05', title: 'The Application Can Withstand Heavy Loads', text: 'The application can withstand heavy loads.' },
-  { n: '06', title: 'Hybrid Mobile Apps in React Look Almost the Same as Native Ones', text: 'Hybrid mobile apps in React look almost the same as native ones.' },
-  { n: '07', title: 'React and SEO Go Well Together', text: 'It is easier for search bots to browse sites and user interaction with your resource is improved.' },
+  {
+    n: '01',
+    title: 'Extreme Application Flexibility',
+    text: 'React adapts to web, mobile, and server-side rendering targets without rewriting the core UI logic.',
+  },
+  {
+    n: '02',
+    title: 'Immutable Parental Data',
+    text: 'One-way data flow keeps parent state predictable, so components behave consistently as the app grows.',
+  },
+  {
+    n: '03',
+    title: 'Virtual DOM Efficiency',
+    text: 'React diffs the virtual DOM and updates only what changed, keeping interfaces fast under frequent state updates.',
+  },
+  {
+    n: '04',
+    title: 'Easy Migration Between Versions',
+    text: 'Incremental upgrade paths and codemods let teams adopt new React versions without a full rewrite.',
+  },
+  {
+    n: '05',
+    title: 'Withstands Heavy Loads',
+    text: 'Component-level rendering, memoization, and concurrent features help applications stay responsive at scale.',
+  },
+  {
+    n: '06',
+    title: 'Near-Native Mobile with React Native',
+    text: 'React Native renders real native components, so hybrid apps feel close to fully native experiences.',
+  },
+  {
+    n: '07',
+    title: 'React and SEO Work Well Together',
+    text: 'Server-side rendering and static generation make React sites easier for search bots to index.',
+  },
 ];
 
 const ReactJs = () => {
   return (
     <PageShell>
-      {/* ── HERO ── */}
+      {/* ── HERO (single centered column, no logo) ── */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '10px' },
           minHeight: { xs: 480, md: 560 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
           overflow: 'hidden',
-          background: ink,
+          backgroundImage: `url(${ReactHero})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: ink,
           isolation: 'isolate',
         }}
       >
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: -1, background: 'linear-gradient(120deg, rgba(11,76,116,.98) 0%, rgba(11,76,116,.85) 55%, rgba(11,76,116,.72) 100%)' }} />
+        {/* Overlay */}
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: -1,
+            background:
+              'linear-gradient(120deg, rgba(11,76,116,.92) 0%, rgba(11,76,116,.75) 55%, rgba(0,0,0,.55) 100%)',
+          }}
+        />
 
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.1fr .9fr' }, gap: { xs: '2rem', md: '3rem' }, alignItems: 'center', maxWidth: 1240, margin: '0 auto', width: '100%' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>Corporate Training</Eyebrow>
+        <Box
+          sx={{
+            maxWidth: 820,
+            margin: '0 auto',
+            textAlign: 'center',
+            width: '100%',
+            position: 'relative',
+            zIndex: 2,
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Eyebrow sx={{ color: lime, textShadow: '0 2px 8px rgba(0,0,0,.6)' }}>
+              Corporate Training
+            </Eyebrow>
+
             <Typography
               component="h1"
               sx={{
-                margin: '.5rem 0 1.4rem',
-                font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
+                margin: '.5rem auto 1.2rem',
+                font: "400 clamp(1.1rem, 2.2vw, 1.7rem)/1.15 Georgia, 'Times New Roman', serif",
                 color: '#fff',
-                maxWidth: 640,
+                maxWidth: 620,
                 letterSpacing: 0,
+                textShadow: '0 2px 12px rgba(0,0,0,.75), 0 1px 3px rgba(0,0,0,.9)',
               }}
             >
-              React.js Development Services <Box component="span" sx={{ color: lime }}>by ONAS Solutions</Box>
+              React.js Development Services{' '}
+              <Box component="span" sx={{ color: lime }}>
+                by ONAS Solutions
+              </Box>
             </Typography>
 
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 560, marginBottom: '1rem' }}>
-              React is a JavaScript user interface (UI) library created by the Facebook developers. React is used to render UI components.
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 560,
+                margin: '0 auto .8rem',
+                textShadow: '0 1px 8px rgba(0,0,0,.7)',
+              }}
+            >
+              React is a JavaScript user interface (UI) library created by the Facebook developers. React is used to
+              render UI components.
             </Body>
 
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 560 }}>
-              Also, the library can fully manage the frontend. In this case, React is used with state management and routing libraries such as Redux and React Router.
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 560,
+                margin: '0 auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.7)',
+              }}
+            >
+              Also, the library can fully manage the frontend. In this case, React is used with state management and
+              routing libraries such as Redux and React Router.
             </Body>
-          </motion.div>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            {/* ✅ Hero CTA */}
             <Box
-              component="img"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png"
-              alt="React.js"
-              sx={{ width: { xs: 200, md: 280 }, height: 'auto', display: 'block' }}
-            />
-          </Box>
+              component="a"
+              href="/resources/contact-us"
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '.5rem',
+                marginTop: '1.4rem',
+                padding: '.7rem 1.1rem',
+                borderRadius: '2px',
+                background: '#0B4C74',
+                color: '#ffffff',
+                fontWeight: 600,
+                fontSize: '.62rem',
+                fontFamily: "'Poppins', sans-serif",
+                textDecoration: 'none',
+                transition: 'background .2s ease',
+                '&:hover': { background: '#d3ffb0', color: '#000000' },
+              }}
+            >
+              Discuss React.js Training <ArrowForward sx={{ fontSize: 14 }} />
+            </Box>
+          </motion.div>
         </Box>
       </Box>
 
-      {/* ── MAIN FEATURES (card grid with images) ── */}
+      {/* ── MAIN FEATURES ── */}
       <Section>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>Main Features</Eyebrow>
@@ -114,7 +216,13 @@ const ReactJs = () => {
           </SectionHeading>
         </Box>
 
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: { xs: '1.2rem', md: '1.4rem' } }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+            gap: { xs: '1.2rem', md: '1.4rem' },
+          }}
+        >
           {features.map((b, i) => (
             <motion.div
               key={i}
@@ -124,11 +232,32 @@ const ReactJs = () => {
               transition={{ duration: 0.5, delay: (i % 3) * 0.05 }}
               style={{ display: 'flex', width: '100%' }}
             >
-              <Box sx={{ ...cardSx, padding: 0, overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <Box
+                sx={{
+                  ...cardSx,
+                  padding: 0,
+                  overflow: 'hidden',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
                 <Box sx={{ width: '100%', height: 150, overflow: 'hidden', borderBottom: `1px solid ${line}` }}>
-                  <Box component="img" src={b.image} alt={b.title} sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <Box
+                    component="img"
+                    src={b.image}
+                    alt={b.title}
+                    sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
                 </Box>
-                <Box sx={{ padding: { xs: '1.3rem 1.2rem', md: '1.5rem 1.4rem' }, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                <Box
+                  sx={{
+                    padding: { xs: '1.3rem 1.2rem', md: '1.5rem 1.4rem' },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexGrow: 1,
+                  }}
+                >
                   <Typography
                     component="h3"
                     sx={{
@@ -149,7 +278,7 @@ const ReactJs = () => {
         </Box>
       </Section>
 
-      {/* ── ADVANTAGES (simple numbered list — no images) ── */}
+      {/* ── ADVANTAGES ── */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <Eyebrow>Advantages</Eyebrow>
@@ -158,7 +287,15 @@ const ReactJs = () => {
           </SectionHeading>
         </Box>
 
-        <Box sx={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <Box
+          sx={{
+            maxWidth: 900,
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+          }}
+        >
           {advantages.map((b, i) => (
             <motion.div
               key={i}
@@ -209,7 +346,8 @@ const ReactJs = () => {
             Train Your Team on React.js
           </SectionHeading>
           <Body sx={{ marginBottom: '1.6rem' }}>
-            Let&apos;s design a React.js training program that fits your engineers&apos; existing experience, your tech stack, and your delivery goals.
+            Let&apos;s design a React.js training program that fits your engineers&apos; existing experience, your
+            tech stack, and your delivery goals.
           </Body>
           <Box
             component="a"

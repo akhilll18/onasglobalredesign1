@@ -11,9 +11,7 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 
 import SolutionsCTA from '../../../components/SolutionsCTA';
-import SolutionsServices from '../../../components/SolutionsServices';
 
-// Shared design
 import {
   PageShell,
   Section,
@@ -25,66 +23,75 @@ import {
   ink, muted, line, soft, lime,
 } from '../../../theme/theme';
 
+import A1 from '../../../assets/images/solutions/ap-automation/ap-automation1.jpg';
+import A2 from '../../../assets/images/solutions/ap-automation/ap-automation2.jpg';
+import A3 from '../../../assets/images/solutions/ap-automation/ap-automation3.jpg';
+import A4 from '../../../assets/images/solutions/ap-automation/ap-automation4.jpg';
+import A5 from '../../../assets/images/solutions/ap-automation/ap-automation5.jpg';
+import A6 from '../../../assets/images/solutions/ap-automation/ap-automation6.jpg';
+import A7 from '../../../assets/images/solutions/ap-automation/ap-automation7.jpg';
+import A8 from '../../../assets/images/solutions/ap-automation/ap-automation8.jpg';
+import A9 from '../../../assets/images/solutions/ap-automation/ap-automation9.jpg';
+
 const benefits = [
   {
     title: 'Lower Processing Costs',
     description: 'Streamlined invoice handling reduces repetitive work, paperwork, and processing time, helping businesses operate more efficiently.',
     icon: <AttachMoneyIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=400&h=200&fit=crop',
+    image: A1,
   },
   {
     title: 'Fewer Processing Errors',
     description: 'Automated validation and data checks help reduce manual mistakes, duplicate payments, and avoidable payment issues.',
     icon: <SecurityIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=200&fit=crop',
+    image: A2,
   },
   {
     title: 'Greater Process Visibility',
     description: 'Get clearer visibility into invoices, approvals, outstanding payments, and payable activities throughout the organization.',
     icon: <PublicIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop',
+    image: A3,
   },
   {
     title: 'Better Cash Management',
     description: 'Access timely payable information to plan outgoing payments and manage working capital with greater confidence.',
     icon: <AccountBalanceIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&h=200&fit=crop',
+    image: A4,
   },
   {
     title: 'Stronger Supplier Collaboration',
     description: 'Accurate and timely invoice processing creates a smoother payment experience and supports stronger supplier relationships.',
     icon: <BusinessIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=200&fit=crop',
+    image: A5,
   },
   {
     title: 'Actionable Financial Data',
     description: 'Centralized payable information and reporting help finance teams identify trends and make more informed business decisions.',
     icon: <TrendingUpIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop',
+    image: A6,
   },
   {
     title: 'Simplified Compliance',
     description: 'Structured invoice records and approval workflows make it easier to maintain financial controls and support reporting requirements.',
     icon: <ReceiptIcon sx={{ fontSize: 22, color: '#0B4C74' }} />,
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop',
+    image: A7,
   },
 ];
 
 const APAutomation = () => {
   return (
     <PageShell>
-      {/* Hero */}
       <Box
         sx={{
           position: 'relative',
+          marginTop: { xs: '72px', sm: '76px', md: '92px', lg: '100px' },
           minHeight: { xs: 420, md: 500 },
-          padding: { xs: '5rem 1rem 3rem', md: '7rem 2.5rem 4rem' },
+          padding: { xs: '7rem 1rem 3rem', md: '9rem 2.5rem 4rem' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&h=900&fit=crop)',
+          backgroundImage: `url(${A8})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           isolation: 'isolate',
@@ -95,14 +102,15 @@ const APAutomation = () => {
             position: 'absolute',
             inset: 0,
             zIndex: -1,
-            background:
-              'linear-gradient(90deg, rgba(11,76,116,.94) 0%, rgba(11,76,116,.72) 55%, rgba(11,76,116,.85) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.45) 100%)',
           }}
         />
 
         <Container maxWidth={false} disableGutters sx={{ ...containerSx, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Eyebrow sx={{ color: lime }}>AP Automation</Eyebrow>
+            <Eyebrow sx={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,.95)' }}>
+              AP Automation
+            </Eyebrow>
             <Typography
               component="h1"
               sx={{
@@ -110,18 +118,26 @@ const APAutomation = () => {
                 font: "400 clamp(1.5rem, 3.2vw, 2.4rem)/1.05 Georgia, 'Times New Roman', serif",
                 color: '#fff',
                 maxWidth: 900,
+                textShadow: '0 2px 12px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1)',
               }}
             >
               Smarter Accounts Payable Automation
             </Typography>
-            <Body sx={{ color: 'rgba(255,255,255,.82) !important', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Body
+              sx={{
+                color: '#ffffff !important',
+                maxWidth: 780,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                textShadow: '0 1px 8px rgba(0,0,0,.95)',
+              }}
+            >
               Simplify invoice processing with intelligent automation, accelerate approvals, reduce repetitive work, and give your finance team greater control over accounts payable.
             </Body>
           </motion.div>
         </Container>
       </Box>
 
-      {/* How It Works */}
       <Section>
         <Box
           sx={{
@@ -155,7 +171,7 @@ const APAutomation = () => {
           >
             <Box
               component="img"
-              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop"
+              src={A9}
               alt="AP Automation Process"
               sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -163,7 +179,6 @@ const APAutomation = () => {
         </Box>
       </Section>
 
-      {/* Benefits */}
       <Section bg={soft}>
         <Box sx={{ textAlign: 'center', marginBottom: '1.8rem' }}>
           <Eyebrow>Key Benefits</Eyebrow>
@@ -260,7 +275,6 @@ const APAutomation = () => {
       </Section>
 
       <SolutionsCTA />
-      <SolutionsServices />
     </PageShell>
   );
 };
